@@ -49,4 +49,30 @@ public class ThreadsUnitDemos
 
     Assert.Equal("2x", Output);
   }
+
+  [Fact]
+  public void ThreadInfo()
+  {
+    static void WriteThreadInfo(Thread th)
+    {
+      Console.WriteLine("name: " + th.Name);
+    }
+
+    Thread.CurrentThread.Name = "Main";
+    WriteThreadInfo(Thread.CurrentThread);
+
+    var th = new Thread(() => WriteThreadInfo(Thread.CurrentThread));
+    th.Name = "My Thread";
+
+    th.Start();
+    th.Join();
+
+    Assert.Equal(
+      """
+      name: Main
+      name: My Thread
+
+      """,
+      Output);
+  }
 }
