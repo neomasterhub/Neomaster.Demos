@@ -1,7 +1,5 @@
 # DEMOS
 
-*To highlight the method, open the demo in a new tab.*
-
 * [*Threads*](#threads)
 
 ### Threads <a name="threads"></a>
@@ -12,9 +10,9 @@
 5. [Info, Current thread][threads-5]
 6. [Is alive][threads-6]
 
-[threads-1]:Neomaster.Demos.Tests/Threads/ThreadsUnitDemos.cs#:~:text=public%20void%20CreateThread()
-[threads-2]:Neomaster.Demos.Tests/Threads/ThreadsUnitDemos.cs#:~:text=public%20void%20CreateThreadWithArg()
+[threads-1]:Neomaster.Demos.Tests/Threads/ThreadsUnitDemos.cs#L17
+[threads-2]:Neomaster.Demos.Tests/Threads/ThreadsUnitDemos.cs#L35
 [threads-3]:Neomaster.Demos.Apps/Neomaster.Demos.Apps.Threads.Foreground/Program.cs
 [threads-4]:Neomaster.Demos.Apps/Neomaster.Demos.Apps.Threads.Background/Program.cs
-[threads-5]:Neomaster.Demos.Tests/Threads/ThreadsUnitDemos.cs#:~:text=public%20void%20ThreadInfo()
+[threads-5]:Neomaster.Demos.Tests/Threads/ThreadsUnitDemos.cs#L54
 [threads-6]:Neomaster.Demos.Tests/Threads/ThreadsUnitDemos.cs#L80
