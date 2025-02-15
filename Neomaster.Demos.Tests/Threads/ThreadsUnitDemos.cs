@@ -98,4 +98,21 @@ public class ThreadsUnitDemos
       """,
       Output);
   }
+
+  [Fact]
+  public void ThreadJoinWithTimeout()
+  {
+    var th = new Thread(() => Thread.Sleep(50));
+    th.Start();
+    Console.WriteLine(th.Join(0));
+    Console.WriteLine(th.Join(100));
+
+    Assert.Equal(
+      """
+      False
+      True
+
+      """,
+      Output);
+  }
 }
