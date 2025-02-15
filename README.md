@@ -4,10 +4,10 @@
 
 ### Threads <a name="threads"></a>
 1. [Create, Sleep, Join][threads-1]
-2. [Create with args][threads-2]
+2. [Create with arg][threads-2]
 3. [Foreground][threads-3]
 4. [Background][threads-4]
-5. [Info, Current thread][threads-5]
+5. [Info, current thread instance][threads-5]
 6. [Is alive][threads-6]
 
 [threads-1]:Neomaster.Demos.Tests/Threads/ThreadsUnitDemos.cs#L17
