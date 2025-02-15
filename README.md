@@ -1,5 +1,7 @@
 # DEMOS
 
+*To highlight the method, open the demo in a new tab.*
+
 * [*Threads*](#threads)
 
 ### Threads <a name="threads"></a>
