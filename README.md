@@ -10,9 +10,11 @@
 3. [Foreground][threads-3]
 4. [Background][threads-4]
 5. [Info, Current thread][threads-5]
+6. [Is alive][threads-6]
 
 [threads-1]:Neomaster.Demos.Tests/Threads/ThreadsUnitDemos.cs#:~:text=public%20void%20CreateThread()
 [threads-2]:Neomaster.Demos.Tests/Threads/ThreadsUnitDemos.cs#:~:text=public%20void%20CreateThreadWithArg()
 [threads-3]:Neomaster.Demos.Apps/Neomaster.Demos.Apps.Threads.Foreground/Program.cs
 [threads-4]:Neomaster.Demos.Apps/Neomaster.Demos.Apps.Threads.Background/Program.cs
 [threads-5]:Neomaster.Demos.Tests/Threads/ThreadsUnitDemos.cs#:~:text=public%20void%20ThreadInfo()
+[threads-6]:Neomaster.Demos.Tests/Threads/ThreadsUnitDemos.cs#80

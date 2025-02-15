@@ -75,4 +75,27 @@ public class ThreadsUnitDemos
       """,
       Output);
   }
+
+  [Fact]
+  public void ThreadIsAlive()
+  {
+    var th = new Thread(() => Thread.Sleep(100));
+    Console.WriteLine(th.IsAlive); // false
+
+    th.Start();
+    Console.WriteLine(th.IsAlive); // true
+
+    th.Join();
+    Thread.Sleep(100);
+    Console.WriteLine(th.IsAlive); // false
+
+    Assert.Equal(
+      """
+      False
+      True
+      False
+
+      """,
+      Output);
+  }
 }
