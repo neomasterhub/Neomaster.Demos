@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{EBA78027-8AAE-454E-836E-8867AA2E878D}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>Threads.AffinityProgrammed</RootNamespace>
-    <AssemblyName>Threads.AffinityProgrammed</AssemblyName>
+    <RootNamespace>Neomaster.Demos.Apps.Threads.AffinityProgrammed</RootNamespace>
+    <AssemblyName>Neomaster.Demos.Apps.Threads.AffinityProgrammed</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>

@@ -1,8 +1,8 @@
-﻿using System;
+using System;
 using System.Linq;
 using System.Threading;
 
-namespace Threads.AffinityParameterized
+namespace Neomaster.Demos.Apps.Threads.AffinityParameterized
 {
     internal class Program
     {

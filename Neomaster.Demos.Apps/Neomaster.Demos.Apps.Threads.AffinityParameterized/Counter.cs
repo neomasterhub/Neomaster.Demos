@@ -1,6 +1,6 @@
-﻿using System;
+using System;
 
-namespace Threads.AffinityParameterized
+namespace Neomaster.Demos.Apps.Threads.AffinityParameterized
 {
     internal class Counter
     {

@@ -1,8 +1,8 @@
-﻿#pragma warning disable CS0618
+#pragma warning disable CS0618
 using System;
 using System.Threading;
 
-namespace Threads.SuspendResume.TickTock
+namespace Neomaster.Demos.Apps.Threads.SuspendResumeTickTock
 {
     internal class Program
     {

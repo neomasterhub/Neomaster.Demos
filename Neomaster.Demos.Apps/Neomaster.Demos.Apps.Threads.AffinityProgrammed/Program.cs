@@ -1,8 +1,8 @@
-﻿using System;
+using System;
 using System.Diagnostics;
 using System.Threading;
 
-namespace Threads.AffinityProgrammed
+namespace Neomaster.Demos.Apps.Threads.AffinityProgrammed
 {
     internal class Program
     {

@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{44C041F7-C775-4A17-BD70-5225AB542E0E}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>Threads.SuspendResume</RootNamespace>
-    <AssemblyName>Threads.SuspendResume</AssemblyName>
+    <RootNamespace>Neomaster.Demos.Apps.Threads.SuspendResume</RootNamespace>
+    <AssemblyName>Neomaster.Demos.Apps.Threads.SuspendResume</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
