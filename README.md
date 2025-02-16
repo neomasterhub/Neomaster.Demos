@@ -11,8 +11,8 @@
 6. [Is alive][threads-6]
 7. [Join with timeout][threads-7]
 8. [Abort][threads-8]
-9. [Affinity (run parameter)][threads-8]
-10. [Affinity (programmatically)][threads-8]
+9. [Affinity (run parameter)][threads-9]
+10. [Affinity (programmatically)][threads-10]
 
 [threads-1]:Neomaster.Demos.Tests/Threads/ThreadsUnitDemos.cs#L17
 [threads-2]:Neomaster.Demos.Tests/Threads/ThreadsUnitDemos.cs#L35
