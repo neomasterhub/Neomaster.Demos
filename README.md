@@ -10,6 +10,7 @@
 5. [Info, current thread instance][threads-5]
 6. [Is alive][threads-6]
 7. [Join with timeout][threads-7]
+8. [Abort][threads-8]
 
 [threads-1]:Neomaster.Demos.Tests/Threads/ThreadsUnitDemos.cs#L17
 [threads-2]:Neomaster.Demos.Tests/Threads/ThreadsUnitDemos.cs#L35
@@ -18,3 +19,4 @@
 [threads-5]:Neomaster.Demos.Tests/Threads/ThreadsUnitDemos.cs#L54
 [threads-6]:Neomaster.Demos.Tests/Threads/ThreadsUnitDemos.cs#L80
 [threads-7]:Neomaster.Demos.Tests/Threads/ThreadsUnitDemos.cs#L103
+[threads-8]:Neomaster.Demos.Apps/Neomaster.Demos.Apps.Threads.AbortThread/Program.cs
