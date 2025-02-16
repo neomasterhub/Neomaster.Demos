@@ -11,8 +11,10 @@
 6. [Is alive][threads-6]
 7. [Join with timeout][threads-7]
 8. [Abort][threads-8]
-9. [Affinity (run parameter)][threads-8]
-10. [Affinity (programmatically)][threads-8]
+9. [Affinity (run parameter)][threads-9]
+10. [Affinity (programmatically)][threads-10]
+11. [Suspend, Resume][threads-11]
+12. [Suspend, Resume: Tick Tock][threads-12]
 
 [threads-1]:Neomaster.Demos.Tests/Threads/ThreadsUnitDemos.cs#L17
 [threads-2]:Neomaster.Demos.Tests/Threads/ThreadsUnitDemos.cs#L35
@@ -24,3 +26,5 @@
 [threads-8]:Neomaster.Demos.Apps/Neomaster.Demos.Apps.Threads.AbortThread/Program.cs
 [threads-9]:Neomaster.Demos.Apps/Neomaster.Demos.Apps.Threads.AffinityParameterized/Program.cs
 [threads-10]:Neomaster.Demos.Apps/Neomaster.Demos.Apps.Threads.AffinityProgrammed/Program.cs
+[threads-11]:Neomaster.Demos.Apps.Threads.SuspendResume/Program.cs
+[threads-12]:Neomaster.Demos.Apps.Threads.SuspendResumeTickTock/Program.cs
