@@ -115,4 +115,25 @@ public class ThreadsUnitDemos
       """,
       Output);
   }
+
+  [Fact]
+  public void AbortThreadInCoreViaCancellationToken()
+  {
+    var count = 0;
+    var cts = new CancellationTokenSource();
+    var thread = new Thread(() =>
+    {
+      while (!cts.IsCancellationRequested)
+      {
+        count++;
+        Thread.Sleep(10);
+      }
+    });
+
+    thread.Start();
+    Thread.Sleep(100);
+    cts.Cancel();
+
+    Assert.True(count > 0 && count < 200);
+  }
 }

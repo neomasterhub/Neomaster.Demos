@@ -15,6 +15,7 @@
 10. [Affinity (programmatically)][threads-10]
 11. [Suspend, Resume][threads-11]
 12. [Suspend, Resume: Tick Tock][threads-12]
+13. [Abort thread in Core via cancellation token][threads-13]
 
 [threads-1]:Neomaster.Demos.Tests/Threads/ThreadsUnitDemos.cs#L17
 [threads-2]:Neomaster.Demos.Tests/Threads/ThreadsUnitDemos.cs#L35
@@ -28,3 +29,4 @@
 [threads-10]:Neomaster.Demos.Apps/Neomaster.Demos.Apps.Threads.AffinityProgrammed/Program.cs
 [threads-11]:Neomaster.Demos.Apps.Threads.SuspendResume/Program.cs
 [threads-12]:Neomaster.Demos.Apps.Threads.SuspendResumeTickTock/Program.cs
+[threads-13]:Neomaster.Demos.Tests/Threads/ThreadsUnitDemos.cs#L120
