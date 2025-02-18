@@ -142,4 +142,25 @@ public class ThreadsUnitDemos
 
     Assert.True(cancelled);
   }
+
+  [Fact]
+  public void SuspendConsumeInCoreViaManualResetEventSlim()
+  {
+    var re = new ManualResetEvent(false);
+    var th = new Thread(() =>
+    {
+      re.WaitOne();
+      Console.Write(2);
+    });
+    th.Start();
+
+    Console.Write(1);
+
+    re.Set();
+    th.Join();
+
+    Console.Write(3);
+
+    Assert.Equal("123", Output);
+  }
 }
