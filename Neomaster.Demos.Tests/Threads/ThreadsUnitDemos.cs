@@ -163,4 +163,44 @@ public class ThreadsUnitDemos
 
     Assert.Equal("123", Output);
   }
+
+  [Fact]
+  public void ManualResetEventSlimTickTock()
+  {
+    var tickRe = new ManualResetEvent(false);
+    var tockRe = new ManualResetEvent(false);
+    var tickTockPairNumber = 3;
+    var tick = new Thread(() =>
+    {
+      while (tickTockPairNumber > 0)
+      {
+        tickRe.WaitOne();
+
+        Console.Write("*");
+
+        tickRe.Reset();
+        tockRe.Set();
+      }
+    });
+    var tock = new Thread(() =>
+    {
+      while (tickTockPairNumber-- > 0)
+      {
+        tockRe.WaitOne();
+
+        Console.Write("-");
+
+        tockRe.Reset();
+        tickRe.Set();
+      }
+    });
+
+    tick.Start();
+    tock.Start();
+    tickRe.Set();
+    tick.Join();
+    tock.Join();
+
+    Assert.Equal("*-*-*-", Output);
+  }
 }

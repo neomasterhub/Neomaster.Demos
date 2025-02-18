@@ -17,6 +17,7 @@
 12. [Suspend, Resume: Tick Tock][threads-12]
 13. [Abort in Core via `CancellationTokenSource`][threads-13]
 14. [Suspend-Resume in Core via `ManualResetEventSlim`][threads-14]
+15. [Tick Tock in Core][threads-15]
 
 [threads-1]:Neomaster.Demos.Tests/Threads/ThreadsUnitDemos.cs#L17
 [threads-2]:Neomaster.Demos.Tests/Threads/ThreadsUnitDemos.cs#L35
@@ -32,3 +33,4 @@
 [threads-12]:Neomaster.Demos.Apps/Neomaster.Demos.Apps.Threads.SuspendResumeTickTock/Program.cs
 [threads-13]:Neomaster.Demos.Tests/Threads/ThreadsUnitDemos.cs#L120
 [threads-14]:Neomaster.Demos.Tests/Threads/ThreadsUnitDemos.cs#L147
+[threads-15]:Neomaster.Demos.Tests/Threads/ThreadsUnitDemos.cs#L168
