@@ -180,11 +180,15 @@ public class ThreadsUnitDemos
 
         tickRe.Reset();
         tockRe.Set();
+
+        // It's best not to use operations in a loop argument.
+        // Because Start() does not wait for the OS to finish creating a physical thread!
+        tickTockPairNumber--;
       }
     });
     var tock = new Thread(() =>
     {
-      while (Interlocked.Decrement(ref tickTockPairNumber) >= 0)
+      while (tickTockPairNumber > 0)
       {
         tockRe.WaitOne();
 
