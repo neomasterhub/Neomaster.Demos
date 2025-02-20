@@ -167,12 +167,14 @@ public class ThreadsUnitDemos
   [Fact]
   public void ManualResetEventSlimTickTock()
   {
+    var tickCount = 0;
+    var tockCount = 0;
     var tickRe = new ManualResetEvent(false);
     var tockRe = new ManualResetEvent(false);
     var tickTockPairNumber = 3;
     var tick = new Thread(() =>
     {
-      while (tickTockPairNumber > 0)
+      while (tickCount++ < tickTockPairNumber)
       {
         tickRe.WaitOne();
 
@@ -180,15 +182,11 @@ public class ThreadsUnitDemos
 
         tickRe.Reset();
         tockRe.Set();
-
-        // It's best not to use operations in a loop argument.
-        // Because Start() does not wait for the OS to finish creating a physical thread!
-        tickTockPairNumber--;
       }
     });
     var tock = new Thread(() =>
     {
-      while (tickTockPairNumber > 0)
+      while (tockCount++ < tickTockPairNumber)
       {
         tockRe.WaitOne();
 
