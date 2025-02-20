@@ -184,7 +184,7 @@ public class ThreadsUnitDemos
     });
     var tock = new Thread(() =>
     {
-      while (tickTockPairNumber-- > 0)
+      while (Interlocked.Decrement(ref tickTockPairNumber) >= 0)
       {
         tockRe.WaitOne();
 
