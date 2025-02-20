@@ -1,6 +1,7 @@
 # DEMOS
 
 * [*Threads*](#threads)
+* [*Threads: Synchronization*](#threads-sync)
 
 ### Threads <a name="threads"></a>
 1. [Create, Sleep, Join][threads-1]
@@ -34,3 +35,7 @@
 [threads-13]:Neomaster.Demos.Tests/Threads/ThreadsUnitDemos.cs#L120
 [threads-14]:Neomaster.Demos.Tests/Threads/ThreadsUnitDemos.cs#L147
 [threads-15]:Neomaster.Demos.Tests/Threads/ThreadsUnitDemos.cs#L168
+
+### Threads: Synchronization <a name="threads-sync"></a>
+1. ['lock()'][threads-sync-1]
+[threads-sync-1]:Neomaster.Demos.Tests/Threads/ThreadsSyncUnitDemos.cs#L10
