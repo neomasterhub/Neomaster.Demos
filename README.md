@@ -37,5 +37,6 @@
 [threads-15]:Neomaster.Demos.Tests/Threads/ThreadsUnitDemos.cs#L168
 
 ### Threads: Synchronization <a name="threads-sync"></a>
-1. ['lock()'][threads-sync-1]
+1. [`lock()`][threads-sync-1]
+
 [threads-sync-1]:Neomaster.Demos.Tests/Threads/ThreadsSyncUnitDemos.cs#L10
