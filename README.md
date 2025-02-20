@@ -38,5 +38,7 @@
 
 ### Threads: Synchronization <a name="threads-sync"></a>
 1. [`lock()`][threads-sync-1]
+2. [`Monitor.Enter()`-`Monitor.Exit()`][threads-sync-2]
 
 [threads-sync-1]:Neomaster.Demos.Tests/Threads/ThreadsSyncUnitDemos.cs#L11
+[threads-sync-2]:Neomaster.Demos.Tests/Threads/ThreadsSyncUnitDemos.cs#L45
