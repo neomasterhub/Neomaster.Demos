@@ -4,20 +4,21 @@ namespace Neomaster.Demos.Tests.Threads;
 
 public class ThreadsSyncUnitDemos
 {
+  private static readonly Random _random = new();
   private static readonly object _lock = new();
 
   [Fact]
   public void LockAddingToList()
   {
-    const int count = 100;
+    const int count = 10;
     var numbers = new List<int>(count);
-    var rnd = new Random();
     var threads = Enumerable.Range(1, count)
       .Select(n => new Thread(() =>
       {
         lock (_lock)
         {
-          Thread.Sleep(rnd.Next(0, 20));
+          var sleep = _random.Next(0, 9) * 100;
+          Thread.Sleep(sleep);
           numbers.Add(n);
         }
       }))
@@ -26,6 +27,11 @@ public class ThreadsSyncUnitDemos
     foreach (var th in threads)
     {
       th.Start();
+
+      // Start() does not wait for the OS to finish creating a physical thread!
+      while (!th.IsAlive)
+      {
+      }
     }
 
     foreach (var th in threads)
