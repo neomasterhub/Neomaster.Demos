@@ -28,10 +28,9 @@ public class ThreadsSyncUnitDemos
     {
       th.Start();
 
+      // Run threads sequentially.
       // Start() does not wait for the OS to finish creating a physical thread!
-      while (!th.IsAlive)
-      {
-      }
+      Thread.Sleep(20);
     }
 
     foreach (var th in threads)

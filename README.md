@@ -39,4 +39,4 @@
 ### Threads: Synchronization <a name="threads-sync"></a>
 1. [`lock()`][threads-sync-1]
 
-[threads-sync-1]:Neomaster.Demos.Tests/Threads/ThreadsSyncUnitDemos.cs#L10
+[threads-sync-1]:Neomaster.Demos.Tests/Threads/ThreadsSyncUnitDemos.cs#L11
