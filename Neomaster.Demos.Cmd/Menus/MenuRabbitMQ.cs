@@ -14,7 +14,10 @@ internal class MenuRabbitMQ(RabbitMQDemos rabbitMQDemos)
       switch (menuItem)
       {
         case "1":
-          rabbitMQDemos.CreateChannelAndProduceMessageAsync().Do();
+          rabbitMQDemos.ProduceMessageAsync().Do();
+          break;
+        case "2":
+          rabbitMQDemos.ConsumeMessagesAsync().Do();
           break;
         default:
           break;
@@ -35,7 +38,8 @@ internal class MenuRabbitMQ(RabbitMQDemos rabbitMQDemos)
     Console.WriteLine(
       """
       0     - Back
-      1     - Create queue and produce message
+      1     - Produce message
+      2     - Consume messages
       Other - Clear
       """);
     Console.ResetColor();

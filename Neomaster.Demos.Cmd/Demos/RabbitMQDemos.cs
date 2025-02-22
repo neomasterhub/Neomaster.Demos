@@ -1,11 +1,13 @@
 using System.Text;
+using Neomaster.Demos.Cmd.Menus;
 using RabbitMQ.Client;
+using RabbitMQ.Client.Events;
 
 namespace Neomaster.Demos.Cmd.Demos;
 
 internal class RabbitMQDemos
 {
-  public async Task CreateChannelAndProduceMessageAsync()
+  public async Task ProduceMessageAsync()
   {
     var factory = new ConnectionFactory()
     {
@@ -26,7 +28,7 @@ internal class RabbitMQDemos
       autoDelete: false,
       arguments: null);
 
-    var message = $"Hello Rabbit {DateTime.Now.ToString("yyyy.MM.dd HH:mm:ss")}";
+    var message = $"Hello Rabbit [{DateTime.Now.ToString("yyyy.MM.dd HH:mm:ss")}]";
     var messageBytes = Encoding.UTF8.GetBytes(message);
 
     await channel.BasicPublishAsync(
@@ -34,8 +36,44 @@ internal class RabbitMQDemos
       routingKey: queueName,
       body: messageBytes);
 
-    Console.WriteLine("Pushed message:");
-    Console.WriteLine(message);
-    Console.ReadKey();
+    Console.WriteLine($"Sent message: {message}");
+    MenuHelper.PressAnyKey();
+  }
+
+  public async Task ConsumeMessagesAsync()
+  {
+    var factory = new ConnectionFactory()
+    {
+      HostName = "localhost",
+      UserName = "rabbit",
+      Password = "rabbit",
+      VirtualHost = "demos",
+    };
+
+    using var connection = await factory.CreateConnectionAsync();
+    using var channel = await connection.CreateChannelAsync();
+
+    var queueName = "test-queue-1";
+    await channel.QueueDeclareAsync(
+      queue: queueName,
+      durable: false,
+      exclusive: false,
+      autoDelete: false,
+      arguments: null);
+
+    var consumer = new AsyncEventingBasicConsumer(channel);
+    consumer.ReceivedAsync += (model, ea) =>
+    {
+      var body = ea.Body.ToArray();
+      var message = Encoding.UTF8.GetString(body);
+
+      Console.WriteLine($"Received message: {message}");
+
+      return Task.CompletedTask;
+    };
+
+    await channel.BasicConsumeAsync(queueName, autoAck: true, consumer: consumer);
+    Console.WriteLine("The consumer is subscribed...");
+    MenuHelper.PressAnyKey("to unsubscribe...");
   }
 }
