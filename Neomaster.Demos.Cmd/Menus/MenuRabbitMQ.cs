@@ -1,6 +1,8 @@
+using Neomaster.Demos.Cmd.Demos;
+
 namespace Neomaster.Demos.Cmd.Menus;
 
-internal class MenuRabbitMQ
+internal class MenuRabbitMQ(RabbitMQDemos rabbitMQDemos)
 {
   public void Show()
   {
@@ -11,6 +13,9 @@ internal class MenuRabbitMQ
     {
       switch (menuItem)
       {
+        case "1":
+          rabbitMQDemos.CreateChannelAndProduceMessageAsync().Do();
+          break;
         default:
           break;
       }
@@ -30,6 +35,7 @@ internal class MenuRabbitMQ
     Console.WriteLine(
       """
       0     - Back
+      1     - Create queue and produce message
       Other - Clear
       """);
     Console.ResetColor();
