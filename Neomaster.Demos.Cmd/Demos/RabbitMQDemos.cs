@@ -1,5 +1,4 @@
 using System.Text;
-using Neomaster.Demos.Cmd.Menus;
 using RabbitMQ.Client;
 using RabbitMQ.Client.Events;
 
@@ -37,7 +36,7 @@ internal class RabbitMQDemos
       body: messageBytes);
 
     Console.WriteLine($"Sent message: {message}");
-    MenuHelper.PressAnyKey();
+    Helper.PressAnyKey();
   }
 
   public async Task ConsumeMessagesAsync()
@@ -74,6 +73,6 @@ internal class RabbitMQDemos
 
     await channel.BasicConsumeAsync(queueName, autoAck: true, consumer: consumer);
     Console.WriteLine("The consumer is subscribed...");
-    MenuHelper.PressAnyKey("to unsubscribe...");
+    Helper.PressAnyKey("to unsubscribe...");
   }
 }

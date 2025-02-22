@@ -1,6 +1,6 @@
-namespace Neomaster.Demos.Cmd.Menus;
+namespace Neomaster.Demos.Cmd;
 
-internal static class MenuHelper
+internal static class Helper
 {
   public static void PressAnyKey(string action = "to continue...")
   {
