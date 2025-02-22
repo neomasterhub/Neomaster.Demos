@@ -1,6 +1,6 @@
-namespace Neomaster.Demos.Cmd;
+namespace Neomaster.Demos.Cmd.Menus;
 
-internal class Menu()
+internal class MenuMain(MenuRabbitMQ menuRabbitMQ)
 {
   public void Show()
   {
@@ -9,13 +9,16 @@ internal class Menu()
 
     while (menuItem != "0")
     {
-      ShowCommands();
-
       switch (menuItem)
       {
+        case "1":
+          menuRabbitMQ.Show();
+          break;
         default:
           break;
       }
+
+      ShowCommands();
 
       menuItem = Console.ReadLine();
     }
@@ -30,6 +33,7 @@ internal class Menu()
     Console.WriteLine(
       """
       0     - Exit
+      1     - RabbitMQ
       Other - Clear
       """);
     Console.ResetColor();
