@@ -2,6 +2,14 @@ namespace Neomaster.Demos.Cmd.Menus;
 
 internal static class MenuHelper
 {
+  public static void PressAnyKey(string action = "to continue...")
+  {
+    Console.ForegroundColor = ConsoleColor.DarkGray;
+    Console.WriteLine($"Press any key {action}");
+    Console.ResetColor();
+    Console.ReadKey();
+  }
+
   public static void Do(this Task task)
   {
     try
@@ -14,9 +22,7 @@ internal static class MenuHelper
       Console.WriteLine(e.Message);
       Console.ForegroundColor = ConsoleColor.DarkRed;
       Console.WriteLine(e.StackTrace);
-      Console.ResetColor();
-      Console.WriteLine("Press any key to continue...");
-      Console.ReadKey();
+      PressAnyKey();
     }
   }
 }
