@@ -80,4 +80,33 @@ public class ThreadsSyncUnitDemos
 
     Assert.Equal(Enumerable.Range(1, count), numbers);
   }
+
+  [Fact]
+  public void WaitQueue()
+  {
+    const string expected = "123";
+    var actual = string.Empty;
+    var e = new AutoResetEvent(false);
+    var th1 = new Thread(() =>
+    {
+      actual += "1";
+      e.WaitOne(); // th1 is placed in Wait Queue.
+
+      // The event occurred.
+      // th1 is placed in Ready Queue.
+      actual += "3";
+    });
+    var th2 = new Thread(() =>
+    {
+      Thread.Sleep(100);
+      actual += "2";
+      e.Set();
+    });
+
+    th1.Start();
+    th2.Start();
+    th1.Join();
+
+    Assert.Equal(expected, actual);
+  }
 }
