@@ -109,4 +109,100 @@ public class ThreadsSyncUnitDemos
 
     Assert.Equal(expected, actual);
   }
+
+  [Fact]
+  public void MonitorPulseAll()
+  {
+    const int charRepetitions = 5;
+    var chars = new char[] { 'A', 'B' };
+    var actual = string.Empty;
+    var expected = "*" + string.Concat(chars.Select(c => new string(c, charRepetitions)));
+    var wqThreads = chars
+      .Select(c => new Thread(() =>
+      {
+        lock (_lock)
+        {
+          Monitor.Wait(_lock);
+
+          for (var i = 0; i < charRepetitions; i++)
+          {
+            actual += c;
+          }
+        }
+      }))
+      .ToArray();
+    var paThread = new Thread(() =>
+    {
+      lock (_lock)
+      {
+        actual += "*";
+
+        Monitor.PulseAll(_lock);
+      }
+    });
+
+    foreach (var wqt in wqThreads)
+    {
+      wqt.Start();
+      Thread.Sleep(20);
+    }
+
+    paThread.Start();
+
+    foreach (var wqt in wqThreads)
+    {
+      wqt.Join();
+    }
+
+    Assert.Equal(expected, actual);
+  }
+
+  [Fact]
+  public void MonitorPulse()
+  {
+    const int charRepetitions = 5;
+    var chars = new char[] { 'A', 'B' };
+    var actual = string.Empty;
+    var expected = "*" + new string(chars[0], charRepetitions);
+    var wqThreads = chars
+      .Select(c => new Thread(() =>
+      {
+        lock (_lock)
+        {
+          Monitor.Wait(_lock);
+
+          for (var i = 0; i < charRepetitions; i++)
+          {
+            actual += c;
+          }
+        }
+      }))
+      .ToArray();
+    var paThread = new Thread(() =>
+    {
+      lock (_lock)
+      {
+        actual += "*";
+
+        Monitor.Pulse(_lock);
+      }
+    });
+
+    foreach (var wqt in wqThreads)
+    {
+      wqt.Start();
+      Thread.Sleep(20);
+    }
+
+    paThread.Start();
+
+    var allThreadsAreExecuted = true;
+    foreach (var wqt in wqThreads)
+    {
+      allThreadsAreExecuted &= wqt.Join(1000);
+    }
+
+    Assert.Equal(expected, actual);
+    Assert.False(allThreadsAreExecuted);
+  }
 }
