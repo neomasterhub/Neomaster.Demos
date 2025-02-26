@@ -361,4 +361,66 @@ public class ThreadsSyncUnitDemos
 
     Assert.True(slMs < lMs);
   }
+
+  [Fact]
+  public void SpinLockAsSleep()
+  {
+    const string expected = "(_Running){2,}(#Running){2,}(_Running){2,}";
+
+    var states = new List<string>();
+    Thread stateLogger = null;
+
+    var sl = new SpinLock(false);
+    var gotLock = false;
+
+    void LongOp()
+    {
+      var j = int.MaxValue;
+      while (j-- > 0)
+      {
+      }
+    }
+
+    void SpinLockedLongOp()
+    {
+      gotLock = false;
+      sl.Enter(ref gotLock);
+      try
+      {
+        LongOp();
+      }
+      finally
+      {
+        if (gotLock)
+        {
+          gotLock = false;
+          sl.Exit();
+        }
+      }
+    }
+
+    var th = new Thread(() =>
+    {
+      stateLogger.Start();
+
+      LongOp();
+      SpinLockedLongOp();
+      LongOp();
+    });
+
+    stateLogger = new Thread(() =>
+    {
+      while (th.IsAlive)
+      {
+        states.Add((gotLock ? "#" : "_") + th.ThreadState.ToString());
+        Thread.Sleep(100);
+      }
+    });
+
+    th.Start();
+    th.Join();
+
+    var actual = string.Concat(states);
+    Assert.Matches(expected, actual);
+  }
 }
