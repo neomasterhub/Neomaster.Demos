@@ -38,14 +38,14 @@
 
 ### Threads: Synchronization <a name="threads-sync"></a>
 1. [`lock()`][threads-sync-1]
-2. [`Monitor.Enter()`-`Monitor.Exit()`][threads-sync-2]
+2. [Monitor.Enter - Monitor.Exit][threads-sync-2]
 3. [Wait Queue][threads-sync-3]
-4. [`Monitor.PulseAll()`][threads-sync-4]
-5. [`Monitor.Pulse()`][threads-sync-5]
-6. [Tick Tock via `Monitor.Pulse()`-`Monitor.Wait()`][threads-sync-6]
-7. [`Monitor.Wait(timeout)` as Sleep][threads-sync-7]
+4. [Monitor.PulseAll][threads-sync-4]
+5. [Monitor.Pulse][threads-sync-5]
+6. [Tick Tock via Monitor.Pulse - Monitor.Wait][threads-sync-6]
+7. [Monitor.Wait with timeout as Sleep][threads-sync-7]
 8. [`SpinLock` vs `lock()`][threads-sync-8]
-9. [`SpinLock` as Sleep][threads-sync-9]
+9. [Spin lock as Sleep][threads-sync-9]
 
 [threads-sync-1]:Neomaster.Demos.Tests/Threads/ThreadsSyncUnitDemos.cs#L11
 [threads-sync-2]:Neomaster.Demos.Tests/Threads/ThreadsSyncUnitDemos.cs#L45
