@@ -267,4 +267,50 @@ public class ThreadsSyncUnitDemos
 
     Assert.Equal(expected, actual);
   }
+
+  [Fact]
+  public void MonitorWaitWithTimeoutAsSleep()
+  {
+    const string expected = "(Running){2,}(WaitSleepJoin){2,}(Running){2,}";
+
+    var states = new List<string>();
+    Thread stateLogger = null;
+
+    static void LongOp()
+    {
+      var j = int.MaxValue;
+      while (j-- > 0)
+      {
+      }
+    }
+
+    var th = new Thread(() =>
+    {
+      stateLogger.Start();
+
+      LongOp();
+
+      lock (_lock)
+      {
+        Monitor.Wait(_lock, 500);
+      }
+
+      LongOp();
+    });
+
+    stateLogger = new Thread(() =>
+    {
+      while (th.IsAlive)
+      {
+        states.Add(th.ThreadState.ToString());
+        Thread.Sleep(100);
+      }
+    });
+
+    th.Start();
+    th.Join();
+
+    var actual = string.Concat(states);
+    Assert.Matches(expected, actual);
+  }
 }
