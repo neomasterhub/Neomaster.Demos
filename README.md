@@ -43,7 +43,7 @@
 4. [`Monitor.PulseAll()`][threads-sync-4]
 5. [`Monitor.Pulse()`][threads-sync-5]
 6. [Tick Tock via `Monitor.Pulse()`-`Monitor.Wait()`][threads-sync-6]
-7. [`Monitor.Wait(timeout)`, state logger][threads-sync-7]
+7. [`Monitor.Wait(timeout)`][threads-sync-7]
 
 [threads-sync-1]:Neomaster.Demos.Tests/Threads/ThreadsSyncUnitDemos.cs#L11
 [threads-sync-2]:Neomaster.Demos.Tests/Threads/ThreadsSyncUnitDemos.cs#L45
