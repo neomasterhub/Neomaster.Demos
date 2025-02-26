@@ -313,4 +313,52 @@ public class ThreadsSyncUnitDemos
     var actual = string.Concat(states);
     Assert.Matches(expected, actual);
   }
+
+  [Fact]
+  public void SpinLockVsLock()
+  {
+    var gotLock = false;
+    var sl = new SpinLock(false);
+    var lSw = new Stopwatch();
+    var slSw = new Stopwatch();
+    const int lockNumber = 10;
+
+    var lTh = new Thread(() =>
+    {
+      lSw.Start();
+
+      for (var i = 0; i < lockNumber; i++)
+      {
+        lock (_lock)
+        {
+        }
+      }
+
+      lSw.Stop();
+    });
+
+    var slTh = new Thread(() =>
+    {
+      slSw.Start();
+
+      for (var i = 0; i < lockNumber; i++)
+      {
+        gotLock = false;
+        sl.Enter(ref gotLock);
+        sl.Exit();
+      }
+
+      slSw.Stop();
+    });
+
+    lTh.Start();
+    lTh.Join();
+    slTh.Start();
+    slTh.Join();
+
+    var lMs = lSw.Elapsed.TotalMilliseconds;   // ~ 0.15
+    var slMs = slSw.Elapsed.TotalMilliseconds; // ~ 0.02
+
+    Assert.True(slMs < lMs);
+  }
 }
