@@ -384,9 +384,9 @@ public class ThreadsSyncUnitDemos
     void SpinLockedLongOp()
     {
       gotLock = false;
-      sl.Enter(ref gotLock);
       try
       {
+        sl.Enter(ref gotLock);
         LongOp();
       }
       finally
