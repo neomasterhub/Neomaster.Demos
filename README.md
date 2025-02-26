@@ -42,9 +42,11 @@
 3. [Wait Queue][threads-sync-3]
 4. [`Monitor.PulseAll()`][threads-sync-4]
 5. [`Monitor.Pulse()`][threads-sync-5]
+6. [Tick Tock via `Monitor.Pulse()`-`Monitor.Wait()`][threads-sync-6]
 
 [threads-sync-1]:Neomaster.Demos.Tests/Threads/ThreadsSyncUnitDemos.cs#L11
 [threads-sync-2]:Neomaster.Demos.Tests/Threads/ThreadsSyncUnitDemos.cs#L45
 [threads-sync-3]:Neomaster.Demos.Tests/Threads/ThreadsSyncUnitDemos.cs#L85
 [threads-sync-4]:Neomaster.Demos.Tests/Threads/ThreadsSyncUnitDemos.cs#L114
 [threads-sync-5]:Neomaster.Demos.Tests/Threads/ThreadsSyncUnitDemos.cs#L161
+[threads-sync-6]:Neomaster.Demos.Tests/Threads/ThreadsSyncUnitDemos.cs#L210

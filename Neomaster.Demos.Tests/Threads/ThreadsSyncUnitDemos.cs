@@ -205,4 +205,66 @@ public class ThreadsSyncUnitDemos
     Assert.Equal(expected, actual);
     Assert.False(allThreadsAreExecuted);
   }
+
+  [Fact]
+  public void MonitorPulseWaitTickTock()
+  {
+    const string tickSignal = "1";
+    const string tockSignal = "2";
+    const string noiseSignal = "_";
+    var noiseSignalNumber = 3;
+    var tickTockPairCount = 2;
+    var noiseSeq = string.Concat(Enumerable.Repeat(noiseSignal, noiseSignalNumber));
+    var expectedPair = tickSignal + noiseSeq + tockSignal + noiseSeq;
+    var expected = string.Concat(Enumerable.Repeat(expectedPair, tickTockPairCount));
+    var actual = string.Empty;
+
+    void Beep(object signal)
+    {
+      lock (_lock)
+      {
+        while (tickTockPairCount > 0)
+        {
+          var s = (string)signal;
+          actual += s;
+
+          Monitor.Pulse(_lock);
+
+          for (var i = 0; i < noiseSignalNumber; i++)
+          {
+            Thread.Sleep(100);
+            actual += noiseSignal;
+          }
+
+          if (s == tockSignal)
+          {
+            tickTockPairCount--;
+
+            if (tickTockPairCount == 0)
+            {
+              return;
+            }
+          }
+
+          Monitor.Wait(_lock);
+        }
+      }
+    }
+
+    var tickTh = new Thread(Beep);
+    var tockTh = new Thread(Beep);
+
+    tickTh.Start(tickSignal);
+
+    while (tickTh.ThreadState != ThreadState.WaitSleepJoin)
+    {
+    }
+
+    tockTh.Start(tockSignal);
+
+    tickTh.Join();
+    tockTh.Join();
+
+    Assert.Equal(expected, actual);
+  }
 }
