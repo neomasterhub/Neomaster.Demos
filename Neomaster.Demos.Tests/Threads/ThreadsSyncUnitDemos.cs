@@ -421,4 +421,34 @@ public class ThreadsSyncUnitDemos
     var actual = string.Concat(states);
     Assert.Matches(expected, actual);
   }
+
+  [Fact]
+  public void SpinLockForFastLogging()
+  {
+    var sl = new SpinLock(false);
+    var log = new List<int>();
+    var logger = () =>
+    {
+      var gotLock = false;
+      try
+      {
+        sl.Enter(ref gotLock);
+        log.Add(Thread.CurrentThread.ManagedThreadId);
+      }
+      finally
+      {
+        if (gotLock)
+        {
+          sl.Exit();
+        }
+      }
+    };
+    var th = new Thread(() => logger());
+    var expectedLog = new List<int> { th.ManagedThreadId };
+
+    th.Start();
+    th.Join();
+
+    Assert.Equal(expectedLog, log);
+  }
 }
