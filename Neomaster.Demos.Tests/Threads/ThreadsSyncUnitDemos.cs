@@ -113,10 +113,10 @@ public class ThreadsSyncUnitDemos
   [Fact]
   public void MonitorPulseAll()
   {
+    const string expected = "*AAAAABBBBB";
     const int charRepetitions = 5;
     var chars = new char[] { 'A', 'B' };
     var actual = string.Empty;
-    var expected = "*" + string.Concat(chars.Select(c => new string(c, charRepetitions)));
     var wqThreads = chars
       .Select(c => new Thread(() =>
       {
@@ -160,10 +160,10 @@ public class ThreadsSyncUnitDemos
   [Fact]
   public void MonitorPulse()
   {
+    const string expected = "*AAAAA";
     const int charRepetitions = 5;
     var chars = new char[] { 'A', 'B' };
     var actual = string.Empty;
-    var expected = "*" + new string(chars[0], charRepetitions);
     var wqThreads = chars
       .Select(c => new Thread(() =>
       {
@@ -212,11 +212,9 @@ public class ThreadsSyncUnitDemos
     const string tickSignal = "1";
     const string tockSignal = "2";
     const string noiseSignal = "_";
-    var noiseSignalNumber = 3;
+    const int noiseSignalNumber = 3;
     var tickTockPairCount = 2;
-    var noiseSeq = string.Concat(Enumerable.Repeat(noiseSignal, noiseSignalNumber));
-    var expectedPair = tickSignal + noiseSeq + tockSignal + noiseSeq;
-    var expected = string.Concat(Enumerable.Repeat(expectedPair, tickTockPairCount));
+    const string expected = "1___2___1___2___";
     var actual = string.Empty;
 
     void Beep(object signal)
