@@ -451,4 +451,38 @@ public class ThreadsSyncUnitDemos
 
     Assert.Equal(expectedLog, log);
   }
+
+  [Theory]
+  [InlineData(true, true)]
+  [InlineData(false, false)]
+  public void SpinLockThrowingSynchronizationLockException(
+    bool enableThreadOwnerTracking,
+    bool exceptionWasThrown)
+  {
+    SynchronizationLockException ex = null;
+    var gotLock = false;
+    var sl = new SpinLock(enableThreadOwnerTracking);
+    var th1 = new Thread(() =>
+    {
+      sl.Enter(ref gotLock);
+    });
+    var th2 = new Thread(() =>
+    {
+      try
+      {
+        sl.Exit();
+      }
+      catch (SynchronizationLockException e)
+      {
+        ex = e;
+      }
+    });
+
+    th1.Start();
+    th1.Join();
+    th2.Start();
+    th2.Join();
+
+    Assert.Equal(exceptionWasThrown, ex != null);
+  }
 }

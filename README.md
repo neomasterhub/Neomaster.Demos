@@ -47,6 +47,7 @@
 8. [`SpinLock` vs `lock()`][threads-sync-8]
 9. [Spin lock as Sleep][threads-sync-9]
 10. [Spin lock for fast logging][threads-sync-10]
+11. [Spin lock throwing `SynchronizationLockException`][threads-sync-11]
 
 [threads-sync-1]:Neomaster.Demos.Tests/Threads/ThreadsSyncUnitDemos.cs#L11
 [threads-sync-2]:Neomaster.Demos.Tests/Threads/ThreadsSyncUnitDemos.cs#L45
@@ -58,3 +59,4 @@
 [threads-sync-8]:Neomaster.Demos.Tests/Threads/ThreadsSyncUnitDemos.cs#L316
 [threads-sync-9]:Neomaster.Demos.Tests/Threads/ThreadsSyncUnitDemos.cs#L364
 [threads-sync-10]:Neomaster.Demos.Tests/Threads/ThreadsSyncUnitDemos.cs#L426
+[threads-sync-11]:Neomaster.Demos.Tests/Threads/ThreadsSyncUnitDemos.cs#L458
