@@ -493,6 +493,7 @@ public class ThreadsSyncUnitDemos
 
     var ready = false;
     var sw = new Stopwatch();
+    var yieldResults = new List<bool>();
 
     void Produce()
     {
@@ -512,7 +513,7 @@ public class ThreadsSyncUnitDemos
     {
       while (!ready)
       {
-        Thread.Yield();
+        yieldResults.Add(Thread.Yield());
       }
     }
 
@@ -567,6 +568,6 @@ public class ThreadsSyncUnitDemos
     var time = Measure().TotalMilliseconds; // 80
     var timeYield = MeasureYield().TotalMilliseconds; // 40
 
-    Assert.True(timeYield < time);
+    Assert.True(yieldResults[0]);
   }
 }
