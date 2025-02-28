@@ -487,7 +487,7 @@ public class ThreadsSyncUnitDemos
   }
 
   [Fact]
-  public void ThreadYield()
+  public void ThreadYieldFastWhileVsNormalWhile()
   {
     System.Diagnostics.Process.GetCurrentProcess().ProcessorAffinity = 1;
 
