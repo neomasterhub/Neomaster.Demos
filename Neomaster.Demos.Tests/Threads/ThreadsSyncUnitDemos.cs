@@ -568,6 +568,91 @@ public class ThreadsSyncUnitDemos
     var time = Measure().TotalMilliseconds; // 80
     var timeYield = MeasureYield().TotalMilliseconds; // 40
 
+    Assert.True(timeYield < time);
     Assert.True(yieldResults[0]);
+  }
+
+  [Fact]
+  public void ThreadSpinWaitFastWhileVsNormalWhile()
+  {
+    System.Diagnostics.Process.GetCurrentProcess().ProcessorAffinity = 1;
+
+    var ready = false;
+    var sw = new Stopwatch();
+
+    void Produce()
+    {
+      ready = false;
+      Thread.Sleep(20);
+      ready = true;
+    }
+
+    void Consume()
+    {
+      while (!ready)
+      {
+      }
+    }
+
+    void ConsumeYield()
+    {
+      while (!ready)
+      {
+        Thread.SpinWait(20_000);
+      }
+    }
+
+    TimeSpan Measure()
+    {
+      var producer1 = new Thread(Produce);
+      var producer2 = new Thread(Produce);
+      var consumer1 = new Thread(Consume);
+      var consumer2 = new Thread(Consume);
+
+      sw.Start();
+
+      producer1.Start();
+      producer2.Start();
+      consumer1.Start();
+      consumer2.Start();
+
+      producer1.Join();
+      producer2.Join();
+      consumer1.Join();
+      consumer2.Join();
+
+      sw.Stop();
+
+      return sw.Elapsed;
+    }
+
+    TimeSpan MeasureYield()
+    {
+      var producer1 = new Thread(Produce);
+      var producer2 = new Thread(Produce);
+      var consumerYield1 = new Thread(ConsumeYield);
+      var consumerYield2 = new Thread(ConsumeYield);
+
+      sw.Restart();
+
+      producer1.Start();
+      producer2.Start();
+      consumerYield1.Start();
+      consumerYield2.Start();
+
+      producer1.Join();
+      producer2.Join();
+      consumerYield1.Join();
+      consumerYield2.Join();
+
+      sw.Stop();
+
+      return sw.Elapsed;
+    }
+
+    var time = Measure().TotalMilliseconds; // 90
+    var timeYield = MeasureYield().TotalMilliseconds; // 60
+
+    Assert.True(timeYield < time);
   }
 }
