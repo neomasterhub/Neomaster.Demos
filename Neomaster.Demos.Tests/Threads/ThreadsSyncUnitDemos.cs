@@ -655,4 +655,20 @@ public class ThreadsSyncUnitDemos
 
     Assert.True(timeYield < time);
   }
+
+  [Fact]
+  public void SpinWaitSpinOnce()
+  {
+    var sw = new SpinWait();
+    var iterations = new Dictionary<int, bool>();
+
+    for (int i = 0; i < 15; i++)
+    {
+      sw.SpinOnce();
+      iterations.Add(i, sw.NextSpinWillYield);
+    }
+
+    Assert.Equal(sw.Count, iterations.Count);
+    Assert.Equal([false, true], iterations.Values.Distinct());
+  }
 }
