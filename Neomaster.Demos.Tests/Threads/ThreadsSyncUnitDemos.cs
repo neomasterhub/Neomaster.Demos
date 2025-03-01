@@ -671,4 +671,23 @@ public class ThreadsSyncUnitDemos
     Assert.Equal(sw.Count, iterations.Count);
     Assert.Equal([false, true], iterations.Values.Distinct());
   }
+
+  [Fact]
+  public void SpinWaitSpinUntil()
+  {
+    var ready = false;
+    var th = new Thread(() =>
+    {
+      Thread.Sleep(30);
+      ready = true;
+    });
+
+    th.Start();
+
+    var result1 = SpinWait.SpinUntil(() => ready, 10);
+    var result2 = SpinWait.SpinUntil(() => ready, 50);
+
+    Assert.False(result1);
+    Assert.True(result2);
+  }
 }
