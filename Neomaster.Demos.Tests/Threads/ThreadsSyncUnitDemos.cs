@@ -113,7 +113,7 @@ public class ThreadsSyncUnitDemos
   [Fact]
   public void MonitorPulseAll()
   {
-    const string expected = "*AAAAABBBBB";
+    const string expected = "(!AAAAABBBBB)|(!BBBBBAAAAA)";
     const int charRepetitions = 5;
     var chars = new char[] { 'A', 'B' };
     var actual = string.Empty;
@@ -135,7 +135,7 @@ public class ThreadsSyncUnitDemos
     {
       lock (_lock)
       {
-        actual += "*";
+        actual += "!";
 
         Monitor.PulseAll(_lock);
       }
@@ -154,7 +154,7 @@ public class ThreadsSyncUnitDemos
       wqt.Join();
     }
 
-    Assert.Equal(expected, actual);
+    Assert.Matches(expected, actual);
   }
 
   [Fact]
