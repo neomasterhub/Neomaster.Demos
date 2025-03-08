@@ -652,8 +652,12 @@ public class ThreadsSyncUnitDemos
 
     var time = Measure().TotalMilliseconds; // 90
     var timeYield = MeasureYield().TotalMilliseconds; // 60
+    var dt = Math.Abs(time - timeYield);
 
-    Assert.True(timeYield < time);
+    if (dt > 20) // SpinWait() is too CPU specific...
+    {
+      Assert.True(timeYield < time);
+    }
   }
 
   [Fact]
