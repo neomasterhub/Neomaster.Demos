@@ -6,7 +6,7 @@ namespace Neomaster.Demos.Tests.Threads;
 public class ThreadsEventSyncUnitDemos
 {
   [Fact]
-  public void EventWaitHandleManualResetSet()
+  public void EventWaitHandle_ManualReset_Set()
   {
     const int partThreadsNumber = 3;
     var eh = new EventWaitHandle(false, EventResetMode.ManualReset);
@@ -71,7 +71,7 @@ public class ThreadsEventSyncUnitDemos
   }
 
   [Fact]
-  public void EventWaitHandleManualResetReset()
+  public void EventWaitHandle_ManualReset_Reset()
   {
     const int partThreadsNumber = 3;
     var eh = new EventWaitHandle(false, EventResetMode.ManualReset);
@@ -137,7 +137,7 @@ public class ThreadsEventSyncUnitDemos
   }
 
   [Fact]
-  public void EventWaitHandleAutoReset()
+  public void EventWaitHandle_AutoReset_Set()
   {
     const int threadsNumber = 3;
     var eh = new EventWaitHandle(false, EventResetMode.AutoReset);
@@ -178,7 +178,7 @@ public class ThreadsEventSyncUnitDemos
 
     for (var i = 0; i < threadsNumber; i++)
     {
-      events.Enqueue("🠆."); // Set and reset the signal.
+      events.Enqueue("🠆."); // Set and auto-reset the signal.
       eh.Set();
 
       SpinWait.SpinUntil(() => events.Last().EndsWith("is completed."));
