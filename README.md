@@ -71,8 +71,10 @@
 [threads-sync-15]:Neomaster.Demos.Tests/Threads/ThreadsSyncUnitDemos.cs#L676
 
 ### Threads: Event Synchronization <a name="threads-event-sync"></a>
-1. [EventWaitHandle: manual reset: Set()][threads-event-sync-1]
-2. [EventWaitHandle: manual reset: Reset()][threads-event-sync-2]
+1. [EventWaitHandle: manual reset: Set][threads-event-sync-1]
+2. [EventWaitHandle: manual reset: Reset][threads-event-sync-2]
+3. [EventWaitHandle: auto reset: Set-Reset][threads-event-sync-3]
 
 [threads-event-sync-1]:Neomaster.Demos.Tests/Threads/ThreadsEventSyncUnitDemos.cs#L9
 [threads-event-sync-2]:Neomaster.Demos.Tests/Threads/ThreadsEventSyncUnitDemos.cs#L74
+[threads-event-sync-3]:Neomaster.Demos.Tests/Threads/ThreadsEventSyncUnitDemos.cs#L140
