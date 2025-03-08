@@ -2,6 +2,7 @@
 
 * [*Threads*](#threads)
 * [*Threads: Synchronization*](#threads-sync)
+* [*Threads: Event Synchronization*](#threads-event-sync)
 
 ### Threads <a name="threads"></a>
 1. [Create, Sleep, Join][threads-1]
@@ -68,3 +69,8 @@
 [threads-sync-13]:Neomaster.Demos.Tests/Threads/ThreadsSyncUnitDemos.cs#L576
 [threads-sync-14]:Neomaster.Demos.Tests/Threads/ThreadsSyncUnitDemos.cs#L660
 [threads-sync-15]:Neomaster.Demos.Tests/Threads/ThreadsSyncUnitDemos.cs#L676
+
+### Threads: Event Synchronization <a name="threads-event-sync"></a>
+1. [EventWaitHandle: manual reset: Set()][threads-event-sync-1]
+
+[threads-event-sync-1]:Neomaster.Demos.Tests/Threads/ThreadsEventSyncUnitDemos.cs#L9
