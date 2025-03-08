@@ -75,8 +75,10 @@
 2. [EventWaitHandle: Reset][threads-event-sync-2]
 3. [EventWaitHandle: Set with auto-reset][threads-event-sync-3]
 4. [AutoResetEvent][threads-event-sync-4]
+5. [ManualResetEvent][threads-event-sync-5]
 
 [threads-event-sync-1]:Neomaster.Demos.Tests/Threads/ThreadsEventSyncUnitDemos.cs#L9
 [threads-event-sync-2]:Neomaster.Demos.Tests/Threads/ThreadsEventSyncUnitDemos.cs#L74
 [threads-event-sync-3]:Neomaster.Demos.Tests/Threads/ThreadsEventSyncUnitDemos.cs#L140
 [threads-event-sync-4]:Neomaster.Demos.Tests/Threads/ThreadsEventSyncUnitDemos.cs#L196
+[threads-event-sync-5]:Neomaster.Demos.Tests/Threads/ThreadsEventSyncUnitDemos.cs#L252

@@ -247,4 +247,53 @@ public class ThreadsEventSyncUnitDemos
 
     Assert.Equal(expectedEvents, events);
   }
+
+  [Fact]
+  public void ManualResetEvent_Set()
+  {
+    const int threadsNumber = 3;
+    var eh = new ManualResetEvent(false);
+    var events = new ConcurrentQueue<string>();
+    var expectedEventPatterns = new List<string>
+    {
+      "Thread 1 is waiting...",
+      "Thread 2 is waiting...",
+      "Thread 3 is waiting...",
+      "🠆",
+      "Thread [1-3] is completed.",
+      "Thread [1-3] is completed.",
+      "Thread [1-3] is completed.",
+    };
+
+    void Worker()
+    {
+      var thName = Thread.CurrentThread.Name;
+
+      events.Enqueue($"Thread {thName} is waiting...");
+
+      eh.WaitOne();
+
+      events.Enqueue($"Thread {thName} is completed.");
+    }
+
+    var threads = Enumerable.Range(1, threadsNumber)
+      .Select(i => new Thread(Worker) { Name = $"{i}" })
+      .ToList();
+
+    foreach (var th in threads)
+    {
+      th.Start();
+      Thread.Sleep(20);
+    }
+
+    events.Enqueue("🠆"); // Set the signal.
+    eh.Set();
+
+    foreach (var th in threads)
+    {
+      th.Join();
+    }
+
+    Assert.All(events, (e, i) => Assert.Matches(expectedEventPatterns[i], e));
+  }
 }
