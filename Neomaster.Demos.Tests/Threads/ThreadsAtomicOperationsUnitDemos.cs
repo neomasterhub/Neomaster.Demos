@@ -5,7 +5,7 @@ namespace Neomaster.Demos.Tests.Threads;
 public class ThreadsAtomicOperationsUnitDemos
 {
   [Fact]
-  public void VolatileReadWrite()
+  public void VolatileClass()
   {
     var ready = false;
     int? data = null;
