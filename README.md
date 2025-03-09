@@ -92,7 +92,9 @@
 1. [Volatile class][threads-atomic-operations-1]
 2. [Lazy&lt;T&gt;: lazy initialization][threads-atomic-operations-2]
 3. [Lazy&lt;T&gt;: single initialization][threads-atomic-operations-3]
+4. [Lazy&lt;T&gt;: multiple initialization][threads-atomic-operations-4]
 
 [threads-atomic-operations-1]:Neomaster.Demos.Tests/Threads/ThreadsAtomicOperationsUnitDemos.cs#L8
 [threads-atomic-operations-2]:Neomaster.Demos.Tests/Threads/ThreadsAtomicOperationsUnitDemos.cs#L43
 [threads-atomic-operations-3]:Neomaster.Demos.Tests/Threads/ThreadsAtomicOperationsUnitDemos.cs#L55
+[threads-atomic-operations-4]:Neomaster.Demos.Tests/Threads/ThreadsAtomicOperationsUnitDemos.cs#L89

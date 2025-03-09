@@ -84,4 +84,47 @@ public class ThreadsAtomicOperationsUnitDemos
     Assert.Equal(1, initializedEventCount);
     Assert.Equal(0, loValueAccessErrorCount);
   }
+
+  [Fact]
+  public void LazyMultipleInitialization()
+  {
+    var initializedEventCount = 0;
+    var loValueAccessErrorCount = 0;
+    var initializationValues = new List<string>();
+    var returnValues = new List<string>();
+    var lo = new Lazy<string>(
+      () =>
+      {
+        Thread.Sleep(100);
+
+        Interlocked.Increment(ref initializedEventCount);
+
+        var value = DateTime.Now.ToString("mm:ss.fff");
+        initializationValues.Add(value);
+
+        return value;
+      },
+      LazyThreadSafetyMode.PublicationOnly);
+    var threads = Enumerable.Range(1, 20)
+      .Select(i => new Thread(() =>
+      {
+        try
+        {
+          returnValues.Add(lo.Value);
+        }
+        catch (InvalidOperationException)
+        {
+          Interlocked.Increment(ref loValueAccessErrorCount);
+        }
+      }))
+      .ToList();
+
+    threads.ForEach(th => th.Start());
+    threads.ForEach(th => th.Join());
+
+    Assert.True(initializedEventCount > 1);
+    Assert.Equal(initializedEventCount, initializationValues.Count);
+    Assert.Equal(0, loValueAccessErrorCount);
+    Assert.Single(returnValues.Distinct());
+  }
 }
