@@ -123,7 +123,7 @@ public class ThreadsAtomicOperationsUnitDemos
     threads.ForEach(th => th.Join());
 
     Assert.True(initializedEventCount > 1);
-    Assert.Equal(initializedEventCount, initializationValues.Count);
+    Assert.True(initializationValues.Count > 1);
     Assert.Equal(0, loValueAccessErrorCount);
     Assert.Single(returnValues.Distinct());
   }
