@@ -71,14 +71,16 @@
 [threads-sync-15]:Neomaster.Demos.Tests/Threads/ThreadsSyncUnitDemos.cs#L680
 
 ### Threads: Event Synchronization <a name="threads-event-sync"></a>
-1. [EventWaitHandle: Set][threads-event-sync-1]
-2. [EventWaitHandle: Reset][threads-event-sync-2]
-3. [EventWaitHandle: Set with auto-reset][threads-event-sync-3]
-4. [AutoResetEvent][threads-event-sync-4]
-5. [ManualResetEvent][threads-event-sync-5]
+1. [EventWaitHandle.Set][threads-event-sync-1]
+2. [EventWaitHandle.Reset][threads-event-sync-2]
+3. [EventWaitHandle.Set with auto-reset][threads-event-sync-3]
+4. [AutoResetEvent.Set][threads-event-sync-4]
+5. [ManualResetEvent.Set][threads-event-sync-5]
+6. [ManualResetEventSlim.Set][threads-event-sync-6]
 
 [threads-event-sync-1]:Neomaster.Demos.Tests/Threads/ThreadsEventSyncUnitDemos.cs#L9
 [threads-event-sync-2]:Neomaster.Demos.Tests/Threads/ThreadsEventSyncUnitDemos.cs#L74
 [threads-event-sync-3]:Neomaster.Demos.Tests/Threads/ThreadsEventSyncUnitDemos.cs#L140
 [threads-event-sync-4]:Neomaster.Demos.Tests/Threads/ThreadsEventSyncUnitDemos.cs#L196
 [threads-event-sync-5]:Neomaster.Demos.Tests/Threads/ThreadsEventSyncUnitDemos.cs#L252
+[threads-event-sync-6]:Neomaster.Demos.Tests/Threads/ThreadsEventSyncUnitDemos.cs#L301
