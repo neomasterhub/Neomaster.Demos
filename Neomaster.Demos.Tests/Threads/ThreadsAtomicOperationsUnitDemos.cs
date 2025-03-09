@@ -38,4 +38,16 @@ public class ThreadsAtomicOperationsUnitDemos
 
     Assert.Equal(1, data);
   }
+
+  [Fact]
+  public void LazyLazyInitialization()
+  {
+    var lo = new Lazy<bool>();
+
+    Assert.False(lo.IsValueCreated);
+
+    _ = lo.Value;
+
+    Assert.True(lo.IsValueCreated);
+  }
 }
