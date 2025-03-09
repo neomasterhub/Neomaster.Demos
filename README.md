@@ -3,6 +3,7 @@
 * [*Threads*](#threads)
 * [*Threads: Synchronization*](#threads-sync)
 * [*Threads: Event Synchronization*](#threads-event-sync)
+* [*Threads: Atomic Operations*](#threads-atomic-operations)
 
 ### Threads <a name="threads"></a>
 1. [Create, Sleep, Join][threads-1]
@@ -86,3 +87,8 @@
 [threads-event-sync-5]:Neomaster.Demos.Tests/Threads/ThreadsEventSyncUnitDemos.cs#L252
 [threads-event-sync-6]:Neomaster.Demos.Tests/Threads/ThreadsEventSyncUnitDemos.cs#L301
 [threads-event-sync-7]:Neomaster.Demos.Tests/Threads/ThreadsEventSyncUnitDemos.cs#L350
+
+### Threads: Atomic Operations <a name="threads-atomic-operations"></a>
+1. [Volatile class][threads-atomic-operations-1]
+
+[threads-atomic-operations-1]:Neomaster.Demos.Tests/Threads/ThreadsEventSyncUnitDemos.cs#L8
