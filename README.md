@@ -91,4 +91,4 @@
 ### Threads: Atomic Operations <a name="threads-atomic-operations"></a>
 1. [Volatile class][threads-atomic-operations-1]
 
-[threads-atomic-operations-1]:Neomaster.Demos.Tests/Threads/ThreadsEventSyncUnitDemos.cs#L8
+[threads-atomic-operations-1]:Neomaster.Demos.Tests/Threads/ThreadsAtomicOperationsUnitDemos.cs#L8
