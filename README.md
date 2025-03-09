@@ -77,6 +77,7 @@
 4. [AutoResetEvent.Set][threads-event-sync-4]
 5. [ManualResetEvent.Set][threads-event-sync-5]
 6. [ManualResetEventSlim.Set][threads-event-sync-6]
+7. [ManualResetEventSlim.Wait with timeout][threads-event-sync-7]
 
 [threads-event-sync-1]:Neomaster.Demos.Tests/Threads/ThreadsEventSyncUnitDemos.cs#L9
 [threads-event-sync-2]:Neomaster.Demos.Tests/Threads/ThreadsEventSyncUnitDemos.cs#L74
@@ -84,3 +85,4 @@
 [threads-event-sync-4]:Neomaster.Demos.Tests/Threads/ThreadsEventSyncUnitDemos.cs#L196
 [threads-event-sync-5]:Neomaster.Demos.Tests/Threads/ThreadsEventSyncUnitDemos.cs#L252
 [threads-event-sync-6]:Neomaster.Demos.Tests/Threads/ThreadsEventSyncUnitDemos.cs#L301
+[threads-event-sync-7]:Neomaster.Demos.Tests/Threads/ThreadsEventSyncUnitDemos.cs#L350

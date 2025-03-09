@@ -345,4 +345,28 @@ public class ThreadsEventSyncUnitDemos
 
     Assert.All(events, (e, i) => Assert.Matches(expectedEventPatterns[i], e));
   }
+
+  [Fact]
+  public void ManualResetEventSlim_WaitWithTimeout()
+  {
+    var eh = new ManualResetEventSlim(false);
+    var events = new ConcurrentQueue<int>();
+    var th = new Thread(() =>
+    {
+      var signalWasSet = eh.Wait(1000);
+
+      if (!signalWasSet)
+      {
+        events.Enqueue(2);
+      }
+    });
+
+    th.Start();
+
+    events.Enqueue(1);
+
+    th.Join();
+
+    Assert.Equal([1, 2], events);
+  }
 }
