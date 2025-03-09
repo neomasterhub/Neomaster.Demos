@@ -6,6 +6,9 @@ namespace Neomaster.Demos.Cmd.Demos;
 
 internal class RabbitMQDemos
 {
+  /// <summary>
+  /// Queue: <c>test-queue-1</c>.
+  /// </summary>
   public async Task ProduceMessageAsync()
   {
     var factory = new ConnectionFactory()
@@ -39,6 +42,9 @@ internal class RabbitMQDemos
     Helper.PressAnyKey();
   }
 
+  /// <summary>
+  /// Queue: <c>test-queue-1</c>.
+  /// </summary>
   public async Task ConsumeMessagesAsync()
   {
     var factory = new ConnectionFactory()
