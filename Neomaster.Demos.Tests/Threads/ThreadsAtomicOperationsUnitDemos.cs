@@ -127,4 +127,40 @@ public class ThreadsAtomicOperationsUnitDemos
     Assert.Equal(0, loValueAccessErrorCount);
     Assert.Single(returnValues.Distinct());
   }
+
+  [Fact]
+  public void LazyUnsafeInitialization()
+  {
+    var initializedEventCount = 0;
+    var loValueAccessErrorCount = 0;
+    var lo = new Lazy<string>(
+      () =>
+      {
+        Thread.Sleep(100);
+
+        Interlocked.Increment(ref initializedEventCount);
+
+        return "1";
+      },
+      LazyThreadSafetyMode.None); // isThreadSafe: false
+    var threads = Enumerable.Range(1, 20)
+      .Select(i => new Thread(() =>
+      {
+        try
+        {
+          _ = lo.Value;
+        }
+        catch (InvalidOperationException)
+        {
+          Interlocked.Increment(ref loValueAccessErrorCount);
+        }
+      }))
+      .ToList();
+
+    threads.ForEach(th => th.Start());
+    threads.ForEach(th => th.Join());
+
+    Assert.True(initializedEventCount >= 1);
+    Assert.True(loValueAccessErrorCount > 0);
+  }
 }
