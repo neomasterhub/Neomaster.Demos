@@ -23,7 +23,7 @@ public class ThreadsFeaturesUnitDemos
   }
 
   [Fact]
-  public void SynchronizedInstanceMethodOfDifferentObjects()
+  public void SynchronizedInstanceMethodsInDifferentThreads()
   {
     var obj1 = new SynchronizedMethodClass();
     var obj2 = new SynchronizedMethodClass();
@@ -71,7 +71,7 @@ public class ThreadsFeaturesUnitDemos
   }
 
   [Fact]
-  public void SynchronizedStaticMethodOfDifferentObjects()
+  public void SynchronizedStaticMethodsInDifferentThreads()
   {
     var chars = new ConcurrentQueue<char>();
     const string expectedChars1String = "AAAAABBBBBCCCCCDDDDD";
