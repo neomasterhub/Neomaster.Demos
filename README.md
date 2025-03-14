@@ -4,6 +4,7 @@
 * [*Threads: Synchronization*](#threads-sync)
 * [*Threads: Event Synchronization*](#threads-event-sync)
 * [*Threads: Atomic Operations*](#threads-atomic-operations)
+* [*Threads: Features*](#threads-features)
 
 ### Threads <a name="threads"></a>
 1. [Create, Sleep, Join][threads-1]
@@ -100,3 +101,10 @@
 [threads-atomic-operations-3]:Neomaster.Demos.Tests/Threads/ThreadsAtomicOperationsUnitDemos.cs#L55
 [threads-atomic-operations-4]:Neomaster.Demos.Tests/Threads/ThreadsAtomicOperationsUnitDemos.cs#L89
 [threads-atomic-operations-5]:Neomaster.Demos.Tests/Threads/ThreadsAtomicOperationsUnitDemos.cs#L132
+
+### Threads: Features <a name="threads-features"></a>
+1. [Synchronized methods][threads-features-1]
+2. [Synchronized objects][threads-features-2]
+
+[threads-features-1]:Neomaster.Demos.Tests/Threads/ThreadsFeaturesUnitDemos.cs#L9
+[threads-features-2]:Neomaster.Demos.Tests/Threads/ThreadsFeaturesUnitDemos.cs#L24
