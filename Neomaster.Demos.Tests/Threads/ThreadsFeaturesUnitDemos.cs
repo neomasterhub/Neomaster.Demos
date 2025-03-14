@@ -22,6 +22,21 @@ public class ThreadsFeaturesUnitDemos
     Assert.Equal(expectedCharsString, charsString);
   }
 
+  [Fact(DisplayName = "Synchronized method: static")]
+  public void SynchronizedMethodStatic()
+  {
+    var chars = new ConcurrentQueue<char>();
+    const string expectedCharsString = "AAAAABBBBBCCCCCDDDDD";
+
+    for (char c = 'A'; c <= 'D'; c++)
+    {
+      SynchronizedMethodClass.CountStatic(chars, 5, c);
+    }
+
+    var charsString = string.Concat(chars);
+    Assert.Equal(expectedCharsString, charsString);
+  }
+
   public class SynchronizedMethodClass
   {
     [MethodImpl(MethodImplOptions.Synchronized)]
