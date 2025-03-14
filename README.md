@@ -104,7 +104,7 @@
 
 ### Threads: Features <a name="threads-features"></a>
 1. [Synchronized method][threads-features-1]
-2. [Synchronized method of different objects][threads-features-2]
+2. [Synchronized instance method of different objects (blocking `this`)][threads-features-2]
 
 [threads-features-1]:Neomaster.Demos.Tests/Threads/ThreadsFeaturesUnitDemos.cs#L10
 [threads-features-2]:Neomaster.Demos.Tests/Threads/ThreadsFeaturesUnitDemos.cs#L26
