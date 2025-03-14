@@ -103,8 +103,6 @@
 [threads-atomic-operations-5]:Neomaster.Demos.Tests/Threads/ThreadsAtomicOperationsUnitDemos.cs#L132
 
 ### Threads: Features <a name="threads-features"></a>
-1. [Synchronized methods][threads-features-1]
-2. [Synchronized objects][threads-features-2]
+1. [Synchronized method][threads-features-1]
 
-[threads-features-1]:Neomaster.Demos.Tests/Threads/ThreadsFeaturesUnitDemos.cs#L9
-[threads-features-2]:Neomaster.Demos.Tests/Threads/ThreadsFeaturesUnitDemos.cs#L24
+[threads-features-1]:Neomaster.Demos.Tests/Threads/ThreadsFeaturesUnitDemos.cs#L10
