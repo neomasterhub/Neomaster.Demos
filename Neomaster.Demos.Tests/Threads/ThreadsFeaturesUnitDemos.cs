@@ -1,10 +1,27 @@
 using System.Collections.Concurrent;
 using System.Runtime.CompilerServices;
+using Xunit;
 
 namespace Neomaster.Demos.Tests.Threads;
 
 public class ThreadsFeaturesUnitDemos
 {
+  [Fact(DisplayName = "Synchronized method: instance")]
+  public void SynchronizedMethodInstance()
+  {
+    var obj = new SynchronizedMethodClass();
+    var chars = new ConcurrentQueue<char>();
+    const string expectedCharsString = "AAAAABBBBBCCCCCDDDDD";
+
+    for (char c = 'A'; c <= 'D'; c++)
+    {
+      obj.Count(chars, 5, c);
+    }
+
+    var charsString = string.Concat(chars);
+    Assert.Equal(expectedCharsString, charsString);
+  }
+
   public class SynchronizedMethodClass
   {
     [MethodImpl(MethodImplOptions.Synchronized)]
