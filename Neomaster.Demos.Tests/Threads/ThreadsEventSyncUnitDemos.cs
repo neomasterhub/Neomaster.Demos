@@ -748,4 +748,38 @@ public class ThreadsEventSyncUnitDemos
     Assert.False(ct3.CanBeCanceled);
     Assert.Equal(CancellationToken.None.GetHashCode(), ct3.GetHashCode());
   }
+
+  [Fact]
+  public void CancellationTokenSource_CreateLinkedTokenSource()
+  {
+    var cts1 = new CancellationTokenSource();
+    var cts2 = new CancellationTokenSource();
+    var ct1 = cts1.Token;
+    var ct2 = cts2.Token;
+    var linkedCts = CancellationTokenSource.CreateLinkedTokenSource(ct1, ct2);
+    var linkedCt = linkedCts.Token;
+    var th = new Thread(() =>
+    {
+      while (!linkedCt.IsCancellationRequested)
+      {
+        Thread.Sleep(20);
+      }
+    });
+    var cTh = new Thread(() =>
+    {
+      Thread.Sleep(100);
+      cts1.Cancel();
+    });
+
+    th.Start();
+    cTh.Start();
+    th.Join();
+
+    Assert.True(cts1.IsCancellationRequested);
+    Assert.True(ct1.IsCancellationRequested);
+    Assert.True(linkedCts.IsCancellationRequested);
+    Assert.True(linkedCt.IsCancellationRequested);
+    Assert.False(cts2.IsCancellationRequested);
+    Assert.False(ct2.IsCancellationRequested);
+  }
 }
