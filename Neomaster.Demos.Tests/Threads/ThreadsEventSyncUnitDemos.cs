@@ -573,7 +573,7 @@ public class ThreadsEventSyncUnitDemos
   }
 
   [Fact]
-  public void CancellationToken_CancellationRegister()
+  public void CancellationToken_CancellationCallbackSequence()
   {
     var cts = new CancellationTokenSource();
     var ct = cts.Token;
@@ -601,5 +601,41 @@ public class ThreadsEventSyncUnitDemos
     th.Join();
 
     Assert.Equal([ct.GetHashCode(), 3, 2, 1], cancellationEvents);
+  }
+
+  [Fact]
+  public void CancellationToken_CancellationCallbackSequence_BeforeFirstException()
+  {
+    var cts = new CancellationTokenSource();
+    var ct = cts.Token;
+    var cancellationEvents = new List<int>();
+    var th = new Thread(() =>
+    {
+      while (!ct.IsCancellationRequested)
+      {
+        Thread.Sleep(20);
+      }
+    });
+    var cTh = new Thread(() =>
+    {
+      Thread.Sleep(100);
+      cts.Cancel(true);
+    });
+
+    ct.Register(() => cancellationEvents.Add(1));
+    ct.Register(() => cancellationEvents.Add(2));
+    ct.Register(() =>
+    {
+      cancellationEvents.Add(3);
+      throw new Exception();
+    });
+    ct.Register(() => cancellationEvents.Add(4));
+    ct.Register(() => cancellationEvents.Add(5));
+
+    th.Start();
+    cTh.Start();
+    th.Join();
+
+    Assert.Equal([5, 4, 3], cancellationEvents);
   }
 }
