@@ -473,4 +473,19 @@ public class ThreadsEventSyncUnitDemos
     Assert.Equal(initialCount, cd.InitialCount);
     Assert.Equal(initialCount, cd.CurrentCount);
   }
+
+  [Fact]
+  public void CountdownEvent_ResetWithArg()
+  {
+    const int resetInitialCount = 50;
+    var cd = new CountdownEvent(1);
+
+    cd.AddCount(100);
+    cd.Signal();
+
+    cd.Reset(resetInitialCount);
+
+    Assert.Equal(resetInitialCount, cd.InitialCount);
+    Assert.Equal(resetInitialCount, cd.CurrentCount);
+  }
 }
