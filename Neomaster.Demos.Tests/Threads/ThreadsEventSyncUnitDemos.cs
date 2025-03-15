@@ -711,7 +711,7 @@ public class ThreadsEventSyncUnitDemos
   }
 
   [Fact]
-  public void CancellationToken_None()
+  public void CancellationToken_NoneUsage()
   {
     var events = new List<int>();
 
