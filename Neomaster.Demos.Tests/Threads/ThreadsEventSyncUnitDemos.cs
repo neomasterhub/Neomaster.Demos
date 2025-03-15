@@ -571,4 +571,35 @@ public class ThreadsEventSyncUnitDemos
 
     Assert.True(ct.IsCancellationRequested);
   }
+
+  [Fact]
+  public void CancellationToken_CancellationRegister()
+  {
+    var cts = new CancellationTokenSource();
+    var ct = cts.Token;
+    var cancellationEvents = new List<int>();
+    var th = new Thread(() =>
+    {
+      while (!ct.IsCancellationRequested)
+      {
+        Thread.Sleep(20);
+      }
+    });
+    var cTh = new Thread(() =>
+    {
+      Thread.Sleep(100);
+      cts.Cancel();
+    });
+
+    ct.Register(() => cancellationEvents.Add(1));
+    ct.Register(state => cancellationEvents.Add((int)state), 2);
+    ct.Register((s, t) => cancellationEvents.Add((int)s), 3);
+    ct.Register((s, t) => cancellationEvents.Add(t.GetHashCode()), null);
+
+    th.Start();
+    cTh.Start();
+    th.Join();
+
+    Assert.Equal([ct.GetHashCode(), 3, 2, 1], cancellationEvents);
+  }
 }
