@@ -458,4 +458,19 @@ public class ThreadsEventSyncUnitDemos
 
     Assert.True(cd.IsSet);
   }
+
+  [Fact]
+  public void CountdownEvent_Reset()
+  {
+    const int initialCount = 3;
+    var cd = new CountdownEvent(initialCount);
+
+    cd.AddCount(10);
+    cd.Signal();
+
+    cd.Reset();
+
+    Assert.Equal(initialCount, cd.InitialCount);
+    Assert.Equal(initialCount, cd.CurrentCount);
+  }
 }
