@@ -488,4 +488,49 @@ public class ThreadsEventSyncUnitDemos
     Assert.Equal(resetInitialCount, cd.InitialCount);
     Assert.Equal(resetInitialCount, cd.CurrentCount);
   }
+
+  [Fact]
+  public void Barrier_Phases()
+  {
+    const int phasesNumber = 3;
+    var expectedMessagePatterns = new string[]
+    {
+      "Thread [0-1] works in phase 0",
+      "Thread [0-1] works in phase 0",
+      "Phase 0 is complete!",
+      "Thread [0-1] works in phase 1",
+      "Thread [0-1] works in phase 1",
+      "Phase 1 is complete!",
+      "Thread [0-1] works in phase 2",
+      "Thread [0-1] works in phase 2",
+      "Phase 2 is complete!",
+    };
+    var messages = new ConcurrentQueue<string>();
+    var barrier = new Barrier(2, b => messages.Enqueue($"Phase {b.CurrentPhaseNumber} is complete!"));
+    var threads = Enumerable.Range(0, 2)
+      .Select(i =>
+      {
+        var th = new Thread(() =>
+        {
+          for (var ph = 0; ph < phasesNumber; ph++)
+          {
+            Thread.Sleep(new Random().Next(5, 50) * 10);
+
+            messages.Enqueue($"Thread {Thread.CurrentThread.Name} works in phase {ph}");
+
+            barrier.SignalAndWait();
+          }
+        });
+
+        th.Name = i.ToString();
+
+        return th;
+      })
+      .ToList();
+
+    threads.ForEach(th => th.Start());
+    threads.ForEach(th => th.Join());
+
+    Assert.All(messages, (m, i) => Assert.Matches(expectedMessagePatterns[i], m));
+  }
 }

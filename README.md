@@ -86,6 +86,7 @@
 11. [CountdownEvent.IsSet][threads-event-sync-11]
 12. [CountdownEvent.Reset][threads-event-sync-12]
 13. [CountdownEvent.Reset with arg][threads-event-sync-13]
+14. [Barrier: Phases][threads-event-sync-14]
 
 [threads-event-sync-1]:Neomaster.Demos.Tests/Threads/ThreadsEventSyncUnitDemos.cs#L9
 [threads-event-sync-2]:Neomaster.Demos.Tests/Threads/ThreadsEventSyncUnitDemos.cs#L74
@@ -100,6 +101,7 @@
 [threads-event-sync-11]:Neomaster.Demos.Tests/Threads/ThreadsEventSyncUnitDemos.cs#L447
 [threads-event-sync-12]:Neomaster.Demos.Tests/Threads/ThreadsEventSyncUnitDemos.cs#L463
 [threads-event-sync-13]:Neomaster.Demos.Tests/Threads/ThreadsEventSyncUnitDemos.cs#L478
+[threads-event-sync-14]:Neomaster.Demos.Tests/Threads/ThreadsEventSyncUnitDemos.cs#L493
 
 ### Threads: Atomic Operations <a name="threads-atomic-operations"></a>
 1. [Volatile class][threads-atomic-operations-1]
