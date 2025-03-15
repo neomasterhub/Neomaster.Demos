@@ -429,4 +429,17 @@ public class ThreadsEventSyncUnitDemos
 
     Assert.Equal(threadNumber + 1, count);
   }
+
+  [Fact]
+  public void CountdownEvent_TryAddCount()
+  {
+    var cd = new CountdownEvent(1);
+
+    cd.Signal();
+    cd.Wait();
+
+    var countAdded = cd.TryAddCount(1);
+
+    Assert.False(countAdded);
+  }
 }
