@@ -731,4 +731,21 @@ public class ThreadsEventSyncUnitDemos
 
     Assert.Equal([0, 1, 2], events);
   }
+
+  [Fact]
+  public void CancellationToken_NoneVariants()
+  {
+    var ct1 = new CancellationToken(false);
+    var ct2 = new CancellationToken(true);
+    var ct3 = CancellationToken.None;
+
+    Assert.False(ct1.IsCancellationRequested);
+    Assert.True(ct2.IsCancellationRequested);
+    Assert.False(ct3.IsCancellationRequested);
+
+    Assert.False(ct1.CanBeCanceled);
+    Assert.True(ct2.CanBeCanceled);
+    Assert.False(ct3.CanBeCanceled);
+    Assert.Equal(CancellationToken.None.GetHashCode(), ct3.GetHashCode());
+  }
 }
