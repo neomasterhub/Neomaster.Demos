@@ -533,4 +533,15 @@ public class ThreadsEventSyncUnitDemos
 
     Assert.All(messages, (m, i) => Assert.Matches(expectedMessagePatterns[i], m));
   }
+
+  [Fact]
+  public void CancellationToken_CreateToken()
+  {
+    var cts = new CancellationTokenSource();
+
+    var ct1 = cts.Token;
+    var ct2 = cts.Token;
+
+    Assert.Equal(ct1.GetHashCode(), ct2.GetHashCode());
+  }
 }
