@@ -638,4 +638,40 @@ public class ThreadsEventSyncUnitDemos
 
     Assert.Equal([5, 4, 3], cancellationEvents);
   }
+
+  [Fact]
+  public void CancellationToken_CancellationCallbackSequence_AllIgnoringExceptions()
+  {
+    var cts = new CancellationTokenSource();
+    var ct = cts.Token;
+    var cancellationEvents = new List<int>();
+    var th = new Thread(() =>
+    {
+      while (!ct.IsCancellationRequested)
+      {
+        Thread.Sleep(20);
+      }
+    });
+    var cTh = new Thread(() =>
+    {
+      Thread.Sleep(100);
+      cts.Cancel(false);
+    });
+
+    ct.Register(() => cancellationEvents.Add(1));
+    ct.Register(() => cancellationEvents.Add(2));
+    ct.Register(() =>
+    {
+      cancellationEvents.Add(3);
+      throw new Exception();
+    });
+    ct.Register(() => cancellationEvents.Add(4));
+    ct.Register(() => cancellationEvents.Add(5));
+
+    th.Start();
+    cTh.Start();
+    th.Join();
+
+    Assert.Equal([5, 4, 3, 2, 1], cancellationEvents);
+  }
 }
