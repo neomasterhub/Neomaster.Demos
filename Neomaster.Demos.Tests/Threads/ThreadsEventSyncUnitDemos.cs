@@ -544,4 +544,31 @@ public class ThreadsEventSyncUnitDemos
 
     Assert.Equal(ct1.GetHashCode(), ct2.GetHashCode());
   }
+
+  [Fact]
+  public void CancellationToken_CancellationRequest()
+  {
+    var cts = new CancellationTokenSource();
+    var ct = cts.Token;
+    var th = new Thread(() =>
+    {
+      while (!ct.IsCancellationRequested)
+      {
+        Thread.Sleep(20);
+      }
+    });
+    var cTh = new Thread(() =>
+    {
+      Thread.Sleep(100);
+      cts.Cancel();
+    });
+
+    Assert.False(ct.IsCancellationRequested);
+
+    th.Start();
+    cTh.Start();
+    th.Join();
+
+    Assert.True(ct.IsCancellationRequested);
+  }
 }
