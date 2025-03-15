@@ -442,4 +442,20 @@ public class ThreadsEventSyncUnitDemos
 
     Assert.False(countAdded);
   }
+
+  [Fact]
+  public void CountdownEvent_IsSet()
+  {
+    var cd = new CountdownEvent(2);
+
+    Assert.False(cd.IsSet);
+    cd.Signal();
+    Assert.False(cd.IsSet);
+    cd.Signal();
+    Assert.True(cd.IsSet);
+
+    cd.Wait();
+
+    Assert.True(cd.IsSet);
+  }
 }
