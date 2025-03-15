@@ -87,6 +87,15 @@
 12. [CountdownEvent.Reset][threads-event-sync-12]
 13. [CountdownEvent.Reset with arg][threads-event-sync-13]
 14. [Barrier: Phases][threads-event-sync-14]
+15. [CancellationToken: create token][threads-event-sync-15]
+16. [CancellationToken: cancellation request][threads-event-sync-16]
+17. [CancellationToken: cancellation callback sequence][threads-event-sync-17]
+18. [CancellationToken: cancellation callback sequence: before first exception][threads-event-sync-18]
+19. [CancellationToken: cancellation callback sequence: all, ignoring exceptions][threads-event-sync-19]
+20. [CancellationToken.ThrowIfCancellationRequested][threads-event-sync-20]
+21. [CancellationToken.None usage][threads-event-sync-21]
+22. [CancellationToken.None variants][threads-event-sync-22]
+23. [CancellationTokenSource.CreateLinkedTokenSource][threads-event-sync-23]
 
 [threads-event-sync-1]:Neomaster.Demos.Tests/Threads/ThreadsEventSyncUnitDemos.cs#L9
 [threads-event-sync-2]:Neomaster.Demos.Tests/Threads/ThreadsEventSyncUnitDemos.cs#L74
@@ -102,6 +111,15 @@
 [threads-event-sync-12]:Neomaster.Demos.Tests/Threads/ThreadsEventSyncUnitDemos.cs#L463
 [threads-event-sync-13]:Neomaster.Demos.Tests/Threads/ThreadsEventSyncUnitDemos.cs#L478
 [threads-event-sync-14]:Neomaster.Demos.Tests/Threads/ThreadsEventSyncUnitDemos.cs#L493
+[threads-event-sync-15]:Neomaster.Demos.Tests/Threads/ThreadsEventSyncUnitDemos.cs#L538
+[threads-event-sync-16]:Neomaster.Demos.Tests/Threads/ThreadsEventSyncUnitDemos.cs#L549
+[threads-event-sync-17]:Neomaster.Demos.Tests/Threads/ThreadsEventSyncUnitDemos.cs#L576
+[threads-event-sync-18]:Neomaster.Demos.Tests/Threads/ThreadsEventSyncUnitDemos.cs#L607
+[threads-event-sync-19]:Neomaster.Demos.Tests/Threads/ThreadsEventSyncUnitDemos.cs#L643
+[threads-event-sync-20]:Neomaster.Demos.Tests/Threads/ThreadsEventSyncUnitDemos.cs#L679
+[threads-event-sync-21]:Neomaster.Demos.Tests/Threads/ThreadsEventSyncUnitDemos.cs#L714
+[threads-event-sync-22]:Neomaster.Demos.Tests/Threads/ThreadsEventSyncUnitDemos.cs#L736
+[threads-event-sync-23]:Neomaster.Demos.Tests/Threads/ThreadsEventSyncUnitDemos.cs#L753
 
 ### Threads: Atomic Operations <a name="threads-atomic-operations"></a>
 1. [Volatile class][threads-atomic-operations-1]
