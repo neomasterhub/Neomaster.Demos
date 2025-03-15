@@ -80,6 +80,12 @@
 5. [ManualResetEvent.Set][threads-event-sync-5]
 6. [ManualResetEventSlim.Set][threads-event-sync-6]
 7. [ManualResetEventSlim.Wait with timeout][threads-event-sync-7]
+8. [CountdownEvent.Wait as Join][threads-event-sync-8]
+9. [CountdownEvent.AddCount][threads-event-sync-9]
+10. [CountdownEvent.TryAddCount][threads-event-sync-10]
+11. [CountdownEvent.IsSet][threads-event-sync-11]
+12. [CountdownEvent.Reset][threads-event-sync-12]
+13. [CountdownEvent.Reset with arg][threads-event-sync-13]
 
 [threads-event-sync-1]:Neomaster.Demos.Tests/Threads/ThreadsEventSyncUnitDemos.cs#L9
 [threads-event-sync-2]:Neomaster.Demos.Tests/Threads/ThreadsEventSyncUnitDemos.cs#L74
@@ -88,6 +94,12 @@
 [threads-event-sync-5]:Neomaster.Demos.Tests/Threads/ThreadsEventSyncUnitDemos.cs#L252
 [threads-event-sync-6]:Neomaster.Demos.Tests/Threads/ThreadsEventSyncUnitDemos.cs#L301
 [threads-event-sync-7]:Neomaster.Demos.Tests/Threads/ThreadsEventSyncUnitDemos.cs#L350
+[threads-event-sync-8]:Neomaster.Demos.Tests/Threads/ThreadsEventSyncUnitDemos.cs#L374
+[threads-event-sync-9]:Neomaster.Demos.Tests/Threads/ThreadsEventSyncUnitDemos.cs#L400
+[threads-event-sync-10]:Neomaster.Demos.Tests/Threads/ThreadsEventSyncUnitDemos.cs#L434
+[threads-event-sync-11]:Neomaster.Demos.Tests/Threads/ThreadsEventSyncUnitDemos.cs#L447
+[threads-event-sync-12]:Neomaster.Demos.Tests/Threads/ThreadsEventSyncUnitDemos.cs#L463
+[threads-event-sync-13]:Neomaster.Demos.Tests/Threads/ThreadsEventSyncUnitDemos.cs#L478
 
 ### Threads: Atomic Operations <a name="threads-atomic-operations"></a>
 1. [Volatile class][threads-atomic-operations-1]
