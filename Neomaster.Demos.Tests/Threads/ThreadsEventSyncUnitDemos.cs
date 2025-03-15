@@ -395,4 +395,38 @@ public class ThreadsEventSyncUnitDemos
 
     Assert.Equal(threadNumber, count);
   }
+
+  [Fact]
+  public void CountdownEvent_AddCount()
+  {
+    const int threadNumber = 5;
+    var cd = new CountdownEvent(threadNumber);
+    var count = 0;
+
+    void RunThread()
+    {
+      var th = new Thread(() =>
+      {
+        Thread.Sleep(50);
+
+        cd.Signal();
+
+        Interlocked.Increment(ref count);
+      });
+
+      th.Start();
+    }
+
+    for (var i = 0; i < threadNumber; i++)
+    {
+      RunThread();
+    }
+
+    cd.AddCount(1);
+    RunThread();
+
+    cd.Wait();
+
+    Assert.Equal(threadNumber + 1, count);
+  }
 }
