@@ -7,7 +7,7 @@ namespace Neomaster.Demos.Tests.Threads;
 public class ThreadsFeaturesUnitDemos
 {
   [Fact(DisplayName = "Synchronized method: instance")]
-  public void SynchronizedMethodInstance()
+  public void SynchronizedMethod_Instance()
   {
     var obj = new SynchronizedMethodClass();
     var chars = new ConcurrentQueue<char>();
@@ -23,7 +23,7 @@ public class ThreadsFeaturesUnitDemos
   }
 
   [Fact(DisplayName = "Synchronized method: static")]
-  public void SynchronizedMethodStatic()
+  public void SynchronizedMethod_Static()
   {
     var chars = new ConcurrentQueue<char>();
     const string expectedCharsString = "AAAAABBBBBCCCCCDDDDD";
@@ -38,7 +38,7 @@ public class ThreadsFeaturesUnitDemos
   }
 
   [Fact(DisplayName = "Synchronized method: instance in different threads")]
-  public void SynchronizedMethodInstanceInDifferentThreads()
+  public void SynchronizedMethod_InstanceInDifferentThreads()
   {
     var obj1 = new SynchronizedMethodClass();
     var obj2 = new SynchronizedMethodClass();
@@ -83,7 +83,7 @@ public class ThreadsFeaturesUnitDemos
   }
 
   [Fact(DisplayName = "Synchronized method: static in different threads")]
-  public void SynchronizedMethodStaticInDifferentThreads()
+  public void SynchronizedMethod_StaticInDifferentThreads()
   {
     var chars = new ConcurrentQueue<char>();
     const string expectedChars1String = "AAAAABBBBBCCCCCDDDDD";

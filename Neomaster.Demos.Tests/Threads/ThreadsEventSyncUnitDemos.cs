@@ -6,7 +6,7 @@ namespace Neomaster.Demos.Tests.Threads;
 public class ThreadsEventSyncUnitDemos
 {
   [Fact]
-  public void EventWaitHandle_ManualReset_Set()
+  public void EventWaitHandle_ManualResetMode_Set()
   {
     const int partThreadsNumber = 3;
     var eh = new EventWaitHandle(false, EventResetMode.ManualReset);
@@ -71,7 +71,7 @@ public class ThreadsEventSyncUnitDemos
   }
 
   [Fact]
-  public void EventWaitHandle_ManualReset_Reset()
+  public void EventWaitHandle_ManualResetMode_Reset()
   {
     const int partThreadsNumber = 3;
     var eh = new EventWaitHandle(false, EventResetMode.ManualReset);
@@ -137,7 +137,7 @@ public class ThreadsEventSyncUnitDemos
   }
 
   [Fact]
-  public void EventWaitHandle_AutoReset_Set()
+  public void EventWaitHandle_AutoResetMode_Set()
   {
     const int threadsNumber = 3;
     var eh = new EventWaitHandle(false, EventResetMode.AutoReset);
