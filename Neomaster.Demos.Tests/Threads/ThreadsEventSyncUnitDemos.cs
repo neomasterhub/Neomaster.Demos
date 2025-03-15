@@ -709,4 +709,26 @@ public class ThreadsEventSyncUnitDemos
     Assert.True(ct.IsCancellationRequested);
     Assert.True(operationCanceledExceptionWasThrown);
   }
+
+  [Fact]
+  public void CancellationToken_None()
+  {
+    var events = new List<int>();
+
+    void Worker(CancellationToken ct)
+    {
+      for (int i = 0; i < 3; i++)
+      {
+        ct.ThrowIfCancellationRequested();
+        events.Add(i);
+      }
+    }
+
+    var th = new Thread(() => Worker(CancellationToken.None));
+
+    th.Start();
+    th.Join();
+
+    Assert.Equal([0, 1, 2], events);
+  }
 }
