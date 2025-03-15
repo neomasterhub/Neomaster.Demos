@@ -371,7 +371,7 @@ public class ThreadsEventSyncUnitDemos
   }
 
   [Fact]
-  public void CountdownEvent_AsJoin()
+  public void CountdownEvent_WaitAsJoin()
   {
     const int threadNumber = 5;
     var cd = new CountdownEvent(threadNumber);
