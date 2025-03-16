@@ -609,6 +609,7 @@ public class ThreadsEventSyncUnitDemos
     var cts = new CancellationTokenSource();
     var ct = cts.Token;
     var cancellationEvents = new List<int>();
+    var callbackThrewException = false;
     var th = new Thread(() =>
     {
       while (!ct.IsCancellationRequested)
@@ -619,7 +620,15 @@ public class ThreadsEventSyncUnitDemos
     var cTh = new Thread(() =>
     {
       Thread.Sleep(100);
-      cts.Cancel(true);
+
+      try
+      {
+        cts.Cancel(true);
+      }
+      catch (InvalidOperationException)
+      {
+        callbackThrewException = true;
+      }
     });
 
     ct.Register(() => cancellationEvents.Add(1));
@@ -627,7 +636,7 @@ public class ThreadsEventSyncUnitDemos
     ct.Register(() =>
     {
       cancellationEvents.Add(3);
-      throw new Exception();
+      throw new InvalidOperationException();
     });
     ct.Register(() => cancellationEvents.Add(4));
     ct.Register(() => cancellationEvents.Add(5));
@@ -636,6 +645,7 @@ public class ThreadsEventSyncUnitDemos
     cTh.Start();
     th.Join();
 
+    Assert.True(callbackThrewException);
     Assert.Equal([5, 4, 3], cancellationEvents);
   }
 
@@ -645,6 +655,7 @@ public class ThreadsEventSyncUnitDemos
     var cts = new CancellationTokenSource();
     var ct = cts.Token;
     var cancellationEvents = new List<int>();
+    var callbackThrewException = false;
     var th = new Thread(() =>
     {
       while (!ct.IsCancellationRequested)
@@ -655,7 +666,15 @@ public class ThreadsEventSyncUnitDemos
     var cTh = new Thread(() =>
     {
       Thread.Sleep(100);
-      cts.Cancel(false);
+
+      try
+      {
+        cts.Cancel(false);
+      }
+      catch (InvalidOperationException)
+      {
+        callbackThrewException = true;
+      }
     });
 
     ct.Register(() => cancellationEvents.Add(1));
@@ -663,7 +682,7 @@ public class ThreadsEventSyncUnitDemos
     ct.Register(() =>
     {
       cancellationEvents.Add(3);
-      throw new Exception();
+      throw new InvalidOperationException();
     });
     ct.Register(() => cancellationEvents.Add(4));
     ct.Register(() => cancellationEvents.Add(5));
@@ -672,6 +691,7 @@ public class ThreadsEventSyncUnitDemos
     cTh.Start();
     th.Join();
 
+    Assert.True(callbackThrewException);
     Assert.Equal([5, 4, 3, 2, 1], cancellationEvents);
   }
 
