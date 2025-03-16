@@ -644,6 +644,7 @@ public class ThreadsEventSyncUnitDemos
     th.Start();
     cTh.Start();
     th.Join();
+    cTh.Join();
 
     Assert.True(callbackThrewException);
     Assert.Equal([5, 4, 3], cancellationEvents);
@@ -671,9 +672,9 @@ public class ThreadsEventSyncUnitDemos
       {
         cts.Cancel(false);
       }
-      catch (InvalidOperationException)
+      catch (AggregateException ae)
       {
-        callbackThrewException = true;
+        callbackThrewException = ae.InnerExceptions.SingleOrDefault(ie => ie is InvalidOperationException) != null;
       }
     });
 
@@ -690,6 +691,7 @@ public class ThreadsEventSyncUnitDemos
     th.Start();
     cTh.Start();
     th.Join();
+    cTh.Join();
 
     Assert.True(callbackThrewException);
     Assert.Equal([5, 4, 3, 2, 1], cancellationEvents);
