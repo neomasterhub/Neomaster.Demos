@@ -724,11 +724,8 @@ public class ThreadsSyncUnitDemos
     });
     threads.ForEach(th => th.Join());
 
-    var signals12String = string.Concat(signals.TakeWhile(s => s is 1 or 2));
-    var signals34String = string.Concat(signals.SkipWhile(s => s is not 3 or 4));
-    var expectedSignalsXYStringLength = threadSignalsNumber * 2;
-
-    Assert.Equal(expectedSignalsXYStringLength, signals12String.Length);
-    Assert.Equal(expectedSignalsXYStringLength, signals34String.Length);
+    var signalPairCleanSeqLength = (threadSignalsNumber * 2) - 2;
+    Assert.All(signals.Take(signalPairCleanSeqLength), s => Assert.True(s is 1 or 2));
+    Assert.All(signals.TakeLast(signalPairCleanSeqLength), s => Assert.True(s is 3 or 4));
   }
 }
