@@ -754,13 +754,13 @@ public class ThreadsSyncUnitDemos
       Thread.Sleep(20);
     });
 
-    var signal12PairSeqLength = threadSignalsNumber * 2;
-    SpinWait.SpinUntil(() => signals.Count == signal12PairSeqLength);
+    var clean12SeqLength = threadSignalsNumber * 2;
+    SpinWait.SpinUntil(() => signals.Count == clean12SeqLength);
     sm.Release(3);
 
     threads.ForEach(th => th.Join());
 
-    Assert.All(signals.Take(signal12PairSeqLength), s => Assert.True(s is 1 or 2));
-    Assert.All(signals.Skip(signal12PairSeqLength), s => Assert.True(s is 3 or 4 or 5));
+    Assert.All(signals.Take(clean12SeqLength), s => Assert.True(s is 1 or 2));
+    Assert.All(signals.Skip(clean12SeqLength), s => Assert.True(s is 3 or 4 or 5));
   }
 }
