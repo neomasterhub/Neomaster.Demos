@@ -1,3 +1,4 @@
+using System.Collections.Concurrent;
 using Xunit;
 
 namespace Neomaster.Demos.Tests.Threads;
@@ -693,5 +694,41 @@ public class ThreadsSyncUnitDemos
 
     Assert.False(result1);
     Assert.True(result2);
+  }
+
+  [Fact]
+  public void SemaphoreSignalPairs()
+  {
+    const int threadSignalsNumber = 10;
+    var signals = new ConcurrentQueue<int>();
+    var sm = new Semaphore(2, 2);
+    var threads = Enumerable.Range(1, 4)
+      .Select(n => new Thread(() =>
+      {
+        sm.WaitOne();
+
+        for (var i = 0; i < threadSignalsNumber; i++)
+        {
+          signals.Enqueue(n);
+          Thread.Sleep(20);
+        }
+
+        sm.Release();
+      }))
+      .ToList();
+
+    threads.ForEach(th =>
+    {
+      th.Start();
+      Thread.Sleep(20);
+    });
+    threads.ForEach(th => th.Join());
+
+    var signals12String = string.Concat(signals.TakeWhile(s => s is 1 or 2));
+    var signals34String = string.Concat(signals.SkipWhile(s => s is not 3 or 4));
+    var expectedSignalsXYStringLength = threadSignalsNumber * 2;
+
+    Assert.Equal(expectedSignalsXYStringLength, signals12String.Length);
+    Assert.Equal(expectedSignalsXYStringLength, signals34String.Length);
   }
 }
