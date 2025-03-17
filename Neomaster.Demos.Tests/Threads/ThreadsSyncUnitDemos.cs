@@ -728,4 +728,39 @@ public class ThreadsSyncUnitDemos
     Assert.All(signals.Take(signalPairCleanSeqLength), s => Assert.True(s is 1 or 2));
     Assert.All(signals.TakeLast(signalPairCleanSeqLength), s => Assert.True(s is 3 or 4));
   }
+
+  [Fact]
+  public void SemaphoreSignalPairsReleaseMaxSlots()
+  {
+    const int threadSignalsNumber = 10;
+    var signals = new ConcurrentQueue<int>();
+    var sm = new Semaphore(2, 3);
+    var threads = Enumerable.Range(1, 5)
+      .Select(n => new Thread(() =>
+      {
+        sm.WaitOne();
+
+        for (var i = 0; i < threadSignalsNumber; i++)
+        {
+          signals.Enqueue(n);
+          Thread.Sleep(20);
+        }
+      }))
+      .ToList();
+
+    threads.ForEach(th =>
+    {
+      th.Start();
+      Thread.Sleep(20);
+    });
+
+    var signal12PairSeqLength = threadSignalsNumber * 2;
+    SpinWait.SpinUntil(() => signals.Count == signal12PairSeqLength);
+    sm.Release(3);
+
+    threads.ForEach(th => th.Join());
+
+    Assert.All(signals.Take(signal12PairSeqLength), s => Assert.True(s is 1 or 2));
+    Assert.All(signals.Skip(signal12PairSeqLength), s => Assert.True(s is 3 or 4 or 5));
+  }
 }

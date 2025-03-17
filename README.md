@@ -56,6 +56,7 @@
 14. [SpinWait.SpinOnce][threads-sync-14]
 15. [SpinWait.SpinUntil][threads-sync-15]
 16. [Semaphore.WaitOne - Release][threads-sync-16]
+17. [Semaphore.Release max slots][threads-sync-17]
 
 [threads-sync-1]:Neomaster.Demos.Tests/Threads/ThreadsSyncUnitDemos.cs#L12
 [threads-sync-2]:Neomaster.Demos.Tests/Threads/ThreadsSyncUnitDemos.cs#L46
@@ -73,6 +74,7 @@
 [threads-sync-14]:Neomaster.Demos.Tests/Threads/ThreadsSyncUnitDemos.cs#L665
 [threads-sync-15]:Neomaster.Demos.Tests/Threads/ThreadsSyncUnitDemos.cs#L681
 [threads-sync-16]:Neomaster.Demos.Tests/Threads/ThreadsSyncUnitDemos.cs#L700
+[threads-sync-17]:Neomaster.Demos.Tests/Threads/ThreadsSyncUnitDemos.cs#L733
 
 ### Threads: Event Synchronization <a name="threads-event-sync"></a>
 1. [EventWaitHandle.Set][threads-event-sync-1]
