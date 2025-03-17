@@ -724,9 +724,9 @@ public class ThreadsSyncUnitDemos
     });
     threads.ForEach(th => th.Join());
 
-    var signalPairCleanSeqLength = (threadSignalsNumber * 2) - 2;
-    Assert.All(signals.Take(signalPairCleanSeqLength), s => Assert.True(s is 1 or 2));
-    Assert.All(signals.TakeLast(signalPairCleanSeqLength), s => Assert.True(s is 3 or 4));
+    var cleanXYSeqLength = (threadSignalsNumber * 2) - 2;
+    Assert.All(signals.Take(cleanXYSeqLength), s => Assert.True(s is 1 or 2));
+    Assert.All(signals.TakeLast(cleanXYSeqLength), s => Assert.True(s is 3 or 4));
   }
 
   [Fact]
