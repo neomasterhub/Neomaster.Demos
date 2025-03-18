@@ -770,7 +770,7 @@ public class ThreadsSyncUnitDemos
     const int smInitialCount = 2;
     const int smMaxCount = 2;
     const int smSignalsNumber = 10;
-    var smName = $"test_sm_{DateTime.Now.Ticks}";
+    var smName = $"test_sm_{nameof(SemaphoreNamedForProcesses)}";
     var signals = new List<string>();
     var sm = new Semaphore(smInitialCount, smMaxCount, smName);
     var processes = Enumerable.Range(1, 4)
@@ -819,7 +819,7 @@ public class ThreadsSyncUnitDemos
   [Fact]
   public void SemaphoreNamedCreatedNew()
   {
-    var smName = $"test_sm_{DateTime.Now.Ticks}";
+    var smName = $"test_sm_{nameof(SemaphoreNamedCreatedNew)}";
     var smCreatedNew = false;
     var th1 = new Thread(() =>
     {
