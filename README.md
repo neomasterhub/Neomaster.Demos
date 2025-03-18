@@ -59,6 +59,7 @@
 17. [Semaphore.Release max slots][threads-sync-17]
 18. [Semaphore: named for processes][threads-sync-18]
 19. [Semaphore: named created new][threads-sync-19]
+20. [Mutex as Monitor][threads-sync-20]
 
 [threads-sync-1]:Neomaster.Demos.Tests/Threads/ThreadsSyncUnitDemos.cs#L12
 [threads-sync-2]:Neomaster.Demos.Tests/Threads/ThreadsSyncUnitDemos.cs#L46
@@ -79,6 +80,7 @@
 [threads-sync-17]:Neomaster.Demos.Tests/Threads/ThreadsSyncUnitDemos.cs#L733
 [threads-sync-18]:Neomaster.Demos.Tests/Threads/ThreadsSyncUnitDemos.cs#L768
 [threads-sync-19]:Neomaster.Demos.Tests/Threads/ThreadsSyncUnitDemos.cs#L815
+[threads-sync-20]:Neomaster.Demos.Tests/Threads/ThreadsSyncUnitDemos.cs#L840
 
 ### Threads: Event Synchronization <a name="threads-event-sync"></a>
 1. [EventWaitHandle.Set][threads-event-sync-1]

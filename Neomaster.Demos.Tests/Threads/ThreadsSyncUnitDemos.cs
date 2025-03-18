@@ -835,4 +835,34 @@ public class ThreadsSyncUnitDemos
     th2.Join();
     Assert.False(smCreatedNew);
   }
+
+  [Fact]
+  public void MutexAsMonitor()
+  {
+    var mt = new Mutex();
+    var signals = new ConcurrentQueue<int>();
+    var threads = Enumerable.Range(1, 3)
+      .Select(n => new Thread(() =>
+      {
+        mt.WaitOne();
+
+        for (var i = 0; i < 10; i++)
+        {
+          signals.Enqueue(n);
+          Thread.Sleep(20);
+        }
+
+        mt.ReleaseMutex();
+      }))
+      .ToList();
+
+    threads.ForEach(th =>
+    {
+      th.Start();
+      Thread.Sleep(20);
+    });
+    threads.ForEach(th => th.Join());
+
+    Assert.Matches("1{10}2{10}3{10}", string.Concat(signals));
+  }
 }
