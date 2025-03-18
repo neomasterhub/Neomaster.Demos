@@ -763,4 +763,51 @@ public class ThreadsSyncUnitDemos
     Assert.All(signals.Take(clean12SeqLength), s => Assert.True(s is 1 or 2));
     Assert.All(signals.Skip(clean12SeqLength), s => Assert.True(s is 3 or 4 or 5));
   }
+
+  [Fact]
+  public void SemaphoreNamedForProcesses()
+  {
+    const string smName = "test_sm";
+    const int smInitialCount = 2;
+    const int smMaxCount = 2;
+    const int smSignalsNumber = 10;
+    var signals = new List<string>();
+    var sm = new Semaphore(smInitialCount, smMaxCount, smName);
+    var processes = Enumerable.Range(1, 4)
+      .Select(n =>
+      {
+        var pi = new ProcessStartInfo
+        {
+          FileName = Path.Combine("Apps", "Neomaster.Demos.Apps.Threads.SemaphoreProcess.exe"),
+          Arguments = $"{smName} {smInitialCount} {smMaxCount} {smSignalsNumber}",
+          UseShellExecute = false,
+          RedirectStandardOutput = true,
+        };
+
+        var p = new Process
+        {
+          StartInfo = pi,
+          EnableRaisingEvents = true,
+        };
+
+        p.OutputDataReceived += (sender, e) =>
+        {
+          var signal = e.Data;
+          if (!string.IsNullOrEmpty(signal))
+          {
+            signals.Add(e.Data);
+          }
+        };
+
+        return p;
+      })
+      .ToList();
+
+    processes.ForEach(p => p.Start());
+    processes.ForEach(p => p.WaitForExit());
+
+    var cleanXYSeqLength = (smSignalsNumber * 2) - 2;
+    Assert.All(signals.Take(cleanXYSeqLength), s => Assert.True(s is "1" or "2"));
+    Assert.All(signals.TakeLast(cleanXYSeqLength), s => Assert.True(s is "3" or "4"));
+  }
 }
