@@ -58,7 +58,7 @@
 16. [Semaphore.WaitOne - Release][threads-sync-16]
 17. [Semaphore.Release max slots][threads-sync-17]
 18. [Semaphore: named for processes][threads-sync-18]
-18. [Semaphore: created new][threads-sync-18]
+19. [Semaphore: created new][threads-sync-19]
 
 [threads-sync-1]:Neomaster.Demos.Tests/Threads/ThreadsSyncUnitDemos.cs#L12
 [threads-sync-2]:Neomaster.Demos.Tests/Threads/ThreadsSyncUnitDemos.cs#L46
