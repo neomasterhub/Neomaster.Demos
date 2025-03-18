@@ -810,4 +810,29 @@ public class ThreadsSyncUnitDemos
     Assert.All(signals.Take(cleanXYSeqLength), s => Assert.True(s is "1" or "2"));
     Assert.All(signals.TakeLast(cleanXYSeqLength), s => Assert.True(s is "3" or "4"));
   }
+
+  [Fact]
+  public void SemaphoreNamedCreatedNew()
+  {
+    const string smName = "test_sm";
+    var smCreatedNew = false;
+    var th1 = new Thread(() =>
+    {
+      new Semaphore(1, 1, smName, out smCreatedNew);
+    });
+    var th2 = new Thread(() =>
+    {
+      new Semaphore(1, 1, smName, out smCreatedNew);
+    });
+
+    th1.Start();
+    th1.Join();
+    Assert.True(smCreatedNew);
+
+    Thread.Sleep(100);
+
+    th2.Start();
+    th2.Join();
+    Assert.False(smCreatedNew);
+  }
 }
