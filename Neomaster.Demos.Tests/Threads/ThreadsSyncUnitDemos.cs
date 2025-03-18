@@ -865,4 +865,46 @@ public class ThreadsSyncUnitDemos
 
     Assert.Matches("1{10}2{10}3{10}", string.Concat(signals));
   }
+
+  [Fact]
+  public void MutexForSingletonThread()
+  {
+    const string mtName = "test_mt";
+    var signals = new List<string>();
+    var threads = Enumerable.Range(1, 2)
+      .Select(n => new Thread(() =>
+      {
+        var mt = new Mutex(true, mtName, out var createdNew);
+        if (!createdNew)
+        {
+          signals.Add($"{n}: The app is already running.");
+
+          return;
+        }
+
+        try
+        {
+          for (var i = 0; i < 10; i++)
+          {
+            signals.Add($"{n}: Working...");
+            Thread.Sleep(20);
+          }
+        }
+        finally
+        {
+          mt.ReleaseMutex();
+        }
+      }))
+      .ToList();
+
+    threads.ForEach(th =>
+    {
+      th.Start();
+      Thread.Sleep(50);
+    });
+    threads.ForEach(th => th.Join());
+
+    Assert.Equal(10, signals.Count(s => s.StartsWith("1:")));
+    Assert.Equal(1, signals.Count(s => s.StartsWith("2:")));
+  }
 }
