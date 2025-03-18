@@ -907,4 +907,50 @@ public class ThreadsSyncUnitDemos
     Assert.Equal(10, signals.Count(s => s.StartsWith("1:")));
     Assert.Equal(1, signals.Count(s => s.StartsWith("2:")));
   }
+
+  [Fact]
+  public void MutexForSingletonApp()
+  {
+    var signals = new List<string>();
+    var processes = Enumerable.Range(1, 2)
+      .Select(n =>
+      {
+        var pi = new ProcessStartInfo
+        {
+          FileName = Path.Combine("Apps", "Neomaster.Demos.Apps.Threads.MutexSingletonApp.exe"),
+          UseShellExecute = false,
+          RedirectStandardOutput = true,
+        };
+
+        var s = File.Exists(pi.FileName);
+
+        var p = new Process
+        {
+          StartInfo = pi,
+          EnableRaisingEvents = true,
+        };
+
+        p.OutputDataReceived += (sender, e) =>
+        {
+          var signal = e.Data;
+          if (!string.IsNullOrEmpty(signal))
+          {
+            signals.Add(e.Data);
+          }
+        };
+
+        return p;
+      })
+      .ToList();
+
+    processes.ForEach(p =>
+    {
+      p.Start();
+      p.BeginOutputReadLine();
+    });
+    processes.ForEach(p => p.WaitForExit());
+
+    Assert.Equal(1, signals.Count(s => s == "The app is already running."));
+    Assert.Equal(10, signals.Count(s => s == "Working..."));
+  }
 }
