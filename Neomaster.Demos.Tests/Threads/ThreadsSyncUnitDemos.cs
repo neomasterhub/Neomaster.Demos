@@ -767,10 +767,10 @@ public class ThreadsSyncUnitDemos
   [Fact]
   public void SemaphoreNamedForProcesses()
   {
-    var smName = $"test_sm_{DateTime.Now.Ticks}";
     const int smInitialCount = 2;
     const int smMaxCount = 2;
     const int smSignalsNumber = 10;
+    var smName = $"test_sm_{DateTime.Now.Ticks}";
     var signals = new List<string>();
     var sm = new Semaphore(smInitialCount, smMaxCount, smName);
     var processes = Enumerable.Range(1, 4)
