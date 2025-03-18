@@ -779,7 +779,7 @@ public class ThreadsSyncUnitDemos
         var pi = new ProcessStartInfo
         {
           FileName = Path.Combine("Apps", "Neomaster.Demos.Apps.Threads.SemaphoreProcess.exe"),
-          Arguments = $"{smName} {smInitialCount} {smMaxCount} {smSignalsNumber}",
+          Arguments = $"{smName} {smInitialCount} {smMaxCount} {n} {smSignalsNumber}",
           UseShellExecute = false,
           RedirectStandardOutput = true,
         };
@@ -803,12 +803,17 @@ public class ThreadsSyncUnitDemos
       })
       .ToList();
 
-    processes.ForEach(p => p.Start());
+    processes.ForEach(p =>
+    {
+      p.Start();
+      p.BeginOutputReadLine();
+      Thread.Sleep(50);
+    });
     processes.ForEach(p => p.WaitForExit());
 
     var cleanXYSeqLength = (smSignalsNumber * 2) - 2;
-    Assert.All(signals.Take(cleanXYSeqLength), s => Assert.True(s is "1" or "2"));
-    Assert.All(signals.TakeLast(cleanXYSeqLength), s => Assert.True(s is "3" or "4"));
+    Assert.Equal(cleanXYSeqLength, signals.Take(cleanXYSeqLength).Count(s => s is "1" or "2"));
+    Assert.Equal(cleanXYSeqLength, signals.TakeLast(cleanXYSeqLength).Count(s => s is "3" or "4"));
   }
 
   [Fact]
