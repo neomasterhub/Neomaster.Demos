@@ -1,5 +1,6 @@
 using System.Collections.Concurrent;
 using System.Runtime.CompilerServices;
+using System.Threading;
 using Xunit;
 
 namespace Neomaster.Demos.Tests.Threads;
@@ -123,6 +124,28 @@ public class ThreadsFeaturesUnitDemos
     var chars2String = string.Concat(chars.Where(c => c < 'A'));
     Assert.Equal(expectedChars1String, chars1String);
     Assert.Equal(expectedChars2String, chars2String);
+  }
+
+  [Fact(DisplayName = "ThreadLocal<T>: counters")]
+  public void ThreadLocal_Counters()
+  {
+    var threadCounters = new int[3];
+
+    using (var threadLocalCounter = new ThreadLocal<int>(() => 0))
+    {
+      var threads = Enumerable.Range(1, 3)
+      .Select(n => new Thread(() =>
+      {
+        threadLocalCounter.Value = n;
+        threadCounters[n - 1] = threadLocalCounter.Value;
+      }))
+      .ToList();
+
+      threads.ForEach(th => th.Start());
+      threads.ForEach(th => th.Join());
+    }
+
+    Assert.Equal([1, 2, 3], threadCounters);
   }
 
   public class SynchronizedMethodClass
