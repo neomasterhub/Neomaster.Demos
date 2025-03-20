@@ -958,4 +958,48 @@ public class ThreadsSyncUnitDemos
     Assert.Equal(1, signals.Count(s => s == "The app is already running."));
     Assert.Equal(10, signals.Count(s => s == "Working..."));
   }
+
+  [Fact]
+  public void InterruptThreadInSleepWaitJoinState()
+  {
+    var th1IsInterrupted = false;
+    var th2IsInterrupted = false;
+    var th1 = new Thread(() =>
+    {
+      try
+      {
+        Thread.Sleep(int.MaxValue);
+      }
+      catch (ThreadInterruptedException)
+      {
+        th1IsInterrupted = true;
+      }
+    });
+    var th2 = new Thread(() =>
+    {
+      try
+      {
+        while (true)
+        {
+        }
+      }
+      catch (ThreadInterruptedException)
+      {
+        th2IsInterrupted = true;
+      }
+    });
+
+    th1.Start();
+    th2.Start();
+
+    Thread.Sleep(100);
+    th1.Interrupt();
+    th2.Interrupt();
+
+    th1.Join();
+    th2.Join(0);
+
+    Assert.True(th1IsInterrupted);
+    Assert.False(th2IsInterrupted);
+  }
 }
