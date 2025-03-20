@@ -1036,7 +1036,7 @@ public class ThreadsSyncUnitDemos
   }
 
   [Fact]
-  public void DeadlockMutualWaiting()
+  public void DeadlockMutualWaitingBreakByInterrupt()
   {
     var lock1 = new object();
     var lock2 = new object();
@@ -1090,5 +1090,41 @@ public class ThreadsSyncUnitDemos
 
     Assert.True(th1IsInterrupted);
     Assert.True(th2IsInterrupted);
+  }
+
+  [Fact]
+  public void DeadlockMutualWaitingBreakByJoinWithTimeout()
+  {
+    var lock1 = new object();
+    var lock2 = new object();
+    var th1 = new Thread(() =>
+    {
+      lock (lock1)
+      {
+        Thread.Sleep(100);
+        lock (lock2)
+        {
+        }
+      }
+    });
+    var th2 = new Thread(() =>
+    {
+      lock (lock2)
+      {
+        Thread.Sleep(100);
+        lock (lock1)
+        {
+        }
+      }
+    });
+
+    th1.Start();
+    Thread.Sleep(30);
+    th2.Start();
+
+    Thread.Sleep(500);
+
+    Assert.False(th1.Join(0));
+    Assert.False(th2.Join(0));
   }
 }
