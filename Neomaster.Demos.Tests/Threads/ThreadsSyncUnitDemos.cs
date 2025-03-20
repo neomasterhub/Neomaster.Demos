@@ -1034,4 +1034,61 @@ public class ThreadsSyncUnitDemos
 
     Assert.False(thIsInterrupted);
   }
+
+  [Fact]
+  public void DeadlockMutualWaiting()
+  {
+    var lock1 = new object();
+    var lock2 = new object();
+    var th1IsInterrupted = false;
+    var th2IsInterrupted = false;
+    var th1 = new Thread(() =>
+    {
+      try
+      {
+        lock (lock1)
+        {
+          Thread.Sleep(100);
+          lock (lock2)
+          {
+          }
+        }
+      }
+      catch (ThreadInterruptedException)
+      {
+        th1IsInterrupted = true;
+      }
+    });
+    var th2 = new Thread(() =>
+    {
+      try
+      {
+        lock (lock2)
+        {
+          Thread.Sleep(100);
+          lock (lock1)
+          {
+          }
+        }
+      }
+      catch (ThreadInterruptedException)
+      {
+        th2IsInterrupted = true;
+      }
+    });
+
+    th1.Start();
+    Thread.Sleep(30);
+    th2.Start();
+
+    Thread.Sleep(500);
+    th1.Interrupt();
+    th2.Interrupt();
+
+    th1.Join();
+    th2.Join();
+
+    Assert.True(th1IsInterrupted);
+    Assert.True(th2IsInterrupted);
+  }
 }
