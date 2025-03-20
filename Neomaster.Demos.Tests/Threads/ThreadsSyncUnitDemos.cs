@@ -1002,4 +1002,36 @@ public class ThreadsSyncUnitDemos
     Assert.True(th1IsInterrupted);
     Assert.False(th2IsInterrupted);
   }
+
+  [Fact]
+  public void DeadlockRecursiveLocking()
+  {
+    var thIsInterrupted = false;
+    var th = new Thread(() =>
+    {
+      try
+      {
+        lock (_lock)
+        {
+          lock (_lock)
+          {
+            // Recursive locking.
+          }
+        }
+      }
+      catch (ThreadInterruptedException)
+      {
+        thIsInterrupted = true;
+      }
+    });
+
+    th.Start();
+
+    Thread.Sleep(100);
+
+    th.Interrupt();
+    th.Join();
+
+    Assert.False(thIsInterrupted);
+  }
 }

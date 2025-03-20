@@ -63,6 +63,7 @@
 21. [Mutex for singleton thread][threads-sync-21]
 22. [Mutex for singleton app][threads-sync-22]
 23. [Interrupt][threads-sync-23]
+24. [Deadlock: recursive locking][threads-sync-24]
 
 [threads-sync-1]:Neomaster.Demos.Tests/Threads/ThreadsSyncUnitDemos.cs#L12
 [threads-sync-2]:Neomaster.Demos.Tests/Threads/ThreadsSyncUnitDemos.cs#L46
@@ -87,6 +88,7 @@
 [threads-sync-21]:Neomaster.Demos.Tests/Threads/ThreadsSyncUnitDemos.cs#L875
 [threads-sync-22]:Neomaster.Demos.Tests/Threads/ThreadsSyncUnitDemos.cs#L917
 [threads-sync-23]:Neomaster.Demos.Tests/Threads/ThreadsSyncUnitDemos.cs#L963
+[threads-sync-24]:Neomaster.Demos.Tests/Threads/ThreadsSyncUnitDemos.cs#L1007
 
 ### Threads: Event Synchronization <a name="threads-event-sync"></a>
 1. [EventWaitHandle.Set][threads-event-sync-1]
