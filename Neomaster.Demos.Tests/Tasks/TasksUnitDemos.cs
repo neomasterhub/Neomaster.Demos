@@ -39,4 +39,23 @@ public class TasksUnitDemos
     Thread.Sleep(200);
     Assert.Equal(1, result);
   }
+
+  [Fact]
+  public void ThreadPoolQueueUserWorkItemJoin()
+  {
+    var result = false;
+    var resetEvent = new ManualResetEvent(false);
+
+    var queued = ThreadPool.QueueUserWorkItem(_ =>
+    {
+      Thread.Sleep(100);
+      result = true;
+      resetEvent.Set();
+    });
+
+    Assert.True(queued);
+    Assert.False(result);
+    resetEvent.WaitOne();
+    Assert.True(result);
+  }
 }
