@@ -58,4 +58,41 @@ public class ThreadsThreadPoolUnitDemos
     resetEvent.WaitOne();
     Assert.True(result);
   }
+
+  [Fact]
+  public void PoolRestoresThreadAsBackground()
+  {
+    var poolThreadId = 0;
+    var poolThreadWasFound = false;
+    var poolThreadIsBackground = false;
+    var resetEvent = new ManualResetEvent(false);
+
+    ThreadPool.QueueUserWorkItem(_ =>
+    {
+      Thread.CurrentThread.IsBackground = false;
+      poolThreadId = Thread.CurrentThread.ManagedThreadId;
+      resetEvent.Set();
+    });
+
+    resetEvent.WaitOne();
+
+    var cts = new CancellationTokenSource();
+    while (!cts.IsCancellationRequested)
+    {
+      Thread.Sleep(100);
+
+      ThreadPool.QueueUserWorkItem(_ =>
+      {
+        if (Thread.CurrentThread.ManagedThreadId == poolThreadId)
+        {
+          poolThreadWasFound = true;
+          poolThreadIsBackground = Thread.CurrentThread.IsBackground;
+          cts.Cancel();
+        }
+      });
+    }
+
+    Assert.True(poolThreadWasFound);
+    Assert.True(poolThreadIsBackground);
+  }
 }

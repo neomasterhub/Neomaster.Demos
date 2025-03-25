@@ -157,16 +157,18 @@
 [threads-atomic-operations-4]:Neomaster.Demos.Tests/Threads/ThreadsAtomicOperationsUnitDemos.cs#L89
 [threads-atomic-operations-5]:Neomaster.Demos.Tests/Threads/ThreadsAtomicOperationsUnitDemos.cs#L132
 
-### Thread Pool <a name="threads-thread-pool"></a>
+### Thread: Thread Pool <a name="threads-thread-pool"></a>
 1. [Thread Pool: QueueUserWorkItem][threads-thread-pool-1]
 2. [Thread Pool: QueueUserWorkItem with state][threads-thread-pool-2]
 3. [Thread Pool: QueueUserWorkItem Join][threads-thread-pool-3]
 4. [Thread Pool: set pool thread as foreground][threads-thread-pool-4]
+5. [Thread Pool: pool restores thread as background][threads-thread-pool-4]
 
 [threads-thread-pool-1]:Neomaster.Demos.Tests/Threads/ThreadsThreadPoolUnitDemos.cs#L8
 [threads-thread-pool-2]:Neomaster.Demos.Tests/Threads/ThreadsThreadPoolUnitDemos.cs#L25
 [threads-thread-pool-3]:Neomaster.Demos.Tests/Threads/ThreadsThreadPoolUnitDemos.cs#L44
 [threads-thread-pool-4]:Neomaster.Demos.Apps/Neomaster.Demos.Apps.Threads.SetPoolThreadAsForeground/Program.cs
+[threads-thread-pool-5]:Neomaster.Demos.Tests/Threads/ThreadsThreadPoolUnitDemos.cs#L63
 
 ### Threads: Features <a name="threads-features"></a>
 1. [Synchronized method: instance][threads-features-1]
