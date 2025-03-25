@@ -174,7 +174,9 @@
 1. [Thread Pool: QueueUserWorkItem][tasks-1]
 2. [Thread Pool: QueueUserWorkItem with state][tasks-2]
 3. [Thread Pool: QueueUserWorkItem Join][tasks-3]
+4. [Thread Pool: set pool thread as foreground][tasks-4]
 
 [tasks-1]:Neomaster.Demos.Tests/Tasks/TasksUnitDemos.cs#L8
 [tasks-2]:Neomaster.Demos.Tests/Tasks/TasksUnitDemos.cs#L25
 [tasks-3]:Neomaster.Demos.Tests/Tasks/TasksUnitDemos.cs#L44
+[tasks-4]:Neomaster.Demos.Apps/Neomaster.Demos.Apps.Threads.SetPoolThreadAsForeground/Program.cs
