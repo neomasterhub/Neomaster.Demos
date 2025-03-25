@@ -1,6 +1,5 @@
 using System.Collections.Concurrent;
 using System.Runtime.CompilerServices;
-using System.Threading;
 using Xunit;
 
 namespace Neomaster.Demos.Tests.Threads;
