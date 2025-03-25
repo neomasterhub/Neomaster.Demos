@@ -162,7 +162,7 @@
 2. [Synchronized method: static][threads-features-2]
 3. [Synchronized method: instance in different threads][threads-features-3]
 4. [Synchronized method: static in different threads][threads-features-4]
-5. [ThreadLocal<T>: counters][threads-features-5]
+5. [ThreadLocal&lt;T&gt;: counters][threads-features-5]
 
 [threads-features-1]:Neomaster.Demos.Tests/Threads/ThreadsFeaturesUnitDemos.cs#L10
 [threads-features-2]:Neomaster.Demos.Tests/Threads/ThreadsFeaturesUnitDemos.cs#L26
