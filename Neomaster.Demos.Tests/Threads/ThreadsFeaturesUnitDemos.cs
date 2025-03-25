@@ -147,6 +147,22 @@ public class ThreadsFeaturesUnitDemos
     Assert.Equal([1, 2, 3], threadCounters);
   }
 
+  [Fact(DisplayName = "Note: disposable sync primitives")]
+  public void NoteDisposableSyncPrimitives()
+  {
+    using var m = new Mutex();
+    using var s = new Semaphore(1, 1);
+    using var sl = new SemaphoreSlim(1, 1);
+
+    using var b = new Barrier(1);
+    using var ce = new CountdownEvent(1);
+
+    using var ewh = new EventWaitHandle(default, default);
+    using var are = new AutoResetEvent(default);
+    using var mre = new ManualResetEvent(default);
+    using var mres = new ManualResetEventSlim(default);
+  }
+
   public class SynchronizedMethodClass
   {
     [MethodImpl(MethodImplOptions.Synchronized)]
