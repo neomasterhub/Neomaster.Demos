@@ -5,7 +5,7 @@ namespace Neomaster.Demos.Tests.Threads;
 public class ThreadsThreadPoolUnitDemos
 {
   [Fact]
-  public void ThreadPoolQueueUserWorkItem()
+  public void QueueUserWorkItem()
   {
     var result = false;
 
@@ -22,7 +22,7 @@ public class ThreadsThreadPoolUnitDemos
   }
 
   [Fact]
-  public void ThreadPoolQueueUserWorkItemWithState()
+  public void QueueUserWorkItemWithState()
   {
     var result = 0;
 
@@ -41,7 +41,7 @@ public class ThreadsThreadPoolUnitDemos
   }
 
   [Fact]
-  public void ThreadPoolQueueUserWorkItemJoin()
+  public void QueueUserWorkItemJoin()
   {
     var result = false;
     var resetEvent = new ManualResetEvent(false);
