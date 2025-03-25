@@ -4,8 +4,8 @@
 * [*Threads: Synchronization*](#threads-sync)
 * [*Threads: Event Synchronization*](#threads-event-sync)
 * [*Threads: Atomic Operations*](#threads-atomic-operations)
+* [*Threads: Thread Pool*](#threads-thread-pool)
 * [*Threads: Features*](#threads-features)
-* [*Tasks*](#tasks)
 
 ### Threads <a name="threads"></a>
 1. [Create, Sleep, Join][threads-1]
@@ -157,6 +157,17 @@
 [threads-atomic-operations-4]:Neomaster.Demos.Tests/Threads/ThreadsAtomicOperationsUnitDemos.cs#L89
 [threads-atomic-operations-5]:Neomaster.Demos.Tests/Threads/ThreadsAtomicOperationsUnitDemos.cs#L132
 
+### Thread Pool <a name="threads-thread-pool"></a>
+1. [Thread Pool: QueueUserWorkItem][threads-thread-pool-1]
+2. [Thread Pool: QueueUserWorkItem with state][threads-thread-pool-2]
+3. [Thread Pool: QueueUserWorkItem Join][threads-thread-pool-3]
+4. [Thread Pool: set pool thread as foreground][threads-thread-pool-4]
+
+[threads-thread-pool-1]:Neomaster.Demos.Tests/Threads/ThreadsThreadPoolUnitDemos.cs#L8
+[threads-thread-pool-2]:Neomaster.Demos.Tests/Threads/ThreadsThreadPoolUnitDemos.cs#L25
+[threads-thread-pool-3]:Neomaster.Demos.Tests/Threads/ThreadsThreadPoolUnitDemos.cs#L44
+[threads-thread-pool-4]:Neomaster.Demos.Apps/Neomaster.Demos.Apps.Threads.SetPoolThreadAsForeground/Program.cs
+
 ### Threads: Features <a name="threads-features"></a>
 1. [Synchronized method: instance][threads-features-1]
 2. [Synchronized method: static][threads-features-2]
@@ -169,14 +180,3 @@
 [threads-features-3]:Neomaster.Demos.Tests/Threads/ThreadsFeaturesUnitDemos.cs#L41
 [threads-features-4]:Neomaster.Demos.Tests/Threads/ThreadsFeaturesUnitDemos.cs#L86
 [threads-features-5]:Neomaster.Demos.Tests/Threads/ThreadsFeaturesUnitDemos.cs#L129
-
-### Tasks <a name="tasks"></a>
-1. [Thread Pool: QueueUserWorkItem][tasks-1]
-2. [Thread Pool: QueueUserWorkItem with state][tasks-2]
-3. [Thread Pool: QueueUserWorkItem Join][tasks-3]
-4. [Thread Pool: set pool thread as foreground][tasks-4]
-
-[tasks-1]:Neomaster.Demos.Tests/Tasks/TasksUnitDemos.cs#L8
-[tasks-2]:Neomaster.Demos.Tests/Tasks/TasksUnitDemos.cs#L25
-[tasks-3]:Neomaster.Demos.Tests/Tasks/TasksUnitDemos.cs#L44
-[tasks-4]:Neomaster.Demos.Apps/Neomaster.Demos.Apps.Threads.SetPoolThreadAsForeground/Program.cs
