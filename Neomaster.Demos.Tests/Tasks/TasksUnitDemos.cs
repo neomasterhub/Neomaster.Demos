@@ -59,4 +59,26 @@ public class TasksUnitDemos
     Assert.True(t1IsCompleted);
     Assert.False(t2IsCompleted);
   }
+
+  [Fact]
+  public void TaskStatusAfterWaitTimeout()
+  {
+    var r = false;
+
+    var t = Task.Run(() =>
+    {
+      Thread.Sleep(200);
+      r = true;
+    });
+
+    t.Wait(100);
+
+    Assert.Equal(TaskStatus.Running, t.Status);
+    Assert.False(r);
+
+    t.Wait(200);
+
+    Assert.Equal(TaskStatus.RanToCompletion, t.Status);
+    Assert.True(r);
+  }
 }
