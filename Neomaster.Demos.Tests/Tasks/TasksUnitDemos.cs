@@ -99,4 +99,28 @@ public class TasksUnitDemos
 
     Assert.Throws<OperationCanceledException>(() => t1.Wait(cts.Token));
   }
+
+  [Fact]
+  public void WaitBlocksThread()
+  {
+    var th = Thread.CurrentThread;
+    th.IsBackground = false; // To avoid the additional state flag ThreadState.Background.
+    th.Name = "th";
+
+    string thNameInWaiting = null;
+    ThreadState? thStateInWaiting = null;
+
+    var t = Task.Run(() =>
+    {
+      Thread.Sleep(100);
+
+      thNameInWaiting = th.Name;
+      thStateInWaiting = th.ThreadState;
+    });
+
+    t.Wait(200);
+
+    Assert.Equal(th.Name, thNameInWaiting);
+    Assert.Equal(ThreadState.WaitSleepJoin, thStateInWaiting);
+  }
 }
