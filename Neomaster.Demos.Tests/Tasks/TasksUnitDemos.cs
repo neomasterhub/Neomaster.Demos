@@ -81,4 +81,22 @@ public class TasksUnitDemos
     Assert.Equal(TaskStatus.RanToCompletion, t.Status);
     Assert.True(r);
   }
+
+  [Fact]
+  public void WaitTaskWithCancellationToken()
+  {
+    var cts = new CancellationTokenSource();
+
+    var t1 = Task.Run(() =>
+    {
+      Thread.Sleep(int.MaxValue);
+    });
+    var t2 = Task.Run(() =>
+    {
+      Thread.Sleep(100);
+      cts.Cancel();
+    });
+
+    Assert.Throws<OperationCanceledException>(() => t1.Wait(cts.Token));
+  }
 }
