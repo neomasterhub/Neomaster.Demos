@@ -61,7 +61,7 @@ public class TasksUnitDemos
   }
 
   [Fact]
-  public void TaskStatusAfterWaitTimeout()
+  public void TaskIsRunningAfterWaitTimeout()
   {
     var r = false;
 
@@ -76,7 +76,7 @@ public class TasksUnitDemos
     Assert.Equal(TaskStatus.Running, t.Status);
     Assert.False(r);
 
-    t.Wait(200);
+    t.Wait();
 
     Assert.Equal(TaskStatus.RanToCompletion, t.Status);
     Assert.True(r);
