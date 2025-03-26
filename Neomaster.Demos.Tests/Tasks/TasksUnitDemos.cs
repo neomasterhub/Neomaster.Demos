@@ -46,4 +46,17 @@ public class TasksUnitDemos
 
     Assert.True(r);
   }
+
+  [Fact]
+  public void WaitTaskWithTimeout()
+  {
+    var t1 = Task.Run(() => Thread.Sleep(100));
+    var t2 = Task.Run(() => Thread.Sleep(int.MaxValue));
+
+    var t1IsCompleted = t1.Wait(200);
+    var t2IsCompleted = t2.Wait(200);
+
+    Assert.True(t1IsCompleted);
+    Assert.False(t2IsCompleted);
+  }
 }
