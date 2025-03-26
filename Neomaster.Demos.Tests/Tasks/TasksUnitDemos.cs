@@ -123,4 +123,24 @@ public class TasksUnitDemos
     Assert.Equal(th.Name, thNameInWaiting);
     Assert.Equal(ThreadState.WaitSleepJoin, thStateInWaiting);
   }
+
+  [Fact]
+  public void WaitWrapsTaskExceptionIntoAggregateException()
+  {
+    try
+    {
+      var t = Task.Run(() =>
+      {
+        Thread.Sleep(100);
+        throw new InvalidOperationException();
+      });
+
+      t.Wait();
+    }
+    catch (AggregateException aex)
+    {
+      Assert.Single(aex.InnerExceptions);
+      Assert.IsType<InvalidOperationException>(aex.InnerException);
+    }
+  }
 }
