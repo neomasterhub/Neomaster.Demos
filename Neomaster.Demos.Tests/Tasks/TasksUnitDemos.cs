@@ -30,4 +30,20 @@ public class TasksUnitDemos
 
     Assert.Equal([1, 2, 3], events);
   }
+
+  [Fact]
+  public void WaitTask()
+  {
+    var r = false;
+
+    var t = Task.Run(() =>
+    {
+      Thread.Sleep(100);
+      r = true;
+    });
+
+    t.Wait();
+
+    Assert.True(r);
+  }
 }
