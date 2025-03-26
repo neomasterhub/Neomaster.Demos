@@ -6,6 +6,7 @@
 * [*Threads: Atomic Operations*](#threads-atomic-operations)
 * [*Threads: Thread Pool*](#threads-thread-pool)
 * [*Threads: Features*](#threads-features)
+* [*Tasks*](#tasks)
 
 ### Threads <a name="threads"></a>
 1. [Create, Sleep, Join][threads-1]
@@ -182,3 +183,20 @@
 [threads-features-3]:Neomaster.Demos.Tests/Threads/ThreadsFeaturesUnitDemos.cs#L41
 [threads-features-4]:Neomaster.Demos.Tests/Threads/ThreadsFeaturesUnitDemos.cs#L86
 [threads-features-5]:Neomaster.Demos.Tests/Threads/ThreadsFeaturesUnitDemos.cs#L129
+
+### Tasks <a name="tasks"></a>
+1. [Create task][tasks-1]
+2. [Wait task][tasks-2]
+3. [Wait task with timeout][tasks-3]
+4. [Task is running after wait timeout][tasks-4]
+5. [Wait task with cancellation token][tasks-5]
+6. [Wait blocks thread][tasks-6]
+7. [Wait wraps task exception into `AggregateException`][tasks-7]
+
+[tasks-1]:Neomaster.Demos.Tests/Tasks/TasksUnitDemos.cs#L8
+[tasks-2]:Neomaster.Demos.Tests/Tasks/TasksUnitDemos.cs#L35
+[tasks-3]:Neomaster.Demos.Tests/Tasks/TasksUnitDemos.cs#L51
+[tasks-4]:Neomaster.Demos.Tests/Tasks/TasksUnitDemos.cs#L64
+[tasks-5]:Neomaster.Demos.Tests/Tasks/TasksUnitDemos.cs#L86
+[tasks-6]:Neomaster.Demos.Tests/Tasks/TasksUnitDemos.cs#L104
+[tasks-7]:Neomaster.Demos.Tests/Tasks/TasksUnitDemos.cs#L128
