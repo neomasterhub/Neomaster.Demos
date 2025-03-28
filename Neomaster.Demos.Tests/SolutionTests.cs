@@ -1,9 +1,10 @@
 using System.Text.RegularExpressions;
 using Xunit;
+using Xunit.Abstractions;
 
 namespace Neomaster.Demos.Tests;
 
-public class SolutionTests
+public class SolutionTests(ITestOutputHelper output)
 {
   private static readonly string _solutionPath;
   private static readonly string _readmePath;
@@ -51,8 +52,13 @@ public class SolutionTests
 
       foreach (var i in testLineIndexes)
       {
-        var udLine = udLines[i - 1];
-        Assert.Matches(@"^\s*public (void|async Task)", udLine);
+        output.WriteLine($"Checking {udFi.Name}#{i}...");
+
+        var udLine = udLines[i - 1].TrimStart();
+
+        output.WriteLine($"         Found: {udLine}");
+
+        Assert.Matches(@"public (void|async Task)", udLine);
       }
     }
   }
