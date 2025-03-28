@@ -32,6 +32,21 @@ public class TasksUnitDemos
   }
 
   [Fact]
+  public void TaskIsInPoolThread()
+  {
+    var t1ThreadIsPoolThread = false;
+    var t2ThreadIsPoolThread = false;
+
+    new Task(() => t1ThreadIsPoolThread = Thread.CurrentThread.IsThreadPoolThread).Start();
+    Task.Run(() => t2ThreadIsPoolThread = Thread.CurrentThread.IsThreadPoolThread);
+
+    Thread.Sleep(100);
+
+    Assert.True(t1ThreadIsPoolThread);
+    Assert.True(t2ThreadIsPoolThread);
+  }
+
+  [Fact]
   public void WaitTask()
   {
     var r = false;

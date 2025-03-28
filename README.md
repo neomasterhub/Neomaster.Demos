@@ -186,17 +186,19 @@
 
 ### Tasks <a name="tasks"></a>
 1. [Create task][tasks-1]
-2. [Wait task][tasks-2]
-3. [Wait task with timeout][tasks-3]
-4. [Task is running after wait timeout][tasks-4]
-5. [Wait task with cancellation token][tasks-5]
-6. [Wait blocks thread][tasks-6]
-7. [Wait wraps task exception into `AggregateException`][tasks-7]
+2. [Task is in pool thread][tasks-2]
+3. [Wait task][tasks-3]
+4. [Wait task with timeout][tasks-4]
+5. [Task is running after wait timeout][tasks-5]
+6. [Wait task with cancellation token][tasks-6]
+7. [Wait blocks thread][tasks-7]
+8. [Wait wraps task exception into `AggregateException`][tasks-8]
 
 [tasks-1]:Neomaster.Demos.Tests/Tasks/TasksUnitDemos.cs#L8
 [tasks-2]:Neomaster.Demos.Tests/Tasks/TasksUnitDemos.cs#L35
-[tasks-3]:Neomaster.Demos.Tests/Tasks/TasksUnitDemos.cs#L51
-[tasks-4]:Neomaster.Demos.Tests/Tasks/TasksUnitDemos.cs#L64
-[tasks-5]:Neomaster.Demos.Tests/Tasks/TasksUnitDemos.cs#L86
-[tasks-6]:Neomaster.Demos.Tests/Tasks/TasksUnitDemos.cs#L104
-[tasks-7]:Neomaster.Demos.Tests/Tasks/TasksUnitDemos.cs#L128
+[tasks-3]:Neomaster.Demos.Tests/Tasks/TasksUnitDemos.cs#L50
+[tasks-4]:Neomaster.Demos.Tests/Tasks/TasksUnitDemos.cs#L66
+[tasks-5]:Neomaster.Demos.Tests/Tasks/TasksUnitDemos.cs#L79
+[tasks-6]:Neomaster.Demos.Tests/Tasks/TasksUnitDemos.cs#L101
+[tasks-7]:Neomaster.Demos.Tests/Tasks/TasksUnitDemos.cs#L119
+[tasks-8]:Neomaster.Demos.Tests/Tasks/TasksUnitDemos.cs#L143
