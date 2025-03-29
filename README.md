@@ -193,6 +193,9 @@
 6. [Wait task with cancellation token][tasks-6]
 7. [Wait blocks thread][tasks-7]
 8. [Wait wraps task exception into `AggregateException`][tasks-8]
+9. [Result][tasks-9]
+10. [Result blocks thread][tasks-10]
+11. [Result wraps task exception into `AggregateException`][tasks-11]
 
 [tasks-1]:Neomaster.Demos.Tests/Tasks/TasksUnitDemos.cs#L8
 [tasks-2]:Neomaster.Demos.Tests/Tasks/TasksUnitDemos.cs#L35
@@ -202,3 +205,6 @@
 [tasks-6]:Neomaster.Demos.Tests/Tasks/TasksUnitDemos.cs#L101
 [tasks-7]:Neomaster.Demos.Tests/Tasks/TasksUnitDemos.cs#L119
 [tasks-8]:Neomaster.Demos.Tests/Tasks/TasksUnitDemos.cs#L143
+[tasks-9]:Neomaster.Demos.Tests/Tasks/TasksUnitDemos.cs#L160
+[tasks-10]:Neomaster.Demos.Tests/Tasks/TasksUnitDemos.cs#L168
+[tasks-11]:Neomaster.Demos.Tests/Tasks/TasksUnitDemos.cs#L191
