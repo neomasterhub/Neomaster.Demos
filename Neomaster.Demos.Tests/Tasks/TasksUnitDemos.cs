@@ -157,7 +157,7 @@ public class TasksUnitDemos
   }
 
   [Fact]
-  public void TaskResult()
+  public void Result()
   {
     var t = Task.Run(() => true);
 
@@ -165,7 +165,7 @@ public class TasksUnitDemos
   }
 
   [Fact]
-  public void TaskResultBlocksThread()
+  public void ResultBlocksThread()
   {
     var th = Thread.CurrentThread;
     var thIsInWaitSleepJoin = false;
@@ -188,7 +188,7 @@ public class TasksUnitDemos
   }
 
   [Fact]
-  public void TaskResultTaskExceptionIntoAggregateException()
+  public void ResultTaskExceptionIntoAggregateException()
   {
     var aex = Assert.Throws<AggregateException>(() =>
     {
@@ -203,5 +203,17 @@ public class TasksUnitDemos
     });
     Assert.Single(aex.InnerExceptions);
     Assert.IsType<InvalidOperationException>(aex.InnerException);
+  }
+
+  [Fact]
+  public void Delay()
+  {
+    var t = Task.Delay(100);
+
+    Assert.Equal(TaskStatus.WaitingForActivation, t.Status);
+
+    t.Wait();
+
+    Assert.Equal(TaskStatus.RanToCompletion, t.Status);
   }
 }
