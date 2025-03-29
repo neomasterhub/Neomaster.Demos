@@ -216,4 +216,17 @@ public class TasksUnitDemos
 
     Assert.Equal(TaskStatus.RanToCompletion, t.Status);
   }
+
+  [Fact]
+  public void DelayWithCancellationToken()
+  {
+    var cts = new CancellationTokenSource();
+    var t = Task.Delay(int.MaxValue, cts.Token);
+
+    Thread.Sleep(100);
+    cts.Cancel();
+
+    Assert.True(t.IsCanceled);
+    Assert.Equal(TaskStatus.Canceled, t.Status);
+  }
 }
