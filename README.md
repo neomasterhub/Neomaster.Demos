@@ -196,6 +196,9 @@
 9. [Result][tasks-9]
 10. [Result blocks thread][tasks-10]
 11. [Result wraps task exception into `AggregateException`][tasks-11]
+12. [Delay][tasks-12]
+13. [Delay with cancellation token][tasks-13]
+14. [Delay is working after wait timeout][tasks-14]
 
 [tasks-1]:Neomaster.Demos.Tests/Tasks/TasksUnitDemos.cs#L8
 [tasks-2]:Neomaster.Demos.Tests/Tasks/TasksUnitDemos.cs#L35
@@ -208,3 +211,6 @@
 [tasks-9]:Neomaster.Demos.Tests/Tasks/TasksUnitDemos.cs#L160
 [tasks-10]:Neomaster.Demos.Tests/Tasks/TasksUnitDemos.cs#L168
 [tasks-11]:Neomaster.Demos.Tests/Tasks/TasksUnitDemos.cs#L191
+[tasks-12]:Neomaster.Demos.Tests/Tasks/TasksUnitDemos.cs#L209
+[tasks-13]:Neomaster.Demos.Tests/Tasks/TasksUnitDemos.cs#L221
+[tasks-14]:Neomaster.Demos.Tests/Tasks/TasksUnitDemos.cs#L234
