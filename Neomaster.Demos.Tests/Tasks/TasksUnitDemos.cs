@@ -166,4 +166,27 @@ public class TasksUnitDemos
 
     Assert.True(t.Result);
   }
+
+  [Fact]
+  public void TaskResultBlocksThread()
+  {
+    var th = Thread.CurrentThread;
+    var thIsInWaitSleepJoin = false;
+
+    var t1 = Task.Run(() =>
+    {
+      Thread.Sleep(200);
+      return true;
+    });
+    var t2 = Task.Run(() =>
+    {
+      Thread.Sleep(100);
+      thIsInWaitSleepJoin = th.ThreadState.HasFlag(ThreadState.WaitSleepJoin);
+    });
+
+    var r1 = t1.Result;
+
+    Assert.True(r1);
+    Assert.True(thIsInWaitSleepJoin);
+  }
 }
