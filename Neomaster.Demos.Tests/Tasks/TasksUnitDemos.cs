@@ -189,4 +189,22 @@ public class TasksUnitDemos
     Assert.True(r1);
     Assert.True(thIsInWaitSleepJoin);
   }
+
+  [Fact]
+  public void TaskResultTaskExceptionIntoAggregateException()
+  {
+    var aex = Assert.Throws<AggregateException>(() =>
+    {
+      var t = Task.Run(() =>
+      {
+        Thread.Sleep(100);
+        throw new InvalidOperationException();
+        return true;
+      });
+
+      _ = t.Result;
+    });
+    Assert.Single(aex.InnerExceptions);
+    Assert.IsType<InvalidOperationException>(aex.InnerException);
+  }
 }
