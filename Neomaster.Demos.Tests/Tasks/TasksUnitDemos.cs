@@ -142,7 +142,7 @@ public class TasksUnitDemos
   [Fact]
   public void WaitWrapsTaskExceptionIntoAggregateException()
   {
-    try
+    var aex = Assert.Throws<AggregateException>(() =>
     {
       var t = Task.Run(() =>
       {
@@ -151,12 +151,9 @@ public class TasksUnitDemos
       });
 
       t.Wait();
-    }
-    catch (AggregateException aex)
-    {
-      Assert.Single(aex.InnerExceptions);
-      Assert.IsType<InvalidOperationException>(aex.InnerException);
-    }
+    });
+    Assert.Single(aex.InnerExceptions);
+    Assert.IsType<InvalidOperationException>(aex.InnerException);
   }
 
   [Fact]
