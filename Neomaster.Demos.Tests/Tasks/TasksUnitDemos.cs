@@ -239,4 +239,41 @@ public class TasksUnitDemos
 
     Assert.Equal(TaskStatus.WaitingForActivation, t.Status);
   }
+
+  [Fact]
+  public void AwaitReleasesManualThread()
+  {
+    Thread th1 = null;
+    Thread th2 = null;
+    Thread th3 = null;
+    ThreadState? th1StateInTask = null;
+    var re = new ManualResetEvent(false);
+
+    async void MethodAsync()
+    {
+      th1 = Thread.CurrentThread;
+
+      await Task.Run(() =>
+      {
+        th1StateInTask = th1.ThreadState;
+        th2 = Thread.CurrentThread;
+      });
+
+      th3 = Thread.CurrentThread;
+
+      re.Set();
+    }
+
+    var th = new Thread(MethodAsync);
+    th.Start();
+
+    re.WaitOne();
+
+    Assert.False(th.IsThreadPoolThread);
+    Assert.Equal(th1.ManagedThreadId, th.ManagedThreadId);
+    Assert.Equal(ThreadState.Stopped, th1.ThreadState);
+    Assert.NotEqual(th2.ManagedThreadId, th1.ManagedThreadId);
+    Assert.True(th2.IsThreadPoolThread);
+    Assert.Equal(th2.ManagedThreadId, th3.ManagedThreadId);
+  }
 }
