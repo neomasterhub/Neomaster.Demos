@@ -229,4 +229,14 @@ public class TasksUnitDemos
     Assert.True(t.IsCanceled);
     Assert.Equal(TaskStatus.Canceled, t.Status);
   }
+
+  [Fact]
+  public void DelayIsWorkingAfterWaitTimeout()
+  {
+    var t = Task.Delay(200);
+
+    Thread.Sleep(100);
+
+    Assert.Equal(TaskStatus.WaitingForActivation, t.Status);
+  }
 }
