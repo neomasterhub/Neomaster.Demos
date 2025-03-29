@@ -158,4 +158,12 @@ public class TasksUnitDemos
       Assert.IsType<InvalidOperationException>(aex.InnerException);
     }
   }
+
+  [Fact]
+  public void TaskResult()
+  {
+    var t = Task.Run(() => true);
+
+    Assert.True(t.Result);
+  }
 }
