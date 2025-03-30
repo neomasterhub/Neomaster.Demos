@@ -199,8 +199,8 @@
 12. [Delay][tasks-12]
 13. [Delay with cancellation token][tasks-13]
 14. [Delay is working after wait timeout][tasks-14]
-15. [await releases manual thread][tasks-15]
-16. [await releases pool thread][tasks-16]
+15. [`await` releases manual thread][tasks-15]
+16. [`await` releases pool thread][tasks-16]
 17. [Method with `async`, without `await` is synchronous][tasks-17]
 18. [Method with `async`, with `await` is asynchronous][tasks-18]
 
