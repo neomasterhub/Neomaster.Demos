@@ -199,6 +199,10 @@
 12. [Delay][tasks-12]
 13. [Delay with cancellation token][tasks-13]
 14. [Delay is working after wait timeout][tasks-14]
+15. [await releases manual thread][tasks-15]
+16. [await releases pool thread][tasks-16]
+17. [Method with `async`, without `await` is synchronous][tasks-17]
+18. [Method with `async`, with `await` is asynchronous][tasks-18]
 
 [tasks-1]:Neomaster.Demos.Tests/Tasks/TasksUnitDemos.cs#L8
 [tasks-2]:Neomaster.Demos.Tests/Tasks/TasksUnitDemos.cs#L35
@@ -214,3 +218,7 @@
 [tasks-12]:Neomaster.Demos.Tests/Tasks/TasksUnitDemos.cs#L209
 [tasks-13]:Neomaster.Demos.Tests/Tasks/TasksUnitDemos.cs#L221
 [tasks-14]:Neomaster.Demos.Tests/Tasks/TasksUnitDemos.cs#L234
+[tasks-15]:Neomaster.Demos.Tests/Tasks/TasksUnitDemos.cs#L244
+[tasks-16]:Neomaster.Demos.Tests/Tasks/TasksUnitDemos.cs#L281
+[tasks-17]:Neomaster.Demos.Tests/Tasks/TasksUnitDemos.cs#L326
+[tasks-18]:Neomaster.Demos.Tests/Tasks/TasksUnitDemos.cs#L353
