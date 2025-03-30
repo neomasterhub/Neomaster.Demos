@@ -321,4 +321,31 @@ public class TasksUnitDemos
     Assert.NotEqual(th2.ManagedThreadId, th.ManagedThreadId);
     Assert.Equal(th3.ManagedThreadId, th2.ManagedThreadId);
   }
+
+  [Fact]
+  public void MethodWithAsyncWithoutAwaitIsSync()
+  {
+    var events = new List<int>();
+    var cd = new CountdownEvent(2);
+
+    async void Add2()
+    {
+      Thread.Sleep(100);
+      events.Add(2);
+
+      cd.Signal();
+    }
+
+    Task.Run(() =>
+    {
+      Add2();
+      events.Add(1);
+
+      cd.Signal();
+    });
+
+    cd.Wait();
+
+    Assert.Equal([2, 1], events);
+  }
 }
