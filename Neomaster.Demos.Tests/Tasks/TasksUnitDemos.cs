@@ -348,4 +348,31 @@ public class TasksUnitDemos
 
     Assert.Equal([2, 1], events);
   }
+
+  [Fact]
+  public void MethodWithAsyncWithAwaitIsAsync()
+  {
+    var events = new List<int>();
+    var cd = new CountdownEvent(2);
+
+    async void Add2()
+    {
+      await Task.Delay(100);
+      events.Add(2);
+
+      cd.Signal();
+    }
+
+    Task.Run(() =>
+    {
+      Add2();
+      events.Add(1);
+
+      cd.Signal();
+    });
+
+    cd.Wait();
+
+    Assert.Equal([1, 2], events);
+  }
 }
