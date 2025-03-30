@@ -276,4 +276,49 @@ public class TasksUnitDemos
     Assert.True(th2.IsThreadPoolThread);
     Assert.Equal(th2.ManagedThreadId, th3.ManagedThreadId);
   }
+
+  [Fact]
+  public void AwaitReleasesPoolThread()
+  {
+    Thread th1 = null;
+    Thread th2 = null;
+    Thread th3 = null;
+    var re = new ManualResetEvent(false);
+    var events = new List<int>();
+
+    async void MethodAsync()
+    {
+      th1 = Thread.CurrentThread;
+
+      await Task.Run(() =>
+      {
+        th2 = Thread.CurrentThread;
+
+        Thread.Sleep(100);
+        events.Add(2);
+      });
+
+      th3 = Thread.CurrentThread;
+    }
+
+    Thread th = null;
+    Task.Run(() =>
+    {
+      th = Thread.CurrentThread;
+      MethodAsync();
+
+      Thread.Sleep(50);
+      events.Add(1);
+
+      Thread.Sleep(100);
+      re.Set();
+    });
+
+    re.WaitOne();
+
+    Assert.Equal([1, 2], events);
+    Assert.Equal(th1.ManagedThreadId, th.ManagedThreadId);
+    Assert.NotEqual(th2.ManagedThreadId, th.ManagedThreadId);
+    Assert.Equal(th3.ManagedThreadId, th2.ManagedThreadId);
+  }
 }
