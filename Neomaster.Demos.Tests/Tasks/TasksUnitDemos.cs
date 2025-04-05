@@ -379,7 +379,7 @@ public class TasksUnitDemos
   [Theory]
   [InlineData(true, 1, 0)]
   [InlineData(false, 0, 0)]
-  public async Task ConfigureAwaitEffectOnSyncContextPostAndSend(
+  public async Task ConfigureAwaitEffectOnDefaultSyncContextPostAndSend(
     bool configureAwait,
     int expectedPostCallCount,
     int expectedSendCallCount)
@@ -402,6 +402,32 @@ public class TasksUnitDemos
     Assert.Equal(expectedSendCallCount, defaultCtx.SendCallCount);
   }
 
+  [Theory]
+  [InlineData(true, 0, 1)]
+  [InlineData(false, 0, 0)]
+  public async Task ConfigureAwaitEffectOnUISyncContextPostAndSend(
+    bool configureAwait,
+    int expectedPostCallCount,
+    int expectedSendCallCount)
+  {
+    var originalCtx = SynchronizationContext.Current;
+    var uiCtx = new UISyncCtx();
+    SynchronizationContext.SetSynchronizationContext(uiCtx);
+    Assert.IsType<UISyncCtx>(SynchronizationContext.Current);
+
+    try
+    {
+      await Task.Delay(100).ConfigureAwait(configureAwait);
+    }
+    finally
+    {
+      SynchronizationContext.SetSynchronizationContext(originalCtx);
+    }
+
+    Assert.Equal(expectedPostCallCount, uiCtx.PostCallCount);
+    Assert.Equal(expectedSendCallCount, uiCtx.SendCallCount);
+  }
+
   public class DefaultSyncCtx : SynchronizationContext
   {
     private int _postCallCount;
@@ -420,6 +446,35 @@ public class TasksUnitDemos
     {
       Interlocked.Increment(ref _sendCallCount);
       base.Send(d, state);
+    }
+  }
+
+  public class UISyncCtx : SynchronizationContext
+  {
+    private readonly int _mainThreadId = Thread.CurrentThread.ManagedThreadId;
+
+    private int _postCallCount;
+    private int _sendCallCount;
+
+    public int PostCallCount => _postCallCount;
+    public int SendCallCount => _sendCallCount;
+
+    public override void Post(SendOrPostCallback d, object state)
+    {
+      if (Thread.CurrentThread.ManagedThreadId == _mainThreadId)
+      {
+        Send(d, state);
+        return;
+      }
+
+      Interlocked.Increment(ref _postCallCount);
+      ThreadPool.QueueUserWorkItem(_ => d(state));
+    }
+
+    public override void Send(SendOrPostCallback d, object state)
+    {
+      Interlocked.Increment(ref _sendCallCount);
+      d(state);
     }
   }
 }
