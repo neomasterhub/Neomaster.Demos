@@ -375,4 +375,51 @@ public class TasksUnitDemos
 
     Assert.Equal([1, 2], events);
   }
+
+  [Theory]
+  [InlineData(true, 1, 0)]
+  [InlineData(false, 0, 0)]
+  public async Task ConfigureAwaitEffectOnSyncContextPostAndSend(
+    bool configureAwait,
+    int expectedPostCallCount,
+    int expectedSendCallCount)
+  {
+    var originalCtx = SynchronizationContext.Current;
+    var defaultCtx = new DefaultSyncCtx();
+    SynchronizationContext.SetSynchronizationContext(defaultCtx);
+    Assert.IsType<DefaultSyncCtx>(SynchronizationContext.Current);
+
+    try
+    {
+      await Task.Delay(100).ConfigureAwait(configureAwait);
+    }
+    finally
+    {
+      SynchronizationContext.SetSynchronizationContext(originalCtx);
+    }
+
+    Assert.Equal(expectedPostCallCount, defaultCtx.PostCallCount);
+    Assert.Equal(expectedSendCallCount, defaultCtx.SendCallCount);
+  }
+
+  public class DefaultSyncCtx : SynchronizationContext
+  {
+    private int _postCallCount;
+    private int _sendCallCount;
+
+    public int PostCallCount => _postCallCount;
+    public int SendCallCount => _sendCallCount;
+
+    public override void Post(SendOrPostCallback d, object state)
+    {
+      Interlocked.Increment(ref _postCallCount);
+      base.Post(d, state);
+    }
+
+    public override void Send(SendOrPostCallback d, object state)
+    {
+      Interlocked.Increment(ref _sendCallCount);
+      base.Send(d, state);
+    }
+  }
 }
