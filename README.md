@@ -203,6 +203,9 @@
 16. [`await` releases pool thread][tasks-16]
 17. [Method with `async`, without `await` is synchronous][tasks-17]
 18. [Method with `async`, with `await` is asynchronous][tasks-18]
+19. [AsyncAwait][tasks-19]
+20. [AsyncAwait effect on default sync context Post and Send][tasks-20]
+21. [AsyncAwait effect on UI sync context Post and Send][tasks-21]
 
 [tasks-1]:Neomaster.Demos.Tests/Tasks/TasksUnitDemos.cs#L8
 [tasks-2]:Neomaster.Demos.Tests/Tasks/TasksUnitDemos.cs#L35
@@ -222,3 +225,6 @@
 [tasks-16]:Neomaster.Demos.Tests/Tasks/TasksUnitDemos.cs#L281
 [tasks-17]:Neomaster.Demos.Tests/Tasks/TasksUnitDemos.cs#L326
 [tasks-18]:Neomaster.Demos.Tests/Tasks/TasksUnitDemos.cs#L353
+[tasks-19]:Neomaster.Demos.Apps/Neomaster.Demos.Apps.Tasks.TaskConfigureAwait/Program.cs
+[tasks-20]:Neomaster.Demos.Tests/Tasks/TasksUnitDemos.cs#L382
+[tasks-21]:Neomaster.Demos.Tests/Tasks/TasksUnitDemos.cs#L408
