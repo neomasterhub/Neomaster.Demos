@@ -428,6 +428,77 @@ public class TasksUnitDemos
     Assert.Equal(expectedSendCallCount, uiCtx.SendCallCount);
   }
 
+  [Fact]
+  public async Task ThrowingTaskException()
+  {
+    var t = Task.Run(() =>
+    {
+      throw new InvalidOperationException();
+      return 1;
+    });
+
+    Thread.Sleep(100);
+    Assert.Equal(TaskStatus.Faulted, t.Status);
+
+    var tAggEx = t.Exception;
+    var tInnerEx = t.Exception.InnerException;
+    Assert.NotNull(tAggEx);
+    Assert.IsType<AggregateException>(tAggEx);
+    Assert.IsType<InvalidOperationException>(tInnerEx);
+
+    const int awaitThrowNumber = 2;
+    const int waitThrowNumber = 3;
+    const int resultThrowNumber = 4;
+    var awaitThrowCount = 0;
+    var waitThrowCount = 0;
+    var resultThrowCount = 0;
+
+    for (var i = 0; i < awaitThrowNumber; i++)
+    {
+      try
+      {
+        await t;
+      }
+      catch (InvalidOperationException ex)
+      {
+        awaitThrowCount++;
+        Assert.Equal(tInnerEx, ex);
+      }
+    }
+
+    for (var i = 0; i < waitThrowNumber; i++)
+    {
+      try
+      {
+        t.Wait();
+      }
+      catch (AggregateException aggEx)
+      {
+        waitThrowCount++;
+        Assert.NotEqual(tAggEx, aggEx);
+        Assert.Equal(tInnerEx, aggEx.InnerException);
+      }
+    }
+
+    for (var i = 0; i < resultThrowNumber; i++)
+    {
+      try
+      {
+        _ = t.Result;
+      }
+      catch (AggregateException aggEx)
+      {
+        resultThrowCount++;
+        Assert.NotEqual(tAggEx, aggEx);
+        Assert.Equal(tInnerEx, aggEx.InnerException);
+      }
+    }
+
+    Assert.Equal(awaitThrowNumber, awaitThrowCount);
+    Assert.Equal(waitThrowNumber, waitThrowCount);
+    Assert.Equal(resultThrowNumber, resultThrowCount);
+  }
+
   public class DefaultSyncCtx : SynchronizationContext
   {
     private int _postCallCount;
