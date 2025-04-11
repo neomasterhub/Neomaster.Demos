@@ -567,6 +567,7 @@ public class TasksUnitDemos
     await Task.Run(() => { }).ContinueWith(C, TaskContinuationOptions.OnlyOnRanToCompletion);
     await Task.Run(() => throw new InvalidOperationException()).ContinueWith(C, TaskContinuationOptions.OnlyOnFaulted);
     await Task.Run(() => { }, new CancellationToken(true)).ContinueWith(C, TaskContinuationOptions.OnlyOnCanceled);
+    // and others
 
     Assert.Equal(3, events.Count);
     Assert.All(events, e => Assert.Equal(1, e));
