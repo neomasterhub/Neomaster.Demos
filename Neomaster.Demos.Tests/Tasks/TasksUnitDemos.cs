@@ -557,6 +557,21 @@ public class TasksUnitDemos
     Assert.Equal([0, 1, 2], events);
   }
 
+  [Fact]
+  public async Task ContinueWithContinuationOptions()
+  {
+    var events = new List<int>();
+
+    void C(Task t) => events.Add(1);
+
+    await Task.Run(() => { }).ContinueWith(C, TaskContinuationOptions.OnlyOnRanToCompletion);
+    await Task.Run(() => throw new InvalidOperationException()).ContinueWith(C, TaskContinuationOptions.OnlyOnFaulted);
+    await Task.Run(() => { }, new CancellationToken(true)).ContinueWith(C, TaskContinuationOptions.OnlyOnCanceled);
+
+    Assert.Equal(3, events.Count);
+    Assert.All(events, e => Assert.Equal(1, e));
+  }
+
   public class DefaultSyncCtx : SynchronizationContext
   {
     private int _postCallCount;
