@@ -499,6 +499,21 @@ public class TasksUnitDemos
     Assert.Equal(resultThrowNumber, resultThrowCount);
   }
 
+  [Fact]
+  public async Task ContinueWithExecutesAllChainedTasks()
+  {
+    var task1 = Task.Run(() => 1);
+    var task2 = task1.ContinueWith(t1 => t1.Result * 10);
+    var task3 = task2.ContinueWith(t2 => "0" + t2.Result);
+
+    var actual = await task3;
+
+    Assert.Equal("010", actual);
+    Assert.Equal(TaskStatus.RanToCompletion, task1.Status);
+    Assert.Equal(TaskStatus.RanToCompletion, task2.Status);
+    Assert.Equal(TaskStatus.RanToCompletion, task3.Status);
+  }
+
   public class DefaultSyncCtx : SynchronizationContext
   {
     private int _postCallCount;
