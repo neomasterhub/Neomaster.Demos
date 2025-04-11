@@ -500,6 +500,16 @@ public class TasksUnitDemos
   }
 
   [Fact]
+  public async Task ContinueWithTaskChain()
+  {
+    var actual = await Task.Run(() => 1)
+      .ContinueWith(t1 => t1.Result * 10)
+      .ContinueWith(t2 => "0" + t2.Result);
+
+    Assert.Equal("010", actual);
+  }
+
+  [Fact]
   public async Task ContinueWithExecutesAllChainedTasks()
   {
     var task1 = Task.Run(() => 1);
