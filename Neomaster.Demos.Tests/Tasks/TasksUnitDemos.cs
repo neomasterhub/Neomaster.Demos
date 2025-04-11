@@ -524,6 +524,39 @@ public class TasksUnitDemos
     Assert.Equal(TaskStatus.RanToCompletion, task3.Status);
   }
 
+  [Fact]
+  public async Task ContinueWithVariable()
+  {
+    var events = new List<int>();
+
+    void ContinueVar(Task prevTask)
+    {
+      if (prevTask.IsCompletedSuccessfully)
+      {
+        events.Add(0);
+        return;
+      }
+
+      if (prevTask.IsFaulted)
+      {
+        events.Add(1);
+        return;
+      }
+
+      if (prevTask.IsCanceled)
+      {
+        events.Add(2);
+        return;
+      }
+    }
+
+    await Task.Run(() => { }).ContinueWith(ContinueVar);
+    await Task.Run(() => throw new InvalidOperationException()).ContinueWith(ContinueVar);
+    await Task.Run(() => { }, new CancellationToken(true)).ContinueWith(ContinueVar);
+
+    Assert.Equal([0, 1, 2], events);
+  }
+
   public class DefaultSyncCtx : SynchronizationContext
   {
     private int _postCallCount;
