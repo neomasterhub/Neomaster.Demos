@@ -712,7 +712,7 @@ public class TasksUnitDemos
   public void RunSynchronouslyContinuation()
   {
     InvalidOperationException actual = null;
-    var c = new Task(() => { }).ContinueWith(_ => { });
+    var c = new Task(() => throw new ApplicationException()).ContinueWith(_ => { });
 
     try
     {
