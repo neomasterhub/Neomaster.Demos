@@ -208,14 +208,15 @@
 20. [AsyncAwait effect on default sync context Post and Send][tasks-20]
 21. [AsyncAwait effect on UI sync context Post and Send][tasks-21]
 22. [Throwing task exception][tasks-22]
-23. [ContinueWith: task chain][tasks-23]
-24. [ContinueWith: variable][tasks-24]
-25. [ContinueWith: continuation options][tasks-25]
-26. [ContinueWith: SetInterval()][tasks-26]
-27. [RunSynchronously][tasks-27]
-28. [RunSynchronously and continuation][tasks-28]
-29. [RunSynchronously and synchronous continuation][tasks-29]
-30. [RunSynchronously continuation][tasks-30]
+23. [ContinueWith: created task status][tasks-23]
+24. [ContinueWith: task chain][tasks-24]
+25. [ContinueWith: variable][tasks-25]
+26. [ContinueWith: continuation options][tasks-26]
+27. [ContinueWith: SetInterval()][tasks-27]
+28. [RunSynchronously][tasks-28]
+29. [RunSynchronously and continuation][tasks-29]
+30. [RunSynchronously and synchronous continuation][tasks-30]
+31. [RunSynchronously continuation][tasks-31]
 
 [tasks-1]:Neomaster.Demos.Tests/Tasks/TasksUnitDemos.cs#L8
 [tasks-2]:Neomaster.Demos.Tests/Tasks/TasksUnitDemos.cs#L35
@@ -240,13 +241,14 @@
 [tasks-21]:Neomaster.Demos.Tests/Tasks/TasksUnitDemos.cs#L408
 [tasks-22]:Neomaster.Demos.Tests/Tasks/TasksUnitDemos.cs#L432
 [tasks-23]:Neomaster.Demos.Tests/Tasks/TasksUnitDemos.cs#L503
-[tasks-24]:Neomaster.Demos.Tests/Tasks/TasksUnitDemos.cs#L513
-[tasks-25]:Neomaster.Demos.Tests/Tasks/TasksUnitDemos.cs#L546
-[tasks-26]:Neomaster.Demos.Tests/Tasks/TasksUnitDemos.cs#L562
-[tasks-27]:Neomaster.Demos.Tests/Tasks/TasksUnitDemos.cs#L609
-[tasks-28]:Neomaster.Demos.Tests/Tasks/TasksUnitDemos.cs#L631
-[tasks-29]:Neomaster.Demos.Tests/Tasks/TasksUnitDemos.cs#L667
-[tasks-30]:Neomaster.Demos.Tests/Tasks/TasksUnitDemos.cs#L705
+[tasks-24]:Neomaster.Demos.Tests/Tasks/TasksUnitDemos.cs#L510
+[tasks-25]:Neomaster.Demos.Tests/Tasks/TasksUnitDemos.cs#L520
+[tasks-26]:Neomaster.Demos.Tests/Tasks/TasksUnitDemos.cs#L553
+[tasks-27]:Neomaster.Demos.Tests/Tasks/TasksUnitDemos.cs#L569
+[tasks-28]:Neomaster.Demos.Tests/Tasks/TasksUnitDemos.cs#L616
+[tasks-29]:Neomaster.Demos.Tests/Tasks/TasksUnitDemos.cs#L638
+[tasks-30]:Neomaster.Demos.Tests/Tasks/TasksUnitDemos.cs#L674
+[tasks-31]:Neomaster.Demos.Tests/Tasks/TasksUnitDemos.cs#L712
 
 ### Documents: Open XML <a name="documents-open-xml"></a>
 1. [Table template: add rows / to first table][documents-open-xml_tbtm-1]
