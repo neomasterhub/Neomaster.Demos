@@ -233,8 +233,8 @@
 [tasks-22]:Neomaster.Demos.Tests/Tasks/TasksUnitDemos.cs#L432
 
 ### Documents: Open XML <a name="documents-open-xml"></a>
-1. [Table template: add rows][documents-open-xml_tbtm-1]
-2. [Table template: add rows with email hyperlink][documents-open-xml_tbtm-2]
+1. [Table template: add rows / to first table][documents-open-xml_tbtm-1]
+2. [Table template: add rows / to first table / email hyperlink][documents-open-xml_tbtm-2]
 
 [documents-open-xml_tbtm-1]:Neomaster.Demos.Tests/Documents/OpenXMLDocTables/TableTemplatesUnitDemos.cs#L10
 [documents-open-xml_tbtm-2]:Neomaster.Demos.Tests/Documents/OpenXMLDocTables/TableTemplatesUnitDemos.cs#L49
