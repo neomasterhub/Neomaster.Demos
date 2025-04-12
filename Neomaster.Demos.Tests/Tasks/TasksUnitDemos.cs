@@ -605,6 +605,28 @@ public class TasksUnitDemos
     Assert.Equal(expectedEventCount, eventCount1);
   }
 
+  [Fact]
+  public void RunSynchronously()
+  {
+    var th1Id = 0;
+    var th2Id = 0;
+    var events = new List<int>();
+
+    th1Id = Thread.CurrentThread.ManagedThreadId;
+    var t = new Task(() =>
+    {
+      th2Id = Thread.CurrentThread.ManagedThreadId;
+      Thread.Sleep(100);
+      events.Add(1);
+    });
+
+    t.RunSynchronously();
+    events.Add(2);
+
+    Assert.Equal([1, 2], events);
+    Assert.Equal(th1Id, th2Id);
+  }
+
   public class DefaultSyncCtx : SynchronizationContext
   {
     private int _postCallCount;
