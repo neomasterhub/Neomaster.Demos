@@ -210,7 +210,7 @@
 22. [Throwing task exception][tasks-22]
 23. [ContinueWith: created task status][tasks-23]
 24. [ContinueWith: task chain][tasks-24]
-25. [ContinueWith: variable][tasks-25]
+25. [ContinueWith: variable continuation][tasks-25]
 26. [ContinueWith: continuation options][tasks-26]
 27. [ContinueWith: SetInterval()][tasks-27]
 28. [RunSynchronously][tasks-28]

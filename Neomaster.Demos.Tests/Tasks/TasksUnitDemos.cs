@@ -517,7 +517,7 @@ public class TasksUnitDemos
   }
 
   [Fact]
-  public async Task ContinueWithVariable()
+  public async Task ContinueWithVariableContinuation()
   {
     var events = new List<int>();
 
