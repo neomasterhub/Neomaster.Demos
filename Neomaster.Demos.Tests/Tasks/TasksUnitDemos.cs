@@ -701,6 +701,25 @@ public class TasksUnitDemos
     Assert.Equal(th2Id, th3Id);
   }
 
+  [Fact]
+  public void RunSynchronouslyContinuation()
+  {
+    InvalidOperationException actual = null;
+    var c = new Task(() => { }).ContinueWith(_ => { });
+
+    try
+    {
+      c.RunSynchronously();
+    }
+    catch (InvalidOperationException ex)
+    {
+      actual = ex;
+    }
+
+    Assert.NotNull(actual);
+    Assert.Equal(TaskStatus.WaitingForActivation, c.Status);
+  }
+
   public class DefaultSyncCtx : SynchronizationContext
   {
     private int _postCallCount;
