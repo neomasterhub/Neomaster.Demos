@@ -500,6 +500,13 @@ public class TasksUnitDemos
   }
 
   [Fact]
+  public void ContinueWithCreatedTaskStatus()
+  {
+    var c = new Task(() => { }).ContinueWith(_ => { });
+    Assert.Equal(TaskStatus.WaitingForActivation, c.Status);
+  }
+
+  [Fact]
   public async Task ContinueWithTaskChain()
   {
     var actual = await Task.Run(() => 1)
