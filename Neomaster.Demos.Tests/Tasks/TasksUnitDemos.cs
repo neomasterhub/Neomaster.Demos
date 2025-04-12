@@ -663,6 +663,44 @@ public class TasksUnitDemos
     Assert.NotEqual(th2Id, th3Id);
   }
 
+  [Fact]
+  public void RunSynchronouslyAndSynchronousContinuation()
+  {
+    var th1Id = 0;
+    var th2Id = 0;
+    var th3Id = 0;
+    var events = new List<char>();
+    var cd = new CountdownEvent(2);
+
+    th1Id = Thread.CurrentThread.ManagedThreadId;
+
+    var t = new Task(() =>
+      {
+        th2Id = Thread.CurrentThread.ManagedThreadId;
+        Thread.Sleep(100);
+        events.Add('T');
+        cd.Signal();
+      });
+
+    t.ContinueWith(
+      _ =>
+      {
+        th3Id = Thread.CurrentThread.ManagedThreadId;
+        Thread.Sleep(100);
+        events.Add('C');
+        cd.Signal();
+      },
+      TaskContinuationOptions.ExecuteSynchronously);
+
+    t.RunSynchronously();
+    events.Add('I');
+    cd.Wait();
+
+    Assert.Equal(['T', 'C', 'I'], events);
+    Assert.Equal(th1Id, th2Id);
+    Assert.Equal(th2Id, th3Id);
+  }
+
   public class DefaultSyncCtx : SynchronizationContext
   {
     private int _postCallCount;
