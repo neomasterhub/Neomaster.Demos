@@ -558,6 +558,53 @@ public class TasksUnitDemos
     Assert.All(events, e => Assert.Equal(1, e));
   }
 
+  [Fact]
+  public void ContinueWithSetInterval()
+  {
+    const int expectedEventCount = 10;
+    var cd = new CountdownEvent(10);
+    var cts = new CancellationTokenSource();
+    var events = new List<int>();
+
+    void SetInterval(Action action, int delay, CancellationToken ct)
+    {
+      if (ct.IsCancellationRequested)
+      {
+        return;
+      }
+
+      Task.Delay(delay).ContinueWith(_ =>
+      {
+        action();
+        SetInterval(action, delay, cts.Token);
+      });
+    }
+
+    SetInterval(
+      () =>
+      {
+        if (cts.Token.IsCancellationRequested)
+        {
+          return;
+        }
+
+        events.Add(1);
+        cd.Signal();
+      },
+      100,
+      cts.Token);
+
+    cd.Wait();
+    cts.Cancel();
+
+    var eventCount1 = events.Count;
+    Thread.Sleep(100);
+    var eventCount2 = events.Count;
+
+    Assert.Equal(eventCount1, eventCount2);
+    Assert.Equal(expectedEventCount, eventCount1);
+  }
+
   public class DefaultSyncCtx : SynchronizationContext
   {
     private int _postCallCount;

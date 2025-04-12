@@ -211,6 +211,7 @@
 23. [ContinueWith: task chain][tasks-23]
 24. [ContinueWith: variable][tasks-24]
 25. [ContinueWith: continuation options][tasks-25]
+26. [ContinueWith: SetInterval()][tasks-26]
 
 [tasks-1]:Neomaster.Demos.Tests/Tasks/TasksUnitDemos.cs#L8
 [tasks-2]:Neomaster.Demos.Tests/Tasks/TasksUnitDemos.cs#L35
@@ -237,6 +238,7 @@
 [tasks-23]:Neomaster.Demos.Tests/Tasks/TasksUnitDemos.cs#L503
 [tasks-24]:Neomaster.Demos.Tests/Tasks/TasksUnitDemos.cs#L513
 [tasks-25]:Neomaster.Demos.Tests/Tasks/TasksUnitDemos.cs#L546
+[tasks-26]:Neomaster.Demos.Tests/Tasks/TasksUnitDemos.cs#L562
 
 ### Documents: Open XML <a name="documents-open-xml"></a>
 1. [Table template: add rows / to first table][documents-open-xml_tbtm-1]
