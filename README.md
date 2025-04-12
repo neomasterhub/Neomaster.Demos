@@ -212,6 +212,10 @@
 24. [ContinueWith: variable][tasks-24]
 25. [ContinueWith: continuation options][tasks-25]
 26. [ContinueWith: SetInterval()][tasks-26]
+27. [RunSynchronously][tasks-27]
+28. [RunSynchronously and continuation][tasks-28]
+29. [RunSynchronously and synchronous continuation][tasks-29]
+30. [RunSynchronously continuation][tasks-30]
 
 [tasks-1]:Neomaster.Demos.Tests/Tasks/TasksUnitDemos.cs#L8
 [tasks-2]:Neomaster.Demos.Tests/Tasks/TasksUnitDemos.cs#L35
@@ -239,6 +243,10 @@
 [tasks-24]:Neomaster.Demos.Tests/Tasks/TasksUnitDemos.cs#L513
 [tasks-25]:Neomaster.Demos.Tests/Tasks/TasksUnitDemos.cs#L546
 [tasks-26]:Neomaster.Demos.Tests/Tasks/TasksUnitDemos.cs#L562
+[tasks-27]:Neomaster.Demos.Tests/Tasks/TasksUnitDemos.cs#L609
+[tasks-28]:Neomaster.Demos.Tests/Tasks/TasksUnitDemos.cs#L631
+[tasks-29]:Neomaster.Demos.Tests/Tasks/TasksUnitDemos.cs#L667
+[tasks-30]:Neomaster.Demos.Tests/Tasks/TasksUnitDemos.cs#L705
 
 ### Documents: Open XML <a name="documents-open-xml"></a>
 1. [Table template: add rows / to first table][documents-open-xml_tbtm-1]
