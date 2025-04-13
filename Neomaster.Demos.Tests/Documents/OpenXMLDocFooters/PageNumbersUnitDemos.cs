@@ -10,9 +10,8 @@ public class PageNumbersUnitDemos
   [Fact]
   public void Add()
   {
-    const string fileName = "text-001.docx";
-    var templatePath = GetTemplatePath(fileName);
-    var outputPath = Shared.GetOutputPath(fileName);
+    var templatePath = GetTemplatePath("text-001.docx");
+    var outputPath = Shared.GetOutputPath($"{nameof(Add)}.docx");
 
     File.Copy(templatePath, outputPath, true);
 
@@ -53,9 +52,8 @@ public class PageNumbersUnitDemos
   [Fact]
   public void Add_OfTotal()
   {
-    const string fileName = "text-001.docx";
-    var templatePath = GetTemplatePath(fileName);
-    var outputPath = Shared.GetOutputPath(fileName);
+    var templatePath = GetTemplatePath("text-001.docx");
+    var outputPath = Shared.GetOutputPath($"{nameof(Add_OfTotal)}.docx");
 
     File.Copy(templatePath, outputPath, true);
 
