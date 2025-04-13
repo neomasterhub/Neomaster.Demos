@@ -9,9 +9,8 @@ public class TableTemplatesUnitDemos
   [Fact]
   public void AddRows_ToFirstTable()
   {
-    const string fileName = "table-001.docx";
-    var templatePath = GetTemplatePath(fileName);
-    var outputPath = Shared.GetOutputPath(fileName);
+    var templatePath = GetTemplatePath("table-001.docx");
+    var outputPath = GetOutputPath($"{nameof(AddRows_ToFirstTable)}.docx");
 
     File.Copy(templatePath, outputPath, true);
 
@@ -49,7 +48,7 @@ public class TableTemplatesUnitDemos
   public void AddRows_ToFirstTable_EmailHyperlink()
   {
     var templatePath = GetTemplatePath("table-001.docx");
-    var outputPath = Shared.GetOutputPath("table-001_email-hyperlink.docx");
+    var outputPath = GetOutputPath($"{nameof(AddRows_ToFirstTable_EmailHyperlink)}.docx");
 
     File.Copy(templatePath, outputPath, true);
 
@@ -104,5 +103,17 @@ public class TableTemplatesUnitDemos
   private static string GetTemplatePath(string fileName)
   {
     return Path.Combine("Documents", "OpenXMLDocTables", "Templates", fileName);
+  }
+
+  private static string GetOutputPath(string fileName)
+  {
+    var outputDir = Path.Combine(Shared.TestOutputDirectory, nameof(TableTemplatesUnitDemos));
+
+    if (!Directory.Exists(outputDir))
+    {
+      Directory.CreateDirectory(outputDir);
+    }
+
+    return Path.Combine(outputDir, fileName);
   }
 }

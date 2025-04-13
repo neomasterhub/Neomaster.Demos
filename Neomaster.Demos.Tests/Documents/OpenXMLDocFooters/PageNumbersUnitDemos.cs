@@ -11,7 +11,7 @@ public class PageNumbersUnitDemos
   public void Add()
   {
     var templatePath = GetTemplatePath("text-001.docx");
-    var outputPath = Shared.GetOutputPath($"{nameof(Add)}.docx");
+    var outputPath = GetOutputPath($"{nameof(Add)}.docx");
 
     File.Copy(templatePath, outputPath, true);
 
@@ -53,7 +53,7 @@ public class PageNumbersUnitDemos
   public void Add_OfTotal()
   {
     var templatePath = GetTemplatePath("text-001.docx");
-    var outputPath = Shared.GetOutputPath($"{nameof(Add_OfTotal)}.docx");
+    var outputPath = GetOutputPath($"{nameof(Add_OfTotal)}.docx");
 
     File.Copy(templatePath, outputPath, true);
 
@@ -99,5 +99,17 @@ public class PageNumbersUnitDemos
   private static string GetTemplatePath(string fileName)
   {
     return Path.Combine("Documents", "OpenXMLDocFooters", "Templates", fileName);
+  }
+
+  private static string GetOutputPath(string fileName)
+  {
+    var outputDir = Path.Combine(Shared.TestOutputDirectory, nameof(PageNumbersUnitDemos));
+
+    if (!Directory.Exists(outputDir))
+    {
+      Directory.CreateDirectory(outputDir);
+    }
+
+    return Path.Combine(outputDir, fileName);
   }
 }
