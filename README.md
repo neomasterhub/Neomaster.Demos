@@ -254,7 +254,9 @@
 1. [Tables / table templates / add rows / to first table][open-xml-F09E9A79-1]
 1. [Tables / table templates / add rows / to first table / email hyperlink][open-xml-F09E9A79-2]
 1. [Footers / page numbers / add][open-xml-5B3560FE-1]
+1. [Footers / page numbers / add / of total][open-xml-5B3560FE-2]
 
 [open-xml-F09E9A79-1]:Neomaster.Demos.Tests/Documents/OpenXMLDocTables/TableTemplatesUnitDemos.cs#L10
 [open-xml-F09E9A79-2]:Neomaster.Demos.Tests/Documents/OpenXMLDocTables/TableTemplatesUnitDemos.cs#L49
 [open-xml-5B3560FE-1]:Neomaster.Demos.Tests/Documents/OpenXMLDocFooters/PageNumbersUnitDemos.cs#L11
+[open-xml-5B3560FE-2]:Neomaster.Demos.Tests/Documents/OpenXMLDocFooters/PageNumbersUnitDemos.cs#L53
