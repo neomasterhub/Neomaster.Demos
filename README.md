@@ -255,6 +255,6 @@
 1. [Page numbers / add / of total][open-xml-page-numbers-2]
 1. [Page numbers / has][open-xml-page-numbers-3]
 
-[open-xml-page-numbers-1]:Neomaster.Demos.Tests/Documents/PageNumbersUnitDemos.cs#L11
-[open-xml-page-numbers-2]:Neomaster.Demos.Tests/Documents/PageNumbersUnitDemos.cs#L53
+[open-xml-page-numbers-1]:Neomaster.Demos.Tests/Documents/PageNumbersUnitDemos.cs#L12
+[open-xml-page-numbers-2]:Neomaster.Demos.Tests/Documents/PageNumbersUnitDemos.cs#L54
 [open-xml-page-numbers-3]:Neomaster.Demos.Tests/Documents/PageNumbersUnitDemos.cs#L103
