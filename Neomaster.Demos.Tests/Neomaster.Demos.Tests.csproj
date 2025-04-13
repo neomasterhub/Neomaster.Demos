@@ -15,7 +15,7 @@
     <None Update="Apps/*">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="Documents/OpenXMLDocTables/Templates/*">
+    <None Update="Documents/**/Templates/*">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
