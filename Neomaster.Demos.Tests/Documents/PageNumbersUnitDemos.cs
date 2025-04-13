@@ -1,4 +1,5 @@
 using DocumentFormat.OpenXml;
+using DocumentFormat.OpenXml.Office2010.Excel;
 using DocumentFormat.OpenXml.Packaging;
 using DocumentFormat.OpenXml.Wordprocessing;
 using Xunit;
@@ -94,5 +95,23 @@ public class PageNumbersUnitDemos : OpenXMLUnitDemosBase
       });
 
     wordDoc.Save();
+  }
+
+  [Theory]
+  [InlineData("text-001.docx", false)]
+  [InlineData("text-001_page-numbers.docx", true)]
+  public void Has(string fileName, bool hasPageNumbers)
+  {
+    using var wordDoc = WordprocessingDocument.Open(GetTemplatePath(fileName), false);
+
+    var mainPart = wordDoc.MainDocumentPart;
+    var foundPageNumbers = wordDoc.MainDocumentPart.Document
+      .Descendants<FooterReference>()
+      .Select(fr => ((FooterPart)mainPart.GetPartById(fr.Id)).Footer)
+      .Any(f => f != null && f.Descendants().Any(e =>
+          e.LocalName == "instrText"
+          && e.InnerText.Contains("PAGE")));
+
+    Assert.Equal(hasPageNumbers, foundPageNumbers);
   }
 }
