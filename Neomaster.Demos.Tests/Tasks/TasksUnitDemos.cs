@@ -2,7 +2,7 @@ using Xunit;
 
 namespace Neomaster.Demos.Tests.Tasks;
 
-public class TasksUnitDemos
+public class TasksUnitDemos(ITestOutputHelper output)
 {
   [Fact]
   public void CreateTask()
@@ -1104,6 +1104,64 @@ public class TasksUnitDemos
       Assert.Equal(expectedStatusSeq[i], t.Status);
       i++;
     }
+  }
+
+  [Fact]
+  public async Task Yield()
+  {
+    var sw = new Stopwatch();
+    var ready = false;
+    var iterationCount = 0;
+
+    async Task Producer()
+    {
+      await Task.Delay(20);
+      ready = true;
+    }
+
+    async Task Consumer(bool useYield)
+    {
+      while (!ready)
+      {
+        iterationCount++;
+        if (useYield)
+        {
+          await Task.Yield();
+        }
+      }
+    }
+
+    async Task<(int IterationCount, TimeSpan Time)> MeasureAsync(bool useYield)
+    {
+      ready = false;
+      iterationCount = 0;
+
+      var producer = Producer();
+      var consumer = Consumer(useYield);
+
+      sw.Restart();
+      await Task.WhenAll(producer, consumer);
+      sw.Stop();
+
+      return (iterationCount, sw.Elapsed);
+    }
+
+    var m = await MeasureAsync(false);
+    var my = await MeasureAsync(true);
+
+    Assert.True(m.IterationCount > my.IterationCount);
+    Assert.True(m.Time < my.Time);
+
+    output.WriteLine(
+      $"""
+      Measure without yield
+      Iterations: {m.IterationCount}
+      Time: {m.Time}
+
+      Measure with yield
+      Iterations: {my.IterationCount}
+      Time: {my.Time}
+      """);
   }
 
   public class DefaultSyncCtx : SynchronizationContext

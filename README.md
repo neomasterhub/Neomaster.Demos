@@ -233,6 +233,7 @@
 42. [WaitAny][tasks-42]
 43. [WaitAny: task exception][tasks-43]
 44. [WhenEach][tasks-44]
+45. [Yield][tasks-45]
 
 [tasks-1]:Neomaster.Demos.Tests/Tasks/TasksUnitDemos.cs#L8
 [tasks-2]:Neomaster.Demos.Tests/Tasks/TasksUnitDemos.cs#L35
@@ -278,6 +279,7 @@
 [tasks-42]:Neomaster.Demos.Tests/Tasks/TasksUnitDemos.cs#L1033
 [tasks-43]:Neomaster.Demos.Tests/Tasks/TasksUnitDemos.cs#L1052
 [tasks-44]:Neomaster.Demos.Tests/Tasks/TasksUnitDemos.cs#L1071
+[tasks-45]:Neomaster.Demos.Tests/Tasks/TasksUnitDemos.cs#L1110
 
 ### Documents: Open XML <a name="documents-open-xml"></a>
 1. [Page numbers / add][open-xml-page-numbers-1]
