@@ -1,0 +1,135 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.12.35707.178
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Neomaster.Demos.Cmd", "Neomaster.Demos.Cmd\Neomaster.Demos.Cmd.csproj", "{7218C0A7-EFA6-4E0F-8F77-AE3532585566}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Neomaster.Demos.Tests", "Neomaster.Demos.Tests\Neomaster.Demos.Tests.csproj", "{FE478169-5AB2-45E3-9764-F045F801B174}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Neomaster.Demos.Apps", "Neomaster.Demos.Apps", "{5AFCF6FB-807F-43EB-AC17-A7D90CE602C9}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Threads", "Threads", "{33B6D6EC-E0F9-4D7E-BC79-CEF97ED13E7C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Neomaster.Demos.Apps.Threads.Background", "Neomaster.Demos.Apps\Neomaster.Demos.Apps.Threads.Background\Neomaster.Demos.Apps.Threads.Background.csproj", "{0B7EA20B-7B2B-4495-9D60-1004C901D43B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Neomaster.Demos.Apps.Threads.Foreground", "Neomaster.Demos.Apps\Neomaster.Demos.Apps.Threads.Foreground\Neomaster.Demos.Apps.Threads.Foreground.csproj", "{46D726A4-7B9B-4A3E-8B6A-8060D2DF5409}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Demos", "Demos", "{4C28B3A6-B8DC-45BE-8863-D13F3A08C594}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{9FD74043-095C-4366-A427-91BDA475535A}"
+	ProjectSection(SolutionItems) = preProject
+		README.md = README.md
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Neomaster.Demos.Apps.Threads.AbortThread", "Neomaster.Demos.Apps\Neomaster.Demos.Apps.Threads.AbortThread\Neomaster.Demos.Apps.Threads.AbortThread.csproj", "{22729EE0-31DC-424A-8E44-5BE4D50C9F05}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Neomaster.Demos.Apps.Threads.AffinityParameterized", "Neomaster.Demos.Apps\Neomaster.Demos.Apps.Threads.AffinityParameterized\Neomaster.Demos.Apps.Threads.AffinityParameterized.csproj", "{AAD1E2CD-156A-4DE7-A965-D7D35B28CF39}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Neomaster.Demos.Apps.Threads.AffinityProgrammed", "Neomaster.Demos.Apps\Neomaster.Demos.Apps.Threads.AffinityProgrammed\Neomaster.Demos.Apps.Threads.AffinityProgrammed.csproj", "{EBA78027-8AAE-454E-836E-8867AA2E878D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Neomaster.Demos.Apps.Threads.SuspendResume", "Neomaster.Demos.Apps\Neomaster.Demos.Apps.Threads.SuspendResume\Neomaster.Demos.Apps.Threads.SuspendResume.csproj", "{44C041F7-C775-4A17-BD70-5225AB542E0E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Neomaster.Demos.Apps.Threads.SuspendResumeTickTock", "Neomaster.Demos.Apps\Neomaster.Demos.Apps.Threads.SuspendResumeTickTock\Neomaster.Demos.Apps.Threads.SuspendResumeTickTock.csproj", "{30946C40-EB30-4354-8DCA-933573709D77}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestEngine", "Testing\TestEngine.csproj", "{4F4A8F8C-F252-FCAD-5720-F2439BCD72BC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Neomaster.Demos.Apps.Threads.SemaphoreProcess", "Neomaster.Demos.Apps\Neomaster.Demos.Apps.Threads.SemaphoreProcess\Neomaster.Demos.Apps.Threads.SemaphoreProcess.csproj", "{E8A11818-B751-C676-37BA-D29720F3F1A8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Neomaster.Demos.Apps.Threads.MutexSingletonApp", "Neomaster.Demos.Apps\Neomaster.Demos.Apps.Threads.MutexSingletonApp\Neomaster.Demos.Apps.Threads.MutexSingletonApp.csproj", "{045EEF1D-6049-4420-8AC8-968E5D0C3C52}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Neomaster.Demos.Apps.Threads.SetPoolThreadAsForeground", "Neomaster.Demos.Apps\Neomaster.Demos.Apps.Threads.SetPoolThreadAsForeground\Neomaster.Demos.Apps.Threads.SetPoolThreadAsForeground.csproj", "{4E10E768-6540-82AB-E802-F7FF20D36356}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tasks", "Tasks", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Neomaster.Demos.Apps.Tasks.TaskConfigureAwait", "Neomaster.Demos.Apps\Neomaster.Demos.Apps.Tasks.TaskConfigureAwait\Neomaster.Demos.Apps.Tasks.TaskConfigureAwait.csproj", "{5AFD01AA-96D7-4665-AB25-ED61602A808D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7218C0A7-EFA6-4E0F-8F77-AE3532585566}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7218C0A7-EFA6-4E0F-8F77-AE3532585566}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7218C0A7-EFA6-4E0F-8F77-AE3532585566}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7218C0A7-EFA6-4E0F-8F77-AE3532585566}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FE478169-5AB2-45E3-9764-F045F801B174}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FE478169-5AB2-45E3-9764-F045F801B174}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FE478169-5AB2-45E3-9764-F045F801B174}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FE478169-5AB2-45E3-9764-F045F801B174}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0B7EA20B-7B2B-4495-9D60-1004C901D43B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0B7EA20B-7B2B-4495-9D60-1004C901D43B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0B7EA20B-7B2B-4495-9D60-1004C901D43B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0B7EA20B-7B2B-4495-9D60-1004C901D43B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{46D726A4-7B9B-4A3E-8B6A-8060D2DF5409}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{46D726A4-7B9B-4A3E-8B6A-8060D2DF5409}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{46D726A4-7B9B-4A3E-8B6A-8060D2DF5409}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{46D726A4-7B9B-4A3E-8B6A-8060D2DF5409}.Release|Any CPU.Build.0 = Release|Any CPU
+		{22729EE0-31DC-424A-8E44-5BE4D50C9F05}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{22729EE0-31DC-424A-8E44-5BE4D50C9F05}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{22729EE0-31DC-424A-8E44-5BE4D50C9F05}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{22729EE0-31DC-424A-8E44-5BE4D50C9F05}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AAD1E2CD-156A-4DE7-A965-D7D35B28CF39}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AAD1E2CD-156A-4DE7-A965-D7D35B28CF39}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AAD1E2CD-156A-4DE7-A965-D7D35B28CF39}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AAD1E2CD-156A-4DE7-A965-D7D35B28CF39}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EBA78027-8AAE-454E-836E-8867AA2E878D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EBA78027-8AAE-454E-836E-8867AA2E878D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EBA78027-8AAE-454E-836E-8867AA2E878D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EBA78027-8AAE-454E-836E-8867AA2E878D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{44C041F7-C775-4A17-BD70-5225AB542E0E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{44C041F7-C775-4A17-BD70-5225AB542E0E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{44C041F7-C775-4A17-BD70-5225AB542E0E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{44C041F7-C775-4A17-BD70-5225AB542E0E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{30946C40-EB30-4354-8DCA-933573709D77}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{30946C40-EB30-4354-8DCA-933573709D77}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{30946C40-EB30-4354-8DCA-933573709D77}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{30946C40-EB30-4354-8DCA-933573709D77}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4F4A8F8C-F252-FCAD-5720-F2439BCD72BC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4F4A8F8C-F252-FCAD-5720-F2439BCD72BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4F4A8F8C-F252-FCAD-5720-F2439BCD72BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4F4A8F8C-F252-FCAD-5720-F2439BCD72BC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E8A11818-B751-C676-37BA-D29720F3F1A8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E8A11818-B751-C676-37BA-D29720F3F1A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E8A11818-B751-C676-37BA-D29720F3F1A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E8A11818-B751-C676-37BA-D29720F3F1A8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{045EEF1D-6049-4420-8AC8-968E5D0C3C52}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{045EEF1D-6049-4420-8AC8-968E5D0C3C52}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{045EEF1D-6049-4420-8AC8-968E5D0C3C52}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{045EEF1D-6049-4420-8AC8-968E5D0C3C52}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4E10E768-6540-82AB-E802-F7FF20D36356}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4E10E768-6540-82AB-E802-F7FF20D36356}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4E10E768-6540-82AB-E802-F7FF20D36356}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4E10E768-6540-82AB-E802-F7FF20D36356}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5AFD01AA-96D7-4665-AB25-ED61602A808D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5AFD01AA-96D7-4665-AB25-ED61602A808D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5AFD01AA-96D7-4665-AB25-ED61602A808D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5AFD01AA-96D7-4665-AB25-ED61602A808D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{7218C0A7-EFA6-4E0F-8F77-AE3532585566} = {4C28B3A6-B8DC-45BE-8863-D13F3A08C594}
+		{FE478169-5AB2-45E3-9764-F045F801B174} = {4C28B3A6-B8DC-45BE-8863-D13F3A08C594}
+		{5AFCF6FB-807F-43EB-AC17-A7D90CE602C9} = {4C28B3A6-B8DC-45BE-8863-D13F3A08C594}
+		{33B6D6EC-E0F9-4D7E-BC79-CEF97ED13E7C} = {5AFCF6FB-807F-43EB-AC17-A7D90CE602C9}
+		{0B7EA20B-7B2B-4495-9D60-1004C901D43B} = {33B6D6EC-E0F9-4D7E-BC79-CEF97ED13E7C}
+		{46D726A4-7B9B-4A3E-8B6A-8060D2DF5409} = {33B6D6EC-E0F9-4D7E-BC79-CEF97ED13E7C}
+		{22729EE0-31DC-424A-8E44-5BE4D50C9F05} = {33B6D6EC-E0F9-4D7E-BC79-CEF97ED13E7C}
+		{AAD1E2CD-156A-4DE7-A965-D7D35B28CF39} = {33B6D6EC-E0F9-4D7E-BC79-CEF97ED13E7C}
+		{EBA78027-8AAE-454E-836E-8867AA2E878D} = {33B6D6EC-E0F9-4D7E-BC79-CEF97ED13E7C}
+		{44C041F7-C775-4A17-BD70-5225AB542E0E} = {33B6D6EC-E0F9-4D7E-BC79-CEF97ED13E7C}
+		{30946C40-EB30-4354-8DCA-933573709D77} = {33B6D6EC-E0F9-4D7E-BC79-CEF97ED13E7C}
+		{4F4A8F8C-F252-FCAD-5720-F2439BCD72BC} = {9FD74043-095C-4366-A427-91BDA475535A}
+		{E8A11818-B751-C676-37BA-D29720F3F1A8} = {33B6D6EC-E0F9-4D7E-BC79-CEF97ED13E7C}
+		{045EEF1D-6049-4420-8AC8-968E5D0C3C52} = {33B6D6EC-E0F9-4D7E-BC79-CEF97ED13E7C}
+		{4E10E768-6540-82AB-E802-F7FF20D36356} = {33B6D6EC-E0F9-4D7E-BC79-CEF97ED13E7C}
+		{02EA681E-C7D8-13C7-8484-4AC65E1B71E8} = {5AFCF6FB-807F-43EB-AC17-A7D90CE602C9}
+		{5AFD01AA-96D7-4665-AB25-ED61602A808D} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {CB231523-908C-4D0B-89C0-57C1A15EED74}
+	EndGlobalSection
+EndGlobal

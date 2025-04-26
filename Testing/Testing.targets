@@ -1,0 +1,26 @@
+<Project>
+
+  <Choose>
+
+    <When Condition=" '$(Configuration)'!='Debug' ">
+      <ItemGroup>
+        <Compile Remove="**/*IntegrationTests.cs" />
+        <Compile Remove="**/*UnitTests.cs" />
+        <Compile Remove="**/*UnitDemos.cs" />
+        <Compile Remove="**/UnitTest*.cs" />
+        <Compile Remove="**/UnitDemo*.cs" />
+        <Compile Remove="**/*Fixture.cs" />
+      </ItemGroup>
+    </When>
+
+    <When Condition=" '$(Configuration)'=='Debug' ">
+      <ItemGroup>
+        <ProjectReference Include="$(SolutionDir)Testing/TestEngine.csproj" />
+        <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.13.0" />
+        <PackageReference Include="Autofac.Extras.Moq" Version="7.0.0" />
+      </ItemGroup>
+    </When>
+
+  </Choose>
+
+</Project>
