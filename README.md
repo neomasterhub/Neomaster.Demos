@@ -7,7 +7,6 @@
 * [*Threads: Thread Pool*](#threads-thread-pool)
 * [*Threads: Features*](#threads-features)
 * [*Tasks*](#tasks)
-* [*Documents: Open XML*](#documents-open-xml)
 * [*Archives: ZIP*](#archives-zip)
 
 ## .NET
