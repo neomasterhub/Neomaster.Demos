@@ -281,19 +281,6 @@
 [tasks-44]:Neomaster.Demos.Tests/Tasks/TasksUnitDemos.cs#L1071
 [tasks-45]:Neomaster.Demos.Tests/Tasks/TasksUnitDemos.cs#L1110
 
-### Documents: Open XML <a name="documents-open-xml"></a>
-1. [Page numbers / add][open-xml-page-numbers-1]
-1. [Page numbers / add / of total][open-xml-page-numbers-2]
-1. [Page numbers / has][open-xml-page-numbers-3]
-1. [Insert filled templates / user card / text / to table cell][open-xml-insert-filled-templates-1]
-1. [Insert filled templates / user card / table / to table cell][open-xml-insert-filled-templates-2]
-
-[open-xml-page-numbers-1]:Neomaster.Demos.Tests/Documents/PageNumbersUnitDemos.cs#L12
-[open-xml-page-numbers-2]:Neomaster.Demos.Tests/Documents/PageNumbersUnitDemos.cs#L54
-[open-xml-page-numbers-3]:Neomaster.Demos.Tests/Documents/PageNumbersUnitDemos.cs#L103
-[open-xml-insert-filled-templates-1]:Neomaster.Demos.Tests/Documents/InsertFilledTemplatesUnitDemos.cs#L12
-[open-xml-insert-filled-templates-2]:Neomaster.Demos.Tests/Documents/InsertFilledTemplatesUnitDemos.cs#L77
-
 ### Archives: ZIP <a name="archives-zip"></a>
 1. [Create 1 root file][archives-zip-1]
 2. [Create N root files][archives-zip-2]
