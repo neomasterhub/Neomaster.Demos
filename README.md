@@ -233,6 +233,10 @@
 43. [WaitAny: task exception][tasks-43]
 44. [WhenEach][tasks-44]
 45. [Yield][tasks-45]
+46. [Awaiter: GetResult][tasks-46]
+47. [Awaiter: OnCompleted][tasks-47]
+48. [Awaiter: pattern][tasks-48]
+49. [Awaiter: timespan awaiter][tasks-49]
 
 [tasks-1]:Neomaster.Demos.Tests/Tasks/TasksUnitDemos.cs#L8
 [tasks-2]:Neomaster.Demos.Tests/Tasks/TasksUnitDemos.cs#L35
@@ -279,6 +283,10 @@
 [tasks-43]:Neomaster.Demos.Tests/Tasks/TasksUnitDemos.cs#L1052
 [tasks-44]:Neomaster.Demos.Tests/Tasks/TasksUnitDemos.cs#L1071
 [tasks-45]:Neomaster.Demos.Tests/Tasks/TasksUnitDemos.cs#L1110
+[tasks-46]:Neomaster.Demos.Tests/Tasks/TasksUnitDemos.cs#L1168
+[tasks-47]:Neomaster.Demos.Tests/Tasks/TasksUnitDemos.cs#L1180
+[tasks-48]:Neomaster.Demos.Tests/Tasks/TasksUnitDemos.cs#L1207
+[tasks-49]:Neomaster.Demos.Tests/Tasks/TasksUnitDemos.cs#L1259
 
 ### Archives: ZIP <a name="archives-zip"></a>
 1. [Create 1 root file][archives-zip-1]

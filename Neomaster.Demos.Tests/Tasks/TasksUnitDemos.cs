@@ -1164,6 +1164,108 @@ public class TasksUnitDemos(ITestOutputHelper output)
       """);
   }
 
+  [Fact]
+  public void AwaiterGetResult()
+  {
+    var r1 = Task.Run(() => 1).GetAwaiter().GetResult(); // task.Result
+
+    var r2 = 0;
+    Task.Run(() => { r2 = 2; }).GetAwaiter().GetResult(); // task.Wait()
+
+    Assert.Equal(1, r1);
+    Assert.Equal(2, r2);
+  }
+
+  [Fact]
+  public void AwaiterOnCompleted()
+  {
+    var completed = false;
+    var re = new ManualResetEvent(false);
+    var t = Task.Run(() =>
+    {
+      Thread.Sleep(100);
+    });
+
+    var a = t.GetAwaiter();
+    a.OnCompleted(() =>
+    {
+      completed = true;
+      re.Set();
+    });
+
+    while (!a.IsCompleted)
+    {
+      Assert.False(completed);
+      Thread.Sleep(20);
+    }
+
+    re.WaitOne();
+    Assert.True(completed);
+  }
+
+  [Fact]
+  public void AwaiterPattern()
+  {
+    string AwaitResult(Task<int> task, int? timeout = null)
+    {
+      var a = task.GetAwaiter();
+
+      if (a.IsCompleted)
+      {
+        return $"{a.GetResult()} fast";
+      }
+
+      var re = new ManualResetEvent(false);
+      var result = "time is out";
+      a.OnCompleted(() =>
+      {
+        result = $"{a.GetResult()} slow";
+        re.Set();
+      });
+
+      _ = timeout == null ? re.WaitOne() : re.WaitOne(timeout.Value);
+
+      return result;
+    }
+
+    var t1 = Task.Run(() =>
+    {
+      return 1;
+    });
+    var r1 = AwaitResult(t1);
+    Assert.Equal("1 fast", r1);
+
+    var t2 = Task.Run(() =>
+    {
+      Thread.Sleep(100);
+      return 2;
+    });
+    var r2 = AwaitResult(t2);
+    Assert.Equal("2 slow", r2);
+
+    var t3 = Task.Run(() =>
+    {
+      Thread.Sleep(100);
+      return 1;
+    });
+    var r3 = AwaitResult(t3, 50);
+    Assert.Equal("time is out", r3);
+  }
+
+  /// <summary>
+  /// See <see cref="TimeSpanAwaiter"/>.
+  /// </summary>
+  [Fact]
+  public async Task TimespanAwaiter()
+  {
+    var sw = Stopwatch.StartNew();
+
+    await TimeSpan.FromMilliseconds(100);
+
+    sw.Stop();
+    Assert.True(sw.Elapsed.TotalMilliseconds >= 100);
+  }
+
   public class DefaultSyncCtx : SynchronizationContext
   {
     private int _postCallCount;
