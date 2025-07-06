@@ -1266,53 +1266,53 @@ public class TasksUnitDemos(ITestOutputHelper output)
     Assert.True(sw.Elapsed.TotalMilliseconds >= 100);
   }
 
-  public class DefaultSyncCtx : SynchronizationContext
+  [Fact]
+  public async Task TaskCompletionSourceTimeout()
   {
-    private int _postCallCount;
-    private int _sendCallCount;
-
-    public int PostCallCount => _postCallCount;
-    public int SendCallCount => _sendCallCount;
-
-    public override void Post(SendOrPostCallback d, object state)
+    Task<int> GetAsync(int timeout)
     {
-      Interlocked.Increment(ref _postCallCount);
-      base.Post(d, state);
+      var tcs = new TaskCompletionSource<int>();
+
+      var cts = new CancellationTokenSource(timeout);
+      cts.Token.Register(() => tcs.TrySetException(new TimeoutException()));
+
+      Task.Run(async () =>
+      {
+        await Task.Delay(100);
+        tcs.TrySetResult(1);
+      });
+
+      return tcs.Task;
     }
 
-    public override void Send(SendOrPostCallback d, object state)
-    {
-      Interlocked.Increment(ref _sendCallCount);
-      base.Send(d, state);
-    }
+    var x = await GetAsync(200);
+    Assert.Equal(1, x);
+
+    var ex = Assert.ThrowsAsync<TimeoutException>(() => GetAsync(50));
   }
 
-  public class UISyncCtx : SynchronizationContext
+  [Fact]
+  public async Task TaskCompletionSourceWithTimeoutExtension()
   {
-    private readonly int _mainThreadId = Thread.CurrentThread.ManagedThreadId;
+    var r1 = await Task.Delay(100).ContinueWith(_ => 1).WithTimeout(200);
+    Assert.Equal(1, r1);
 
-    private int _postCallCount;
-    private int _sendCallCount;
+    var ex2 = await Assert.ThrowsAsync<TimeoutException>(() => Task.Delay(100).ContinueWith(_ => 1).WithTimeout(10));
+  }
 
-    public int PostCallCount => _postCallCount;
-    public int SendCallCount => _sendCallCount;
+  [Fact]
+  public async Task TaskCompletionExternalEventSourceAdapter()
+  {
+    var adapter = new ExternalEventSourceAdapter();
 
-    public override void Post(SendOrPostCallback d, object state)
-    {
-      if (Thread.CurrentThread.ManagedThreadId == _mainThreadId)
-      {
-        Send(d, state);
-        return;
-      }
+    var t1 = adapter.DoAsync(100);
+    var r1 = await t1;
+    Assert.True(t1.IsCompletedSuccessfully);
+    Assert.True(r1);
 
-      Interlocked.Increment(ref _postCallCount);
-      ThreadPool.QueueUserWorkItem(_ => d(state));
-    }
-
-    public override void Send(SendOrPostCallback d, object state)
-    {
-      Interlocked.Increment(ref _sendCallCount);
-      d(state);
-    }
+    var cts = new CancellationTokenSource(100);
+    var t2 = adapter.DoAsync(200, cts.Token);
+    var ex2 = await Assert.ThrowsAsync<TaskCanceledException>(() => t2);
+    Assert.True(t2.IsCanceled);
   }
 }

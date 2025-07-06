@@ -237,6 +237,9 @@
 47. [Awaiter: OnCompleted][tasks-47]
 48. [Awaiter: pattern][tasks-48]
 49. [Awaiter: timespan awaiter][tasks-49]
+50. [TaskCompletionSource: timeout][tasks-50]
+51. [TaskCompletionSource: WithTimeout() extension][tasks-51]
+52. [TaskCompletionSource: external event source adapter][tasks-52]
 
 [tasks-1]:Neomaster.Demos.Tests/Tasks/TasksUnitDemos.cs#L8
 [tasks-2]:Neomaster.Demos.Tests/Tasks/TasksUnitDemos.cs#L35
@@ -287,6 +290,9 @@
 [tasks-47]:Neomaster.Demos.Tests/Tasks/TasksUnitDemos.cs#L1180
 [tasks-48]:Neomaster.Demos.Tests/Tasks/TasksUnitDemos.cs#L1207
 [tasks-49]:Neomaster.Demos.Tests/Tasks/TasksUnitDemos.cs#L1259
+[tasks-50]:Neomaster.Demos.Tests/Tasks/TasksUnitDemos.cs#L1270
+[tasks-51]:Neomaster.Demos.Tests/Tasks/TasksUnitDemos.cs#L1295
+[tasks-52]:Neomaster.Demos.Tests/Tasks/TasksUnitDemos.cs#L1304
 
 ### Archives: ZIP <a name="archives-zip"></a>
 1. [Create 1 root file][archives-zip-1]
