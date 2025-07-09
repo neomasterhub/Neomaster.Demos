@@ -1368,4 +1368,11 @@ public class TasksUnitDemos(ITestOutputHelper output)
 
     await Assert.ThrowsAsync<InvalidOperationException>(() => et);
   }
+
+  [Fact]
+  public void TaskCompletedTask()
+  {
+    var emptyVoidTask = Task.CompletedTask;
+    Assert.Equal(TaskStatus.RanToCompletion, emptyVoidTask.Status);
+  }
 }
