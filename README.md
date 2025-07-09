@@ -240,6 +240,9 @@
 50. [TaskCompletionSource: timeout][tasks-50]
 51. [TaskCompletionSource: WithTimeout() extension][tasks-51]
 52. [TaskCompletionSource: external event source adapter][tasks-52]
+53. [FromResult][tasks-53]
+54. [FromCanceled][tasks-54]
+55. [FromException][tasks-55]
 
 [tasks-1]:Neomaster.Demos.Tests/Tasks/TasksUnitDemos.cs#L8
 [tasks-2]:Neomaster.Demos.Tests/Tasks/TasksUnitDemos.cs#L35
@@ -293,6 +296,9 @@
 [tasks-50]:Neomaster.Demos.Tests/Tasks/TasksUnitDemos.cs#L1270
 [tasks-51]:Neomaster.Demos.Tests/Tasks/TasksUnitDemos.cs#L1295
 [tasks-52]:Neomaster.Demos.Tests/Tasks/TasksUnitDemos.cs#L1304
+[tasks-53]:Neomaster.Demos.Tests/Tasks/TasksUnitDemos.cs#L1320
+[tasks-54]:Neomaster.Demos.Tests/Tasks/TasksUnitDemos.cs#L1329
+[tasks-55]:Neomaster.Demos.Tests/Tasks/TasksUnitDemos.cs#L1351
 
 ### Archives: ZIP <a name="archives-zip"></a>
 1. [Create 1 root file][archives-zip-1]

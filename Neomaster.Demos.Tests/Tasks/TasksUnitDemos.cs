@@ -1315,4 +1315,57 @@ public class TasksUnitDemos(ITestOutputHelper output)
     var ex2 = await Assert.ThrowsAsync<TaskCanceledException>(() => t2);
     Assert.True(t2.IsCanceled);
   }
+
+  [Fact]
+  public async Task TaskFromResult()
+  {
+    var rt = Task.FromResult(1);
+    Assert.Equal(TaskStatus.RanToCompletion, rt.Status);
+    var r = await rt;
+    Assert.Equal(1, r);
+  }
+
+  [Fact]
+  public async Task TaskFromCanceled()
+  {
+    ArgumentOutOfRangeException ctEx = null;
+    try
+    {
+      _ = Task.FromCanceled(new CancellationToken(false)); // CancellationToken.None
+    }
+    catch (ArgumentOutOfRangeException ex)
+    {
+      ctEx = ex;
+    }
+    finally
+    {
+      Assert.NotNull(ctEx);
+    }
+
+    var ct = Task.FromCanceled<int>(new CancellationToken(true));
+    Assert.Equal(TaskStatus.Canceled, ct.Status);
+    await Assert.ThrowsAsync<TaskCanceledException>(() => ct);
+  }
+
+  [Fact]
+  public async Task TaskFromException()
+  {
+    Task et = null;
+    InvalidOperationException etEx = null;
+
+    try
+    {
+      et = Task.FromException(new InvalidOperationException());
+    }
+    catch (InvalidOperationException ex)
+    {
+      etEx = ex;
+    }
+    finally
+    {
+      Assert.Null(etEx);
+    }
+
+    await Assert.ThrowsAsync<InvalidOperationException>(() => et);
+  }
 }
