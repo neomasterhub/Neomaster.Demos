@@ -244,6 +244,7 @@
 54. [FromCanceled][tasks-54]
 55. [FromException][tasks-55]
 56. [CompletedTask][tasks-56]
+57. [ValueTask: cached result][tasks-57]
 
 [tasks-1]:Neomaster.Demos.Tests/Tasks/TasksUnitDemos.cs#L8
 [tasks-2]:Neomaster.Demos.Tests/Tasks/TasksUnitDemos.cs#L35
@@ -301,6 +302,7 @@
 [tasks-54]:Neomaster.Demos.Tests/Tasks/TasksUnitDemos.cs#L1329
 [tasks-55]:Neomaster.Demos.Tests/Tasks/TasksUnitDemos.cs#L1351
 [tasks-56]:Neomaster.Demos.Tests/Tasks/TasksUnitDemos.cs#L1373
+[tasks-57]:Neomaster.Demos.Tests/Tasks/TasksUnitDemos.cs#L1380
 
 ### Archives: ZIP <a name="archives-zip"></a>
 1. [Create 1 root file][archives-zip-1]

@@ -1375,4 +1375,40 @@ public class TasksUnitDemos(ITestOutputHelper output)
     var emptyVoidTask = Task.CompletedTask;
     Assert.Equal(TaskStatus.RanToCompletion, emptyVoidTask.Status);
   }
+
+  [Fact]
+  public async Task ValueTaskCachedResult()
+  {
+    int? cached = null;
+    int taskCalls = 0;
+    var random = new Random();
+
+    Task<(int Result, bool FromCache)> GetTask()
+    {
+      return Task.Run(() =>
+      {
+        Interlocked.Increment(ref taskCalls);
+        var result = random.Next(0, 1000);
+        cached = result;
+        return (result, false);
+      });
+    }
+
+    ValueTask<(int Result, bool FromCache)> GetAsync()
+    {
+      return cached == null
+        ? new ValueTask<(int, bool)>(GetTask())
+        : new ValueTask<(int, bool)>((cached.Value, true));
+    }
+
+    var r1 = await GetAsync();
+    Assert.False(r1.FromCache);
+
+    var r2 = await GetAsync();
+    Assert.True(r2.FromCache);
+
+    Assert.Equal(cached, r1.Result);
+    Assert.Equal(cached, r2.Result);
+    Assert.Equal(1, taskCalls);
+  }
 }
