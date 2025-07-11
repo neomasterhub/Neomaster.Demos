@@ -1411,4 +1411,48 @@ public class TasksUnitDemos(ITestOutputHelper output)
     Assert.Equal(cached, r2.Result);
     Assert.Equal(1, taskCalls);
   }
+
+  [Fact]
+  public async Task Factory()
+  {
+    var r1 = 0;
+    var f1 = new TaskFactory();
+    var t1 = f1.StartNew(() => { r1 = 1; });
+    await t1;
+    Assert.Equal(1, r1);
+
+    var r2 = 0;
+    var f2 = new TaskFactory();
+    var t2 = f2.StartNew(() => 2);
+    r2 = await t2;
+    Assert.Equal(2, r2);
+  }
+
+  [Fact]
+  public async Task FactoryContinuations()
+  {
+    var f = new TaskFactory();
+
+    var t1 = f.StartNew(() =>
+    {
+      Thread.Sleep(100);
+      return 1;
+    });
+    var t2 = f.StartNew(() =>
+    {
+      Thread.Sleep(200);
+      return 2;
+    });
+
+    var tasks = new Task[] { t1, t2 };
+
+    var ctAny = f.ContinueWhenAny(tasks, completed => Array.IndexOf(tasks, completed));
+    var ctAll = f.ContinueWhenAll(tasks, completed => completed.Length);
+
+    var r1 = await ctAny;
+    var r2 = await ctAll;
+
+    Assert.Equal(0, r1);
+    Assert.Equal(2, r2);
+  }
 }
