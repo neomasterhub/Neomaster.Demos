@@ -1455,4 +1455,15 @@ public class TasksUnitDemos(ITestOutputHelper output)
     Assert.Equal(0, r1);
     Assert.Equal(2, r2);
   }
+
+  [Fact]
+  public async Task FactoryCreationOptionsLongRunning()
+  {
+    var f = new TaskFactory(TaskCreationOptions.LongRunning, default);
+    var t = f.StartNew(() => Thread.CurrentThread.IsThreadPoolThread);
+
+    var fromThreadPool = await t;
+
+    Assert.False(fromThreadPool);
+  }
 }
