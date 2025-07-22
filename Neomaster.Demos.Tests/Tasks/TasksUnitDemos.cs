@@ -1466,4 +1466,25 @@ public class TasksUnitDemos(ITestOutputHelper output)
 
     Assert.False(fromThreadPool);
   }
+
+  [Theory]
+  [InlineData(TaskCreationOptions.None, false, true)]
+  [InlineData(TaskCreationOptions.DenyChildAttach, true, true)]
+  public void FactoryCreationOptionsChildTaskAttachment(
+    TaskCreationOptions taskCreationOption,
+    bool expectedWait1,
+    bool expectedWait2)
+  {
+    var f = new TaskFactory(taskCreationOption, default);
+
+    var tParent = f.StartNew(() =>
+    {
+      var tChild = Task.Factory.StartNew(
+        () => Thread.Sleep(100),
+        TaskCreationOptions.AttachedToParent);
+    });
+
+    Assert.Equal(expectedWait1, tParent.Wait(50));
+    Assert.Equal(expectedWait2, tParent.Wait(150));
+  }
 }

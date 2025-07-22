@@ -248,6 +248,7 @@
 58. [Factory][tasks-58]
 59. [Factory: continuations][tasks-59]
 60. [Factory: `TaskCreationOptions.LongRunning`][tasks-60]
+61. [Factory: child task attachment, `TaskCreationOptions.DenyChildAttach`][tasks-61]
 
 [tasks-1]:Neomaster.Demos.Tests/Tasks/TasksUnitDemos.cs#L8
 [tasks-2]:Neomaster.Demos.Tests/Tasks/TasksUnitDemos.cs#L35
@@ -309,6 +310,7 @@
 [tasks-58]:Neomaster.Demos.Tests/Tasks/TasksUnitDemos.cs#L1416
 [tasks-59]:Neomaster.Demos.Tests/Tasks/TasksUnitDemos.cs#L1432
 [tasks-60]:Neomaster.Demos.Tests/Tasks/TasksUnitDemos.cs#L1460
+[tasks-61]:Neomaster.Demos.Tests/Tasks/TasksUnitDemos.cs#L1473
 
 ### Archives: ZIP <a name="archives-zip"></a>
 1. [Create 1 root file][archives-zip-1]
