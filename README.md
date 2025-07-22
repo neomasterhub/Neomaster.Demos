@@ -1,5 +1,6 @@
 # DEMOS
 
+## .NET
 * [*Threads*](#threads)
 * [*Threads: Synchronization*](#threads-sync)
 * [*Threads: Event Synchronization*](#threads-event-sync)
@@ -8,8 +9,6 @@
 * [*Threads: Features*](#threads-features)
 * [*Tasks*](#tasks)
 * [*Archives: ZIP*](#archives-zip)
-
-## .NET
 
 ### Threads <a name="threads"></a>
 1. [Create, Sleep, Join][threads-1]
@@ -249,6 +248,7 @@
 59. [Factory: continuations][tasks-59]
 60. [Factory: `TaskCreationOptions.LongRunning`][tasks-60]
 61. [Factory: child task attachment, `TaskCreationOptions.DenyChildAttach`][tasks-61]
+62. [Factory: set task schedulers][tasks-62]
 
 [tasks-1]:Neomaster.Demos.Tests/Tasks/TasksUnitDemos.cs#L8
 [tasks-2]:Neomaster.Demos.Tests/Tasks/TasksUnitDemos.cs#L35
@@ -311,6 +311,7 @@
 [tasks-59]:Neomaster.Demos.Tests/Tasks/TasksUnitDemos.cs#L1432
 [tasks-60]:Neomaster.Demos.Tests/Tasks/TasksUnitDemos.cs#L1460
 [tasks-61]:Neomaster.Demos.Tests/Tasks/TasksUnitDemos.cs#L1473
+[tasks-62]:Neomaster.Demos.Tests/Tasks/TasksUnitDemos.cs#L1492
 
 ### Archives: ZIP <a name="archives-zip"></a>
 1. [Create 1 root file][archives-zip-1]

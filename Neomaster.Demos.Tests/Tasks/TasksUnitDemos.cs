@@ -1487,4 +1487,33 @@ public class TasksUnitDemos(ITestOutputHelper output)
     Assert.Equal(expectedWait1, tParent.Wait(50));
     Assert.Equal(expectedWait2, tParent.Wait(150));
   }
+
+  [Fact]
+  public async Task FactorySetTaskSchedulers()
+  {
+    using var s1 = new CustomTaskScheduler("s1");
+    using var s2 = new CustomTaskScheduler("s2");
+
+    Task<string> childTask = null;
+    var parentTask = Task.Factory.StartNew(
+      () =>
+      {
+        childTask = Task.Factory.StartNew(
+          () => Thread.CurrentThread.Name,
+          CancellationToken.None,
+          TaskCreationOptions.AttachedToParent,
+          s2);
+
+        return Thread.CurrentThread.Name;
+      },
+      CancellationToken.None,
+      TaskCreationOptions.None,
+      s1);
+
+    var parentThreadName = await parentTask;
+    var childThreadName = await childTask;
+
+    Assert.Equal("s1", parentThreadName);
+    Assert.Equal("s2", childThreadName);
+  }
 }
