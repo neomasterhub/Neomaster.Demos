@@ -8,6 +8,7 @@
 * [*Threads: Thread Pool*](#threads-thread-pool)
 * [*Threads: Features*](#threads-features)
 * [*Tasks*](#tasks)
+* [*Tasks: Activity Types*](#tasks-activity-types)
 * [*Archives: ZIP*](#archives-zip)
 
 ### Threads <a name="threads"></a>
@@ -312,6 +313,23 @@
 [tasks-60]:Neomaster.Demos.Tests/Tasks/TasksUnitDemos.cs#L1460
 [tasks-61]:Neomaster.Demos.Tests/Tasks/TasksUnitDemos.cs#L1473
 [tasks-62]:Neomaster.Demos.Tests/Tasks/TasksUnitDemos.cs#L1492
+
+### Tasks: Activity Types <a name="archives-zip"></a>
+1. [`CustomTaskScheduler.cs`][tasks-activity-types-1]
+2. [`DefaultSyncCtx.cs`][tasks-activity-types-2]
+3. [`ExternalEventSource.cs`][tasks-activity-types-3]
+4. [`ExternalEventSourceAdapter.cs`][tasks-activity-types-4]
+5. [`TaskExtensions.cs`][tasks-activity-types-5]
+6. [`TimeSpanAwaiter.cs`][tasks-activity-types-6]
+7. [`UISyncCtx.cs`][tasks-activity-types-7]
+
+[tasks-activity-types-1]:Neomaster.Demos.Tests/Tasks/ActivityTypes/CustomTaskScheduler.cs
+[tasks-activity-types-2]:Neomaster.Demos.Tests/Tasks/ActivityTypes/DefaultSyncCtx.cs
+[tasks-activity-types-3]:Neomaster.Demos.Tests/Tasks/ActivityTypes/ExternalEventSource.cs
+[tasks-activity-types-4]:Neomaster.Demos.Tests/Tasks/ActivityTypes/ExternalEventSourceAdapter.cs
+[tasks-activity-types-5]:Neomaster.Demos.Tests/Tasks/ActivityTypes/TaskExtensions.cs
+[tasks-activity-types-6]:Neomaster.Demos.Tests/Tasks/ActivityTypes/TimeSpanAwaiter.cs
+[tasks-activity-types-7]:Neomaster.Demos.Tests/Tasks/ActivityTypes/UISyncCtx.cs
 
 ### Archives: ZIP <a name="archives-zip"></a>
 1. [Create 1 root file][archives-zip-1]
