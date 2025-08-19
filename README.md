@@ -317,8 +317,10 @@
 
 ### Tasks: Timers <a name="tasks-timers"></a>
 1. [Callback][tasks-timers-1]
+2. [AutoReset: false][tasks-timers-2]
 
 [tasks-timers-1]:Neomaster.Demos.Tests/Tasks/TasksTimerUnitDemos.cs#L9
+[tasks-timers-2]:Neomaster.Demos.Tests/Tasks/TasksTimerUnitDemos.cs#L36
 
 ### Tasks: Activity Types <a name="tasks-activity-types"></a>
 1. [`CustomTaskScheduler.cs`][tasks-activity-types-1]
