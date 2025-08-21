@@ -155,23 +155,15 @@
 
 ### Threads: Atomic Operations <a name="threads-atomic-operations"></a>
 1. [Volatile class][threads-atomic-operations-1]
-2. [Lazy&lt;T&gt;: lazy initialization][threads-atomic-operations-2]
-3. [Lazy&lt;T&gt;: single initialization][threads-atomic-operations-3]
-4. [Lazy&lt;T&gt;: multiple initialization][threads-atomic-operations-4]
-5. [Lazy&lt;T&gt;: unsafe initialization][threads-atomic-operations-5]
 
 [threads-atomic-operations-1]:Neomaster.Demos.Tests/Threads/ThreadsAtomicOperationsUnitDemos.cs#L8
-[threads-atomic-operations-2]:Neomaster.Demos.Tests/Threads/ThreadsAtomicOperationsUnitDemos.cs#L43
-[threads-atomic-operations-3]:Neomaster.Demos.Tests/Threads/ThreadsAtomicOperationsUnitDemos.cs#L55
-[threads-atomic-operations-4]:Neomaster.Demos.Tests/Threads/ThreadsAtomicOperationsUnitDemos.cs#L89
-[threads-atomic-operations-5]:Neomaster.Demos.Tests/Threads/ThreadsAtomicOperationsUnitDemos.cs#L132
 
 ### Threads: Thread Pool <a name="threads-thread-pool"></a>
 1. [Thread Pool: QueueUserWorkItem][threads-thread-pool-1]
 2. [Thread Pool: QueueUserWorkItem with state][threads-thread-pool-2]
 3. [Thread Pool: QueueUserWorkItem Join][threads-thread-pool-3]
 4. [Thread Pool: set pool thread as foreground][threads-thread-pool-4]
-5. [Thread Pool: pool restores thread as background][threads-thread-pool-4]
+5. [Thread Pool: pool restores thread as background][threads-thread-pool-5]
 
 [threads-thread-pool-1]:Neomaster.Demos.Tests/Threads/ThreadsThreadPoolUnitDemos.cs#L8
 [threads-thread-pool-2]:Neomaster.Demos.Tests/Threads/ThreadsThreadPoolUnitDemos.cs#L25
@@ -185,12 +177,20 @@
 3. [Synchronized method: instance in different threads][threads-features-3]
 4. [Synchronized method: static in different threads][threads-features-4]
 5. [ThreadLocal&lt;T&gt;: counters][threads-features-5]
+6. [Lazy&lt;T&gt;: lazy initialization][threads-atomic-operations-6]
+7. [Lazy&lt;T&gt;: single initialization][threads-atomic-operations-7]
+8. [Lazy&lt;T&gt;: multiple initialization][threads-atomic-operations-8]
+9. [Lazy&lt;T&gt;: unsafe initialization][threads-atomic-operations-9]
 
 [threads-features-1]:Neomaster.Demos.Tests/Threads/ThreadsFeaturesUnitDemos.cs#L10
 [threads-features-2]:Neomaster.Demos.Tests/Threads/ThreadsFeaturesUnitDemos.cs#L26
 [threads-features-3]:Neomaster.Demos.Tests/Threads/ThreadsFeaturesUnitDemos.cs#L41
 [threads-features-4]:Neomaster.Demos.Tests/Threads/ThreadsFeaturesUnitDemos.cs#L86
 [threads-features-5]:Neomaster.Demos.Tests/Threads/ThreadsFeaturesUnitDemos.cs#L129
+[threads-features-6]:Neomaster.Demos.Tests/Threads/ThreadsFeaturesUnitDemos.cs#L151
+[threads-features-7]:Neomaster.Demos.Tests/Threads/ThreadsFeaturesUnitDemos.cs#L163
+[threads-features-8]:Neomaster.Demos.Tests/Threads/ThreadsFeaturesUnitDemos.cs#L197
+[threads-features-9]:Neomaster.Demos.Tests/Threads/ThreadsFeaturesUnitDemos.cs#L240
 
 ### Tasks <a name="tasks"></a>
 1. [Create task][tasks-1]
