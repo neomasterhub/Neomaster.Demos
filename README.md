@@ -24,6 +24,8 @@ Look. Try. Add.
 
 ## .NET
 
+> **Note:** Tests containing `spin` or `yield` may fail depending on the CPU.
+
 <details>
 <summary>Threads</summary>
 
