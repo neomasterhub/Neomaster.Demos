@@ -23,18 +23,10 @@ Look. Try. Add.
 **Small for now 🌱 but growing with each step toward something greater 🌳!**
 
 ## .NET
-* [*Threads*](#threads)
-* [*Threads: Synchronization*](#threads-sync)
-* [*Threads: Event Synchronization*](#threads-event-sync)
-* [*Threads: Atomic Operations*](#threads-atomic-operations)
-* [*Threads: Thread Pool*](#threads-thread-pool)
-* [*Threads: Features*](#threads-features)
-* [*Tasks*](#tasks)
-* [*Tasks: Timers*](#tasks-timers)
-* [*Tasks: Activity Types*](#tasks-activity-types)
-* [*Archives: ZIP*](#archives-zip)
 
-### Threads <a name="threads"></a>
+<details>
+<summary>Threads</summary>
+
 1. [Create, Sleep, Join][threads-1]
 2. [Create with arg][threads-2]
 3. [Foreground][threads-3]
@@ -67,7 +59,11 @@ Look. Try. Add.
 [threads-14]:Neomaster.Demos.Tests/Threads/ThreadsUnitDemos.cs#L147
 [threads-15]:Neomaster.Demos.Tests/Threads/ThreadsUnitDemos.cs#L168
 
-### Threads: Synchronization <a name="threads-sync"></a>
+</details>
+
+<details>
+<summary>Threads: Synchronization</summary>
+
 1. [`lock()`][threads-sync-1]
 2. [Monitor.Enter - Monitor.Exit][threads-sync-2]
 3. [Wait Queue][threads-sync-3]
@@ -122,7 +118,11 @@ Look. Try. Add.
 [threads-sync-25]:Neomaster.Demos.Tests/Threads/ThreadsSyncUnitDemos.cs#L1039
 [threads-sync-26]:Neomaster.Demos.Tests/Threads/ThreadsSyncUnitDemos.cs#L1096
 
-### Threads: Event Synchronization <a name="threads-event-sync"></a>
+</details>
+
+<details>
+<summary>Threads: Event Synchronization</summary>
+
 1. [EventWaitHandle.Set][threads-event-sync-1]
 2. [EventWaitHandle.Reset][threads-event-sync-2]
 3. [EventWaitHandle.Set with auto-reset][threads-event-sync-3]
@@ -171,12 +171,20 @@ Look. Try. Add.
 [threads-event-sync-22]:Neomaster.Demos.Tests/Threads/ThreadsEventSyncUnitDemos.cs#L758
 [threads-event-sync-23]:Neomaster.Demos.Tests/Threads/ThreadsEventSyncUnitDemos.cs#L775
 
-### Threads: Atomic Operations <a name="threads-atomic-operations"></a>
+</details>
+
+<details>
+<summary>Threads: Atomic Operations</summary>
+
 1. [Volatile class][threads-atomic-operations-1]
 
 [threads-atomic-operations-1]:Neomaster.Demos.Tests/Threads/ThreadsAtomicOperationsUnitDemos.cs#L8
 
-### Threads: Thread Pool <a name="threads-thread-pool"></a>
+</details>
+
+<details>
+<summary>Threads: Thread Pool</summary>
+
 1. [Thread Pool: QueueUserWorkItem][threads-thread-pool-1]
 2. [Thread Pool: QueueUserWorkItem with state][threads-thread-pool-2]
 3. [Thread Pool: QueueUserWorkItem Join][threads-thread-pool-3]
@@ -189,7 +197,11 @@ Look. Try. Add.
 [threads-thread-pool-4]:Neomaster.Demos.Apps/Neomaster.Demos.Apps.Threads.SetPoolThreadAsForeground/Program.cs
 [threads-thread-pool-5]:Neomaster.Demos.Tests/Threads/ThreadsThreadPoolUnitDemos.cs#L63
 
-### Threads: Features <a name="threads-features"></a>
+</details>
+
+<details>
+<summary>Threads: Features</summary>
+
 1. [Synchronized method: instance][threads-features-1]
 2. [Synchronized method: static][threads-features-2]
 3. [Synchronized method: instance in different threads][threads-features-3]
@@ -210,7 +222,11 @@ Look. Try. Add.
 [threads-features-8]:Neomaster.Demos.Tests/Threads/ThreadsFeaturesUnitDemos.cs#L197
 [threads-features-9]:Neomaster.Demos.Tests/Threads/ThreadsFeaturesUnitDemos.cs#L240
 
-### Tasks <a name="tasks"></a>
+</details>
+
+<details>
+<summary>Tasks</summary>
+
 1. [Create task][tasks-1]
 2. [Task is in pool thread][tasks-2]
 3. [Wait task][tasks-3]
@@ -337,14 +353,22 @@ Look. Try. Add.
 [tasks-61]:Neomaster.Demos.Tests/Tasks/TasksUnitDemos.cs#L1473
 [tasks-62]:Neomaster.Demos.Tests/Tasks/TasksUnitDemos.cs#L1492
 
-### Tasks: Timers <a name="tasks-timers"></a>
+</details>
+
+<details>
+<summary>Tasks: Timers</summary>
+
 1. [Callback][tasks-timers-1]
 2. [AutoReset: false][tasks-timers-2]
 
 [tasks-timers-1]:Neomaster.Demos.Tests/Tasks/TasksTimerUnitDemos.cs#L9
 [tasks-timers-2]:Neomaster.Demos.Tests/Tasks/TasksTimerUnitDemos.cs#L36
 
-### Tasks: Activity Types <a name="tasks-activity-types"></a>
+</details>
+
+<details>
+<summary>Tasks: Activity Types</summary>
+
 1. [`CustomTaskScheduler.cs`][tasks-activity-types-1]
 2. [`DefaultSyncCtx.cs`][tasks-activity-types-2]
 3. [`ExternalEventSource.cs`][tasks-activity-types-3]
@@ -361,7 +385,11 @@ Look. Try. Add.
 [tasks-activity-types-6]:Neomaster.Demos.Tests/Tasks/ActivityTypes/TimeSpanAwaiter.cs
 [tasks-activity-types-7]:Neomaster.Demos.Tests/Tasks/ActivityTypes/UISyncCtx.cs
 
-### Archives: ZIP <a name="archives-zip"></a>
+</details>
+
+<details>
+<summary>Archives: ZIP</summary>
+
 1. [Create 1 root file][archives-zip-1]
 2. [Create N root files][archives-zip-2]
 3. [Create N folder files][archives-zip-3]
@@ -371,3 +399,5 @@ Look. Try. Add.
 [archives-zip-2]:Neomaster.Demos.Tests/Archives/ZipArchivesUnitDemos.cs#L27
 [archives-zip-3]:Neomaster.Demos.Tests/Archives/ZipArchivesUnitDemos.cs#L43
 [archives-zip-4]:Neomaster.Demos.Tests/Archives/ZipArchivesUnitDemos.cs#L59
+
+</details>
