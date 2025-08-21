@@ -177,10 +177,10 @@
 3. [Synchronized method: instance in different threads][threads-features-3]
 4. [Synchronized method: static in different threads][threads-features-4]
 5. [ThreadLocal&lt;T&gt;: counters][threads-features-5]
-6. [Lazy&lt;T&gt;: lazy initialization][threads-atomic-operations-6]
-7. [Lazy&lt;T&gt;: single initialization][threads-atomic-operations-7]
-8. [Lazy&lt;T&gt;: multiple initialization][threads-atomic-operations-8]
-9. [Lazy&lt;T&gt;: unsafe initialization][threads-atomic-operations-9]
+6. [Lazy&lt;T&gt;: lazy initialization][threads-features-6]
+7. [Lazy&lt;T&gt;: single initialization][threads-features-7]
+8. [Lazy&lt;T&gt;: multiple initialization][threads-features-8]
+9. [Lazy&lt;T&gt;: unsafe initialization][threads-features-9]
 
 [threads-features-1]:Neomaster.Demos.Tests/Threads/ThreadsFeaturesUnitDemos.cs#L10
 [threads-features-2]:Neomaster.Demos.Tests/Threads/ThreadsFeaturesUnitDemos.cs#L26
