@@ -14,7 +14,7 @@ public class TasksSyncUnitDemos(ITestOutputHelper output)
 
     var tasks = Enumerable
       .Range(0, taskNumber)
-      .Select(n => Task.Run(() =>
+      .Select(_ => Task.Run(() =>
       {
         lock (locked)
         {
@@ -27,15 +27,25 @@ public class TasksSyncUnitDemos(ITestOutputHelper output)
       }));
     Task.WaitAll(tasks);
 
-    output.WriteLine(string.Concat(signals)); // 111111111122222222223333333333
+    output.WriteLine(string.Concat(signals));
 
     Assert.Equal(taskNumber * taskSignalNumber, signals.Count);
 
     var skip = 0;
     for (var i = 0; i < taskNumber; i++)
     {
-      Assert.Single(signals.Skip(skip).Take(taskSignalNumber).Distinct());
+      var partition = signals.Skip(skip).Take(taskSignalNumber).ToArray();
+
+      output.WriteLine(string.Concat(partition));
+
+      Assert.Single(partition.Distinct());
       skip += taskSignalNumber;
     }
+
+    // Output:
+    // 111111111122222222223333333333
+    // 1111111111
+    // 2222222222
+    // 3333333333
   }
 }
