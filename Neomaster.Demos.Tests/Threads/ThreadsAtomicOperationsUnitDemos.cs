@@ -38,4 +38,30 @@ public class ThreadsAtomicOperationsUnitDemos
 
     Assert.Equal(1, data);
   }
+
+  [Fact]
+  public void InterlockedIncrement()
+  {
+    const int threadNumber = 20;
+    const int threadSignalNumber = 100_000;
+    var sum1 = 0;
+    var sum2 = 0;
+    var threads = Enumerable
+      .Range(1, threadNumber)
+      .Select(_ => new Thread(() =>
+      {
+        for (var i = 0; i < threadSignalNumber; i++)
+        {
+          sum1++;
+          Interlocked.Increment(ref sum2);
+        }
+      }))
+      .ToList();
+
+    threads.ForEach(th => th.Start());
+    threads.ForEach(th => th.Join());
+
+    Assert.True(sum1 < sum2);
+    Assert.Equal(threadNumber * threadSignalNumber, sum2);
+  }
 }
