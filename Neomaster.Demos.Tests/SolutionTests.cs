@@ -44,6 +44,8 @@ public class SolutionTests(ITestOutputHelper output)
       .EnumerateFiles("*UnitDemos.cs", SearchOption.AllDirectories)
       .Where(fi => testFileLineIndexes.Any(l => l.FileName == fi.Name));
 
+    var foundDemos = new List<string>();
+
     foreach (var udFi in unitDemoFileInfos)
     {
       var udLines = File.ReadAllLines(udFi.FullName);
@@ -59,6 +61,11 @@ public class SolutionTests(ITestOutputHelper output)
         output.WriteLine($"         Found: {udLine}");
 
         Assert.Matches(@"public (void|async Task)", udLine);
+
+        var foundDemo = $"{udFi.Name}#{i}:{udLine}";
+        Assert.DoesNotContain(foundDemo, foundDemos);
+
+        foundDemos.Add(foundDemo);
       }
     }
   }
