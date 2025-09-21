@@ -358,6 +358,17 @@ Look. Try. Add.
 </details>
 
 <details>
+<summary>Tasks: Synchronization</summary>
+
+1. [`lock` within task][tasks-synchronization-1]
+2. [task within `lock`][tasks-synchronization-2]
+
+[tasks-synchronization-1]:Neomaster.Demos.Tests/Tasks/TasksSyncUnitDemos.cs#L8
+[tasks-synchronization-2]:Neomaster.Demos.Tests/Tasks/TasksSyncUnitDemos.cs#L53
+
+</details>
+
+<details>
 <summary>Tasks: Timers</summary>
 
 1. [Callback][tasks-timers-1]
