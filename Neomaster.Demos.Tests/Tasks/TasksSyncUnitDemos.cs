@@ -48,4 +48,14 @@ public class TasksSyncUnitDemos(ITestOutputHelper output)
     // 2222222222
     // 3333333333
   }
+
+  [Fact]
+  public async Task TaskWithinLock()
+  {
+    var locked = new object();
+    lock (locked)
+    {
+      // await Task.Delay(1000); Compiler error: CS1996: Cannot await in the body of a lock statement
+    }
+  }
 }
