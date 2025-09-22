@@ -179,8 +179,10 @@ Look. Try. Add.
 <summary>Threads: Atomic Operations</summary>
 
 1. [Volatile class][threads-atomic-operations-1]
+2. [Interlocked Increment][threads-atomic-operations-2]
 
 [threads-atomic-operations-1]:Neomaster.Demos.Tests/Threads/ThreadsAtomicOperationsUnitDemos.cs#L8
+[threads-atomic-operations-2]:Neomaster.Demos.Tests/Threads/ThreadsAtomicOperationsUnitDemos.cs#L43
 
 </details>
 
