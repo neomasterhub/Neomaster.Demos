@@ -69,4 +69,34 @@ public class SolutionTests(ITestOutputHelper output)
       }
     }
   }
+
+  [Fact]
+  public void ReadmeShouldOrderedLists()
+  {
+    var prevIndex = 0;
+    string prevRefPrefix = null;
+
+    foreach (var item in File
+      .ReadAllLines(_readmePath)
+      .Where(line => Regex.IsMatch(line, @"^[0-9]+\.")))
+    {
+      var index = int.Parse(item.Split('.')[0]);
+      var itemEnd = $"-{index}]";
+      var refPrefix = item.Split("][")[1].Replace(itemEnd, string.Empty);
+
+      Assert.EndsWith(itemEnd, item);
+
+      if (prevRefPrefix == refPrefix)
+      {
+        Assert.Equal(prevIndex + 1, index);
+        prevIndex = index;
+      }
+      else
+      {
+        Assert.Equal(1, index);
+        prevIndex = 1;
+        prevRefPrefix = refPrefix;
+      }
+    }
+  }
 }
