@@ -377,30 +377,34 @@ Look. Try. Add.
 
 1. [Callback][tasks-timers-1]
 2. [AutoReset: false][tasks-timers-2]
+3. [Alarms][tasks-timers-3]
 
 [tasks-timers-1]:Neomaster.Demos.Tests/Tasks/TasksTimerUnitDemos.cs#L9
 [tasks-timers-2]:Neomaster.Demos.Tests/Tasks/TasksTimerUnitDemos.cs#L36
+[tasks-timers-3]:Neomaster.Demos.Tests/Tasks/TasksTimerUnitDemos.cs#L60
 
 </details>
 
 <details>
 <summary>Tasks: Activity Types</summary>
 
-1. [`CustomTaskScheduler.cs`][tasks-activity-types-1]
-2. [`DefaultSyncCtx.cs`][tasks-activity-types-2]
-3. [`ExternalEventSource.cs`][tasks-activity-types-3]
-4. [`ExternalEventSourceAdapter.cs`][tasks-activity-types-4]
-5. [`TaskExtensions.cs`][tasks-activity-types-5]
-6. [`TimeSpanAwaiter.cs`][tasks-activity-types-6]
-7. [`UISyncCtx.cs`][tasks-activity-types-7]
+1. [`AlarmInfo.cs`][tasks-activity-types-1]
+2. [`CustomTaskScheduler.cs`][tasks-activity-types-2]
+3. [`DefaultSyncCtx.cs`][tasks-activity-types-3]
+4. [`ExternalEventSource.cs`][tasks-activity-types-4]
+5. [`ExternalEventSourceAdapter.cs`][tasks-activity-types-5]
+6. [`TaskExtensions.cs`][tasks-activity-types-6]
+7. [`TimeSpanAwaiter.cs`][tasks-activity-types-7]
+8. [`UISyncCtx.cs`][tasks-activity-types-8]
 
-[tasks-activity-types-1]:Neomaster.Demos.Tests/Tasks/ActivityTypes/CustomTaskScheduler.cs
-[tasks-activity-types-2]:Neomaster.Demos.Tests/Tasks/ActivityTypes/DefaultSyncCtx.cs
-[tasks-activity-types-3]:Neomaster.Demos.Tests/Tasks/ActivityTypes/ExternalEventSource.cs
-[tasks-activity-types-4]:Neomaster.Demos.Tests/Tasks/ActivityTypes/ExternalEventSourceAdapter.cs
-[tasks-activity-types-5]:Neomaster.Demos.Tests/Tasks/ActivityTypes/TaskExtensions.cs
-[tasks-activity-types-6]:Neomaster.Demos.Tests/Tasks/ActivityTypes/TimeSpanAwaiter.cs
-[tasks-activity-types-7]:Neomaster.Demos.Tests/Tasks/ActivityTypes/UISyncCtx.cs
+[tasks-activity-types-1]:Neomaster.Demos.Tests/Tasks/ActivityTypes/AlarmInfo.cs
+[tasks-activity-types-2]:Neomaster.Demos.Tests/Tasks/ActivityTypes/CustomTaskScheduler.cs
+[tasks-activity-types-3]:Neomaster.Demos.Tests/Tasks/ActivityTypes/DefaultSyncCtx.cs
+[tasks-activity-types-4]:Neomaster.Demos.Tests/Tasks/ActivityTypes/ExternalEventSource.cs
+[tasks-activity-types-5]:Neomaster.Demos.Tests/Tasks/ActivityTypes/ExternalEventSourceAdapter.cs
+[tasks-activity-types-6]:Neomaster.Demos.Tests/Tasks/ActivityTypes/TaskExtensions.cs
+[tasks-activity-types-7]:Neomaster.Demos.Tests/Tasks/ActivityTypes/TimeSpanAwaiter.cs
+[tasks-activity-types-8]:Neomaster.Demos.Tests/Tasks/ActivityTypes/UISyncCtx.cs
 
 </details>
 
