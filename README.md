@@ -364,9 +364,11 @@ Look. Try. Add.
 
 1. [`lock` within task][tasks-synchronization-1]
 2. [task within `lock`][tasks-synchronization-2]
+3. [Lock via semaphore][tasks-synchronization-3]
 
 [tasks-synchronization-1]:Neomaster.Demos.Tests/Tasks/TasksSyncUnitDemos.cs#L8
 [tasks-synchronization-2]:Neomaster.Demos.Tests/Tasks/TasksSyncUnitDemos.cs#L53
+[tasks-synchronization-3]:Neomaster.Demos.Tests/Tasks/TasksSyncUnitDemos.cs#L63
 
 </details>
 
