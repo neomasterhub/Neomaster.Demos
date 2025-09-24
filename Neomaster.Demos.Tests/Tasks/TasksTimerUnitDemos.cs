@@ -55,4 +55,53 @@ public class TasksTimerUnitDemos(ITestOutputHelper output)
     Assert.Equal(cd.InitialCount - 1, cd.CurrentCount);
     Assert.Equal(1, eventCount);
   }
+
+  [Fact]
+  public void Alarms()
+  {
+    var now = DateTime.Now;
+    var alarms = new AlarmInfo[]
+    {
+      new() { Name = "1", Time = TimeOnly.FromDateTime(now.AddMilliseconds(500)), Enabled = true },
+      new() { Name = "2", Time = TimeOnly.FromDateTime(now.AddMilliseconds(600)), Enabled = false },
+      new() { Name = "3", Time = TimeOnly.FromDateTime(now.AddMilliseconds(700)), Enabled = true, LastTriggeredDate = DateOnly.FromDateTime(now) },
+      new() { Name = "4", Time = TimeOnly.FromDateTime(now.AddMilliseconds(800)), Enabled = true },
+    };
+    var triggeredAlarmNames = new List<string>();
+    var expectedTriggeredAlarmNames = new string[] { "1", "4" };
+    var cd = new CountdownEvent(expectedTriggeredAlarmNames.Length);
+
+    var t = new Timer(30);
+    t.Elapsed += (s, e) =>
+    {
+      var now = DateTime.Now;
+      var nowDate = DateOnly.FromDateTime(now);
+      var nowTime = TimeOnly.FromDateTime(now);
+
+      foreach (var a in alarms)
+      {
+        if (a.Enabled
+          && nowDate != a.LastTriggeredDate
+          && nowTime > a.Time)
+        {
+          a.LastTriggeredDate = nowDate;
+
+          triggeredAlarmNames.Add(a.Name);
+          output.WriteLine($"⏰{a.Name}");
+
+          cd.Signal();
+        }
+      }
+    };
+
+    t.Start();
+
+    Assert.True(cd.Wait(1000));
+    Assert.Equal(expectedTriggeredAlarmNames, triggeredAlarmNames);
+    Assert.All(alarms, a => a.LastTriggeredDate = DateOnly.FromDateTime(now));
+
+    // Output:
+    // ⏰1
+    // ⏰4
+  }
 }
