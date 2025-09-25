@@ -179,10 +179,12 @@ Look. Try. Add.
 <summary>Threads: Atomic Operations</summary>
 
 1. [Volatile class][threads-atomic-operations-1]
-2. [Interlocked Increment][threads-atomic-operations-2]
+2. [Volatile keyword][threads-atomic-operations-2]
+3. [Interlocked Increment][threads-atomic-operations-3]
 
-[threads-atomic-operations-1]:Neomaster.Demos.Tests/Threads/ThreadsAtomicOperationsUnitDemos.cs#L8
-[threads-atomic-operations-2]:Neomaster.Demos.Tests/Threads/ThreadsAtomicOperationsUnitDemos.cs#L43
+[threads-atomic-operations-1]:Neomaster.Demos.Tests/Threads/ThreadsAtomicOperationsUnitDemos.cs#L10
+[threads-atomic-operations-2]:Neomaster.Demos.Tests/Threads/ThreadsAtomicOperationsUnitDemos.cs#L45
+[threads-atomic-operations-3]:Neomaster.Demos.Tests/Threads/ThreadsAtomicOperationsUnitDemos.cs#L79
 
 </details>
 
