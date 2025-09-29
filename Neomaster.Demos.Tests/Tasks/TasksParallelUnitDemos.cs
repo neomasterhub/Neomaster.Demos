@@ -174,4 +174,22 @@ public class TasksParallelUnitDemos(ITestOutputHelper output)
     // thread id: 14
     // sum: 3
   }
+
+  [Fact]
+  public void ParallelForOptions()
+  {
+    const int numberOf1 = 1000;
+    var arr = Enumerable.Repeat(1, numberOf1).ToArray();
+    var sum = 0;
+    var thIds = new ConcurrentBag<int>();
+
+    Parallel.For(0, arr.Length, new ParallelOptions { MaxDegreeOfParallelism = 1 }, i =>
+    {
+      Interlocked.Add(ref sum, arr[i]);
+      thIds.Add(Thread.CurrentThread.ManagedThreadId);
+    });
+
+    Assert.Single(thIds.Distinct());
+    Assert.Equal(numberOf1, sum);
+  }
 }
