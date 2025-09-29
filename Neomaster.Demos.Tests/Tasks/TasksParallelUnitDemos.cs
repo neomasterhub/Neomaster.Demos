@@ -101,4 +101,33 @@ public class TasksParallelUnitDemos(ITestOutputHelper output)
     output.WriteLine($"sum: {sum}"); // 2541
     output.WriteLine($"broken at: {result.LowestBreakIteration}"); // 1306
   }
+
+  [Fact]
+  public void ParallelForLocalVar()
+  {
+    const int numberOf1 = 1000;
+    var arr = Enumerable.Repeat(1, numberOf1).ToArray();
+    var sum = 0;
+    var localInit = () => 0;
+
+    Parallel.For(
+      0,
+      arr.Length,
+      localInit,
+      (i, state, local) =>
+      {
+        local += arr[i];
+        return local;
+      },
+      localFinally =>
+      {
+        Interlocked.Add(ref sum, localFinally);
+        output.WriteLine($"local finally: {localFinally}");
+      });
+
+    Assert.Equal(numberOf1, sum);
+
+    // local finally: 452
+    // local finally: 548
+  }
 }
