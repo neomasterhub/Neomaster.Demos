@@ -130,4 +130,48 @@ public class TasksParallelUnitDemos(ITestOutputHelper output)
     // local finally: 452
     // local finally: 548
   }
+
+  [Fact]
+  public void ParallelForException()
+  {
+    const int numberOf1 = 1000;
+    var arr = Enumerable.Repeat(1, numberOf1).ToArray();
+    var sum = 0;
+    var exceptions = new ConcurrentBag<string>();
+    ParallelLoopResult result = default;
+
+    try
+    {
+      result = Parallel.For(0, numberOf1, i =>
+      {
+        Interlocked.Add(ref sum, arr[i]);
+
+        if (i > 0)
+        {
+          throw new Exception($"thread id: {Thread.CurrentThread.ManagedThreadId}");
+        }
+      });
+    }
+    catch (AggregateException ae)
+    {
+      Assert.True(ae.InnerExceptions.Count > 0);
+
+      foreach (var ie in ae.InnerExceptions)
+      {
+        exceptions.Add(ie.Message);
+      }
+    }
+
+    Assert.True(exceptions.Count > 1);
+    Assert.True(sum > 0);
+    Assert.True(sum < numberOf1);
+    Assert.False(result.IsCompleted);
+
+    exceptions.ToList().ForEach(output.WriteLine);
+    output.WriteLine($"sum: {sum}");
+
+    // thread id: 13
+    // thread id: 14
+    // sum: 3
+  }
 }
