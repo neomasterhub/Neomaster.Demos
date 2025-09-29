@@ -64,4 +64,41 @@ public class TasksParallelUnitDemos(ITestOutputHelper output)
 
     output.WriteLine($"sum: {sum}"); // 2541
   }
+
+  [Fact]
+  public void ParallelForBreak()
+  {
+    const int numberOf1 = 10000;
+    var arr = Enumerable.Repeat(1, numberOf1).ToArray();
+    var sum = 0;
+
+    var stop = false;
+    var timeout = new Thread(() =>
+    {
+      Thread.Sleep(500);
+      stop = true;
+    });
+    timeout.Start();
+
+    var result = Parallel.For(0, arr.Length, (i, state) =>
+    {
+      if (stop)
+      {
+        state.Break();
+      }
+
+      Thread.SpinWait(10000);
+      Interlocked.Add(ref sum, arr[i]);
+    });
+
+    timeout.Join();
+
+    Assert.False(result.IsCompleted);
+    Assert.NotNull(result.LowestBreakIteration);
+    Assert.True(sum > 0);
+    Assert.True(sum < numberOf1);
+
+    output.WriteLine($"sum: {sum}"); // 2541
+    output.WriteLine($"broken at: {result.LowestBreakIteration}"); // 1306
+  }
 }
