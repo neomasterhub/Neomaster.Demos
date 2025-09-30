@@ -192,4 +192,31 @@ public class TasksParallelUnitDemos(ITestOutputHelper output)
     Assert.Single(thIds.Distinct());
     Assert.Equal(numberOf1, sum);
   }
+
+  [Fact]
+  public void ParallelForStateChecks()
+  {
+    var stateIsChecked = false;
+
+    Parallel.For(0, 1000, new ParallelOptions { MaxDegreeOfParallelism = 2 }, (i, state) =>
+    {
+      if (i == 0)
+      {
+        Assert.False(state.ShouldExitCurrentIteration);
+        state.Stop();
+        Assert.True(state.IsStopped);
+        Assert.True(state.ShouldExitCurrentIteration);
+      }
+
+      if (i > 0)
+      {
+        Thread.Sleep(100);
+        Assert.True(state.ShouldExitCurrentIteration);
+        Assert.True(state.IsStopped);
+        stateIsChecked = true;
+      }
+    });
+
+    Assert.True(stateIsChecked);
+  }
 }
