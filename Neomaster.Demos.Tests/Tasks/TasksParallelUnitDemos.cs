@@ -219,4 +219,46 @@ public class TasksParallelUnitDemos(ITestOutputHelper output)
 
     Assert.True(stateIsChecked);
   }
+
+  [Fact]
+  public void ParallelForeach()
+  {
+    const int enemyNumber = 1000;
+    var enemies = Enumerable.Range(1, enemyNumber)
+      .Select(n => new Enemy
+      {
+        Id = n,
+        HP = n % 4 == 0
+          ? 0
+          : Shared.Random.Next(1, 101),
+        ToDestroy = false,
+      })
+      .ToList();
+
+    Parallel.ForEach(enemies, e =>
+    {
+      if (e.HP == 0)
+      {
+        e.ToDestroy = true;
+      }
+    });
+    var destroyedCount = enemies.RemoveAll(e => e.ToDestroy);
+
+    Assert.NotEqual(0, destroyedCount);
+    Assert.Equal(enemyNumber - destroyedCount, enemies.Count);
+    Assert.All(
+      enemies,
+      e =>
+      {
+        Assert.NotEqual(0, e.HP);
+        Assert.NotEqual(0, e.Id % 4);
+      });
+  }
+
+  private class Enemy
+  {
+    public int Id { get; set; }
+    public int HP { get; set; }
+    public bool ToDestroy { get; set; }
+  }
 }
