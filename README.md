@@ -2,7 +2,7 @@
   <img src="title.png">
 </div>
 
-# DEMOS
+# 🧪 DEMOS
 
 ## TL;DR
 Examples, Experiments, Research<br>
