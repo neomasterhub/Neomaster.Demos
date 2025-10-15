@@ -375,15 +375,31 @@ Look. Try. Add.
 </details>
 
 <details>
-<summary>Tasks: Timers</summary>
+<summary>Tasks: Features</summary>
 
-1. [Callback][tasks-timers-1]
-2. [AutoReset: false][tasks-timers-2]
-3. [Alarms][tasks-timers-3]
+1. [Timer: Callback][tasks-features-1]
+2. [Timer: AutoReset: false][tasks-features-2]
+3. [Timer: Alarms][tasks-features-3]
+4. [Parallel: `For()`][tasks-features-4]
+5. [Parallel: `Stop()`][tasks-features-5]
+6. [Parallel: `Break()`][tasks-features-6]
+7. [Parallel: Local Var][tasks-features-7]
+8. [Parallel: Exception][tasks-features-8]
+9. [Parallel: `ParallelOptions`][tasks-features-9]
+10. [Parallel: State Checks][tasks-features-10]
+11. [Parallel: `Foreach()`][tasks-features-11]
 
-[tasks-timers-1]:Neomaster.Demos.Tests/Tasks/TasksTimerUnitDemos.cs#L9
-[tasks-timers-2]:Neomaster.Demos.Tests/Tasks/TasksTimerUnitDemos.cs#L36
-[tasks-timers-3]:Neomaster.Demos.Tests/Tasks/TasksTimerUnitDemos.cs#L60
+[tasks-features-1]:Neomaster.Demos.Tests/Tasks/TasksFeaturesUnitDemos.cs#L10
+[tasks-features-2]:Neomaster.Demos.Tests/Tasks/TasksFeaturesUnitDemos.cs#L37
+[tasks-features-3]:Neomaster.Demos.Tests/Tasks/TasksFeaturesUnitDemos.cs#L61
+[tasks-features-4]:Neomaster.Demos.Tests/Tasks/TasksFeaturesUnitDemos.cs#L110
+[tasks-features-5]:Neomaster.Demos.Tests/Tasks/TasksFeaturesUnitDemos.cs#L134
+[tasks-features-6]:Neomaster.Demos.Tests/Tasks/TasksFeaturesUnitDemos.cs#L170
+[tasks-features-7]:Neomaster.Demos.Tests/Tasks/TasksFeaturesUnitDemos.cs#L207
+[tasks-features-8]:Neomaster.Demos.Tests/Tasks/TasksFeaturesUnitDemos.cs#L236
+[tasks-features-9]:Neomaster.Demos.Tests/Tasks/TasksFeaturesUnitDemos.cs#L280
+[tasks-features-10]:Neomaster.Demos.Tests/Tasks/TasksFeaturesUnitDemos.cs#L298
+[tasks-features-11]:Neomaster.Demos.Tests/Tasks/TasksFeaturesUnitDemos.cs#L325
 
 </details>
 

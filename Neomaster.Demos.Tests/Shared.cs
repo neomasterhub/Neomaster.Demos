@@ -10,6 +10,7 @@ public static class Shared
   private const string _testOutputFolder = "___neomaster.demos-tests";
 
   public static readonly string TestOutputDirectory;
+  public static readonly Random Random = new();
 
   static Shared()
   {
