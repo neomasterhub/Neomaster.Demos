@@ -388,6 +388,7 @@ Look. Try. Add.
 9. [Parallel: `ParallelOptions`][tasks-features-9]
 10. [Parallel: State Checks][tasks-features-10]
 11. [Parallel: `Foreach()`][tasks-features-11]
+12. [Parallel: `Invoke()`][tasks-features-12]
 
 [tasks-features-1]:Neomaster.Demos.Tests/Tasks/TasksFeaturesUnitDemos.cs#L10
 [tasks-features-2]:Neomaster.Demos.Tests/Tasks/TasksFeaturesUnitDemos.cs#L37
@@ -400,6 +401,7 @@ Look. Try. Add.
 [tasks-features-9]:Neomaster.Demos.Tests/Tasks/TasksFeaturesUnitDemos.cs#L280
 [tasks-features-10]:Neomaster.Demos.Tests/Tasks/TasksFeaturesUnitDemos.cs#L298
 [tasks-features-11]:Neomaster.Demos.Tests/Tasks/TasksFeaturesUnitDemos.cs#L325
+[tasks-features-12]:Neomaster.Demos.Tests/Tasks/TasksFeaturesUnitDemos.cs#L360
 
 </details>
 
