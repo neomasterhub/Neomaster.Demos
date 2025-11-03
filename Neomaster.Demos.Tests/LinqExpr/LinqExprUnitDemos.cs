@@ -34,4 +34,41 @@ public class LinqExprUnitDemos()
 
     Assert.Equal(expected, actual);
   }
+
+  [Fact]
+  public void Tree_Create_MakeMemberAccess()
+  {
+    var leftPar = Expression.Parameter(typeof(Claim));
+    var leftPi = typeof(Claim).GetProperty(nameof(Claim.Value));
+    var leftOperand = Expression.MakeMemberAccess(leftPar, leftPi);
+
+    var rightOperand = Expression.Constant("1");
+
+    Func<Expression, Expression, BinaryExpression> binaryOperator = Expression.Equal;
+
+    var body = binaryOperator(leftOperand, rightOperand);
+
+    var root = body.NodeType;
+    var left = body.Left.NodeType;
+    var right = body.Right.NodeType;
+    const string expected =
+      """
+            MemberAccess
+           /
+      Equal
+           \
+            Constant
+      """;
+
+    var actual =
+      $"""
+            {left}
+           /
+      {root}
+           \
+            {right}
+      """;
+
+    Assert.Equal(expected, actual);
+  }
 }
