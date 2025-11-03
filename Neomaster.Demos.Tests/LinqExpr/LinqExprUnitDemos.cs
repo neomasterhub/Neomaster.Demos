@@ -7,7 +7,7 @@ namespace Neomaster.Demos.Tests.LinqExpr;
 public class LinqExprUnitDemos()
 {
   [Fact]
-  public void Tree_View()
+  public void TreeStructure_View()
   {
     var tree = (Expression<Func<Claim, bool>>)(c => c.Value == "1");
     var body = (BinaryExpression)tree.Body;
@@ -36,7 +36,7 @@ public class LinqExprUnitDemos()
   }
 
   [Fact]
-  public void Tree_Create_LeftViaMakeMemberAccess()
+  public void TreeStructure_Create_LeftViaMakeMemberAccess()
   {
     var leftPar = Expression.Parameter(typeof(Claim));
     var leftPi = typeof(Claim).GetProperty(nameof(Claim.Value));
@@ -73,16 +73,16 @@ public class LinqExprUnitDemos()
   }
 
   [Fact]
-  public void Tree_Create_LeftViaProperty()
+  public void TreeStructure_Create_LeftViaProperty()
   {
     var leftPar = Expression.Parameter(typeof(Claim));
-    var leftProp = Expression.Property(leftPar, nameof(Claim.Value));
+    var leftOperand = Expression.Property(leftPar, nameof(Claim.Value));
 
     var rightOperand = Expression.Constant("1");
 
     Func<Expression, Expression, BinaryExpression> binaryOperator = Expression.Equal;
 
-    var body = binaryOperator(leftProp, rightOperand);
+    var body = binaryOperator(leftOperand, rightOperand);
 
     var root = body.NodeType;
     var left = body.Left.NodeType;
