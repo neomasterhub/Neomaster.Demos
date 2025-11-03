@@ -356,6 +356,31 @@ public class TasksFeaturesUnitDemos(ITestOutputHelper output)
       });
   }
 
+  [Fact]
+  public void ParallelInvoke()
+  {
+    const int producerSignalNumber = 100;
+    var signals = new List<int>();
+    var producer = (int signal) =>
+    {
+      for (var i = 0; i < producerSignalNumber; i++)
+      {
+        Thread.Sleep(10);
+        signals.Add(signal);
+      }
+    };
+
+    Parallel.Invoke(
+      new ParallelOptions { MaxDegreeOfParallelism = 2 },
+      () => producer(1),
+      () => producer(2));
+
+    var signalsString = string.Concat(signals);
+
+    Assert.DoesNotContain(new string('1', producerSignalNumber / 10), signalsString);
+    Assert.DoesNotContain(new string('2', producerSignalNumber / 10), signalsString);
+  }
+
   private class Enemy
   {
     public int Id { get; set; }
