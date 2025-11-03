@@ -436,9 +436,9 @@ Look. Try. Add.
 3. [Create N folder files][archives-zip-3]
 4. [Create Word doc][archives-zip-4]
 
-[archives-zip-1]:Neomaster.Demos.Tests/Archives/ZipArchivesUnitDemos.cs#L15
-[archives-zip-2]:Neomaster.Demos.Tests/Archives/ZipArchivesUnitDemos.cs#L27
-[archives-zip-3]:Neomaster.Demos.Tests/Archives/ZipArchivesUnitDemos.cs#L43
-[archives-zip-4]:Neomaster.Demos.Tests/Archives/ZipArchivesUnitDemos.cs#L59
+[archives-zip-1]:Neomaster.Demos.Tests/Archives/ArchivesZipUnitDemos.cs#L15
+[archives-zip-2]:Neomaster.Demos.Tests/Archives/ArchivesZipUnitDemos.cs#L27
+[archives-zip-3]:Neomaster.Demos.Tests/Archives/ArchivesZipUnitDemos.cs#L43
+[archives-zip-4]:Neomaster.Demos.Tests/Archives/ArchivesZipUnitDemos.cs#L59
 
 </details>

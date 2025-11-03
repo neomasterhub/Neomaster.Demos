@@ -7,7 +7,7 @@ using Xunit;
 
 namespace Neomaster.Demos.Tests.Archives;
 
-public class ZipArchivesUnitDemos()
+public class ArchivesZipUnitDemos()
 {
   private delegate void TestDelegate();
 
