@@ -146,7 +146,7 @@ public class LinqExprUnitDemos()
   }
 
   [Fact]
-  public void Lambda()
+  public void Lambda_CreateFunc1()
   {
     var leftPar = Expression.Parameter(typeof(Claim));
     var leftOperand = Expression.Property(leftPar, nameof(Claim.Value));
@@ -158,5 +158,30 @@ public class LinqExprUnitDemos()
 
     Assert.True(func(new Claim(ClaimTypes.Name, "1")));
     Assert.False(func(new Claim(ClaimTypes.Name, "2")));
+  }
+
+  [Fact]
+  public void Lambda_CreateFunc2()
+  {
+    var claimType = typeof(Claim);
+    var claimValuePropName = nameof(Claim.Value);
+    var xPar = Expression.Parameter(claimType);
+    var yPar = Expression.Parameter(claimType);
+    var x = Expression.Property(xPar, claimValuePropName);
+    var y = Expression.Property(yPar, claimValuePropName);
+    var c = Expression.Constant("1");
+
+    var body1 = Expression.Equal(x, c);
+    var body2 = Expression.Equal(y, c);
+    var body = Expression.AndAlso(body1, body2);
+
+    var lambda = Expression.Lambda<Func<Claim, Claim, bool>>(body, xPar, yPar);
+    var func = lambda.Compile();
+
+    var r1 = func(new Claim(ClaimTypes.Name, "1"), new Claim(ClaimTypes.Name, "1"));
+    var r2 = func(new Claim(ClaimTypes.Name, "1"), new Claim(ClaimTypes.Name, "2"));
+
+    Assert.True(r1);
+    Assert.False(r2);
   }
 }
