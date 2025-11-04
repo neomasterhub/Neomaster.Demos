@@ -144,4 +144,19 @@ public class LinqExprUnitDemos()
 
     Assert.Equal(expected, actual);
   }
+
+  [Fact]
+  public void Lambda()
+  {
+    var leftPar = Expression.Parameter(typeof(Claim));
+    var leftOperand = Expression.Property(leftPar, nameof(Claim.Value));
+    var rightOperand = Expression.Constant("1");
+    var body = Expression.Equal(leftOperand, rightOperand);
+
+    var lambda = Expression.Lambda<Func<Claim, bool>>(body, leftPar);
+    var func = lambda.Compile();
+
+    Assert.True(func(new Claim(ClaimTypes.Name, "1")));
+    Assert.False(func(new Claim(ClaimTypes.Name, "2")));
+  }
 }
