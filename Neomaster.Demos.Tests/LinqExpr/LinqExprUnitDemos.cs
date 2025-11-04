@@ -184,4 +184,41 @@ public class LinqExprUnitDemos()
     Assert.True(r1);
     Assert.False(r2);
   }
+
+  [Fact]
+  public void Lambda_Info()
+  {
+    var claimType = typeof(Claim);
+    var claimValuePropName = nameof(Claim.Value);
+    var xPar = Expression.Parameter(claimType);
+    var yPar = Expression.Parameter(claimType);
+    var x = Expression.Property(xPar, claimValuePropName);
+    var y = Expression.Property(yPar, claimValuePropName);
+    var c = Expression.Constant("1");
+    var body1 = Expression.Equal(x, c);
+    var body2 = Expression.Equal(y, c);
+    var body = Expression.AndAlso(body1, body2);
+
+    var lambda = Expression.Lambda<Func<Claim, Claim, bool>>(body, xPar, yPar);
+
+    // Views
+    Assert.Equal(
+      "(Param_0, Param_1) => ((Param_0.Value == \"1\") AndAlso (Param_1.Value == \"1\"))",
+      lambda.ToString());
+    Assert.Equal(
+      "((Param_0.Value == \"1\") AndAlso (Param_1.Value == \"1\"))",
+      lambda.Body.ToString());
+
+    // Parameters
+    Assert.Equal(2, lambda.Parameters.Count);
+    Assert.All(lambda.Parameters, (p, i) =>
+    {
+      Assert.Null(p.Name);
+      Assert.Equal(nameof(Expression.Parameter), p.NodeType.ToString());
+    });
+
+    Assert.Equal(nameof(Expression.Lambda), lambda.NodeType.ToString());
+    Assert.Equal(typeof(Func<Claim, Claim, bool>), lambda.Type);
+    Assert.Equal(typeof(bool), lambda.ReturnType);
+  }
 }
