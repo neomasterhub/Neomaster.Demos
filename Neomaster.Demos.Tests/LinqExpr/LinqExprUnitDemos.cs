@@ -221,4 +221,34 @@ public class LinqExprUnitDemos()
     Assert.Equal(typeof(Func<Claim, Claim, bool>), lambda.Type);
     Assert.Equal(typeof(bool), lambda.ReturnType);
   }
+
+  [Fact]
+  public void Lambda_ViewWithNamedParameters()
+  {
+    var parNames = new[] { "x", "y" };
+    var claimType = typeof(Claim);
+    var claimValuePropName = nameof(Claim.Value);
+    var xPar = Expression.Parameter(claimType, parNames[0]);
+    var yPar = Expression.Parameter(claimType, parNames[1]);
+    var x = Expression.Property(xPar, claimValuePropName);
+    var y = Expression.Property(yPar, claimValuePropName);
+    var c = Expression.Constant("1");
+    var body1 = Expression.Equal(x, c);
+    var body2 = Expression.Equal(y, c);
+    var body = Expression.AndAlso(body1, body2);
+
+    var lambda = Expression.Lambda<Func<Claim, Claim, bool>>(body, xPar, yPar);
+
+    // View
+    Assert.Equal(
+      "(x, y) => ((x.Value == \"1\") AndAlso (y.Value == \"1\"))",
+      lambda.ToString());
+
+    // Parameters
+    Assert.Equal(2, lambda.Parameters.Count);
+    Assert.All(lambda.Parameters, (p, i) =>
+    {
+      Assert.Equal(p.Name, parNames[i]);
+    });
+  }
 }
