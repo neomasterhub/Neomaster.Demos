@@ -4,7 +4,7 @@ using Xunit;
 
 namespace Neomaster.Demos.Tests.LinqExpr;
 
-public class LinqExprUnitDemos()
+public class LinqExprUnitDemos(ITestOutputHelper output)
 {
   [Fact]
   public void TreeStructure_View()
@@ -250,5 +250,15 @@ public class LinqExprUnitDemos()
     {
       Assert.Equal(p.Name, parNames[i]);
     });
+  }
+
+  [Fact]
+  public void ExpressionType_ListOfAll()
+  {
+    var n = 1;
+    foreach (var et in Enum.GetValues<ExpressionType>())
+    {
+      output.WriteLine($"{n++}. {et}");
+    }
   }
 }
