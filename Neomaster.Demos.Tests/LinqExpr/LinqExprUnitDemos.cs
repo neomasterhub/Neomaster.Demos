@@ -432,10 +432,10 @@ public class LinqExprUnitDemos(ITestOutputHelper output)
   {
     var x = Expression.Parameter(typeof(int), "x");
     var c = Expression.Constant(0);
-
     var expr = Expression.Add(
       new ReducibleIntAdd(x, c),
       c);
+
     var reduced = expr.ReduceExtensions();
 
     Assert.Equal(expr, reduced);
@@ -446,13 +446,12 @@ public class LinqExprUnitDemos(ITestOutputHelper output)
   {
     var x = Expression.Parameter(typeof(int), "x");
     var c = Expression.Constant(0);
-
     var expr = new ReducibleIntAdd(
       new ReducibleIntAdd(x, c),
       c);
+
     var reduced = expr.ReduceExtensions();
 
-    Assert.NotEqual(expr, reduced);
     Assert.Equal(x, reduced);
   }
 
@@ -461,7 +460,6 @@ public class LinqExprUnitDemos(ITestOutputHelper output)
   {
     var x = Expression.Parameter(typeof(int), "x");
     var c = Expression.Constant(0);
-
     var expr = new ReducibleIntAdd(
       new ReducibleIntAdd(x, c),
       new ReducibleIntAdd(x, c));
