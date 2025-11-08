@@ -2,6 +2,7 @@ using System.Linq.Expressions;
 using System.Reflection;
 using System.Security.Claims;
 using Xunit;
+using static Neomaster.Demos.Tests.LinqExpr.BrokenReducible;
 
 namespace Neomaster.Demos.Tests.LinqExpr;
 
@@ -415,5 +416,14 @@ public class LinqExprUnitDemos(ITestOutputHelper output)
     {
       Assert.Throws<ArgumentException>(() => expr.ReduceAndCheck());
     });
+  }
+
+  [Theory]
+  [InlineData(ReducedResult.Null)]
+  [InlineData(ReducedResult.This)]
+  public void ReduceAndCheck_PreventReturn(ReducedResult reducedResult)
+  {
+    var expr = new BrokenReducible(reducedResult);
+    Assert.Throws<ArgumentException>(expr.ReduceAndCheck);
   }
 }
