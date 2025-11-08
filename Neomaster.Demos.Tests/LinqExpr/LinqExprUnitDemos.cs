@@ -455,4 +455,18 @@ public class LinqExprUnitDemos(ITestOutputHelper output)
     Assert.NotEqual(expr, reduced);
     Assert.Equal(x, reduced);
   }
+
+  [Fact]
+  public void ReduceExtensions_CustomRoot_NotReducible()
+  {
+    var x = Expression.Parameter(typeof(int), "x");
+    var c = Expression.Constant(0);
+
+    var expr = new ReducibleIntAdd(
+      new ReducibleIntAdd(x, c),
+      new ReducibleIntAdd(x, c));
+
+    var ex = Assert.Throws<ArgumentException>(expr.ReduceExtensions);
+    output.WriteLine(ex.Message); // must be reducible node
+  }
 }
