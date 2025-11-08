@@ -426,4 +426,18 @@ public class LinqExprUnitDemos(ITestOutputHelper output)
     var expr = new BrokenReducible(reducedResult);
     Assert.Throws<ArgumentException>(expr.ReduceAndCheck);
   }
+
+  [Fact]
+  public void ReduceExtensions_BuiltinRoot()
+  {
+    var x = Expression.Parameter(typeof(int), "x");
+    var c = Expression.Constant(0);
+
+    var expr = Expression.Add(
+      new ReducibleIntAdd(x, c),
+      c);
+    var reduced = expr.ReduceExtensions();
+
+    Assert.Equal(expr, reduced);
+  }
 }
