@@ -440,4 +440,19 @@ public class LinqExprUnitDemos(ITestOutputHelper output)
 
     Assert.Equal(expr, reduced);
   }
+
+  [Fact]
+  public void ReduceExtensions_CustomRoot_Reducible()
+  {
+    var x = Expression.Parameter(typeof(int), "x");
+    var c = Expression.Constant(0);
+
+    var expr = new ReducibleIntAdd(
+      new ReducibleIntAdd(x, c),
+      c);
+    var reduced = expr.ReduceExtensions();
+
+    Assert.NotEqual(expr, reduced);
+    Assert.Equal(x, reduced);
+  }
 }
