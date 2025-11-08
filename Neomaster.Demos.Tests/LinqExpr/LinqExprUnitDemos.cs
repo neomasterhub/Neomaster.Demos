@@ -396,4 +396,24 @@ public class LinqExprUnitDemos(ITestOutputHelper output)
     // x
     // 1
   }
+
+  [Fact]
+  public void ReduceAndCheck_NotReducible()
+  {
+    var x = Expression.Parameter(typeof(int), "x");
+    var y = Expression.Parameter(typeof(int), "y");
+    var c = Expression.Constant(1);
+
+    var expressions = new List<Expression>
+    {
+      new ReducibleIntAdd(x, y),
+      new ReducibleIntAdd(x, c),
+      new ReducibleIntAdd(c, x),
+    };
+
+    Assert.All(expressions, expr =>
+    {
+      Assert.Throws<ArgumentException>(() => expr.ReduceAndCheck());
+    });
+  }
 }
