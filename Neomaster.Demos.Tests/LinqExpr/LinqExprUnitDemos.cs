@@ -301,4 +301,33 @@ public class LinqExprUnitDemos(ITestOutputHelper output)
     // body2 : $y.Value == "1"
     // body  : $x.Value == "1" && $y.Value == "1"
   }
+
+  [Fact]
+  public void DebugView_Lambda()
+  {
+    var debugViewPi = typeof(Expression)
+      .GetProperty(
+        "DebugView",
+        BindingFlags.Instance | BindingFlags.NonPublic);
+    var parNames = new[] { "x", "y" };
+    var claimType = typeof(Claim);
+    var claimValuePropName = nameof(Claim.Value);
+    var xPar = Expression.Parameter(claimType, parNames[0]);
+    var yPar = Expression.Parameter(claimType, parNames[1]);
+    var x = Expression.Property(xPar, claimValuePropName);
+    var y = Expression.Property(yPar, claimValuePropName);
+    var c = Expression.Constant("1");
+    var body1 = Expression.Equal(x, c);
+    var body2 = Expression.Equal(y, c);
+    var body = Expression.AndAlso(body1, body2);
+    var lambda = Expression.Lambda<Func<Claim, Claim, bool>>(body, xPar, yPar);
+
+    output.WriteLine(debugViewPi.GetValue(lambda).ToString());
+
+    // .Lambda #Lambda1<System.Func`3[System.Security.Claims.Claim,System.Security.Claims.Claim,System.Boolean]>(
+    //     System.Security.Claims.Claim $x,
+    //     System.Security.Claims.Claim $y) {
+    //     $x.Value == "1" && $y.Value == "1"
+    // }
+  }
 }
