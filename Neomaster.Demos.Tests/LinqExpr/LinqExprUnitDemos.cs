@@ -368,4 +368,32 @@ public class LinqExprUnitDemos(ITestOutputHelper output)
     // c0 + x  | True       | x
     // c0 + c2 | True       | 1
   }
+
+  [Fact]
+  public void ReduceAndCheck_Reducible()
+  {
+    var x = Expression.Parameter(typeof(int), "x");
+    var y = Expression.Parameter(typeof(int), "y");
+    var c0 = Expression.Constant(0);
+    var c1 = Expression.Constant(1);
+
+    var expressions = new List<Expression>
+    {
+      new ReducibleIntAdd(x, c0),
+      new ReducibleIntAdd(c0, x),
+      new ReducibleIntAdd(c0, c1),
+    };
+
+    Assert.All(expressions, expr =>
+    {
+      Expression reduced = null;
+      var ex = Record.Exception(() => reduced = expr.ReduceAndCheck());
+      Assert.Null(ex);
+      output.WriteLine(reduced.ToString());
+    });
+
+    // x
+    // x
+    // 1
+  }
 }
