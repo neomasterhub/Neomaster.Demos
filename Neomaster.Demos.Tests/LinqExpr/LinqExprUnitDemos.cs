@@ -330,4 +330,42 @@ public class LinqExprUnitDemos(ITestOutputHelper output)
     //     $x.Value == "1" && $y.Value == "1"
     // }
   }
+
+  [Fact]
+  public void Reduce()
+  {
+    var x = Expression.Parameter(typeof(int), "x");
+    var y = Expression.Parameter(typeof(int), "y");
+    var c0 = Expression.Constant(0);
+    var c1 = Expression.Constant(1);
+
+    var expressions = new Dictionary<string, Expression>
+    {
+      ["x + y"] = new ReducibleIntAdd(x, y),
+      ["x + c1"] = new ReducibleIntAdd(x, c1),
+      ["c1 + x"] = new ReducibleIntAdd(c1, x),
+
+      ["x + c0"] = new ReducibleIntAdd(x, c0),
+      ["c0 + x"] = new ReducibleIntAdd(c0, x),
+      ["c0 + c1"] = new ReducibleIntAdd(c0, c1),
+    };
+
+    output.WriteLine("Expr    | Can Reduce | Reduced");
+    foreach (var kv in expressions)
+    {
+      var key = kv.Key.PadRight(7);
+      var expr = kv.Value;
+      var canReduce = expr.CanReduce.ToString().PadRight(10);
+      var reduced = expr.Reduce();
+      output.WriteLine($"{key} | {canReduce} | {reduced}");
+    }
+
+    // Expr    | Can Reduce | Reduced
+    // x + y   | False      | (x + y)
+    // x + c1  | False      | (x + 1)
+    // c1 + x  | False      | (1 + x)
+    // x + c0  | True       | x
+    // c0 + x  | True       | x
+    // c0 + c2 | True       | 1
+  }
 }
