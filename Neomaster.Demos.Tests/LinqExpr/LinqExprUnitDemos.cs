@@ -1,4 +1,5 @@
 using System.Linq.Expressions;
+using System.Reflection;
 using System.Security.Claims;
 using Xunit;
 
@@ -260,5 +261,44 @@ public class LinqExprUnitDemos(ITestOutputHelper output)
     {
       output.WriteLine($"{n++}. {et}");
     }
+  }
+
+  [Fact]
+  public void DebugView()
+  {
+    var debugViewPi = typeof(Expression)
+      .GetProperty(
+        "DebugView",
+        BindingFlags.Instance | BindingFlags.NonPublic);
+
+    var parNames = new[] { "x", "y" };
+    var claimType = typeof(Claim);
+    var claimValuePropName = nameof(Claim.Value);
+
+    var expressions = new Dictionary<string, Expression>();
+    expressions.Add("xPar", Expression.Parameter(claimType, parNames[0]));
+    expressions.Add("yPar", Expression.Parameter(claimType, parNames[1]));
+    expressions.Add("x", Expression.Property(expressions["xPar"], claimValuePropName));
+    expressions.Add("y", Expression.Property(expressions["yPar"], claimValuePropName));
+    expressions.Add("c", Expression.Constant("1"));
+    expressions.Add("body1", Expression.Equal(expressions["x"], expressions["c"]));
+    expressions.Add("body2", Expression.Equal(expressions["y"], expressions["c"]));
+    expressions.Add("body", Expression.AndAlso(expressions["body1"], expressions["body2"]));
+
+    foreach (var expr in expressions)
+    {
+      var key = expr.Key.PadRight(6);
+      var view = debugViewPi.GetValue(expr.Value);
+      output.WriteLine($"{key}: {view}");
+    }
+
+    // xPar  : $x
+    // yPar  : $y
+    // x     : $x.Value
+    // y     : $y.Value
+    // c     : "1"
+    // body1 : $x.Value == "1"
+    // body2 : $y.Value == "1"
+    // body  : $x.Value == "1" && $y.Value == "1"
   }
 }
