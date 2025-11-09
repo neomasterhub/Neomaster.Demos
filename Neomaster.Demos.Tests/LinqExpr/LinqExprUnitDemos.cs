@@ -516,7 +516,7 @@ public class LinqExprUnitDemos(ITestOutputHelper output)
   }
 
   [Fact]
-  public void Visitor()
+  public void Visitor_Root()
   {
     var x = Expression.Parameter(typeof(int), "x");
     var y = Expression.Parameter(typeof(int), "y");
@@ -556,10 +556,9 @@ public class LinqExprUnitDemos(ITestOutputHelper output)
   }
 
   [Fact]
-  public void Visitor_Immutable()
+  public void Visitor_Tree_Immutable()
   {
     var intAddVisitor = new IntAddVisitor();
-    var c = Expression.Constant(0);
     var x = Expression.Parameter(typeof(int), "x");
     var expr = Expression.Add(
       Expression.Add(
@@ -574,5 +573,26 @@ public class LinqExprUnitDemos(ITestOutputHelper output)
     Assert.False(modified);
     Assert.Equal(expr, visited);
     output.WriteLine(visited.ToString()); // ((x + (x + x)) + (x + x))
+  }
+
+  [Fact]
+  public void Visitor_Tree_WithMutableChildNode()
+  {
+    var intAddVisitor = new IntAddVisitor();
+    var c = Expression.Constant(0);
+    var x = Expression.Parameter(typeof(int), "x");
+    var expr = Expression.Add(
+      Expression.Add(
+        x,
+        Expression.Add(x, c)),
+      Expression.Add(
+        x,
+        x));
+
+    var visited = intAddVisitor.Visit(expr, out var modified);
+
+    Assert.True(modified);
+    Assert.NotEqual(expr, visited);
+    output.WriteLine(visited.ToString()); // ((x + x) + (x + x))
   }
 }
