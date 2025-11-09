@@ -499,4 +499,19 @@ public class LinqExprUnitDemos(ITestOutputHelper output)
     Assert.False(par.IsByRef);
     Assert.Equal("1", s);
   }
+
+  [Fact]
+  public void IsByRef_ReferenceParameter_WithRefModifier()
+  {
+    var s = "1";
+    var par = Expression.Parameter(typeof(string).MakeByRefType(), "s");
+    var body = Expression.Assign(par, Expression.Constant("2"));
+    var lambda = Expression.Lambda<ActionRef<string>>(body, par);
+    var action = lambda.Compile();
+
+    action(ref s);
+
+    Assert.True(par.IsByRef);
+    Assert.Equal("2", s);
+  }
 }
