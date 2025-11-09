@@ -17,8 +17,10 @@ public class IntAddVisitor : ExpressionVisitor
     }
 
     var be = (BinaryExpression)node;
-    var lc = be.Left as ConstantExpression;
-    var rc = be.Right as ConstantExpression;
+    var left = Visit(be.Left);
+    var right = Visit(be.Right);
+    var lc = left as ConstantExpression;
+    var rc = right as ConstantExpression;
 
     if (lc != null && rc != null)
     {
@@ -38,7 +40,9 @@ public class IntAddVisitor : ExpressionVisitor
       return be.Left;
     }
 
-    return node;
+    return be.Left != left || be.Right != right
+      ? Expression.Add(left, right)
+      : node;
   }
 
   public Expression Visit(Expression node, out bool modified)
