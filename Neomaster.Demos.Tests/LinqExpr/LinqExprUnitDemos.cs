@@ -554,4 +554,25 @@ public class LinqExprUnitDemos(ITestOutputHelper output)
     // c0 + x  | True     | x
     // c0 + c1 | True     | 1
   }
+
+  [Fact]
+  public void Visitor_Immutable()
+  {
+    var intAddVisitor = new IntAddVisitor();
+    var c = Expression.Constant(0);
+    var x = Expression.Parameter(typeof(int), "x");
+    var expr = Expression.Add(
+      Expression.Add(
+        x,
+        Expression.Add(x, x)),
+      Expression.Add(
+        x,
+        x));
+
+    var visited = intAddVisitor.Visit(expr, out var modified);
+
+    Assert.False(modified);
+    Assert.Equal(expr, visited);
+    output.WriteLine(visited.ToString()); // ((x + (x + x)) + (x + x))
+  }
 }
