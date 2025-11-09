@@ -525,22 +525,33 @@ public class LinqExprUnitDemos(ITestOutputHelper output)
 
     var expressions = new Dictionary<string, Expression>
     {
-      ["x + y"] = new ReducibleIntAdd(x, y),
-      ["x + c1"] = new ReducibleIntAdd(x, c1),
-      ["c1 + x"] = new ReducibleIntAdd(c1, x),
+      ["x + y"] = Expression.Add(x, y),
+      ["x + c1"] = Expression.Add(x, c1),
+      ["c1 + x"] = Expression.Add(c1, x),
 
-      ["x + c0"] = new ReducibleIntAdd(x, c0),
-      ["c0 + x"] = new ReducibleIntAdd(c0, x),
-      ["c0 + c1"] = new ReducibleIntAdd(c0, c1),
+      ["x + c0"] = Expression.Add(x, c0),
+      ["c0 + x"] = Expression.Add(c0, x),
+      ["c0 + c1"] = Expression.Add(c0, c1),
     };
 
     var intAddVisitor = new IntAddVisitor();
 
+    output.WriteLine("Expr    | Modified | Visited");
     foreach (var kv in expressions)
     {
       var key = kv.Key.PadRight(7);
       var expr = kv.Value;
-      var visited = intAddVisitor.Visit(expr);
+      var visited = intAddVisitor.Visit(expr, out var modified);
+      var modifiedString = modified.ToString().PadRight(8);
+      output.WriteLine($"{key} | {modifiedString} | {visited}");
     }
+
+    // Expr    | Modified | Visited
+    // x + y   | False    | (x + y)
+    // x + c1  | False    | (x + 1)
+    // c1 + x  | False    | (1 + x)
+    // x + c0  | True     | x
+    // c0 + x  | True     | x
+    // c0 + c1 | True     | 1
   }
 }
