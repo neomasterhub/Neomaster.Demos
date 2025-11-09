@@ -8,6 +8,8 @@ namespace Neomaster.Demos.Tests.LinqExpr;
 
 public class LinqExprUnitDemos(ITestOutputHelper output)
 {
+  private delegate void ActionRef<T>(ref T arg);
+
   [Fact]
   public void TreeStructure_View()
   {
@@ -466,5 +468,20 @@ public class LinqExprUnitDemos(ITestOutputHelper output)
 
     var ex = Assert.Throws<ArgumentException>(expr.ReduceExtensions);
     output.WriteLine(ex.Message); // must be reducible node
+  }
+
+  [Fact]
+  public void IsByRef_Int_WithRefModifier()
+  {
+    var x = 1;
+    var par = Expression.Parameter(typeof(int).MakeByRefType(), "x");
+    var body = Expression.PostIncrementAssign(par);
+    var lambda = Expression.Lambda<ActionRef<int>>(body, par);
+    var action = lambda.Compile();
+
+    action(ref x);
+
+    Assert.True(par.IsByRef);
+    Assert.Equal(2, x);
   }
 }
