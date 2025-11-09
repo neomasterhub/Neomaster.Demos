@@ -471,7 +471,7 @@ public class LinqExprUnitDemos(ITestOutputHelper output)
   }
 
   [Fact]
-  public void IsByRef_Int_WithRefModifier()
+  public void IsByRef_StructParameter_WithRefModifier()
   {
     var x = 1;
     var par = Expression.Parameter(typeof(int).MakeByRefType(), "x");
@@ -483,5 +483,20 @@ public class LinqExprUnitDemos(ITestOutputHelper output)
 
     Assert.True(par.IsByRef);
     Assert.Equal(2, x);
+  }
+
+  [Fact]
+  public void IsByRef_ReferenceParameter_WithoutRefModifier()
+  {
+    var s = "1";
+    var par = Expression.Parameter(typeof(string), "s");
+    var body = Expression.Assign(par, Expression.Constant("2"));
+    var lambda = Expression.Lambda<Action<string>>(body, par);
+    var action = lambda.Compile();
+
+    action(s);
+
+    Assert.False(par.IsByRef);
+    Assert.Equal("1", s);
   }
 }
