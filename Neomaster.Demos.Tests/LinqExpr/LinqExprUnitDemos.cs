@@ -257,6 +257,22 @@ public class LinqExprUnitDemos(ITestOutputHelper output)
   }
 
   [Fact]
+  public void Lambda_TypedVsUntyped()
+  {
+    var x = Expression.Parameter(typeof(int), "x");
+    var body = Expression.Add(x, Expression.Constant(10));
+
+    var typed = Expression.Lambda<Func<int, int>>(body, x);
+    var func = typed.Compile();
+    var r1 = func(1);
+    var r2 = func.Invoke(2);
+
+    var untyped = Expression.Lambda(body, x);
+    var dlg = untyped.Compile(); // Delegate
+    var r3 = dlg.DynamicInvoke(3);
+  }
+
+  [Fact]
   public void ExpressionType_ListOfAll()
   {
     var n = 1;
