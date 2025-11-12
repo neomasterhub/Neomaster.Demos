@@ -262,18 +262,18 @@ public class LinqExprUnitDemos(ITestOutputHelper output)
     var x = Expression.Parameter(typeof(int), "x");
     var body = Expression.Add(x, Expression.Constant(10));
 
-    var typed = Expression.Lambda<Func<int, int>>(body, x);
-    var func = typed.Compile();
+    var typed = Expression.Lambda<Func<int, int>>(body, x); // Expression<Func<int, int>>
+    var func = typed.Compile(); // Func<int, int>
     var r1 = func(1);
     var r2 = func.Invoke(2);
 
-    var untyped = Expression.Lambda(body, x);
+    var untyped = Expression.Lambda(body, x); // LambdaExpression
     var dlg = untyped.Compile(); // Delegate
     var r3 = dlg.DynamicInvoke(3);
   }
 
   [Fact]
-  public void Lambda_DynamicInvoke()
+  public void Lambda_DynamicInvoke_DynamicFunc()
   {
     var x = Expression.Parameter(typeof(int), "x");
     var y = Expression.Parameter(typeof(int), "y");
@@ -282,13 +282,32 @@ public class LinqExprUnitDemos(ITestOutputHelper output)
     var arr = Expression.Parameter(typeof(byte[]), "arr");
     var body2 = Expression.ArrayLength(arr);
 
-    object DynamicInvoke(Expression body, ParameterExpression[] pars, params object[] args)
+    static object DynamicFunc(Expression body, ParameterExpression[] pars, params object[] args)
     {
       return Expression.Lambda(body, pars).Compile().DynamicInvoke(args);
     }
 
-    Assert.Equal(3, DynamicInvoke(body1, [x, y], 1, 2));
-    Assert.Equal(3, DynamicInvoke(body2, [arr], new byte[] { 1, 2, 3 }));
+    Assert.Equal(3, DynamicFunc(body1, [x, y], 1, 2));
+    Assert.Equal(3, DynamicFunc(body2, [arr], new byte[] { 1, 2, 3 }));
+  }
+
+  [Fact]
+  public void Lambda_DynamicInvoke_DynamicAdd()
+  {
+    static object DynamicAdd<T>(T x, T y)
+    {
+      var type = typeof(T);
+      var xPar = Expression.Parameter(type, nameof(x));
+      var yPar = Expression.Parameter(type, nameof(y));
+      var add = Expression.Add(xPar, yPar);
+
+      // Optimization...
+
+      return Expression.Lambda(add, xPar, yPar).Compile().DynamicInvoke(x, y);
+    }
+
+    Assert.Equal(3, DynamicAdd(1, 2));
+    Assert.Equal(3.3m, DynamicAdd(1.1m, 2.2m));
   }
 
   [Fact]
