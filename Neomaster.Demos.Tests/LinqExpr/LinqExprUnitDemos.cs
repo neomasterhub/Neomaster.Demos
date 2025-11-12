@@ -273,6 +273,25 @@ public class LinqExprUnitDemos(ITestOutputHelper output)
   }
 
   [Fact]
+  public void Lambda_DynamicInvoke()
+  {
+    var x = Expression.Parameter(typeof(int), "x");
+    var y = Expression.Parameter(typeof(int), "y");
+    var body1 = Expression.Add(x, y);
+
+    var arr = Expression.Parameter(typeof(byte[]), "arr");
+    var body2 = Expression.ArrayLength(arr);
+
+    object DynamicInvoke(Expression body, ParameterExpression[] pars, params object[] args)
+    {
+      return Expression.Lambda(body, pars).Compile().DynamicInvoke(args);
+    }
+
+    Assert.Equal(3, DynamicInvoke(body1, [x, y], 1, 2));
+    Assert.Equal(3, DynamicInvoke(body2, [arr], new byte[] { 1, 2, 3 }));
+  }
+
+  [Fact]
   public void ExpressionType_ListOfAll()
   {
     var n = 1;
