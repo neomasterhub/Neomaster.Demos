@@ -681,9 +681,25 @@ public class LinqExprUnitDemos(ITestOutputHelper output)
     var par = Expression.Parameter(typeof(string), "s");
     var mi = output.GetType().GetMethod(nameof(output.WriteLine), [typeof(string)]);
     var body = Expression.Call(Expression.Constant(output), mi, par);
-    var lambda = Expression.Lambda<Action<string>>(body);
+    var lambda = Expression.Lambda<Action<string>>(body, par);
     var action = lambda.Compile();
 
     action("1"); // 1
+  }
+
+  [Fact]
+  public void Call_StaticMethod()
+  {
+    var type = typeof(string);
+    var par1 = Expression.Parameter(type, "s1");
+    var par2 = Expression.Parameter(type, "s2");
+    var mi = type.GetMethod(nameof(string.Concat), [type, type]);
+    var body = Expression.Call(mi, par1, par2);
+    var lambda = Expression.Lambda<Func<string, string, string>>(body, par1, par2);
+    var func = lambda.Compile();
+
+    var result = func("1", "2");
+
+    Assert.Equal("12", result);
   }
 }
