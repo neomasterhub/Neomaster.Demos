@@ -702,4 +702,25 @@ public class LinqExprUnitDemos(ITestOutputHelper output)
 
     Assert.Equal("12", result);
   }
+
+  [Fact]
+  public void MemberInit()
+  {
+    var parType = typeof(string);
+    var id = Expression.Parameter(parType, "1");
+    var email = Expression.Parameter(parType, "2");
+    var type = typeof(User);
+    var body = Expression.MemberInit(
+      Expression.New(type),
+      Expression.Bind(type.GetProperty(nameof(User.Id)), id),
+      Expression.Bind(type.GetProperty(nameof(User.Email)), email));
+    var lambda = Expression.Lambda<Func<string, string, User>>(body, id, email);
+    var func = lambda.Compile();
+
+    var user = func("1", "2");
+
+    Assert.NotNull(user);
+    Assert.Equal("1", user.Id);
+    Assert.Equal("2", user.Email);
+  }
 }
