@@ -704,6 +704,35 @@ public class LinqExprUnitDemos(ITestOutputHelper output)
   }
 
   [Fact]
+  public void New()
+  {
+    var type = typeof(User);
+    var argType = typeof(string);
+    var email = Expression.Parameter(argType, "email");
+    var body1 = Expression.New(type);
+    var body2 = Expression.New(type.GetConstructor([]));
+    var body3 = Expression.New(type.GetConstructor([argType]), email);
+    var func1 = Expression.Lambda<Func<User>>(body1).Compile();
+    var func2 = Expression.Lambda<Func<User>>(body2).Compile();
+    var func3 = Expression.Lambda<Func<string, User>>(body3, email).Compile();
+
+    var user1 = func1();
+    Assert.NotNull(user1);
+    Assert.Null(user1.Id);
+    Assert.Null(user1.Email);
+
+    var user2 = func2();
+    Assert.NotNull(user2);
+    Assert.Null(user2.Id);
+    Assert.Null(user2.Email);
+
+    var user3 = func3("1");
+    Assert.NotNull(user3);
+    Assert.True(Guid.TryParse(user3.Id, out _));
+    Assert.Equal("1", user3.Email);
+  }
+
+  [Fact]
   public void MemberInit()
   {
     var parType = typeof(string);
