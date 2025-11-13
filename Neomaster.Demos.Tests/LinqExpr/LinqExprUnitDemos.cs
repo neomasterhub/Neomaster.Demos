@@ -649,4 +649,29 @@ public class LinqExprUnitDemos(ITestOutputHelper output)
     Assert.NotEqual(expr, visited);
     output.WriteLine(visited.ToString()); // ((x + x) + (x + x))
   }
+
+  [Fact]
+  public void Invoke()
+  {
+    var x = Expression.Parameter(typeof(int), "x");
+    var c1 = Expression.Constant(1);
+    var c2 = Expression.Constant(2);
+    var body1 = Expression.Add(x, c1);
+    var lambda1 = Expression.Lambda<Func<int, int>>(body1, x);
+
+    var ex = Assert.Throws<InvalidOperationException>(() => Expression.Add(lambda1, c2));
+    output.WriteLine(ex.Message);
+    // The binary operator Add is not defined for the types
+    // 'System.Func`2[System.Int32,System.Int32]' and 'System.Int32'.
+
+    // Analogy
+    // ((int x) => x + 1) + 2
+    // Error: Operator '+' cannot be applied to operands of type 'lambda expression' and 'int'
+
+    var body2 = Expression.Add(Expression.Invoke(lambda1, x), c2);
+    var lambda2 = Expression.Lambda<Func<int, int>>(body2, x);
+    var func2 = lambda2.Compile();
+    var result = func2(10);
+    Assert.Equal(13, result);
+  }
 }
