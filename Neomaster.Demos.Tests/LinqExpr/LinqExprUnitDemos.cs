@@ -674,4 +674,16 @@ public class LinqExprUnitDemos(ITestOutputHelper output)
     var result = func2(10);
     Assert.Equal(13, result);
   }
+
+  [Fact]
+  public void Call_InstanceMethod()
+  {
+    var par = Expression.Parameter(typeof(string), "s");
+    var mi = output.GetType().GetMethod(nameof(output.WriteLine), [typeof(string)]);
+    var body = Expression.Call(Expression.Constant(output), mi, par);
+    var lambda = Expression.Lambda<Action<string>>(body);
+    var action = lambda.Compile();
+
+    action("1"); // 1
+  }
 }
