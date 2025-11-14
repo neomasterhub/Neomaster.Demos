@@ -14,4 +14,6 @@ public class User
 
   public string Id { get; set; }
   public string Email { get; set; }
+  public Department DepartmentNull { get; set; }
+  public Department DepartmentDefault { get; set; } = new();
 }

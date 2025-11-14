@@ -736,8 +736,8 @@ public class LinqExprUnitDemos(ITestOutputHelper output)
   public void MemberInit()
   {
     var parType = typeof(string);
-    var id = Expression.Parameter(parType, "1");
-    var email = Expression.Parameter(parType, "2");
+    var id = Expression.Parameter(parType, "id");
+    var email = Expression.Parameter(parType, "email");
     var type = typeof(User);
     var body = Expression.MemberInit(
       Expression.New(type),
@@ -751,5 +751,36 @@ public class LinqExprUnitDemos(ITestOutputHelper output)
     Assert.NotNull(user);
     Assert.Equal("1", user.Id);
     Assert.Equal("2", user.Email);
+  }
+
+  [Fact]
+  public void MemberBind()
+  {
+    var type = typeof(User);
+    var childType = typeof(Department);
+    var parType = typeof(int);
+    var id1 = Expression.Parameter(parType, "id1");
+    var id2 = Expression.Parameter(parType, "id2");
+    var body = Expression.MemberInit(
+      Expression.New(type),
+      Expression.Bind(
+        type.GetProperty(nameof(User.DepartmentNull)),
+        Expression.New(childType)),
+      Expression.MemberBind(
+        type.GetProperty(nameof(User.DepartmentNull)),
+        Expression.Bind(
+          childType.GetProperty(nameof(Department.Id)),
+          id1)),
+      Expression.MemberBind(
+        type.GetProperty(nameof(User.DepartmentDefault)),
+        Expression.Bind(
+          childType.GetProperty(nameof(Department.Id)),
+          id2)));
+    var ctor = Expression.Lambda<Func<int, int, User>>(body, id1, id2).Compile();
+
+    var user = ctor(1, 2);
+
+    Assert.Equal(1, user.DepartmentNull.Id);
+    Assert.Equal(2, user.DepartmentDefault.Id);
   }
 }
