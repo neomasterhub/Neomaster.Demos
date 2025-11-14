@@ -783,4 +783,15 @@ public class LinqExprUnitDemos(ITestOutputHelper output)
     Assert.Equal(1, user.DepartmentNull.Id);
     Assert.Equal(2, user.DepartmentDefault.Id);
   }
+
+  [Fact]
+  public void Quote()
+  {
+    Expression<Func<int>> expr = () => 1;
+    var invoke1 = Expression.Invoke(expr);
+    var invoke2 = Expression.Invoke(Expression.Quote(expr));
+
+    Assert.Equal(1, Expression.Lambda<Func<int>>(invoke1).Compile()());
+    Assert.Equal(1, Expression.Lambda<Func<int>>(invoke2).Compile()());
+  }
 }
