@@ -785,13 +785,36 @@ public class LinqExprUnitDemos(ITestOutputHelper output)
   }
 
   [Fact]
-  public void Quote()
+  public void Quote_LambdaReturnsLambda()
   {
-    Expression<Func<int>> expr = () => 1;
-    var invoke1 = Expression.Invoke(expr);
-    var invoke2 = Expression.Invoke(Expression.Quote(expr));
+    const string view = "x => y => (x + y)";
+    var x = Expression.Parameter(typeof(int), "x");
+    var y = Expression.Parameter(typeof(int), "y");
 
-    Assert.Equal(1, Expression.Lambda<Func<int>>(invoke1).Compile()());
-    Assert.Equal(1, Expression.Lambda<Func<int>>(invoke2).Compile()());
+    var lambda1 = Expression.Lambda(
+      Expression.Lambda(
+        Expression.Add(x, y),
+        y),
+      x);
+    var dlg1 = lambda1.Compile();
+
+    Assert.Equal(view, lambda1.ToString());
+    Assert.Equal(ExpressionType.Lambda, lambda1.Body.NodeType);
+    Assert.IsType<Func<int, Func<int, int>>>(dlg1);
+    var func1 = (Func<int, Func<int, int>>)dlg1;
+    Assert.Equal(3, func1(1)(2));
+
+    var lambda2 = Expression.Lambda(
+      Expression.Quote(
+        Expression.Lambda(
+          Expression.Add(x, y),
+          y)),
+      x);
+    var dlg2 = lambda2.Compile();
+    Assert.Equal(view, lambda2.ToString());
+    Assert.Equal(ExpressionType.Quote, lambda2.Body.NodeType);
+    Assert.IsType<Func<int, Expression<Func<int, int>>>>(dlg2);
+    var func2 = (Func<int, Expression<Func<int, int>>>)dlg2;
+    Assert.Equal(3, func2(1).Compile()(2));
   }
 }
