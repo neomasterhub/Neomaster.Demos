@@ -1,6 +1,7 @@
 using System.Linq.Expressions;
 using System.Reflection;
 using System.Security.Claims;
+using Microsoft.EntityFrameworkCore;
 using Xunit;
 using static Neomaster.Demos.Tests.LinqExpr.BrokenReducible;
 
@@ -811,10 +812,49 @@ public class LinqExprUnitDemos(ITestOutputHelper output)
           y)),
       x);
     var dlg2 = lambda2.Compile();
+
     Assert.Equal(view, lambda2.ToString());
     Assert.Equal(ExpressionType.Quote, lambda2.Body.NodeType);
     Assert.IsType<Func<int, Expression<Func<int, int>>>>(dlg2);
     var func2 = (Func<int, Expression<Func<int, int>>>)dlg2;
     Assert.Equal(3, func2(1).Compile()(2));
+  }
+
+  [Fact]
+  public void Quote_InvokeReturnsLambda_InDbProvider()
+  {
+    var par = Expression.Parameter(typeof(Department), "dep");
+    var prop = Expression.Property(par, nameof(Department.Name));
+
+    var lambda1 = Expression.Lambda<Func<Department, bool>>(
+      Expression.Invoke(
+        Expression.Lambda<Func<Department, bool>>(
+          Expression.Equal(prop, Expression.Constant("D1")),
+          par),
+        par),
+      par);
+
+    var lambda2 = Expression.Lambda<Func<Department, bool>>(
+      Expression.Invoke(
+        Expression.Quote(
+          Expression.Lambda<Func<Department, bool>>(
+            Expression.Equal(prop, Expression.Constant("D1")),
+            par)),
+        par),
+      par);
+
+    using var db = new LinqExprDemoDbContext();
+    db.Database.EnsureDeleted();
+    db.Database.EnsureCreated();
+    db.Database.Migrate();
+    db.Departments.Add(new() { Name = "D1" });
+    db.Departments.Add(new() { Name = "D2" });
+    db.SaveChanges();
+
+    var d1 = db.Departments.First(lambda1);
+    Assert.Equal("D1", d1.Name);
+
+    var d2 = db.Departments.First(lambda2.Compile());
+    Assert.Equal("D1", d2.Name);
   }
 }
