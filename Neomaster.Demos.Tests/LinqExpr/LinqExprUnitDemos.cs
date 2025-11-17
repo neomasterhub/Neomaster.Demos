@@ -191,6 +191,21 @@ public class LinqExprUnitDemos(ITestOutputHelper output)
   }
 
   [Fact]
+  public void Lambda_ParameterOrder()
+  {
+    var type = typeof(int);
+    var x = Expression.Parameter(type, "x");
+    var y = Expression.Parameter(type, "y");
+    var body = Expression.Subtract(x, y);
+
+    var funcXY = Expression.Lambda<Func<int, int, int>>(body, x, y).Compile();
+    var funcYX = Expression.Lambda<Func<int, int, int>>(body, y, x).Compile();
+
+    Assert.Equal(9, funcXY(10, 1));
+    Assert.Equal(9, funcYX(1, 10));
+  }
+
+  [Fact]
   public void Lambda_Info()
   {
     var claimType = typeof(Claim);
