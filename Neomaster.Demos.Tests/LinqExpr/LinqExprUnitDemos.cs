@@ -857,4 +857,24 @@ public class LinqExprUnitDemos(ITestOutputHelper output)
     var d2 = db.Departments.First(lambda2.Compile());
     Assert.Equal("D1", d2.Name);
   }
+
+  [Fact]
+  public void Assign()
+  {
+    var pUser = Expression.Parameter(typeof(User), "user");
+    var pDep = Expression.Parameter(typeof(Department), "dep");
+    var body = Expression.Assign(
+      Expression.Property(pUser, nameof(User.Department)),
+      pDep);
+    var assignUserDepLambda = Expression.Lambda<Action<User, Department>>(body, pUser, pDep);
+    var assignUserDepFunc = assignUserDepLambda.Compile();
+    var user = new User();
+
+    assignUserDepFunc(user, new Department { Id = 1, Name = "A" });
+
+    Assert.Equal("(user, dep) => (user.Department = dep)", assignUserDepLambda.ToString());
+    Assert.NotNull(user.Department);
+    Assert.Equal(1, user.Department.Id);
+    Assert.Equal("A", user.Department.Name);
+  }
 }
