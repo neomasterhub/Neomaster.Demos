@@ -10,6 +10,7 @@ namespace Neomaster.Demos.Tests.LinqExpr;
 public class LinqExprUnitDemos(ITestOutputHelper output)
 {
   private delegate void ActionRef<T>(ref T arg);
+  private delegate void ActionRef<T1, T2>(ref T1 arg1, ref T2 arg2);
 
   [Fact]
   public void TreeStructure_View()
@@ -891,5 +892,28 @@ public class LinqExprUnitDemos(ITestOutputHelper output)
     Assert.NotNull(user.Department);
     Assert.Equal(1, user.Department.Id);
     Assert.Equal("A", user.Department.Name);
+  }
+
+  [Fact]
+  public void Block_Variable_Swap()
+  {
+    var type = typeof(int);
+    var t = Expression.Variable(type, "t");
+    var x = Expression.Parameter(type.MakeByRefType(), "x");
+    var y = Expression.Parameter(type.MakeByRefType(), "y");
+    var body = Expression.Block(
+      variables: [t],
+      Expression.Assign(t, x),
+      Expression.Assign(x, y),
+      Expression.Assign(y, t));
+    var lambda = Expression.Lambda<ActionRef<int, int>>(body, x, y);
+    var action = lambda.Compile();
+    var a = 1;
+    var b = 2;
+
+    action(ref a, ref b);
+
+    Assert.Equal(2, a);
+    Assert.Equal(1, b);
   }
 }
