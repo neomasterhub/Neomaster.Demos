@@ -1020,7 +1020,7 @@ public class LinqExprUnitDemos(ITestOutputHelper output)
   }
 
   [Fact]
-  public void Block_Goto_Label()
+  public void Block_Goto_Label_Empty()
   {
     var label = Expression.Label(); // declaration
     var v = Expression.Variable(typeof(int), "v");
@@ -1034,6 +1034,28 @@ public class LinqExprUnitDemos(ITestOutputHelper output)
         Expression.Goto(label)),
       Expression.AddAssign(v, Expression.Constant(100)),
       Expression.Label(label), // instruction
+      v);
+
+    var add100Func = Expression.Lambda<Func<int, bool, int>>(body, x, add100).Compile();
+
+    Assert.Equal(1, add100Func(1, false));
+    Assert.Equal(101, add100Func(1, true));
+  }
+
+  [Fact]
+  public void Block_Goto_Label_Instruction()
+  {
+    var label = Expression.Label(); // declaration
+    var v = Expression.Variable(typeof(int), "v");
+    var x = Expression.Parameter(typeof(int), "x");
+    var add100 = Expression.Parameter(typeof(bool), "add100");
+    var body = Expression.Block(
+      [v],
+      Expression.Assign(v, x),
+      Expression.IfThen(
+        Expression.IsFalse(add100),
+        Expression.Goto(label)),
+      Expression.Label(label, Expression.AddAssign(v, Expression.Constant(100))), // instruction
       v);
 
     var add100Func = Expression.Lambda<Func<int, bool, int>>(body, x, add100).Compile();
