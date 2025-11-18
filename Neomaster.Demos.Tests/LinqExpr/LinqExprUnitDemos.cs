@@ -916,4 +916,18 @@ public class LinqExprUnitDemos(ITestOutputHelper output)
     Assert.Equal(2, a);
     Assert.Equal(1, b);
   }
+
+  [Fact]
+  public void Block_ReturnsLastExpressionResult()
+  {
+    var type = typeof(int);
+    var x = Expression.Parameter(type, "x");
+    var y = Expression.Parameter(type, "y");
+    var body = Expression.Block(
+      Expression.Add(x, y));
+
+    var sum = Expression.Lambda<Func<int, int, int>>(body, x, y).Compile();
+
+    Assert.Equal(3, sum(1, 2));
+  }
 }
