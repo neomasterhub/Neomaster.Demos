@@ -930,4 +930,58 @@ public class LinqExprUnitDemos(ITestOutputHelper output)
 
     Assert.Equal(3, sum(1, 2));
   }
+
+  [Fact]
+  public void Block_ConditionalOperators()
+  {
+    var x = Expression.Parameter(typeof(int), "x");
+    var v = Expression.Variable(typeof(bool), "v");
+    var c = Expression.Constant(0);
+    var blocks = new List<BlockExpression>
+    {
+      Expression.Block(
+        [v],
+        Expression.Assign(v, Expression.Constant(false)),
+        Expression.IfThen(
+          Expression.GreaterThan(x, c),
+          Expression.Assign(v, Expression.Constant(true))),
+        v),
+
+      Expression.Block(
+        [v],
+        Expression.IfThenElse(
+          Expression.GreaterThan(x, c),
+          Expression.Assign(v, Expression.Constant(true)),
+          Expression.Assign(v, Expression.Constant(false))),
+        v),
+
+      Expression.Block(
+        Expression.Condition(
+          Expression.GreaterThan(x, c),
+          Expression.Constant(true),
+          Expression.Constant(false))),
+
+      Expression.Block(
+        [v],
+        Expression.Switch(
+          x,
+          Expression.Throw(
+            Expression.New(typeof(IndexOutOfRangeException)),
+            typeof(bool)),
+          Expression.SwitchCase(
+            Expression.Assign(v, Expression.Constant(true)),
+            Expression.Constant(1)),
+          Expression.SwitchCase(
+            Expression.Assign(v, Expression.Constant(false)),
+            Expression.Constant(-1))),
+        v),
+    };
+
+    foreach (var block in blocks)
+    {
+      var check = Expression.Lambda<Func<int, bool>>(block, x).Compile();
+      Assert.True(check(1));
+      Assert.False(check(-1));
+    }
+  }
 }
