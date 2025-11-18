@@ -984,4 +984,38 @@ public class LinqExprUnitDemos(ITestOutputHelper output)
       Assert.False(check(-1));
     }
   }
+
+  [Fact]
+  public void Block_Throw()
+  {
+    var x = Expression.Parameter(typeof(int), "x");
+    var func1 = Expression.Lambda<Func<int, bool>>(
+      Expression.Condition(
+        Expression.GreaterThan(x, Expression.Constant(0)),
+        Expression.Constant(true),
+        Expression.Throw(
+          Expression.New(typeof(InvalidOperationException)),
+          typeof(bool))),
+      x).Compile();
+    var func2 = Expression.Lambda<Func<int, string>>(
+      Expression.Condition(
+        Expression.GreaterThan(x, Expression.Constant(0)),
+        Expression.Constant("1"),
+        Expression.Throw(
+          Expression.New(typeof(InvalidOperationException)),
+          typeof(string))),
+      x).Compile();
+    var func3 = Expression.Lambda<Func<int, Department>>(
+      Expression.Condition(
+        Expression.GreaterThan(x, Expression.Constant(0)),
+        Expression.New(typeof(Department)),
+        Expression.Throw(
+          Expression.New(typeof(InvalidOperationException)),
+          typeof(Department))),
+      x).Compile();
+
+    Assert.Throws<InvalidOperationException>(() => func1.Invoke(-1));
+    Assert.Throws<InvalidOperationException>(() => func2.Invoke(-1));
+    Assert.Throws<InvalidOperationException>(() => func3.Invoke(-1));
+  }
 }
