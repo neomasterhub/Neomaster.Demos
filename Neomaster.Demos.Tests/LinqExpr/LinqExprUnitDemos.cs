@@ -1111,4 +1111,31 @@ public class LinqExprUnitDemos(ITestOutputHelper output)
     Assert.Equal(GotoExpressionKind.Goto, gt.Kind);
     Assert.Equal(GotoExpressionKind.Return, rt.Kind);
   }
+
+  [Fact]
+  public void Block_ReturnVsGoto_CallViaKind()
+  {
+    var tInt = typeof(int);
+    var tExpression = typeof(Expression);
+    var label1 = Expression.Label(tInt);
+    var label2 = Expression.Label(tInt);
+
+    MethodInfo GetMethodInfo(GotoExpressionKind kind) => tExpression.GetMethod(
+      kind.ToString(),
+      [typeof(LabelTarget), tExpression]);
+
+    Func<int> GetFunc(GotoExpressionKind kind) =>
+     Expression.Lambda<Func<int>>(
+       Expression.Block(
+        Expression.Call(
+          GetMethodInfo(kind),
+          Expression.Constant(label1),
+          Expression.Constant(Expression.Constant(1))),
+        Expression.Label(label1, Expression.Constant(2)),
+        Expression.Label(label2, Expression.Constant(3))))
+     .Compile();
+
+    Assert.Equal(3, GetFunc(GotoExpressionKind.Goto)());
+    Assert.Equal(3, GetFunc(GotoExpressionKind.Return)());
+  }
 }
