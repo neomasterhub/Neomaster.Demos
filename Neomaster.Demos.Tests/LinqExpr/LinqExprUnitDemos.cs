@@ -1080,4 +1080,20 @@ public class LinqExprUnitDemos(ITestOutputHelper output)
     Assert.Equal(0, func(false));
     Assert.Equal(1, func(true));
   }
+
+  [Fact]
+  public void Block_Return_LikeGoto()
+  {
+    var type = typeof(int);
+    var label1 = Expression.Label(type);
+    var label2 = Expression.Label(type);
+    var body = Expression.Block(
+      Expression.Return(label1, Expression.Constant(1)),
+      Expression.Label(label1, Expression.Constant(2)),
+      Expression.Label(label2, Expression.Constant(3)));
+
+    var func = Expression.Lambda<Func<int>>(body).Compile();
+
+    Assert.Equal(3, func());
+  }
 }
