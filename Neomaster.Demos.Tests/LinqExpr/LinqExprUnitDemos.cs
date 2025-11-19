@@ -1063,4 +1063,21 @@ public class LinqExprUnitDemos(ITestOutputHelper output)
     Assert.Equal(1, add100Func(1, false));
     Assert.Equal(101, add100Func(1, true));
   }
+
+  [Fact]
+  public void Block_Goto_Label_ReturnValue()
+  {
+    var label = Expression.Label(typeof(int));
+    var x = Expression.Parameter(typeof(bool), "x");
+    var body = Expression.Block(
+      Expression.IfThen(
+        Expression.IsTrue(x),
+        Expression.Goto(label, Expression.Constant(1))),
+      Expression.Label(label, Expression.Constant(0)));
+
+    var func = Expression.Lambda<Func<bool, int>>(body, x).Compile();
+
+    Assert.Equal(0, func(false));
+    Assert.Equal(1, func(true));
+  }
 }
