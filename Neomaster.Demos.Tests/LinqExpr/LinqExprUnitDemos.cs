@@ -1096,4 +1096,19 @@ public class LinqExprUnitDemos(ITestOutputHelper output)
 
     Assert.Equal(3, func());
   }
+
+  [Fact]
+  public void Block_ReturnVsGoto_SemanticDifference()
+  {
+    var c = Expression.Constant(1);
+    var label = Expression.Label(typeof(int));
+    var gt = Expression.Goto(label, c);
+    var rt = Expression.Return(label, c);
+
+    Assert.IsType<GotoExpression>(gt);
+    Assert.IsType<GotoExpression>(rt);
+
+    Assert.Equal(GotoExpressionKind.Goto, gt.Kind);
+    Assert.Equal(GotoExpressionKind.Return, rt.Kind);
+  }
 }
