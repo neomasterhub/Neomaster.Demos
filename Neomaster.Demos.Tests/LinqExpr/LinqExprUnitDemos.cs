@@ -1138,4 +1138,33 @@ public class LinqExprUnitDemos(ITestOutputHelper output)
     Assert.Equal(3, GetFunc(GotoExpressionKind.Goto)());
     Assert.Equal(3, GetFunc(GotoExpressionKind.Return)());
   }
+
+  [Fact]
+  public void Block_Loop_Break_PowerTo10()
+  {
+    var tInt = typeof(int);
+    var i = Expression.Variable(tInt);
+    var input = Expression.Parameter(tInt);
+    var iterations = Expression.Parameter(tInt);
+    var breakLabel = Expression.Label();
+    var body = Expression.Block(
+      [i],
+      Expression.Assign(i, Expression.Constant(0)),
+      Expression.Loop(
+        Expression.Block(
+          Expression.IfThenElse(
+            Expression.LessThan(i, iterations),
+            Expression.Block(
+              Expression.MultiplyAssign(input, Expression.Constant(10)),
+              Expression.PostIncrementAssign(i)),
+            Expression.Break(breakLabel)))),
+      Expression.Label(breakLabel),
+      input);
+
+    var powerTo10 = Expression.Lambda<Func<int, int, int>>(body, input, iterations).Compile();
+
+    Assert.Equal(1, powerTo10(1, 0));
+    Assert.Equal(20, powerTo10(2, 1));
+    Assert.Equal(300, powerTo10(3, 2));
+  }
 }
