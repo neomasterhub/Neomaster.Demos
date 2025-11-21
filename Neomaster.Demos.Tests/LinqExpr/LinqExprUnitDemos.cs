@@ -1282,6 +1282,47 @@ public class LinqExprUnitDemos(ITestOutputHelper output)
     Assert.Equal(9, calc());
   }
 
+  [Fact]
+  public void AutoMapper()
+  {
+    Func<TSrc, TDst> CreateMapper<TSrc, TDst>()
+    {
+      var tSrc = typeof(TSrc);
+      var tDst = typeof(TDst);
+      var src = Expression.Parameter(tSrc);
+      var body = Expression.MemberInit(
+        Expression.New(tDst),
+        tDst
+          .GetProperties()
+          .Select(p2 =>
+          {
+            var p1 = tSrc.GetProperty(p2.Name);
+            return Expression.Bind(p2, Expression.Property(src, p1));
+          }));
+
+      return Expression.Lambda<Func<TSrc, TDst>>(body, src).Compile();
+    }
+
+    var src = new User
+    {
+      Id = "1",
+      Email = "2",
+      Department = new Department
+      {
+        Id = 3,
+        Name = "4",
+      },
+    };
+
+    var mapper = CreateMapper<User, UserDto>();
+    var dst = mapper(src);
+
+    Assert.Equal(src.Id, dst.Id);
+    Assert.Equal(src.Email, dst.Email);
+    Assert.Equal(src.Department.Id, dst.Department.Id);
+    Assert.Equal(src.Department.Name, dst.Department.Name);
+  }
+
   // TODO
   // CompileToMethod_ReplaceMethodBody
   // CompileToMethod_CreateExtensionMethod
