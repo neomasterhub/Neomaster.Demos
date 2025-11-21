@@ -1206,4 +1206,25 @@ public class LinqExprUnitDemos(ITestOutputHelper output)
 
     Assert.Equal([2, 4], selectEven([1, 2, 3, 4]));
   }
+
+  [Fact]
+  public void GotoKinds()
+  {
+    var label = Expression.Label();
+    var expectedKinds = Enum.GetValues<GotoExpressionKind>();
+
+    var exprs = new GotoExpression[]
+    {
+      Expression.Goto(label),
+      Expression.Return(label),
+      Expression.Break(label),
+      Expression.Continue(label),
+    };
+
+    Assert.Equal(expectedKinds.Length, exprs.Length);
+    Assert.All(expectedKinds, (expectedKind, i) =>
+    {
+      Assert.Equal(expectedKind, exprs[i].Kind);
+    });
+  }
 }
