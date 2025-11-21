@@ -750,7 +750,7 @@ public class LinqExprUnitDemos(ITestOutputHelper output)
   }
 
   [Fact]
-  public void MemberInit()
+  public void MemberInit_Bind()
   {
     var parType = typeof(string);
     var id = Expression.Parameter(parType, "id");
@@ -932,7 +932,7 @@ public class LinqExprUnitDemos(ITestOutputHelper output)
   }
 
   [Fact]
-  public void Block_ConditionalOperators()
+  public void ConditionalOperators()
   {
     var x = Expression.Parameter(typeof(int), "x");
     var v = Expression.Variable(typeof(bool), "v");
@@ -986,7 +986,7 @@ public class LinqExprUnitDemos(ITestOutputHelper output)
   }
 
   [Fact]
-  public void Block_Throw()
+  public void Throw()
   {
     var x = Expression.Parameter(typeof(int), "x");
     var func1 = Expression.Lambda<Func<int, bool>>(
@@ -1020,7 +1020,7 @@ public class LinqExprUnitDemos(ITestOutputHelper output)
   }
 
   [Fact]
-  public void Block_Goto_Label_Empty()
+  public void Goto_Label_Empty()
   {
     var label = Expression.Label(); // declaration
     var v = Expression.Variable(typeof(int), "v");
@@ -1043,7 +1043,7 @@ public class LinqExprUnitDemos(ITestOutputHelper output)
   }
 
   [Fact]
-  public void Block_Goto_Label_Instruction()
+  public void Goto_Label_Instruction()
   {
     var label = Expression.Label(); // declaration
     var v = Expression.Variable(typeof(int), "v");
@@ -1065,7 +1065,7 @@ public class LinqExprUnitDemos(ITestOutputHelper output)
   }
 
   [Fact]
-  public void Block_Goto_Label_ReturnValue()
+  public void Goto_Label_ReturnValue()
   {
     var label = Expression.Label(typeof(int));
     var x = Expression.Parameter(typeof(bool), "x");
@@ -1082,7 +1082,7 @@ public class LinqExprUnitDemos(ITestOutputHelper output)
   }
 
   [Fact]
-  public void Block_Return_LikeGoto()
+  public void Return_LikeGoto()
   {
     var type = typeof(int);
     var label1 = Expression.Label(type);
@@ -1098,7 +1098,7 @@ public class LinqExprUnitDemos(ITestOutputHelper output)
   }
 
   [Fact]
-  public void Block_ReturnVsGoto_SemanticDifference()
+  public void ReturnVsGoto_SemanticDifference()
   {
     var c = Expression.Constant(1);
     var label = Expression.Label(typeof(int));
@@ -1113,7 +1113,7 @@ public class LinqExprUnitDemos(ITestOutputHelper output)
   }
 
   [Fact]
-  public void Block_ReturnVsGoto_CallViaKind()
+  public void ReturnVsGoto_CallViaKind()
   {
     var tInt = typeof(int);
     var tExpression = typeof(Expression);
@@ -1140,7 +1140,7 @@ public class LinqExprUnitDemos(ITestOutputHelper output)
   }
 
   [Fact]
-  public void Block_Loop_Break_PowerTo10()
+  public void Loop_Break_PowerTo10()
   {
     var tInt = typeof(int);
     var i = Expression.Variable(tInt);
@@ -1169,7 +1169,7 @@ public class LinqExprUnitDemos(ITestOutputHelper output)
   }
 
   [Fact]
-  public void Block_Loop_Continue_SelectEven()
+  public void Loop_Continue_SelectEven()
   {
     var tList = typeof(List<int>);
     var input = Expression.Parameter(tList);
@@ -1208,7 +1208,7 @@ public class LinqExprUnitDemos(ITestOutputHelper output)
   }
 
   [Fact]
-  public void GotoKinds()
+  public void GotoExpressionKind_ListOfAll()
   {
     var label = Expression.Label();
     var expectedKinds = Enum.GetValues<GotoExpressionKind>();
