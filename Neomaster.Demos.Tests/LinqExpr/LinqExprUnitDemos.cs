@@ -1252,7 +1252,37 @@ public class LinqExprUnitDemos(ITestOutputHelper output)
     Assert.Equal(11, func());
   }
 
+  [Fact]
+  public void ReversePolishNotation()
+  {
+    // (1 + 2) * 3
+    var tokens = new[] { "1", "2", "+", "3", "*" };
+    var stack = new Stack<Expression>();
+
+    foreach (var token in tokens)
+    {
+      if (int.TryParse(token, out var operand))
+      {
+        stack.Push(Expression.Constant(operand));
+        continue;
+      }
+
+      stack.Push(token switch
+      {
+        "+" => Expression.Add(stack.Pop(), stack.Pop()),
+        "*" => Expression.Multiply(stack.Pop(), stack.Pop()),
+        _ => throw new InvalidOperationException($"Unknown token \"{token}\""),
+      });
+    }
+
+    var body = stack.Pop();
+    var calc = Expression.Lambda<Func<int>>(body).Compile();
+
+    Assert.Equal("(3 * (2 + 1))", body.ToString());
+    Assert.Equal(9, calc());
+  }
+
   // TODO
-  // reverse polish notation
-  // CompileToMethod
+  // CompileToMethod_ReplaceMethodBody
+  // CompileToMethod_CreateExtensionMethod
 }
