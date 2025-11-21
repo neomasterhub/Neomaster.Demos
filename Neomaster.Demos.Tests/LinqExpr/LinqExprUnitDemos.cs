@@ -1167,4 +1167,43 @@ public class LinqExprUnitDemos(ITestOutputHelper output)
     Assert.Equal(20, powerTo10(2, 1));
     Assert.Equal(300, powerTo10(3, 2));
   }
+
+  [Fact]
+  public void Block_Loop_Continue_SelectEven()
+  {
+    var tList = typeof(List<int>);
+    var input = Expression.Parameter(tList);
+    var result = Expression.Variable(tList);
+    var breakLabel = Expression.Label();
+    var continueLabel = Expression.Label();
+    var i = Expression.Variable(typeof(int));
+    var body = Expression.Block(
+      [i, result],
+      Expression.Assign(i, Expression.Constant(0)),
+      Expression.Assign(result, Expression.New(tList)),
+      Expression.Loop(
+        Expression.Block(
+          Expression.IfThen( // if (i >= Count) break
+            Expression.GreaterThanOrEqual(i, Expression.Property(input, "Count")),
+            Expression.Break(breakLabel)),
+          Expression.IfThen( // if (input[i] % 2 != 0) continue
+            Expression.NotEqual(
+              Expression.Modulo(
+                Expression.Property(input, "Item", i),
+                Expression.Constant(2)),
+              Expression.Constant(0)),
+            Expression.Continue(continueLabel)),
+          Expression.Call(
+            result,
+            tList.GetMethod("Add", [typeof(int)]),
+            Expression.Property(input, "Item", i)),
+          Expression.Label(continueLabel),
+          Expression.PostIncrementAssign(i))),
+      Expression.Label(breakLabel),
+      result);
+
+    var selectEven = Expression.Lambda<Func<List<int>, List<int>>>(body, input).Compile();
+
+    Assert.Equal([2, 4], selectEven([1, 2, 3, 4]));
+  }
 }
