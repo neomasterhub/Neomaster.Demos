@@ -1323,7 +1323,51 @@ public class LinqExprUnitDemos(ITestOutputHelper output)
     Assert.Equal(src.Department.Name, dst.Department.Name);
   }
 
-  // TODO
-  // CompileToMethod_ReplaceMethodBody
-  // CompileToMethod_CreateExtensionMethod
+  [Fact]
+  public void SqlGeneration()
+  {
+    string MapOperator(ExpressionType type) => type switch
+    {
+      ExpressionType.Equal => "=",
+      ExpressionType.GreaterThan => ">",
+      ExpressionType.AndAlso => "AND",
+      _ => throw new ArgumentOutOfRangeException($"Unknown operator \"{type}\"")
+    };
+
+    string Parse(Expression expr)
+    {
+      return expr switch
+      {
+        BinaryExpression b => $"{Parse(b.Left)} {MapOperator(b.NodeType)} {Parse(b.Right)}",
+        MemberExpression m => m.Member.Name,
+        ConstantExpression c =>
+          c.Value is string s
+          ? $"'{s}'"
+          : (c.Value?.ToString() ?? "NULL"),
+        _ => throw new NotSupportedException($"Unsupported expression \"{expr.NodeType}\""),
+      };
+    }
+
+    string ToSql<T>(Expression<Func<T, bool>> predicate)
+    {
+      return
+        $"""
+        SELECT *
+        FROM {typeof(T).Name}
+        WHERE
+        {Parse(predicate.Body)}
+        """;
+    }
+
+    var sql = ToSql<Department>(d => d.Id > 1 && d.Name == "2");
+
+    Assert.Equal(
+      """
+      SELECT *
+      FROM Department
+      WHERE
+      Id > 1 AND Name = '2'
+      """,
+      sql);
+  }
 }
