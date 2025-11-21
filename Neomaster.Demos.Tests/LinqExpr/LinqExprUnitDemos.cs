@@ -1227,4 +1227,32 @@ public class LinqExprUnitDemos(ITestOutputHelper output)
       Assert.Equal(expectedKind, exprs[i].Kind);
     });
   }
+
+  [Fact]
+  public void TryCatchFinally()
+  {
+    var v = Expression.Variable(typeof(int));
+    var body = Expression.Block(
+      [v],
+      Expression.TryCatchFinally(
+        Expression.Throw(
+          Expression.New(typeof(InvalidOperationException)),
+          typeof(int)),
+        Expression.AddAssign(v, Expression.Constant(10)),
+        Expression.Catch(
+          typeof(InvalidOperationException),
+          Expression.Assign(v, Expression.Constant(1))),
+        Expression.Catch(
+          typeof(IndexOutOfRangeException),
+          Expression.Assign(v, Expression.Constant(2)))),
+      v);
+
+    var func = Expression.Lambda<Func<int>>(body).Compile();
+
+    Assert.Equal(11, func());
+  }
+
+  // TODO
+  // reverse polish notation
+  // CompileToMethod
 }
