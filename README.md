@@ -26,62 +26,6 @@ Look. Try. Add.
 
 > **Note:** Tests containing `spin` or `yield` may fail depending on the CPU.
 
-
-
-<details>
-<summary>Tasks: Features</summary>
-
-1. [Timer: Callback][tasks-features-1]
-2. [Timer: AutoReset: false][tasks-features-2]
-3. [Timer: Alarms][tasks-features-3]
-4. [Parallel: `For()`][tasks-features-4]
-5. [Parallel: `Stop()`][tasks-features-5]
-6. [Parallel: `Break()`][tasks-features-6]
-7. [Parallel: Local Var][tasks-features-7]
-8. [Parallel: Exception][tasks-features-8]
-9. [Parallel: `ParallelOptions`][tasks-features-9]
-10. [Parallel: State Checks][tasks-features-10]
-11. [Parallel: `Foreach()`][tasks-features-11]
-12. [Parallel: `Invoke()`][tasks-features-12]
-
-[tasks-features-1]:Neomaster.Demos.Tests/Tasks/TasksFeaturesUnitDemos.cs#L10
-[tasks-features-2]:Neomaster.Demos.Tests/Tasks/TasksFeaturesUnitDemos.cs#L37
-[tasks-features-3]:Neomaster.Demos.Tests/Tasks/TasksFeaturesUnitDemos.cs#L61
-[tasks-features-4]:Neomaster.Demos.Tests/Tasks/TasksFeaturesUnitDemos.cs#L110
-[tasks-features-5]:Neomaster.Demos.Tests/Tasks/TasksFeaturesUnitDemos.cs#L134
-[tasks-features-6]:Neomaster.Demos.Tests/Tasks/TasksFeaturesUnitDemos.cs#L170
-[tasks-features-7]:Neomaster.Demos.Tests/Tasks/TasksFeaturesUnitDemos.cs#L207
-[tasks-features-8]:Neomaster.Demos.Tests/Tasks/TasksFeaturesUnitDemos.cs#L236
-[tasks-features-9]:Neomaster.Demos.Tests/Tasks/TasksFeaturesUnitDemos.cs#L280
-[tasks-features-10]:Neomaster.Demos.Tests/Tasks/TasksFeaturesUnitDemos.cs#L298
-[tasks-features-11]:Neomaster.Demos.Tests/Tasks/TasksFeaturesUnitDemos.cs#L325
-[tasks-features-12]:Neomaster.Demos.Tests/Tasks/TasksFeaturesUnitDemos.cs#L360
-
-</details>
-
-<details>
-<summary>Tasks: Activity Types</summary>
-
-1. [`AlarmInfo`][tasks-activity-types-1]
-2. [`CustomTaskScheduler`][tasks-activity-types-2]
-3. [`DefaultSyncCtx`][tasks-activity-types-3]
-4. [`ExternalEventSource`][tasks-activity-types-4]
-5. [`ExternalEventSourceAdapter`][tasks-activity-types-5]
-6. [`TaskExtensions`][tasks-activity-types-6]
-7. [`TimeSpanAwaiter`][tasks-activity-types-7]
-8. [`UISyncCtx`][tasks-activity-types-8]
-
-[tasks-activity-types-1]:Neomaster.Demos.Tests/Tasks/ActivityTypes/AlarmInfo.cs
-[tasks-activity-types-2]:Neomaster.Demos.Tests/Tasks/ActivityTypes/CustomTaskScheduler.cs
-[tasks-activity-types-3]:Neomaster.Demos.Tests/Tasks/ActivityTypes/DefaultSyncCtx.cs
-[tasks-activity-types-4]:Neomaster.Demos.Tests/Tasks/ActivityTypes/ExternalEventSource.cs
-[tasks-activity-types-5]:Neomaster.Demos.Tests/Tasks/ActivityTypes/ExternalEventSourceAdapter.cs
-[tasks-activity-types-6]:Neomaster.Demos.Tests/Tasks/ActivityTypes/TaskExtensions.cs
-[tasks-activity-types-7]:Neomaster.Demos.Tests/Tasks/ActivityTypes/TimeSpanAwaiter.cs
-[tasks-activity-types-8]:Neomaster.Demos.Tests/Tasks/ActivityTypes/UISyncCtx.cs
-
-</details>
-
 <details>
 <summary>LINQ: Expression Trees</summary>
 
