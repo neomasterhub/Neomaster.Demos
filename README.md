@@ -28,31 +28,6 @@ Look. Try. Add.
 
 
 <details>
-<summary>Threads: Features</summary>
-
-1. [Synchronized method: instance][threads-features-1]
-2. [Synchronized method: static][threads-features-2]
-3. [Synchronized method: instance in different threads][threads-features-3]
-4. [Synchronized method: static in different threads][threads-features-4]
-5. [ThreadLocal&lt;T&gt;: counters][threads-features-5]
-6. [Lazy&lt;T&gt;: lazy initialization][threads-features-6]
-7. [Lazy&lt;T&gt;: single initialization][threads-features-7]
-8. [Lazy&lt;T&gt;: multiple initialization][threads-features-8]
-9. [Lazy&lt;T&gt;: unsafe initialization][threads-features-9]
-
-[threads-features-1]:Neomaster.Demos.Tests/Threads/ThreadsFeaturesUnitDemos.cs#L10
-[threads-features-2]:Neomaster.Demos.Tests/Threads/ThreadsFeaturesUnitDemos.cs#L26
-[threads-features-3]:Neomaster.Demos.Tests/Threads/ThreadsFeaturesUnitDemos.cs#L41
-[threads-features-4]:Neomaster.Demos.Tests/Threads/ThreadsFeaturesUnitDemos.cs#L86
-[threads-features-5]:Neomaster.Demos.Tests/Threads/ThreadsFeaturesUnitDemos.cs#L129
-[threads-features-6]:Neomaster.Demos.Tests/Threads/ThreadsFeaturesUnitDemos.cs#L151
-[threads-features-7]:Neomaster.Demos.Tests/Threads/ThreadsFeaturesUnitDemos.cs#L163
-[threads-features-8]:Neomaster.Demos.Tests/Threads/ThreadsFeaturesUnitDemos.cs#L197
-[threads-features-9]:Neomaster.Demos.Tests/Threads/ThreadsFeaturesUnitDemos.cs#L240
-
-</details>
-
-<details>
 <summary>Tasks</summary>
 
 1. [Create task][tasks-1]

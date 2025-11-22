@@ -1,9 +1,11 @@
 using System.Collections.Concurrent;
+using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using Xunit;
 
 namespace Neomaster.Demos.Tests.Threads;
 
+[Description("Features")]
 public class ThreadsFeaturesUnitDemos
 {
   [Fact(DisplayName = "Synchronized method: instance")]
@@ -125,7 +127,7 @@ public class ThreadsFeaturesUnitDemos
     Assert.Equal(expectedChars2String, chars2String);
   }
 
-  [Fact(DisplayName = "ThreadLocal<T>: counters")]
+  [Fact(DisplayName = "ThreadLocal&lt;T&gt;: counters")]
   public void ThreadLocal_Counters()
   {
     var threadCounters = new int[3];
@@ -147,7 +149,7 @@ public class ThreadsFeaturesUnitDemos
     Assert.Equal([1, 2, 3], threadCounters);
   }
 
-  [Fact]
+  [Fact(DisplayName = "Lazy&lt;T&gt;: lazy initialization")]
   public void LazyLazyInitialization()
   {
     var lo = new Lazy<bool>();
@@ -159,7 +161,7 @@ public class ThreadsFeaturesUnitDemos
     Assert.True(lo.IsValueCreated);
   }
 
-  [Fact]
+  [Fact(DisplayName = "Lazy&lt;T&gt;: single initialization")]
   public void LazySingleInitialization()
   {
     var initializedEventCount = 0;
@@ -193,7 +195,7 @@ public class ThreadsFeaturesUnitDemos
     Assert.Equal(0, loValueAccessErrorCount);
   }
 
-  [Fact]
+  [Fact(DisplayName = "Lazy&lt;T&gt;: multiple initialization")]
   public void LazyMultipleInitialization()
   {
     var initializedEventCount = 0;
@@ -236,7 +238,7 @@ public class ThreadsFeaturesUnitDemos
     Assert.Single(returnValues.Distinct());
   }
 
-  [Fact]
+  [Fact(DisplayName = "Lazy&lt;T&gt;: unsafe initialization")]
   public void LazyUnsafeInitialization()
   {
     var initializedEventCount = 0;
