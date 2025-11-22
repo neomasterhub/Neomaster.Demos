@@ -1,27 +1,15 @@
 using System.Text.RegularExpressions;
+using Neomaster.Demos.Shared;
 using Xunit;
 
 namespace Neomaster.Demos.Tests;
 
 public class SolutionTests(ITestOutputHelper output)
 {
-  private static readonly string _solutionPath;
-  private static readonly string _readmePath;
-
-  static SolutionTests()
-  {
-    const string solutionName = "Neomaster.Demos";
-
-    _solutionPath = Environment.CurrentDirectory.Substring(
-      0, Environment.CurrentDirectory.IndexOf(solutionName) + solutionName.Length);
-
-    _readmePath = Path.Combine(_solutionPath, "readme.md");
-  }
-
   [Fact]
   public void ReadmeShouldContainReferencesToTestMethods()
   {
-    var testFileLineIndexes = File.ReadAllLines(_readmePath)
+    var testFileLineIndexes = File.ReadAllLines(SolutionInfo.ReadmePath)
       .Where(line => Regex.IsMatch(line, @"#L[0-9]+$"))
       .Select(line =>
       {
@@ -40,7 +28,7 @@ public class SolutionTests(ITestOutputHelper output)
         MethodLineIndexes = v,
       });
 
-    var unitDemoFileInfos = new DirectoryInfo(_solutionPath)
+    var unitDemoFileInfos = new DirectoryInfo(SolutionInfo.SolutionPath)
       .EnumerateFiles("*UnitDemos.cs", SearchOption.AllDirectories)
       .Where(fi => testFileLineIndexes.Any(l => l.FileName == fi.Name));
 
@@ -77,7 +65,7 @@ public class SolutionTests(ITestOutputHelper output)
     string prevRefPrefix = null;
 
     foreach (var item in File
-      .ReadAllLines(_readmePath)
+      .ReadAllLines(SolutionInfo.ReadmePath)
       .Where(line => Regex.IsMatch(line, @"^[0-9]+\.")))
     {
       var index = int.Parse(item.Split('.')[0]);

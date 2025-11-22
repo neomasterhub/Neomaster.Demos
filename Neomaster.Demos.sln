@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.12.35707.178
+# Visual Studio Version 18
+VisualStudioVersion = 18.0.11217.181 d18.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Neomaster.Demos.Cmd", "Neomaster.Demos.Cmd\Neomaster.Demos.Cmd.csproj", "{7218C0A7-EFA6-4E0F-8F77-AE3532585566}"
 EndProject
@@ -43,6 +43,8 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tasks", "Tasks", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Neomaster.Demos.Apps.Tasks.TaskConfigureAwait", "Neomaster.Demos.Apps\Neomaster.Demos.Apps.Tasks.TaskConfigureAwait\Neomaster.Demos.Apps.Tasks.TaskConfigureAwait.csproj", "{5AFD01AA-96D7-4665-AB25-ED61602A808D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Neomaster.Demos.Shared", "Neomaster.Demos.Shared\Neomaster.Demos.Shared.csproj", "{0829B1B0-ECF9-54A3-28F1-14204E289C4C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -106,6 +108,10 @@ Global
 		{5AFD01AA-96D7-4665-AB25-ED61602A808D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5AFD01AA-96D7-4665-AB25-ED61602A808D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5AFD01AA-96D7-4665-AB25-ED61602A808D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0829B1B0-ECF9-54A3-28F1-14204E289C4C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0829B1B0-ECF9-54A3-28F1-14204E289C4C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0829B1B0-ECF9-54A3-28F1-14204E289C4C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0829B1B0-ECF9-54A3-28F1-14204E289C4C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -128,6 +134,7 @@ Global
 		{4E10E768-6540-82AB-E802-F7FF20D36356} = {33B6D6EC-E0F9-4D7E-BC79-CEF97ED13E7C}
 		{02EA681E-C7D8-13C7-8484-4AC65E1B71E8} = {5AFCF6FB-807F-43EB-AC17-A7D90CE602C9}
 		{5AFD01AA-96D7-4665-AB25-ED61602A808D} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
+		{0829B1B0-ECF9-54A3-28F1-14204E289C4C} = {4C28B3A6-B8DC-45BE-8863-D13F3A08C594}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {CB231523-908C-4D0B-89C0-57C1A15EED74}
