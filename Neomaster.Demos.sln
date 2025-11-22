@@ -19,7 +19,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Demos", "Demos", "{4C28B3A6
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{9FD74043-095C-4366-A427-91BDA475535A}"
 	ProjectSection(SolutionItems) = preProject
-		README.md = README.md
+		readme-template.md = readme-template.md
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Neomaster.Demos.Apps.Threads.AbortThread", "Neomaster.Demos.Apps\Neomaster.Demos.Apps.Threads.AbortThread\Neomaster.Demos.Apps.Threads.AbortThread.csproj", "{22729EE0-31DC-424A-8E44-5BE4D50C9F05}"

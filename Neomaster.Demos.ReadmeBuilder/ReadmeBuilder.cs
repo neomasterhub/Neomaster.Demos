@@ -45,15 +45,30 @@ internal class ReadmeBuilder
           continue;
         }
 
-        if (!line.StartsWith("  [Fact") && !line.StartsWith("  [Theory"))
+        if (!line.StartsWith("  [Fact")
+          && !line.StartsWith("  [Theory")
+          && !line.StartsWith("  [ExternalDemo"))
         {
           continue;
         }
 
         testNumber++;
-        var name = line.Substring(line.IndexOf('\"') + 1).TrimEnd("\")]");
+
+        string name = null;
+        if (line.StartsWith("  [ExternalDemo"))
+        {
+          var nameLink = line.Substring(line.IndexOf('\"') + 1).TrimEnd("\")]").ToString().Split("\", \"");
+          name = nameLink[0];
+          localPath = nameLink[1];
+        }
+        else
+        {
+          name = line.Substring(line.IndexOf('\"') + 1).TrimEnd("\")]").ToString();
+          localPath = fi.FullName.Substring(_localPathStartIndex).Replace('\\', '/') + $"#L{lineNumber}";
+        }
+
         var item = $"{testNumber}. [{name}][{linkPrefix}-{testNumber}]";
-        var link = $"[{linkPrefix}-{testNumber}]:{localPath}#L{lineNumber}";
+        var link = $"[{linkPrefix}-{testNumber}]:{localPath}";
 
         items.AppendLine(item);
         links.AppendLine(link);
