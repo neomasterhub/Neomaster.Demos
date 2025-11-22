@@ -1,7 +1,10 @@
+using System.ComponentModel;
+using Neomaster.Demos.Shared;
 using Xunit;
 
 namespace Neomaster.Demos.Tests.Threads;
 
+[Description("Basic")]
 public class ThreadsUnitDemos
 {
   private readonly StringWriter _stringWriter = new();
@@ -13,7 +16,7 @@ public class ThreadsUnitDemos
 
   private string Output => _stringWriter.ToString();
 
-  [Fact]
+  [Fact(DisplayName = "Create, Sleep, Join")]
   public void CreateThread()
   {
     var th = new Thread(() =>
@@ -31,7 +34,7 @@ public class ThreadsUnitDemos
     Assert.Equal("21", Output);
   }
 
-  [Fact]
+  [Fact(DisplayName = "Create with arg")]
   public void CreateThreadWithArg()
   {
     var pts = new ParameterizedThreadStart(obj =>
@@ -50,7 +53,10 @@ public class ThreadsUnitDemos
     Assert.Equal("2x", Output);
   }
 
-  [Fact]
+  [ExternalDemo("Foreground", "Neomaster.Demos.Apps/Neomaster.Demos.Apps.Threads.Foreground/Program.cs")]
+  [ExternalDemo("Background", "Neomaster.Demos.Apps/Neomaster.Demos.Apps.Threads.Background/Program.cs")]
+
+  [Fact(DisplayName = "Info, current thread instance")]
   public void ThreadInfo()
   {
     static void WriteThreadInfo(Thread th)
@@ -76,7 +82,7 @@ public class ThreadsUnitDemos
       Output);
   }
 
-  [Fact]
+  [Fact(DisplayName = "Is alive")]
   public void ThreadIsAlive()
   {
     var th = new Thread(() => Thread.Sleep(100));
@@ -99,7 +105,7 @@ public class ThreadsUnitDemos
       Output);
   }
 
-  [Fact]
+  [Fact(DisplayName = "Join with timeout")]
   public void ThreadJoinWithTimeout()
   {
     var th = new Thread(() => Thread.Sleep(50));
@@ -116,7 +122,13 @@ public class ThreadsUnitDemos
       Output);
   }
 
-  [Fact]
+  [ExternalDemo("Abort", "Neomaster.Demos.Apps/Neomaster.Demos.Apps.Threads.AbortThread/Program.cs")]
+  [ExternalDemo("Affinity (run parameter)", "Neomaster.Demos.Apps/Neomaster.Demos.Apps.Threads.AffinityParameterized/Program.cs")]
+  [ExternalDemo("Affinity (programmatically)", "Neomaster.Demos.Apps/Neomaster.Demos.Apps.Threads.AffinityProgrammed/Program.cs")]
+  [ExternalDemo("Suspend, Resume", "Neomaster.Demos.Apps/Neomaster.Demos.Apps.Threads.SuspendResume/Program.cs")]
+  [ExternalDemo("Suspend, Resume: Tick Tock", "Neomaster.Demos.Apps/Neomaster.Demos.Apps.Threads.SuspendResumeTickTock/Program.cs")]
+
+  [Fact(DisplayName = "Abort in Core via `CancellationTokenSource`")]
   public void AbortThreadInCoreViaCancellationToken()
   {
     var cancelled = false;
@@ -143,8 +155,8 @@ public class ThreadsUnitDemos
     Assert.True(cancelled);
   }
 
-  [Fact]
-  public void SuspendConsumeInCoreViaManualResetEventSlim()
+  [Fact(DisplayName = "Suspend-Resume in Core via `ManualResetEventSlim`")]
+  public void SuspendResumeInCoreViaManualResetEventSlim()
   {
     var re = new ManualResetEvent(false);
     var th = new Thread(() =>
@@ -164,7 +176,7 @@ public class ThreadsUnitDemos
     Assert.Equal("123", Output);
   }
 
-  [Fact]
+  [Fact(DisplayName = "Tick Tock in Core")]
   public void ManualResetEventSlimTickTock()
   {
     var tickCount = 0;
