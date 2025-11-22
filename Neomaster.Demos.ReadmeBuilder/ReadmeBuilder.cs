@@ -3,12 +3,20 @@ using Neomaster.Demos.Shared;
 
 namespace Neomaster.Demos.ReadmeBuilder;
 
-internal static class ReadmeBuilder
+internal class ReadmeBuilder
 {
   private static readonly string _testsProjectName = "Neomaster.Demos.Tests";
   private static readonly int _localPathStartIndex = SolutionInfo.SolutionPath.Length + 1;
 
-  public static string CreateTestList(string folder, string header = null)
+  private readonly Dictionary<string, string> _testLists = [];
+
+  private ReadmeBuilder()
+  {
+  }
+
+  public static ReadmeBuilder CreateBuilder() => new();
+
+  public ReadmeBuilder CreateTestList(string folder, string header = null)
   {
     header ??= folder;
 
@@ -76,6 +84,17 @@ internal static class ReadmeBuilder
       {chapters}
       """;
 
-    return list;
+    _testLists.Add(header, list);
+
+    return this;
+  }
+
+  public string Build()
+  {
+    var text = string.Join(
+      "\n\n",
+      _testLists.OrderBy(x => x.Key).Select(x => x.Value));
+
+    return text;
   }
 }

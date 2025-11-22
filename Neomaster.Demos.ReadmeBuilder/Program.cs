@@ -1,3 +1,7 @@
 using Neomaster.Demos.ReadmeBuilder;
 
-ReadmeBuilder.CreateTestList("Archives");
+var readme = ReadmeBuilder.CreateBuilder()
+  .CreateTestList("Archives")
+  .Build();
+
+Console.WriteLine("Done!");
