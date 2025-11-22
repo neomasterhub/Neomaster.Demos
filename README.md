@@ -26,60 +26,6 @@ Look. Try. Add.
 
 > **Note:** Tests containing `spin` or `yield` may fail depending on the CPU.
 
-
-<details>
-<summary>Threads: Event Synchronization</summary>
-
-1. [EventWaitHandle.Set][threads-event-sync-1]
-2. [EventWaitHandle.Reset][threads-event-sync-2]
-3. [EventWaitHandle.Set with auto-reset][threads-event-sync-3]
-4. [AutoResetEvent.Set][threads-event-sync-4]
-5. [ManualResetEvent.Set][threads-event-sync-5]
-6. [ManualResetEventSlim.Set][threads-event-sync-6]
-7. [ManualResetEventSlim.Wait with timeout][threads-event-sync-7]
-8. [CountdownEvent.Wait as Join][threads-event-sync-8]
-9. [CountdownEvent.AddCount][threads-event-sync-9]
-10. [CountdownEvent.TryAddCount][threads-event-sync-10]
-11. [CountdownEvent.IsSet][threads-event-sync-11]
-12. [CountdownEvent.Reset][threads-event-sync-12]
-13. [CountdownEvent.Reset with arg][threads-event-sync-13]
-14. [Barrier: Phases][threads-event-sync-14]
-15. [CancellationToken: create token][threads-event-sync-15]
-16. [CancellationToken: cancellation request][threads-event-sync-16]
-17. [CancellationToken: cancellation callback sequence][threads-event-sync-17]
-18. [CancellationToken: cancellation callback sequence: before first exception][threads-event-sync-18]
-19. [CancellationToken: cancellation callback sequence: all, ignoring exceptions][threads-event-sync-19]
-20. [CancellationToken.ThrowIfCancellationRequested][threads-event-sync-20]
-21. [CancellationToken.None usage][threads-event-sync-21]
-22. [CancellationToken.None variants][threads-event-sync-22]
-23. [CancellationTokenSource.CreateLinkedTokenSource][threads-event-sync-23]
-
-[threads-event-sync-1]:Neomaster.Demos.Tests/Threads/ThreadsEventSyncUnitDemos.cs#L9
-[threads-event-sync-2]:Neomaster.Demos.Tests/Threads/ThreadsEventSyncUnitDemos.cs#L74
-[threads-event-sync-3]:Neomaster.Demos.Tests/Threads/ThreadsEventSyncUnitDemos.cs#L140
-[threads-event-sync-4]:Neomaster.Demos.Tests/Threads/ThreadsEventSyncUnitDemos.cs#L196
-[threads-event-sync-5]:Neomaster.Demos.Tests/Threads/ThreadsEventSyncUnitDemos.cs#L252
-[threads-event-sync-6]:Neomaster.Demos.Tests/Threads/ThreadsEventSyncUnitDemos.cs#L301
-[threads-event-sync-7]:Neomaster.Demos.Tests/Threads/ThreadsEventSyncUnitDemos.cs#L350
-[threads-event-sync-8]:Neomaster.Demos.Tests/Threads/ThreadsEventSyncUnitDemos.cs#L374
-[threads-event-sync-9]:Neomaster.Demos.Tests/Threads/ThreadsEventSyncUnitDemos.cs#L400
-[threads-event-sync-10]:Neomaster.Demos.Tests/Threads/ThreadsEventSyncUnitDemos.cs#L434
-[threads-event-sync-11]:Neomaster.Demos.Tests/Threads/ThreadsEventSyncUnitDemos.cs#L447
-[threads-event-sync-12]:Neomaster.Demos.Tests/Threads/ThreadsEventSyncUnitDemos.cs#L463
-[threads-event-sync-13]:Neomaster.Demos.Tests/Threads/ThreadsEventSyncUnitDemos.cs#L478
-[threads-event-sync-14]:Neomaster.Demos.Tests/Threads/ThreadsEventSyncUnitDemos.cs#L493
-[threads-event-sync-15]:Neomaster.Demos.Tests/Threads/ThreadsEventSyncUnitDemos.cs#L538
-[threads-event-sync-16]:Neomaster.Demos.Tests/Threads/ThreadsEventSyncUnitDemos.cs#L549
-[threads-event-sync-17]:Neomaster.Demos.Tests/Threads/ThreadsEventSyncUnitDemos.cs#L576
-[threads-event-sync-18]:Neomaster.Demos.Tests/Threads/ThreadsEventSyncUnitDemos.cs#L607
-[threads-event-sync-19]:Neomaster.Demos.Tests/Threads/ThreadsEventSyncUnitDemos.cs#L654
-[threads-event-sync-20]:Neomaster.Demos.Tests/Threads/ThreadsEventSyncUnitDemos.cs#L701
-[threads-event-sync-21]:Neomaster.Demos.Tests/Threads/ThreadsEventSyncUnitDemos.cs#L736
-[threads-event-sync-22]:Neomaster.Demos.Tests/Threads/ThreadsEventSyncUnitDemos.cs#L758
-[threads-event-sync-23]:Neomaster.Demos.Tests/Threads/ThreadsEventSyncUnitDemos.cs#L775
-
-</details>
-
 <details>
 <summary>Threads: Atomic Operations</summary>
 

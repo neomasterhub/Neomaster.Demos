@@ -1,11 +1,13 @@
 using System.Collections.Concurrent;
+using System.ComponentModel;
 using Xunit;
 
 namespace Neomaster.Demos.Tests.Threads;
 
+[Description("Event Synchronization")]
 public class ThreadsEventSyncUnitDemos
 {
-  [Fact]
+  [Fact(DisplayName = "EventWaitHandle.Set")]
   public void EventWaitHandle_ManualResetMode_Set()
   {
     const int partThreadsNumber = 3;
@@ -70,7 +72,7 @@ public class ThreadsEventSyncUnitDemos
     Assert.All(events, (e, i) => Assert.Matches(expectedEventPatterns[i], e));
   }
 
-  [Fact]
+  [Fact(DisplayName = "EventWaitHandle.Reset")]
   public void EventWaitHandle_ManualResetMode_Reset()
   {
     const int partThreadsNumber = 3;
@@ -136,7 +138,7 @@ public class ThreadsEventSyncUnitDemos
     Assert.All(events, (e, i) => Assert.Matches(expectedEventPatterns[i], e));
   }
 
-  [Fact]
+  [Fact(DisplayName = "EventWaitHandle.Set with auto-reset")]
   public void EventWaitHandle_AutoResetMode_Set()
   {
     const int threadsNumber = 3;
@@ -192,7 +194,7 @@ public class ThreadsEventSyncUnitDemos
     Assert.Equal(expectedEvents, events);
   }
 
-  [Fact]
+  [Fact(DisplayName = "AutoResetEvent.Set")]
   public void AutoResetEvent_Set()
   {
     const int threadsNumber = 3;
@@ -248,7 +250,7 @@ public class ThreadsEventSyncUnitDemos
     Assert.Equal(expectedEvents, events);
   }
 
-  [Fact]
+  [Fact(DisplayName = "ManualResetEvent.Set")]
   public void ManualResetEvent_Set()
   {
     const int threadsNumber = 3;
@@ -297,7 +299,7 @@ public class ThreadsEventSyncUnitDemos
     Assert.All(events, (e, i) => Assert.Matches(expectedEventPatterns[i], e));
   }
 
-  [Fact]
+  [Fact(DisplayName = "ManualResetEventSlim.Set")]
   public void ManualResetEventSlim_Set()
   {
     const int threadsNumber = 3;
@@ -346,7 +348,7 @@ public class ThreadsEventSyncUnitDemos
     Assert.All(events, (e, i) => Assert.Matches(expectedEventPatterns[i], e));
   }
 
-  [Fact]
+  [Fact(DisplayName = "ManualResetEventSlim.Wait with timeout")]
   public void ManualResetEventSlim_WaitWithTimeout()
   {
     var eh = new ManualResetEventSlim(false);
@@ -370,7 +372,7 @@ public class ThreadsEventSyncUnitDemos
     Assert.Equal([1, 2], events);
   }
 
-  [Fact]
+  [Fact(DisplayName = "CountdownEvent.Wait as Join")]
   public void CountdownEvent_WaitAsJoin()
   {
     const int threadNumber = 5;
@@ -396,7 +398,7 @@ public class ThreadsEventSyncUnitDemos
     Assert.Equal(threadNumber, count);
   }
 
-  [Fact]
+  [Fact(DisplayName = "CountdownEvent.AddCount")]
   public void CountdownEvent_AddCount()
   {
     const int threadNumber = 5;
@@ -430,7 +432,7 @@ public class ThreadsEventSyncUnitDemos
     Assert.Equal(threadNumber + 1, count);
   }
 
-  [Fact]
+  [Fact(DisplayName = "CountdownEvent.TryAddCount")]
   public void CountdownEvent_TryAddCount()
   {
     var cd = new CountdownEvent(1);
@@ -443,7 +445,7 @@ public class ThreadsEventSyncUnitDemos
     Assert.False(countAdded);
   }
 
-  [Fact]
+  [Fact(DisplayName = "CountdownEvent.IsSet")]
   public void CountdownEvent_IsSet()
   {
     var cd = new CountdownEvent(2);
@@ -459,7 +461,7 @@ public class ThreadsEventSyncUnitDemos
     Assert.True(cd.IsSet);
   }
 
-  [Fact]
+  [Fact(DisplayName = "CountdownEvent.Reset")]
   public void CountdownEvent_Reset()
   {
     const int initialCount = 3;
@@ -474,7 +476,7 @@ public class ThreadsEventSyncUnitDemos
     Assert.Equal(initialCount, cd.CurrentCount);
   }
 
-  [Fact]
+  [Fact(DisplayName = "CountdownEvent.Reset with arg")]
   public void CountdownEvent_ResetWithArg()
   {
     const int resetInitialCount = 50;
@@ -489,7 +491,7 @@ public class ThreadsEventSyncUnitDemos
     Assert.Equal(resetInitialCount, cd.CurrentCount);
   }
 
-  [Fact]
+  [Fact(DisplayName = "Barrier: Phases")]
   public void Barrier_Phases()
   {
     const int phasesNumber = 3;
@@ -534,7 +536,7 @@ public class ThreadsEventSyncUnitDemos
     Assert.All(messages, (m, i) => Assert.Matches(expectedMessagePatterns[i], m));
   }
 
-  [Fact]
+  [Fact(DisplayName = "CancellationToken: create token")]
   public void CancellationToken_CreateToken()
   {
     var cts = new CancellationTokenSource();
@@ -545,7 +547,7 @@ public class ThreadsEventSyncUnitDemos
     Assert.Equal(ct1.GetHashCode(), ct2.GetHashCode());
   }
 
-  [Fact]
+  [Fact(DisplayName = "CancellationToken: cancellation request")]
   public void CancellationToken_CancellationRequest()
   {
     var cts = new CancellationTokenSource();
@@ -572,7 +574,7 @@ public class ThreadsEventSyncUnitDemos
     Assert.True(ct.IsCancellationRequested);
   }
 
-  [Fact]
+  [Fact(DisplayName = "CancellationToken: cancellation callback sequence")]
   public void CancellationToken_CancellationCallbackSequence()
   {
     var cts = new CancellationTokenSource();
@@ -603,7 +605,7 @@ public class ThreadsEventSyncUnitDemos
     Assert.Equal([ct.GetHashCode(), 3, 2, 1], cancellationEvents);
   }
 
-  [Fact]
+  [Fact(DisplayName = "CancellationToken: cancellation callback sequence: before first exception")]
   public void CancellationToken_CancellationCallbackSequence_BeforeFirstException()
   {
     var cts = new CancellationTokenSource();
@@ -650,7 +652,7 @@ public class ThreadsEventSyncUnitDemos
     Assert.Equal([5, 4, 3], cancellationEvents);
   }
 
-  [Fact]
+  [Fact(DisplayName = "CancellationToken: cancellation callback sequence: all, ignoring exceptions")]
   public void CancellationToken_CancellationCallbackSequence_AllIgnoringExceptions()
   {
     var cts = new CancellationTokenSource();
@@ -697,7 +699,7 @@ public class ThreadsEventSyncUnitDemos
     Assert.Equal([5, 4, 3, 2, 1], cancellationEvents);
   }
 
-  [Fact]
+  [Fact(DisplayName = "CancellationToken.ThrowIfCancellationRequested")]
   public void CancellationToken_ThrowIfCancellationRequested()
   {
     var cts = new CancellationTokenSource();
@@ -732,7 +734,7 @@ public class ThreadsEventSyncUnitDemos
     Assert.True(operationCanceledExceptionWasThrown);
   }
 
-  [Fact]
+  [Fact(DisplayName = "CancellationToken.None usage")]
   public void CancellationToken_NoneUsage()
   {
     var events = new List<int>();
@@ -754,7 +756,7 @@ public class ThreadsEventSyncUnitDemos
     Assert.Equal([0, 1, 2], events);
   }
 
-  [Fact]
+  [Fact(DisplayName = "CancellationToken.None variants")]
   public void CancellationToken_NoneVariants()
   {
     var ct1 = new CancellationToken(false);
@@ -771,7 +773,7 @@ public class ThreadsEventSyncUnitDemos
     Assert.Equal(CancellationToken.None.GetHashCode(), ct3.GetHashCode());
   }
 
-  [Fact]
+  [Fact(DisplayName = "CancellationTokenSource.CreateLinkedTokenSource")]
   public void CancellationTokenSource_CreateLinkedTokenSource()
   {
     var cts1 = new CancellationTokenSource();
