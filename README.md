@@ -26,22 +26,6 @@ Look. Try. Add.
 
 > **Note:** Tests containing `spin` or `yield` may fail depending on the CPU.
 
-<details>
-<summary>Threads: Thread Pool</summary>
-
-1. [Thread Pool: QueueUserWorkItem][threads-thread-pool-1]
-2. [Thread Pool: QueueUserWorkItem with state][threads-thread-pool-2]
-3. [Thread Pool: QueueUserWorkItem Join][threads-thread-pool-3]
-4. [Thread Pool: set pool thread as foreground][threads-thread-pool-4]
-5. [Thread Pool: pool restores thread as background][threads-thread-pool-5]
-
-[threads-thread-pool-1]:Neomaster.Demos.Tests/Threads/ThreadsThreadPoolUnitDemos.cs#L8
-[threads-thread-pool-2]:Neomaster.Demos.Tests/Threads/ThreadsThreadPoolUnitDemos.cs#L25
-[threads-thread-pool-3]:Neomaster.Demos.Tests/Threads/ThreadsThreadPoolUnitDemos.cs#L44
-[threads-thread-pool-4]:Neomaster.Demos.Apps/Neomaster.Demos.Apps.Threads.SetPoolThreadAsForeground/Program.cs
-[threads-thread-pool-5]:Neomaster.Demos.Tests/Threads/ThreadsThreadPoolUnitDemos.cs#L63
-
-</details>
 
 <details>
 <summary>Threads: Features</summary>
