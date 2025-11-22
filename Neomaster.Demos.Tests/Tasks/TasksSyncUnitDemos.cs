@@ -1,10 +1,12 @@
+using System.ComponentModel;
 using Xunit;
 
 namespace Neomaster.Demos.Tests.Tasks;
 
+[Description("Synchronization")]
 public class TasksSyncUnitDemos(ITestOutputHelper output)
 {
-  [Fact]
+  [Fact(DisplayName = "`lock` within task")]
   public void LockWithinTask()
   {
     const int taskNumber = 3;
@@ -49,7 +51,7 @@ public class TasksSyncUnitDemos(ITestOutputHelper output)
     // 3333333333
   }
 
-  [Fact]
+  [Fact(DisplayName = "Task within `lock`")]
   public async Task TaskWithinLock()
   {
     var locked = new object();
@@ -59,7 +61,7 @@ public class TasksSyncUnitDemos(ITestOutputHelper output)
     }
   }
 
-  [Fact]
+  [Fact(DisplayName = "Lock via semaphore")]
   public async Task LockViaSemaphore()
   {
     const int taskNumber = 3;
