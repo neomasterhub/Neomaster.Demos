@@ -27,19 +27,6 @@ Look. Try. Add.
 > **Note:** Tests containing `spin` or `yield` may fail depending on the CPU.
 
 <details>
-<summary>Threads: Atomic Operations</summary>
-
-1. [Volatile class][threads-atomic-operations-1]
-2. [Volatile keyword][threads-atomic-operations-2]
-3. [Interlocked Increment][threads-atomic-operations-3]
-
-[threads-atomic-operations-1]:Neomaster.Demos.Tests/Threads/ThreadsAtomicOperationsUnitDemos.cs#L10
-[threads-atomic-operations-2]:Neomaster.Demos.Tests/Threads/ThreadsAtomicOperationsUnitDemos.cs#L45
-[threads-atomic-operations-3]:Neomaster.Demos.Tests/Threads/ThreadsAtomicOperationsUnitDemos.cs#L79
-
-</details>
-
-<details>
 <summary>Threads: Thread Pool</summary>
 
 1. [Thread Pool: QueueUserWorkItem][threads-thread-pool-1]
