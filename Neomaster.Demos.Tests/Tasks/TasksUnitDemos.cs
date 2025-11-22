@@ -1,10 +1,13 @@
+using System.ComponentModel;
+using Neomaster.Demos.Shared;
 using Xunit;
 
 namespace Neomaster.Demos.Tests.Tasks;
 
+[Description("Basic")]
 public class TasksUnitDemos(ITestOutputHelper output)
 {
-  [Fact]
+  [Fact(DisplayName = "Create task")]
   public void CreateTask()
   {
     var events = new List<int>();
@@ -31,7 +34,7 @@ public class TasksUnitDemos(ITestOutputHelper output)
     Assert.Equal([1, 2, 3], events);
   }
 
-  [Fact]
+  [Fact(DisplayName = "Task is in pool thread")]
   public void TaskIsInPoolThread()
   {
     var t1ThreadIsPoolThread = false;
@@ -46,7 +49,7 @@ public class TasksUnitDemos(ITestOutputHelper output)
     Assert.True(t2ThreadIsPoolThread);
   }
 
-  [Fact]
+  [Fact(DisplayName = "Wait task")]
   public void WaitTask()
   {
     var r = false;
@@ -62,7 +65,7 @@ public class TasksUnitDemos(ITestOutputHelper output)
     Assert.True(r);
   }
 
-  [Fact]
+  [Fact(DisplayName = "Wait task with timeout")]
   public void WaitTaskWithTimeout()
   {
     var t1 = Task.Run(() => Thread.Sleep(100));
@@ -75,7 +78,7 @@ public class TasksUnitDemos(ITestOutputHelper output)
     Assert.False(t2IsCompleted);
   }
 
-  [Fact]
+  [Fact(DisplayName = "Task is running after wait timeout")]
   public void TaskIsRunningAfterWaitTimeout()
   {
     var r = false;
@@ -97,7 +100,7 @@ public class TasksUnitDemos(ITestOutputHelper output)
     Assert.True(r);
   }
 
-  [Fact]
+  [Fact(DisplayName = "Wait task with cancellation token")]
   public void WaitTaskWithCancellationToken()
   {
     var cts = new CancellationTokenSource();
@@ -115,7 +118,7 @@ public class TasksUnitDemos(ITestOutputHelper output)
     Assert.Throws<OperationCanceledException>(() => t1.Wait(cts.Token));
   }
 
-  [Fact]
+  [Fact(DisplayName = "Wait blocks thread")]
   public void WaitBlocksThread()
   {
     var th = Thread.CurrentThread;
@@ -139,7 +142,7 @@ public class TasksUnitDemos(ITestOutputHelper output)
     Assert.Equal(ThreadState.WaitSleepJoin, thStateInWaiting);
   }
 
-  [Fact]
+  [Fact(DisplayName = "Wait wraps task exception into `AggregateException`")]
   public void WaitWrapsTaskExceptionIntoAggregateException()
   {
     var aex = Assert.Throws<AggregateException>(() =>
@@ -156,7 +159,7 @@ public class TasksUnitDemos(ITestOutputHelper output)
     Assert.IsType<InvalidOperationException>(aex.InnerException);
   }
 
-  [Fact]
+  [Fact(DisplayName = "Result")]
   public void Result()
   {
     var t = Task.Run(() => true);
@@ -164,7 +167,7 @@ public class TasksUnitDemos(ITestOutputHelper output)
     Assert.True(t.Result);
   }
 
-  [Fact]
+  [Fact(DisplayName = "Result blocks thread")]
   public void ResultBlocksThread()
   {
     var th = Thread.CurrentThread;
@@ -187,7 +190,7 @@ public class TasksUnitDemos(ITestOutputHelper output)
     Assert.True(thIsInWaitSleepJoin);
   }
 
-  [Fact]
+  [Fact(DisplayName = "Result wraps task exception into `AggregateException`")]
   public void ResultTaskExceptionIntoAggregateException()
   {
     var aex = Assert.Throws<AggregateException>(() =>
@@ -205,7 +208,7 @@ public class TasksUnitDemos(ITestOutputHelper output)
     Assert.IsType<InvalidOperationException>(aex.InnerException);
   }
 
-  [Fact]
+  [Fact(DisplayName = "Delay")]
   public void Delay()
   {
     var t = Task.Delay(100);
@@ -217,7 +220,7 @@ public class TasksUnitDemos(ITestOutputHelper output)
     Assert.Equal(TaskStatus.RanToCompletion, t.Status);
   }
 
-  [Fact]
+  [Fact(DisplayName = "Delay with cancellation token")]
   public void DelayWithCancellationToken()
   {
     var cts = new CancellationTokenSource();
@@ -230,7 +233,7 @@ public class TasksUnitDemos(ITestOutputHelper output)
     Assert.Equal(TaskStatus.Canceled, t.Status);
   }
 
-  [Fact]
+  [Fact(DisplayName = "Delay is working after wait timeout")]
   public void DelayIsWorkingAfterWaitTimeout()
   {
     var t = Task.Delay(200);
@@ -240,7 +243,7 @@ public class TasksUnitDemos(ITestOutputHelper output)
     Assert.Equal(TaskStatus.WaitingForActivation, t.Status);
   }
 
-  [Fact]
+  [Fact(DisplayName = "`await` releases manual thread")]
   public void AwaitReleasesManualThread()
   {
     Thread th1 = null;
@@ -277,7 +280,7 @@ public class TasksUnitDemos(ITestOutputHelper output)
     Assert.Equal(th2.ManagedThreadId, th3.ManagedThreadId);
   }
 
-  [Fact]
+  [Fact(DisplayName = "`await` releases pool thread")]
   public void AwaitReleasesPoolThread()
   {
     Thread th1 = null;
@@ -322,7 +325,7 @@ public class TasksUnitDemos(ITestOutputHelper output)
     Assert.Equal(th3.ManagedThreadId, th2.ManagedThreadId);
   }
 
-  [Fact]
+  [Fact(DisplayName = "Method with `async`, without `await` is synchronous")]
   public void MethodWithAsyncWithoutAwaitIsSync()
   {
     var events = new List<int>();
@@ -349,7 +352,7 @@ public class TasksUnitDemos(ITestOutputHelper output)
     Assert.Equal([2, 1], events);
   }
 
-  [Fact]
+  [Fact(DisplayName = "Method with `async`, with `await` is asynchronous")]
   public void MethodWithAsyncWithAwaitIsAsync()
   {
     var events = new List<int>();
@@ -376,7 +379,9 @@ public class TasksUnitDemos(ITestOutputHelper output)
     Assert.Equal([1, 2], events);
   }
 
-  [Theory]
+  [ExternalDemo("ConfigureAwait", "Neomaster.Demos.Apps/Neomaster.Demos.Apps.Tasks.TaskConfigureAwait/Form1.cs")]
+
+  [Theory(DisplayName = "ConfigureAwait: effect on default sync context Post and Send")]
   [InlineData(true, 1, 0)]
   [InlineData(false, 0, 0)]
   public async Task ConfigureAwaitEffectOnDefaultSyncContextPostAndSend(
@@ -402,7 +407,7 @@ public class TasksUnitDemos(ITestOutputHelper output)
     Assert.Equal(expectedSendCallCount, defaultCtx.SendCallCount);
   }
 
-  [Theory]
+  [Theory(DisplayName = "ConfigureAwait: effect on UI sync context Post and Send")]
   [InlineData(true, 0, 1)]
   [InlineData(false, 0, 0)]
   public async Task ConfigureAwaitEffectOnUISyncContextPostAndSend(
@@ -428,7 +433,7 @@ public class TasksUnitDemos(ITestOutputHelper output)
     Assert.Equal(expectedSendCallCount, uiCtx.SendCallCount);
   }
 
-  [Fact]
+  [Fact(DisplayName = "Throwing task exception")]
   public async Task ThrowingTaskException()
   {
     var t = Task.Run(() =>
@@ -499,14 +504,14 @@ public class TasksUnitDemos(ITestOutputHelper output)
     Assert.Equal(resultThrowNumber, resultThrowCount);
   }
 
-  [Fact]
+  [Fact(DisplayName = "ContinueWith: created task status")]
   public void ContinueWithCreatedTaskStatus()
   {
     var c = new Task(() => { }).ContinueWith(_ => { });
     Assert.Equal(TaskStatus.WaitingForActivation, c.Status);
   }
 
-  [Fact]
+  [Fact(DisplayName = "ContinueWith: task chain")]
   public async Task ContinueWithTaskChain()
   {
     var actual = await Task.Run(() => 1)
@@ -516,7 +521,7 @@ public class TasksUnitDemos(ITestOutputHelper output)
     Assert.Equal("010", actual);
   }
 
-  [Fact]
+  [Fact(DisplayName = "ContinueWith: variable continuation")]
   public async Task ContinueWithVariableContinuation()
   {
     var events = new List<int>();
@@ -549,7 +554,7 @@ public class TasksUnitDemos(ITestOutputHelper output)
     Assert.Equal([0, 1, 2], events);
   }
 
-  [Fact]
+  [Fact(DisplayName = "ContinueWith: continuation options")]
   public async Task ContinueWithContinuationOptions()
   {
     var events = new List<int>();
@@ -565,7 +570,7 @@ public class TasksUnitDemos(ITestOutputHelper output)
     Assert.All(events, e => Assert.Equal(1, e));
   }
 
-  [Fact]
+  [Fact(DisplayName = "ContinueWith: SetInterval()")]
   public void ContinueWithSetInterval()
   {
     const int expectedEventCount = 10;
@@ -612,7 +617,7 @@ public class TasksUnitDemos(ITestOutputHelper output)
     Assert.Equal(expectedEventCount, eventCount1);
   }
 
-  [Fact]
+  [Fact(DisplayName = "RunSynchronously")]
   public void RunSynchronously()
   {
     var th1Id = 0;
@@ -634,7 +639,7 @@ public class TasksUnitDemos(ITestOutputHelper output)
     Assert.Equal(th1Id, th2Id);
   }
 
-  [Fact]
+  [Fact(DisplayName = "RunSynchronously and continuation")]
   public void RunSynchronouslyAndContinuation()
   {
     var th1Id = 0;
@@ -670,7 +675,7 @@ public class TasksUnitDemos(ITestOutputHelper output)
     Assert.NotEqual(th2Id, th3Id);
   }
 
-  [Fact]
+  [Fact(DisplayName = "RunSynchronously and synchronous continuation")]
   public void RunSynchronouslyAndSynchronousContinuation()
   {
     var th1Id = 0;
@@ -708,7 +713,7 @@ public class TasksUnitDemos(ITestOutputHelper output)
     Assert.Equal(th2Id, th3Id);
   }
 
-  [Fact]
+  [Fact(DisplayName = "RunSynchronously continuation")]
   public void RunSynchronouslyContinuation()
   {
     InvalidOperationException actual = null;
@@ -727,7 +732,7 @@ public class TasksUnitDemos(ITestOutputHelper output)
     Assert.Equal(TaskStatus.WaitingForActivation, c.Status);
   }
 
-  [Fact]
+  [Fact(DisplayName = "Set status to `TaskStatus.Canceled` after cancellation by `Token.ThrowIfCancellationRequested()`")]
   public void SetStatusToCanceledAfterCancellationByThrowingException()
   {
     var cd = new CountdownEvent(2);
@@ -755,7 +760,7 @@ public class TasksUnitDemos(ITestOutputHelper output)
     Assert.Equal(TaskStatus.Canceled, t2.Status);
   }
 
-  [Fact]
+  [Fact(DisplayName = "WhenAll")]
   public async Task WhenAll()
   {
     var t1 = Task.Run(() =>
@@ -776,7 +781,7 @@ public class TasksUnitDemos(ITestOutputHelper output)
     Assert.Equal([1, 2], results);
   }
 
-  [Fact]
+  [Fact(DisplayName = "WhenAll: task exceptions")]
   public async Task WhenAllTaskExceptions()
   {
     var t1 = Task.Run(() =>
@@ -836,7 +841,7 @@ public class TasksUnitDemos(ITestOutputHelper output)
     Assert.Equal(TaskStatus.Faulted, wat.Status);
   }
 
-  [Fact]
+  [Fact(DisplayName = "WhenAll with canceled task")]
   public async Task WhenAllWithCanceledTask()
   {
     var t = Task.Run(() => 1);
@@ -860,7 +865,7 @@ public class TasksUnitDemos(ITestOutputHelper output)
     Assert.Empty(results);
   }
 
-  [Fact]
+  [Fact(DisplayName = "WhenAll with incorrect canceled task")]
   public async Task WhenAllWithIncorrectCanceledTask()
   {
     var cts1 = new CancellationTokenSource();
@@ -895,7 +900,7 @@ public class TasksUnitDemos(ITestOutputHelper output)
     Assert.Equal(TaskStatus.Faulted, wat.Status);
   }
 
-  [Fact]
+  [Fact(DisplayName = "WaitAll")]
   public void WaitAll()
   {
     var results = new List<int>();
@@ -917,7 +922,7 @@ public class TasksUnitDemos(ITestOutputHelper output)
     Assert.Equal([1, 2], results);
   }
 
-  [Fact]
+  [Fact(DisplayName = "WaitAll: task exceptions")]
   public void WaitAllTaskExceptions()
   {
     var results = new List<int>();
@@ -964,7 +969,7 @@ public class TasksUnitDemos(ITestOutputHelper output)
     Assert.Equal([1, 4], results);
   }
 
-  [Fact]
+  [Fact(DisplayName = "WhenAny")]
   public async Task WhenAny()
   {
     var t1 = Task.Run(() =>
@@ -985,7 +990,7 @@ public class TasksUnitDemos(ITestOutputHelper output)
     Assert.Equal(1, firstTaskResult);
   }
 
-  [Fact]
+  [Fact(DisplayName = "WhenAny: timeout")]
   public async Task WhenAnyTimeout()
   {
     var cts = new CancellationTokenSource();
@@ -1010,7 +1015,7 @@ public class TasksUnitDemos(ITestOutputHelper output)
     Assert.Equal(TaskStatus.Canceled, longRunningTask.Status);
   }
 
-  [Fact]
+  [Fact(DisplayName = "WhenAny: task exception")]
   public async Task WhenAnyTaskException()
   {
     Exception exception = null;
@@ -1029,7 +1034,7 @@ public class TasksUnitDemos(ITestOutputHelper output)
     Assert.Equal(TaskStatus.RanToCompletion, wat.Status);
   }
 
-  [Fact]
+  [Fact(DisplayName = "WaitAny")]
   public void WaitAny()
   {
     var t1 = Task.Run(() =>
@@ -1048,7 +1053,7 @@ public class TasksUnitDemos(ITestOutputHelper output)
     Assert.Equal(0, firstTaskIndex);
   }
 
-  [Fact]
+  [Fact(DisplayName = "WaitAny: task exception")]
   public void WaitAnyTaskException()
   {
     Exception exception = null;
@@ -1067,7 +1072,7 @@ public class TasksUnitDemos(ITestOutputHelper output)
     Assert.Null(exception);
   }
 
-  [Fact]
+  [Fact(DisplayName = "WhenEach")]
   public async Task WhenEach()
   {
     var t1 = Task.Run(() =>
@@ -1106,7 +1111,7 @@ public class TasksUnitDemos(ITestOutputHelper output)
     }
   }
 
-  [Fact]
+  [Fact(DisplayName = "Yield")]
   public async Task Yield()
   {
     var sw = new Stopwatch();
@@ -1164,7 +1169,7 @@ public class TasksUnitDemos(ITestOutputHelper output)
       """);
   }
 
-  [Fact]
+  [Fact(DisplayName = "Awaiter: GetResult")]
   public void AwaiterGetResult()
   {
     var r1 = Task.Run(() => 1).GetAwaiter().GetResult(); // task.Result
@@ -1176,7 +1181,7 @@ public class TasksUnitDemos(ITestOutputHelper output)
     Assert.Equal(2, r2);
   }
 
-  [Fact]
+  [Fact(DisplayName = "Awaiter: OnCompleted")]
   public void AwaiterOnCompleted()
   {
     var completed = false;
@@ -1203,7 +1208,7 @@ public class TasksUnitDemos(ITestOutputHelper output)
     Assert.True(completed);
   }
 
-  [Fact]
+  [Fact(DisplayName = "Awaiter: pattern")]
   public void AwaiterPattern()
   {
     string AwaitResult(Task<int> task, int? timeout = null)
@@ -1255,7 +1260,7 @@ public class TasksUnitDemos(ITestOutputHelper output)
   /// <summary>
   /// See <see cref="TimeSpanAwaiter"/>.
   /// </summary>
-  [Fact]
+  [Fact(DisplayName = "Awaiter: timespan awaiter")]
   public async Task TimespanAwaiter()
   {
     var sw = Stopwatch.StartNew();
@@ -1266,7 +1271,7 @@ public class TasksUnitDemos(ITestOutputHelper output)
     Assert.True(sw.Elapsed.TotalMilliseconds >= 100);
   }
 
-  [Fact]
+  [Fact(DisplayName = "TaskCompletionSource: timeout")]
   public async Task TaskCompletionSourceTimeout()
   {
     Task<int> GetAsync(int timeout)
@@ -1291,7 +1296,7 @@ public class TasksUnitDemos(ITestOutputHelper output)
     var ex = Assert.ThrowsAsync<TimeoutException>(() => GetAsync(50));
   }
 
-  [Fact]
+  [Fact(DisplayName = "TaskCompletionSource: WithTimeout() extension")]
   public async Task TaskCompletionSourceWithTimeoutExtension()
   {
     var r1 = await Task.Delay(100).ContinueWith(_ => 1).WithTimeout(200);
@@ -1300,7 +1305,7 @@ public class TasksUnitDemos(ITestOutputHelper output)
     var ex2 = await Assert.ThrowsAsync<TimeoutException>(() => Task.Delay(100).ContinueWith(_ => 1).WithTimeout(10));
   }
 
-  [Fact]
+  [Fact(DisplayName = "TaskCompletionSource: external event source adapter")]
   public async Task TaskCompletionExternalEventSourceAdapter()
   {
     var adapter = new ExternalEventSourceAdapter();
@@ -1316,7 +1321,7 @@ public class TasksUnitDemos(ITestOutputHelper output)
     Assert.True(t2.IsCanceled);
   }
 
-  [Fact]
+  [Fact(DisplayName = "FromResult")]
   public async Task TaskFromResult()
   {
     var rt = Task.FromResult(1);
@@ -1325,7 +1330,7 @@ public class TasksUnitDemos(ITestOutputHelper output)
     Assert.Equal(1, r);
   }
 
-  [Fact]
+  [Fact(DisplayName = "FromCanceled")]
   public async Task TaskFromCanceled()
   {
     ArgumentOutOfRangeException ctEx = null;
@@ -1347,7 +1352,7 @@ public class TasksUnitDemos(ITestOutputHelper output)
     await Assert.ThrowsAsync<TaskCanceledException>(() => ct);
   }
 
-  [Fact]
+  [Fact(DisplayName = "FromException")]
   public async Task TaskFromException()
   {
     Task et = null;
@@ -1369,14 +1374,14 @@ public class TasksUnitDemos(ITestOutputHelper output)
     await Assert.ThrowsAsync<InvalidOperationException>(() => et);
   }
 
-  [Fact]
+  [Fact(DisplayName = "CompletedTask")]
   public void TaskCompletedTask()
   {
     var emptyVoidTask = Task.CompletedTask;
     Assert.Equal(TaskStatus.RanToCompletion, emptyVoidTask.Status);
   }
 
-  [Fact]
+  [Fact(DisplayName = "ValueTask: cached result")]
   public async Task ValueTaskCachedResult()
   {
     int? cached = null;
@@ -1412,7 +1417,7 @@ public class TasksUnitDemos(ITestOutputHelper output)
     Assert.Equal(1, taskCalls);
   }
 
-  [Fact]
+  [Fact(DisplayName = "Factory")]
   public async Task Factory()
   {
     var r1 = 0;
@@ -1428,7 +1433,7 @@ public class TasksUnitDemos(ITestOutputHelper output)
     Assert.Equal(2, r2);
   }
 
-  [Fact]
+  [Fact(DisplayName = "Factory: continuations")]
   public async Task FactoryContinuations()
   {
     var f = new TaskFactory();
@@ -1456,7 +1461,7 @@ public class TasksUnitDemos(ITestOutputHelper output)
     Assert.Equal(2, r2);
   }
 
-  [Fact]
+  [Fact(DisplayName = "Factory: `TaskCreationOptions.LongRunning`")]
   public async Task FactoryCreationOptionsLongRunning()
   {
     var f = new TaskFactory(TaskCreationOptions.LongRunning, default);
@@ -1467,7 +1472,7 @@ public class TasksUnitDemos(ITestOutputHelper output)
     Assert.False(fromThreadPool);
   }
 
-  [Theory]
+  [Theory(DisplayName = "Factory: child task attachment, `TaskCreationOptions.DenyChildAttach`")]
   [InlineData(TaskCreationOptions.None, false, true)]
   [InlineData(TaskCreationOptions.DenyChildAttach, true, true)]
   public void FactoryCreationOptionsChildTaskAttachment(
@@ -1488,7 +1493,7 @@ public class TasksUnitDemos(ITestOutputHelper output)
     Assert.Equal(expectedWait2, tParent.Wait(150));
   }
 
-  [Fact]
+  [Fact(DisplayName = "Factory: set task schedulers")]
   public async Task FactorySetTaskSchedulers()
   {
     using var s1 = new CustomTaskScheduler("s1");
