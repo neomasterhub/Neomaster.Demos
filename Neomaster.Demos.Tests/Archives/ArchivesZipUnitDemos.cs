@@ -1,3 +1,4 @@
+using System.ComponentModel;
 using System.IO.Compression;
 using System.Text;
 using DocumentFormat.OpenXml;
@@ -7,11 +8,12 @@ using Xunit;
 
 namespace Neomaster.Demos.Tests.Archives;
 
+[Description("Zip")]
 public class ArchivesZipUnitDemos()
 {
   private delegate void TestDelegate();
 
-  [Fact]
+  [Fact(DisplayName = "Create 1 root file")]
   public void Create_1_RootFile()
   {
     using var fs = new FileStream(GetOutputZipArchivePath(Create_1_RootFile), FileMode.Create);
@@ -23,7 +25,7 @@ public class ArchivesZipUnitDemos()
     ms.CopyTo(ze);
   }
 
-  [Fact]
+  [Fact(DisplayName = "Create N root files")]
   public void Create_N_RootFiles()
   {
     using var fs = new FileStream(GetOutputZipArchivePath(Create_N_RootFiles), FileMode.Create);
@@ -39,7 +41,7 @@ public class ArchivesZipUnitDemos()
     }
   }
 
-  [Fact]
+  [Fact(DisplayName = "Create N folder files")]
   public void Create_N_FolderFiles()
   {
     using var fs = new FileStream(GetOutputZipArchivePath(Create_N_FolderFiles), FileMode.Create);
@@ -55,7 +57,7 @@ public class ArchivesZipUnitDemos()
     }
   }
 
-  [Fact]
+  [Fact(DisplayName = "Create Word doc")]
   public void Create_WordDoc()
   {
     using var fs = new FileStream(GetOutputZipArchivePath(Create_1_RootFile), FileMode.Create);

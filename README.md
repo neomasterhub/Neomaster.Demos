@@ -26,19 +26,4 @@ Look. Try. Add.
 
 > **Note:** Tests containing `spin` or `yield` may fail depending on the CPU.
 
-
-
-<details>
-<summary>Archives: ZIP</summary>
-
-1. [Create 1 root file][archives-zip-1]
-2. [Create N root files][archives-zip-2]
-3. [Create N folder files][archives-zip-3]
-4. [Create Word doc][archives-zip-4]
-
-[archives-zip-1]:Neomaster.Demos.Tests/Archives/ArchivesZipUnitDemos.cs#L15
-[archives-zip-2]:Neomaster.Demos.Tests/Archives/ArchivesZipUnitDemos.cs#L27
-[archives-zip-3]:Neomaster.Demos.Tests/Archives/ArchivesZipUnitDemos.cs#L43
-[archives-zip-4]:Neomaster.Demos.Tests/Archives/ArchivesZipUnitDemos.cs#L59
-
-</details>
+{chapters}
