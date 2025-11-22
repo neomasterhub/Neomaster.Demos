@@ -16,10 +16,8 @@ internal class ReadmeBuilder
 
   public static ReadmeBuilder CreateBuilder() => new();
 
-  public ReadmeBuilder CreateTestList(string folder, string header = null)
+  public ReadmeBuilder CreateTestList(string folder, string header, string headerEmoji)
   {
-    header ??= folder;
-
     var dir = Path.Combine(
       SolutionInfo.SolutionPath,
       _testsProjectName,
@@ -79,7 +77,7 @@ internal class ReadmeBuilder
 
     var list =
       $"""
-      ### {header}
+      ### {headerEmoji} {header}
 
       {chapters}
       """;

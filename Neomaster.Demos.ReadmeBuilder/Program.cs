@@ -1,7 +1,8 @@
 using Neomaster.Demos.ReadmeBuilder;
 
 var readme = ReadmeBuilder.CreateBuilder()
-  .CreateTestList("Archives")
+  .CreateTestList("Archives", "Archives", "📦")
+  .CreateTestList("LinqExpr", "LINQ", "🔗")
   .Build();
 
-Console.WriteLine("Done!");
+Console.WriteLine(readme);
