@@ -94,12 +94,10 @@ internal class ReadmeBuilder
 
       var chapter =
         $"""
-        <details>
-        <summary>{title}</summary>
+        #### {title}
 
         {items}
         {links}
-        </details>
         """;
       chapters.Add(title, chapter);
     }
