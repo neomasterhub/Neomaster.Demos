@@ -23,7 +23,7 @@ internal class ReadmeBuilder
       _testsProjectName,
       folder);
 
-    var chapters = new StringBuilder();
+    var chapters = new Dictionary<string, string>();
 
     foreach (var fi in new DirectoryInfo(dir).EnumerateFiles())
     {
@@ -92,7 +92,7 @@ internal class ReadmeBuilder
         throw new Exception($"[Description] not found in \"{fi.Name}\"");
       }
 
-      chapters.AppendLine(
+      var chapter =
         $"""
         <details>
         <summary>{title}</summary>
@@ -100,14 +100,19 @@ internal class ReadmeBuilder
         {items}
         {links}
         </details>
-        """);
+        """;
+      chapters.Add(title, chapter);
     }
+
+    var chaptersString = string.Join(
+      "\n\n",
+      chapters.OrderBy(x => x.Key).Select(x => x.Value));
 
     var list =
       $"""
       ### {headerEmoji} {header}
 
-      {chapters}
+      {chaptersString}
       """;
 
     _testLists.Add(header, list);
