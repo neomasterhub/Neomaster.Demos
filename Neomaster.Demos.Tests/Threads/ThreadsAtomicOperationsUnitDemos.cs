@@ -1,12 +1,14 @@
+using System.ComponentModel;
 using Xunit;
 
 namespace Neomaster.Demos.Tests.Threads;
 
+[Description("Atomic Operations")]
 public class ThreadsAtomicOperationsUnitDemos
 {
   private static volatile bool _noncachedReady;
 
-  [Fact]
+  [Fact(DisplayName = "Volatile class")]
   public void VolatileClass()
   {
     var ready = false;
@@ -41,7 +43,7 @@ public class ThreadsAtomicOperationsUnitDemos
     Assert.Equal(1, data);
   }
 
-  [Fact]
+  [Fact(DisplayName = "Volatile keyword")]
   public void VolatileKeyword()
   {
     int? data = null;
@@ -75,7 +77,7 @@ public class ThreadsAtomicOperationsUnitDemos
     Assert.Equal(1, data);
   }
 
-  [Fact]
+  [Fact(DisplayName = "Interlocked Increment")]
   public void InterlockedIncrement()
   {
     const int threadNumber = 20;

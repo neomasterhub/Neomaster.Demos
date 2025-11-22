@@ -1,3 +1,4 @@
+using System.ComponentModel;
 using System.Linq.Expressions;
 using System.Reflection;
 using System.Security.Claims;
@@ -7,12 +8,13 @@ using static Neomaster.Demos.Tests.LinqExpr.BrokenReducible;
 
 namespace Neomaster.Demos.Tests.LinqExpr;
 
+[Description("Expressions")]
 public class LinqExprUnitDemos(ITestOutputHelper output)
 {
   private delegate void ActionRef<T>(ref T arg);
   private delegate void ActionRef<T1, T2>(ref T1 arg1, ref T2 arg2);
 
-  [Fact]
+  [Fact(DisplayName = "Tree structure: view")]
   public void TreeStructure_View()
   {
     var tree = (Expression<Func<Claim, bool>>)(c => c.Value == "1");
@@ -41,7 +43,7 @@ public class LinqExprUnitDemos(ITestOutputHelper output)
     Assert.Equal(expected, actual);
   }
 
-  [Fact]
+  [Fact(DisplayName = "Tree structure: create: left operand via `Expression.MakeMemberAccess`")]
   public void TreeStructure_Create_LeftViaMakeMemberAccess()
   {
     var leftPar = Expression.Parameter(typeof(Claim));
@@ -78,7 +80,7 @@ public class LinqExprUnitDemos(ITestOutputHelper output)
     Assert.Equal(expected, actual);
   }
 
-  [Fact]
+  [Fact(DisplayName = "Tree structure: create: left operand via `Expression.Property`")]
   public void TreeStructure_Create_LeftViaProperty()
   {
     var leftPar = Expression.Parameter(typeof(Claim));
@@ -114,7 +116,7 @@ public class LinqExprUnitDemos(ITestOutputHelper output)
     Assert.Equal(expected, actual);
   }
 
-  [Fact]
+  [Fact(DisplayName = "Tree structure: create: 3 levels")]
   public void TreeStructure_Create_3Levels()
   {
     var leftPar = Expression.Parameter(typeof(Claim));
@@ -151,7 +153,7 @@ public class LinqExprUnitDemos(ITestOutputHelper output)
     Assert.Equal(expected, actual);
   }
 
-  [Fact]
+  [Fact(DisplayName = "Lambda: create `Func1`")]
   public void Lambda_CreateFunc1()
   {
     var leftPar = Expression.Parameter(typeof(Claim));
@@ -166,7 +168,7 @@ public class LinqExprUnitDemos(ITestOutputHelper output)
     Assert.False(func(new Claim(ClaimTypes.Name, "2")));
   }
 
-  [Fact]
+  [Fact(DisplayName = "Lambda: create `Func2`")]
   public void Lambda_CreateFunc2()
   {
     var claimType = typeof(Claim);
@@ -191,7 +193,7 @@ public class LinqExprUnitDemos(ITestOutputHelper output)
     Assert.False(r2);
   }
 
-  [Fact]
+  [Fact(DisplayName = "Lambda: parameter order")]
   public void Lambda_ParameterOrder()
   {
     var type = typeof(int);
@@ -206,7 +208,7 @@ public class LinqExprUnitDemos(ITestOutputHelper output)
     Assert.Equal(9, funcYX(1, 10));
   }
 
-  [Fact]
+  [Fact(DisplayName = "Lambda: info")]
   public void Lambda_Info()
   {
     var claimType = typeof(Claim);
@@ -243,7 +245,7 @@ public class LinqExprUnitDemos(ITestOutputHelper output)
     Assert.Equal(typeof(bool), lambda.ReturnType);
   }
 
-  [Fact]
+  [Fact(DisplayName = "Lambda: view with named parameters")]
   public void Lambda_ViewWithNamedParameters()
   {
     var parNames = new[] { "x", "y" };
@@ -273,7 +275,7 @@ public class LinqExprUnitDemos(ITestOutputHelper output)
     });
   }
 
-  [Fact]
+  [Fact(DisplayName = "Lambda: typed vs untyped")]
   public void Lambda_TypedVsUntyped()
   {
     var x = Expression.Parameter(typeof(int), "x");
@@ -289,7 +291,7 @@ public class LinqExprUnitDemos(ITestOutputHelper output)
     var r3 = dlg.DynamicInvoke(3);
   }
 
-  [Fact]
+  [Fact(DisplayName = "Lambda: `DynamicInvoke()`: dynamic `Func`")]
   public void Lambda_DynamicInvoke_DynamicFunc()
   {
     var x = Expression.Parameter(typeof(int), "x");
@@ -308,7 +310,7 @@ public class LinqExprUnitDemos(ITestOutputHelper output)
     Assert.Equal(3, DynamicFunc(body2, [arr], new byte[] { 1, 2, 3 }));
   }
 
-  [Fact]
+  [Fact(DisplayName = "Lambda: `DynamicInvoke()`: dynamic Add")]
   public void Lambda_DynamicInvoke_DynamicAdd()
   {
     static object DynamicAdd<T>(T x, T y)
@@ -327,7 +329,7 @@ public class LinqExprUnitDemos(ITestOutputHelper output)
     Assert.Equal(3.3m, DynamicAdd(1.1m, 2.2m));
   }
 
-  [Fact]
+  [Fact(DisplayName = "`ExpressionType`: list of all")]
   public void ExpressionType_ListOfAll()
   {
     var n = 1;
@@ -337,7 +339,7 @@ public class LinqExprUnitDemos(ITestOutputHelper output)
     }
   }
 
-  [Fact]
+  [Fact(DisplayName = "Debug view")]
   public void DebugView()
   {
     var debugViewPi = typeof(Expression)
@@ -376,7 +378,7 @@ public class LinqExprUnitDemos(ITestOutputHelper output)
     // body  : $x.Value == "1" && $y.Value == "1"
   }
 
-  [Fact]
+  [Fact(DisplayName = "Debug view: lambda")]
   public void DebugView_Lambda()
   {
     var debugViewPi = typeof(Expression)
@@ -405,7 +407,7 @@ public class LinqExprUnitDemos(ITestOutputHelper output)
     // }
   }
 
-  [Fact]
+  [Fact(DisplayName = "`Reduce()`")]
   public void Reduce()
   {
     var x = Expression.Parameter(typeof(int), "x");
@@ -443,7 +445,7 @@ public class LinqExprUnitDemos(ITestOutputHelper output)
     // c0 + c2 | True       | 1
   }
 
-  [Fact]
+  [Fact(DisplayName = "`ReduceAndCheck()`: reducible")]
   public void ReduceAndCheck_Reducible()
   {
     var x = Expression.Parameter(typeof(int), "x");
@@ -471,7 +473,7 @@ public class LinqExprUnitDemos(ITestOutputHelper output)
     // 1
   }
 
-  [Fact]
+  [Fact(DisplayName = "`ReduceAndCheck()`: not reducible")]
   public void ReduceAndCheck_NotReducible()
   {
     var x = Expression.Parameter(typeof(int), "x");
@@ -491,7 +493,7 @@ public class LinqExprUnitDemos(ITestOutputHelper output)
     });
   }
 
-  [Theory]
+  [Theory(DisplayName = "`ReduceAndCheck()`: prevent return `null` and `this`")]
   [InlineData(ReducedResult.Null)]
   [InlineData(ReducedResult.This)]
   public void ReduceAndCheck_PreventReturn(ReducedResult reducedResult)
@@ -500,7 +502,7 @@ public class LinqExprUnitDemos(ITestOutputHelper output)
     Assert.Throws<ArgumentException>(expr.ReduceAndCheck);
   }
 
-  [Fact]
+  [Fact(DisplayName = "`ReduceExtensions()`: builtin root")]
   public void ReduceExtensions_BuiltinRoot()
   {
     var x = Expression.Parameter(typeof(int), "x");
@@ -514,7 +516,7 @@ public class LinqExprUnitDemos(ITestOutputHelper output)
     Assert.Equal(expr, reduced);
   }
 
-  [Fact]
+  [Fact(DisplayName = "`ReduceExtensions()`: custom root: reducible")]
   public void ReduceExtensions_CustomRoot_Reducible()
   {
     var x = Expression.Parameter(typeof(int), "x");
@@ -528,7 +530,7 @@ public class LinqExprUnitDemos(ITestOutputHelper output)
     Assert.Equal(x, reduced);
   }
 
-  [Fact]
+  [Fact(DisplayName = "`ReduceExtensions()`: custom root: not reducible")]
   public void ReduceExtensions_CustomRoot_NotReducible()
   {
     var x = Expression.Parameter(typeof(int), "x");
@@ -541,7 +543,7 @@ public class LinqExprUnitDemos(ITestOutputHelper output)
     output.WriteLine(ex.Message); // must be reducible node
   }
 
-  [Fact]
+  [Fact(DisplayName = "`IsByRef`: struct parameter: with `ref` modifier")]
   public void IsByRef_StructParameter_WithRefModifier()
   {
     var x = 1;
@@ -556,7 +558,7 @@ public class LinqExprUnitDemos(ITestOutputHelper output)
     Assert.Equal(2, x);
   }
 
-  [Fact]
+  [Fact(DisplayName = "`IsByRef`: reference parameter: without `ref` modifier")]
   public void IsByRef_ReferenceParameter_WithoutRefModifier()
   {
     var s = "1";
@@ -571,7 +573,7 @@ public class LinqExprUnitDemos(ITestOutputHelper output)
     Assert.Equal("1", s);
   }
 
-  [Fact]
+  [Fact(DisplayName = "`IsByRef`: reference parameter: with `ref` modifier")]
   public void IsByRef_ReferenceParameter_WithRefModifier()
   {
     var s = "1";
@@ -586,7 +588,7 @@ public class LinqExprUnitDemos(ITestOutputHelper output)
     Assert.Equal("2", s);
   }
 
-  [Fact]
+  [Fact(DisplayName = "Visitor: root")]
   public void Visitor_Root()
   {
     var x = Expression.Parameter(typeof(int), "x");
@@ -626,7 +628,7 @@ public class LinqExprUnitDemos(ITestOutputHelper output)
     // c0 + c1 | True     | 1
   }
 
-  [Fact]
+  [Fact(DisplayName = "Visitor: tree: immutable")]
   public void Visitor_Tree_Immutable()
   {
     var intAddVisitor = new IntAddVisitor();
@@ -646,7 +648,7 @@ public class LinqExprUnitDemos(ITestOutputHelper output)
     output.WriteLine(visited.ToString()); // ((x + (x + x)) + (x + x))
   }
 
-  [Fact]
+  [Fact(DisplayName = "Visitor: tree: with mutable child node")]
   public void Visitor_Tree_WithMutableChildNode()
   {
     var intAddVisitor = new IntAddVisitor();
@@ -667,7 +669,7 @@ public class LinqExprUnitDemos(ITestOutputHelper output)
     output.WriteLine(visited.ToString()); // ((x + x) + (x + x))
   }
 
-  [Fact]
+  [Fact(DisplayName = "`Expression.Invoke`")]
   public void Invoke()
   {
     var x = Expression.Parameter(typeof(int), "x");
@@ -692,7 +694,7 @@ public class LinqExprUnitDemos(ITestOutputHelper output)
     Assert.Equal(13, result);
   }
 
-  [Fact]
+  [Fact(DisplayName = "`Expression.Call`: instance method")]
   public void Call_InstanceMethod()
   {
     var par = Expression.Parameter(typeof(string), "s");
@@ -704,7 +706,7 @@ public class LinqExprUnitDemos(ITestOutputHelper output)
     action("1"); // 1
   }
 
-  [Fact]
+  [Fact(DisplayName = "`Expression.Call`: static method")]
   public void Call_StaticMethod()
   {
     var type = typeof(string);
@@ -720,7 +722,7 @@ public class LinqExprUnitDemos(ITestOutputHelper output)
     Assert.Equal("12", result);
   }
 
-  [Fact]
+  [Fact(DisplayName = "`Expression.New`")]
   public void New()
   {
     var type = typeof(User);
@@ -749,7 +751,7 @@ public class LinqExprUnitDemos(ITestOutputHelper output)
     Assert.Equal("1", user3.Email);
   }
 
-  [Fact]
+  [Fact(DisplayName = "`Expression.MemberInit`, `Expression.Bind`")]
   public void MemberInit_Bind()
   {
     var parType = typeof(string);
@@ -770,7 +772,7 @@ public class LinqExprUnitDemos(ITestOutputHelper output)
     Assert.Equal("2", user.Email);
   }
 
-  [Fact]
+  [Fact(DisplayName = "`Expression.MemberBind`")]
   public void MemberBind()
   {
     var type = typeof(User);
@@ -801,7 +803,7 @@ public class LinqExprUnitDemos(ITestOutputHelper output)
     Assert.Equal(2, user.DepartmentDefault.Id);
   }
 
-  [Fact]
+  [Fact(DisplayName = "`Expression.Quote`: lambda returns lambda")]
   public void Quote_LambdaReturnsLambda()
   {
     const string view = "x => y => (x + y)";
@@ -836,7 +838,7 @@ public class LinqExprUnitDemos(ITestOutputHelper output)
     Assert.Equal(3, func2(1).Compile()(2));
   }
 
-  [Fact]
+  [Fact(DisplayName = "`Expression.Quote`: lambda returns lambda: in DB provider")]
   public void Quote_InvokeReturnsLambda_InDbProvider()
   {
     var par = Expression.Parameter(typeof(Department), "dep");
@@ -874,7 +876,7 @@ public class LinqExprUnitDemos(ITestOutputHelper output)
     Assert.Equal("D1", d2.Name);
   }
 
-  [Fact]
+  [Fact(DisplayName = "`Expression.Assign`")]
   public void Assign()
   {
     var pUser = Expression.Parameter(typeof(User), "user");
@@ -894,7 +896,7 @@ public class LinqExprUnitDemos(ITestOutputHelper output)
     Assert.Equal("A", user.Department.Name);
   }
 
-  [Fact]
+  [Fact(DisplayName = "`Expression.Block`, `Expression.Variable`: `Swap(x, y)`")]
   public void Block_Variable_Swap()
   {
     var type = typeof(int);
@@ -917,7 +919,7 @@ public class LinqExprUnitDemos(ITestOutputHelper output)
     Assert.Equal(1, b);
   }
 
-  [Fact]
+  [Fact(DisplayName = "`Expression.Block` returns last expression result")]
   public void Block_ReturnsLastExpressionResult()
   {
     var type = typeof(int);
@@ -931,7 +933,7 @@ public class LinqExprUnitDemos(ITestOutputHelper output)
     Assert.Equal(3, sum(1, 2));
   }
 
-  [Fact]
+  [Fact(DisplayName = "Conditional operators")]
   public void ConditionalOperators()
   {
     var x = Expression.Parameter(typeof(int), "x");
@@ -985,7 +987,7 @@ public class LinqExprUnitDemos(ITestOutputHelper output)
     }
   }
 
-  [Fact]
+  [Fact(DisplayName = "`Expression.Throw`")]
   public void Throw()
   {
     var x = Expression.Parameter(typeof(int), "x");
@@ -1019,7 +1021,7 @@ public class LinqExprUnitDemos(ITestOutputHelper output)
     Assert.Throws<InvalidOperationException>(() => func3.Invoke(-1));
   }
 
-  [Fact]
+  [Fact(DisplayName = "`Expression.Goto`, `Expression.Label`: empty")]
   public void Goto_Label_Empty()
   {
     var label = Expression.Label(); // declaration
@@ -1042,7 +1044,7 @@ public class LinqExprUnitDemos(ITestOutputHelper output)
     Assert.Equal(101, add100Func(1, true));
   }
 
-  [Fact]
+  [Fact(DisplayName = "`Expression.Goto`, `Expression.Label`: instruction")]
   public void Goto_Label_Instruction()
   {
     var label = Expression.Label(); // declaration
@@ -1064,7 +1066,7 @@ public class LinqExprUnitDemos(ITestOutputHelper output)
     Assert.Equal(101, add100Func(1, true));
   }
 
-  [Fact]
+  [Fact(DisplayName = "`Expression.Goto`, `Expression.Label`: return value")]
   public void Goto_Label_ReturnValue()
   {
     var label = Expression.Label(typeof(int));
@@ -1081,7 +1083,7 @@ public class LinqExprUnitDemos(ITestOutputHelper output)
     Assert.Equal(1, func(true));
   }
 
-  [Fact]
+  [Fact(DisplayName = "`Expression.Return` like `Expression.Goto`")]
   public void Return_LikeGoto()
   {
     var type = typeof(int);
@@ -1097,7 +1099,7 @@ public class LinqExprUnitDemos(ITestOutputHelper output)
     Assert.Equal(3, func());
   }
 
-  [Fact]
+  [Fact(DisplayName = "`Expression.Return` vs `Expression.Goto`: semantic difference")]
   public void ReturnVsGoto_SemanticDifference()
   {
     var c = Expression.Constant(1);
@@ -1112,7 +1114,7 @@ public class LinqExprUnitDemos(ITestOutputHelper output)
     Assert.Equal(GotoExpressionKind.Return, rt.Kind);
   }
 
-  [Fact]
+  [Fact(DisplayName = "`Expression.Return` vs `Expression.Goto`: call via kind")]
   public void ReturnVsGoto_CallViaKind()
   {
     var tInt = typeof(int);
@@ -1139,7 +1141,7 @@ public class LinqExprUnitDemos(ITestOutputHelper output)
     Assert.Equal(3, GetFunc(GotoExpressionKind.Return)());
   }
 
-  [Fact]
+  [Fact(DisplayName = "`Expression.Loop`, `Expression.Break`: power to 10")]
   public void Loop_Break_PowerTo10()
   {
     var tInt = typeof(int);
@@ -1168,7 +1170,7 @@ public class LinqExprUnitDemos(ITestOutputHelper output)
     Assert.Equal(300, powerTo10(3, 2));
   }
 
-  [Fact]
+  [Fact(DisplayName = "`Expression.Loop`, `Expression.Break`: select even")]
   public void Loop_Continue_SelectEven()
   {
     var tList = typeof(List<int>);
@@ -1207,7 +1209,7 @@ public class LinqExprUnitDemos(ITestOutputHelper output)
     Assert.Equal([2, 4], selectEven([1, 2, 3, 4]));
   }
 
-  [Fact]
+  [Fact(DisplayName = "`GotoExpressionKind`: list of all")]
   public void GotoExpressionKind_ListOfAll()
   {
     var label = Expression.Label();
@@ -1228,7 +1230,7 @@ public class LinqExprUnitDemos(ITestOutputHelper output)
     });
   }
 
-  [Fact]
+  [Fact(DisplayName = "`Expression.TryCatchFinally`")]
   public void TryCatchFinally()
   {
     var v = Expression.Variable(typeof(int));
@@ -1252,7 +1254,7 @@ public class LinqExprUnitDemos(ITestOutputHelper output)
     Assert.Equal(11, func());
   }
 
-  [Fact]
+  [Fact(DisplayName = "Reverse Polish Notation")]
   public void ReversePolishNotation()
   {
     // (1 + 2) * 3
@@ -1282,7 +1284,7 @@ public class LinqExprUnitDemos(ITestOutputHelper output)
     Assert.Equal(9, calc());
   }
 
-  [Fact]
+  [Fact(DisplayName = "Auto-mapper")]
   public void AutoMapper()
   {
     Func<TSrc, TDst> CreateMapper<TSrc, TDst>()
@@ -1323,7 +1325,7 @@ public class LinqExprUnitDemos(ITestOutputHelper output)
     Assert.Equal(src.Department.Name, dst.Department.Name);
   }
 
-  [Fact]
+  [Fact(DisplayName = "SQL generation")]
   public void SqlGeneration()
   {
     string MapOperator(ExpressionType type) => type switch

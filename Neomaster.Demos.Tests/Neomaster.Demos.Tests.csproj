@@ -30,6 +30,10 @@
     <Folder Include="Support\DB\Entities\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Neomaster.Demos.Shared\Neomaster.Demos.Shared.csproj" />
+  </ItemGroup>
+
   <Import Project="../StyleCop/StyleCop.props" />
   <Import Project="../Testing/Testing.targets" />
 

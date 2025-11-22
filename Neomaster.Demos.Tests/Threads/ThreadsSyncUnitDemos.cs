@@ -1,14 +1,16 @@
 using System.Collections.Concurrent;
+using System.ComponentModel;
 using Xunit;
 
 namespace Neomaster.Demos.Tests.Threads;
 
+[Description("Synchronization")]
 public class ThreadsSyncUnitDemos
 {
   private static readonly Random _random = new();
   private static readonly object _lock = new();
 
-  [Fact]
+  [Fact(DisplayName = "`lock()`")]
   public void LockAddingToList()
   {
     const int count = 5;
@@ -42,7 +44,7 @@ public class ThreadsSyncUnitDemos
     Assert.Equal(Enumerable.Range(1, count), numbers);
   }
 
-  [Fact]
+  [Fact(DisplayName = "Monitor.Enter - Monitor.Exit")]
   public void MonitorAddingToList()
   {
     const int count = 5;
@@ -82,7 +84,7 @@ public class ThreadsSyncUnitDemos
     Assert.Equal(Enumerable.Range(1, count), numbers);
   }
 
-  [Fact]
+  [Fact(DisplayName = "Wait Queue")]
   public void WaitQueue()
   {
     const string expected = "123";
@@ -111,7 +113,7 @@ public class ThreadsSyncUnitDemos
     Assert.Equal(expected, actual);
   }
 
-  [Fact]
+  [Fact(DisplayName = "Monitor.PulseAll")]
   public void MonitorPulseAll()
   {
     const string expected = "(!AAAAABBBBB)|(!BBBBBAAAAA)";
@@ -158,7 +160,7 @@ public class ThreadsSyncUnitDemos
     Assert.Matches(expected, actual);
   }
 
-  [Fact]
+  [Fact(DisplayName = "Monitor.Pulse")]
   public void MonitorPulse()
   {
     const string expected = "*AAAAA";
@@ -207,7 +209,7 @@ public class ThreadsSyncUnitDemos
     Assert.False(allThreadsAreExecuted);
   }
 
-  [Fact]
+  [Fact(DisplayName = "Tick Tock via Monitor.Pulse - Monitor.Wait")]
   public void MonitorPulseWaitTickTock()
   {
     const string tickSignal = "1";
@@ -267,7 +269,7 @@ public class ThreadsSyncUnitDemos
     Assert.Equal(expected, actual);
   }
 
-  [Fact]
+  [Fact(DisplayName = "Monitor.Wait with timeout as Sleep")]
   public void MonitorWaitWithTimeoutAsSleep()
   {
     const string expected = "(Running){2,}(WaitSleepJoin){2,}(Running){2,}";
@@ -313,7 +315,7 @@ public class ThreadsSyncUnitDemos
     Assert.Matches(expected, actual);
   }
 
-  [Fact]
+  [Fact(DisplayName = "`SpinLock` vs `lock()`")]
   public void SpinLockVsLock()
   {
     var gotLock = false;
@@ -361,7 +363,7 @@ public class ThreadsSyncUnitDemos
     Assert.True(slMs < lMs);
   }
 
-  [Fact]
+  [Fact(DisplayName = "Spin lock as Sleep")]
   public void SpinLockAsSleep()
   {
     const string expected = "(_Running){2,}(#Running){2,}(_Running){2,}";
@@ -423,7 +425,7 @@ public class ThreadsSyncUnitDemos
     Assert.Matches(expected, actual);
   }
 
-  [Fact]
+  [Fact(DisplayName = "Spin lock for fast logging")]
   public void SpinLockForFastLogging()
   {
     var sl = new SpinLock(false);
@@ -453,7 +455,7 @@ public class ThreadsSyncUnitDemos
     Assert.Equal(expectedLog, log);
   }
 
-  [Theory]
+  [Theory(DisplayName = "Spin lock throwing `SynchronizationLockException`")]
   [InlineData(true, true)]
   [InlineData(false, false)]
   public void SpinLockThrowingSynchronizationLockException(
@@ -487,7 +489,7 @@ public class ThreadsSyncUnitDemos
     Assert.Equal(exceptionWasThrown, ex != null);
   }
 
-  [Fact]
+  [Fact(DisplayName = "Thread.Yield: fast cycle")]
   public void ThreadYieldFastWhileVsNormalWhile()
   {
     System.Diagnostics.Process.GetCurrentProcess().ProcessorAffinity = 1;
@@ -573,7 +575,7 @@ public class ThreadsSyncUnitDemos
     Assert.True(yieldResults[0]);
   }
 
-  [Fact]
+  [Fact(DisplayName = "Thread.SpinWait: fast cycle")]
   public void ThreadSpinWaitFastWhileVsNormalWhile()
   {
     System.Diagnostics.Process.GetCurrentProcess().ProcessorAffinity = 1;
@@ -661,7 +663,7 @@ public class ThreadsSyncUnitDemos
     }
   }
 
-  [Fact]
+  [Fact(DisplayName = "SpinWait.SpinOnce")]
   public void SpinWaitSpinOnce()
   {
     var sw = new SpinWait();
@@ -677,7 +679,7 @@ public class ThreadsSyncUnitDemos
     Assert.Equal([false, true], iterations.Values.Distinct());
   }
 
-  [Fact]
+  [Fact(DisplayName = "SpinWait.SpinUntil")]
   public void SpinWaitSpinUntil()
   {
     var ready = false;
@@ -696,7 +698,7 @@ public class ThreadsSyncUnitDemos
     Assert.True(result2);
   }
 
-  [Fact]
+  [Fact(DisplayName = "Semaphore.WaitOne - Release")]
   public void SemaphoreSignalPairs()
   {
     const int threadSignalsNumber = 10;
@@ -729,7 +731,7 @@ public class ThreadsSyncUnitDemos
     Assert.All(signals.TakeLast(cleanXYSeqLength), s => Assert.True(s is 3 or 4));
   }
 
-  [Fact]
+  [Fact(DisplayName = "Semaphore.Release max slots")]
   public void SemaphoreSignalPairsReleaseMaxSlots()
   {
     const int threadSignalsNumber = 10;
@@ -764,7 +766,7 @@ public class ThreadsSyncUnitDemos
     Assert.All(signals.Skip(clean12SeqLength), s => Assert.True(s is 3 or 4 or 5));
   }
 
-  [Fact]
+  [Fact(DisplayName = "Semaphore: named for processes")]
   public void SemaphoreNamedForProcesses()
   {
     const int smInitialCount = 2;
@@ -816,7 +818,7 @@ public class ThreadsSyncUnitDemos
     Assert.Equal(cleanXYSeqLength, signals.TakeLast(cleanXYSeqLength).Count(s => s is "3" or "4"));
   }
 
-  [Fact]
+  [Fact(DisplayName = "Semaphore: named created new")]
   public void SemaphoreNamedCreatedNew()
   {
     var smName = $"test_sm_{nameof(SemaphoreNamedCreatedNew)}";
@@ -841,7 +843,7 @@ public class ThreadsSyncUnitDemos
     Assert.False(smCreatedNew);
   }
 
-  [Fact]
+  [Fact(DisplayName = "Mutex as Monitor")]
   public void MutexAsMonitor()
   {
     var mt = new Mutex();
@@ -871,7 +873,7 @@ public class ThreadsSyncUnitDemos
     Assert.Matches("1{10}2{10}3{10}", string.Concat(signals));
   }
 
-  [Fact]
+  [Fact(DisplayName = "Mutex for singleton thread")]
   public void MutexForSingletonThread()
   {
     const string mtName = "test_mt";
@@ -913,7 +915,7 @@ public class ThreadsSyncUnitDemos
     Assert.Equal(1, signals.Count(s => s.StartsWith("2:")));
   }
 
-  [Fact]
+  [Fact(DisplayName = "Mutex for singleton app")]
   public void MutexForSingletonApp()
   {
     var signals = new List<string>();
@@ -959,7 +961,7 @@ public class ThreadsSyncUnitDemos
     Assert.Equal(10, signals.Count(s => s == "Working..."));
   }
 
-  [Fact]
+  [Fact(DisplayName = "Interrupt")]
   public void InterruptThreadInSleepWaitJoinState()
   {
     var th1IsInterrupted = false;
@@ -1003,7 +1005,7 @@ public class ThreadsSyncUnitDemos
     Assert.False(th2IsInterrupted);
   }
 
-  [Fact]
+  [Fact(DisplayName = "Deadlock: recursive locking")]
   public void DeadlockRecursiveLocking()
   {
     var thIsInterrupted = false;
@@ -1035,7 +1037,7 @@ public class ThreadsSyncUnitDemos
     Assert.False(thIsInterrupted);
   }
 
-  [Fact]
+  [Fact(DisplayName = "Deadlock: mutual waiting, break by Interrupt")]
   public void DeadlockMutualWaitingBreakByInterrupt()
   {
     var lock1 = new object();
@@ -1092,7 +1094,7 @@ public class ThreadsSyncUnitDemos
     Assert.True(th2IsInterrupted);
   }
 
-  [Fact]
+  [Fact(DisplayName = "Deadlock: mutual waiting, break by Join with timeout")]
   public void DeadlockMutualWaitingBreakByJoinWithTimeout()
   {
     var lock1 = new object();

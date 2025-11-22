@@ -1,10 +1,13 @@
+using System.ComponentModel;
+using Neomaster.Demos.Shared;
 using Xunit;
 
 namespace Neomaster.Demos.Tests.Threads;
 
+[Description("Thread Pool")]
 public class ThreadsThreadPoolUnitDemos
 {
-  [Fact]
+  [Fact(DisplayName = "QueueUserWorkItem")]
   public void QueueUserWorkItem()
   {
     var result = false;
@@ -21,7 +24,7 @@ public class ThreadsThreadPoolUnitDemos
     Assert.True(result);
   }
 
-  [Fact]
+  [Fact(DisplayName = "QueueUserWorkItem with state")]
   public void QueueUserWorkItemWithState()
   {
     var result = 0;
@@ -40,7 +43,7 @@ public class ThreadsThreadPoolUnitDemos
     Assert.Equal(1, result);
   }
 
-  [Fact]
+  [Fact(DisplayName = "QueueUserWorkItem Join")]
   public void QueueUserWorkItemJoin()
   {
     var result = false;
@@ -59,7 +62,9 @@ public class ThreadsThreadPoolUnitDemos
     Assert.True(result);
   }
 
-  [Fact]
+  [ExternalDemo("Set pool thread as foreground", "Neomaster.Demos.Apps/Neomaster.Demos.Apps.Threads.SetPoolThreadAsForeground/Program.cs")]
+
+  [Fact(DisplayName = "Pool restores thread as background")]
   public void PoolRestoresThreadAsBackground()
   {
     var poolThreadId = 0;

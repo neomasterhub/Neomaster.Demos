@@ -1,12 +1,14 @@
 using System.Collections.Concurrent;
+using System.ComponentModel;
 using Xunit;
 using Timer = System.Timers.Timer;
 
 namespace Neomaster.Demos.Tests.Tasks;
 
+[Description("Features")]
 public class TasksFeaturesUnitDemos(ITestOutputHelper output)
 {
-  [Fact]
+  [Fact(DisplayName = "Timer: Callback")]
   public void Callback()
   {
     const int eventNumber = 3;
@@ -33,7 +35,7 @@ public class TasksFeaturesUnitDemos(ITestOutputHelper output)
     // System.Timers.Timer 06
   }
 
-  [Fact]
+  [Fact(DisplayName = "Timer: AutoReset: false")]
   public void AutoResetFalse()
   {
     var eventCount = 0;
@@ -57,7 +59,7 @@ public class TasksFeaturesUnitDemos(ITestOutputHelper output)
     Assert.Equal(1, eventCount);
   }
 
-  [Fact]
+  [Fact(DisplayName = "Timer: Alarms")]
   public void Alarms()
   {
     var now = DateTime.Now;
@@ -106,7 +108,7 @@ public class TasksFeaturesUnitDemos(ITestOutputHelper output)
     // ⏰4
   }
 
-  [Fact]
+  [Fact(DisplayName = "Parallel: `For()`")]
   public void ParallelFor()
   {
     const int numberOf1 = 1000;
@@ -130,7 +132,7 @@ public class TasksFeaturesUnitDemos(ITestOutputHelper output)
     Assert.True(thsFromPool);
   }
 
-  [Fact]
+  [Fact(DisplayName = "Parallel: `Stop()`")]
   public void ParallelForStop()
   {
     const int numberOf1 = 10000;
@@ -166,7 +168,7 @@ public class TasksFeaturesUnitDemos(ITestOutputHelper output)
     output.WriteLine($"sum: {sum}"); // 2541
   }
 
-  [Fact]
+  [Fact(DisplayName = "Parallel: `Break()`")]
   public void ParallelForBreak()
   {
     const int numberOf1 = 10000;
@@ -203,7 +205,7 @@ public class TasksFeaturesUnitDemos(ITestOutputHelper output)
     output.WriteLine($"broken at: {result.LowestBreakIteration}"); // 1306
   }
 
-  [Fact]
+  [Fact(DisplayName = "Parallel: Local Var")]
   public void ParallelForLocalVar()
   {
     const int numberOf1 = 1000;
@@ -232,7 +234,7 @@ public class TasksFeaturesUnitDemos(ITestOutputHelper output)
     // local finally: 548
   }
 
-  [Fact]
+  [Fact(DisplayName = "Parallel: Exception")]
   public void ParallelForException()
   {
     const int numberOf1 = 1000;
@@ -276,7 +278,7 @@ public class TasksFeaturesUnitDemos(ITestOutputHelper output)
     // sum: 3
   }
 
-  [Fact]
+  [Fact(DisplayName = "Parallel: `ParallelOptions`")]
   public void ParallelForOptions()
   {
     const int numberOf1 = 1000;
@@ -294,7 +296,7 @@ public class TasksFeaturesUnitDemos(ITestOutputHelper output)
     Assert.Equal(numberOf1, sum);
   }
 
-  [Fact]
+  [Fact(DisplayName = "Parallel: State Checks")]
   public void ParallelForStateChecks()
   {
     var stateIsChecked = false;
@@ -321,7 +323,7 @@ public class TasksFeaturesUnitDemos(ITestOutputHelper output)
     Assert.True(stateIsChecked);
   }
 
-  [Fact]
+  [Fact(DisplayName = "Parallel: `Foreach()`")]
   public void ParallelForeach()
   {
     const int enemyNumber = 1000;
@@ -356,7 +358,7 @@ public class TasksFeaturesUnitDemos(ITestOutputHelper output)
       });
   }
 
-  [Fact]
+  [Fact(DisplayName = "Parallel: `Invoke()`")]
   public void ParallelInvoke()
   {
     const int producerSignalNumber = 100;
