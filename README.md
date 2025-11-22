@@ -26,64 +26,6 @@ Look. Try. Add.
 
 > **Note:** Tests containing `spin` or `yield` may fail depending on the CPU.
 
-<details>
-<summary>Threads: Synchronization</summary>
-
-1. [`lock()`][threads-sync-1]
-2. [Monitor.Enter - Monitor.Exit][threads-sync-2]
-3. [Wait Queue][threads-sync-3]
-4. [Monitor.PulseAll][threads-sync-4]
-5. [Monitor.Pulse][threads-sync-5]
-6. [Tick Tock via Monitor.Pulse - Monitor.Wait][threads-sync-6]
-7. [Monitor.Wait with timeout as Sleep][threads-sync-7]
-8. [`SpinLock` vs `lock()`][threads-sync-8]
-9. [Spin lock as Sleep][threads-sync-9]
-10. [Spin lock for fast logging][threads-sync-10]
-11. [Spin lock throwing `SynchronizationLockException`][threads-sync-11]
-12. [Thread.Yield: fast cycle][threads-sync-12]
-13. [Thread.SpinWait: fast cycle][threads-sync-13]
-14. [SpinWait.SpinOnce][threads-sync-14]
-15. [SpinWait.SpinUntil][threads-sync-15]
-16. [Semaphore.WaitOne - Release][threads-sync-16]
-17. [Semaphore.Release max slots][threads-sync-17]
-18. [Semaphore: named for processes][threads-sync-18]
-19. [Semaphore: named created new][threads-sync-19]
-20. [Mutex as Monitor][threads-sync-20]
-21. [Mutex for singleton thread][threads-sync-21]
-22. [Mutex for singleton app][threads-sync-22]
-23. [Interrupt][threads-sync-23]
-24. [Deadlock: recursive locking][threads-sync-24]
-25. [Deadlock: mutual waiting, break by Interrupt][threads-sync-25]
-26. [Deadlock: mutual waiting, break by Join with timeout][threads-sync-26]
-
-[threads-sync-1]:Neomaster.Demos.Tests/Threads/ThreadsSyncUnitDemos.cs#L12
-[threads-sync-2]:Neomaster.Demos.Tests/Threads/ThreadsSyncUnitDemos.cs#L46
-[threads-sync-3]:Neomaster.Demos.Tests/Threads/ThreadsSyncUnitDemos.cs#L86
-[threads-sync-4]:Neomaster.Demos.Tests/Threads/ThreadsSyncUnitDemos.cs#L115
-[threads-sync-5]:Neomaster.Demos.Tests/Threads/ThreadsSyncUnitDemos.cs#L162
-[threads-sync-6]:Neomaster.Demos.Tests/Threads/ThreadsSyncUnitDemos.cs#L211
-[threads-sync-7]:Neomaster.Demos.Tests/Threads/ThreadsSyncUnitDemos.cs#L271
-[threads-sync-8]:Neomaster.Demos.Tests/Threads/ThreadsSyncUnitDemos.cs#L317
-[threads-sync-9]:Neomaster.Demos.Tests/Threads/ThreadsSyncUnitDemos.cs#L365
-[threads-sync-10]:Neomaster.Demos.Tests/Threads/ThreadsSyncUnitDemos.cs#L427
-[threads-sync-11]:Neomaster.Demos.Tests/Threads/ThreadsSyncUnitDemos.cs#L459
-[threads-sync-12]:Neomaster.Demos.Tests/Threads/ThreadsSyncUnitDemos.cs#L491
-[threads-sync-13]:Neomaster.Demos.Tests/Threads/ThreadsSyncUnitDemos.cs#L577
-[threads-sync-14]:Neomaster.Demos.Tests/Threads/ThreadsSyncUnitDemos.cs#L665
-[threads-sync-15]:Neomaster.Demos.Tests/Threads/ThreadsSyncUnitDemos.cs#L681
-[threads-sync-16]:Neomaster.Demos.Tests/Threads/ThreadsSyncUnitDemos.cs#L700
-[threads-sync-17]:Neomaster.Demos.Tests/Threads/ThreadsSyncUnitDemos.cs#L733
-[threads-sync-18]:Neomaster.Demos.Tests/Threads/ThreadsSyncUnitDemos.cs#L768
-[threads-sync-19]:Neomaster.Demos.Tests/Threads/ThreadsSyncUnitDemos.cs#L820
-[threads-sync-20]:Neomaster.Demos.Tests/Threads/ThreadsSyncUnitDemos.cs#L845
-[threads-sync-21]:Neomaster.Demos.Tests/Threads/ThreadsSyncUnitDemos.cs#L875
-[threads-sync-22]:Neomaster.Demos.Tests/Threads/ThreadsSyncUnitDemos.cs#L917
-[threads-sync-23]:Neomaster.Demos.Tests/Threads/ThreadsSyncUnitDemos.cs#L963
-[threads-sync-24]:Neomaster.Demos.Tests/Threads/ThreadsSyncUnitDemos.cs#L1007
-[threads-sync-25]:Neomaster.Demos.Tests/Threads/ThreadsSyncUnitDemos.cs#L1039
-[threads-sync-26]:Neomaster.Demos.Tests/Threads/ThreadsSyncUnitDemos.cs#L1096
-
-</details>
 
 <details>
 <summary>Threads: Event Synchronization</summary>
