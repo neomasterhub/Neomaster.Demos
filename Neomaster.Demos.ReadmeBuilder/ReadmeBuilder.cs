@@ -8,38 +8,74 @@ internal static class ReadmeBuilder
   private static readonly string _testsProjectName = "Neomaster.Demos.Tests";
   private static readonly int _localPathStartIndex = SolutionInfo.SolutionPath.Length + 1;
 
-  public static void CreateTestList(string folder)
+  public static string CreateTestList(string folder, string header = null)
   {
+    header ??= folder;
+
     var dir = Path.Combine(
       SolutionInfo.SolutionPath,
       _testsProjectName,
       folder);
 
+    var chapters = new StringBuilder();
+
     foreach (var fi in new DirectoryInfo(dir).EnumerateFiles())
     {
+      string title = null;
       var items = new StringBuilder();
       var links = new StringBuilder();
-      var linkPrefix = Guid.NewGuid().ToString();
+      var localPath = fi.FullName.Substring(_localPathStartIndex).Replace('\\', '/');
+      var linkPrefix = localPath.Replace('/', '_');
 
-      var i = 0;
-      var n = 0;
+      var lineNumber = 0;
+      var testNumber = 0;
       foreach (var line in File.ReadLines(fi.FullName))
       {
-        n++;
+        lineNumber++;
+
+        if (line.StartsWith("[Description"))
+        {
+          title = line.Substring(line.IndexOf('\"') + 1).TrimEnd("\")]").ToString();
+          continue;
+        }
+
         if (!line.StartsWith("  [Fact") && !line.StartsWith("  [Theory"))
         {
           continue;
         }
 
-        i++;
-        var name = line.Substring(23).Trim("\")]");
-        var localPath = fi.FullName.Substring(_localPathStartIndex).Replace("\\", "/");
-        var item = $"{i}. [{name}][{linkPrefix}-{i}]";
-        var link = $"[{linkPrefix}-{i}]:{localPath}#L{n}";
+        testNumber++;
+        var name = line.Substring(line.IndexOf('\"') + 1).TrimEnd("\")]");
+        var item = $"{testNumber}. [{name}][{linkPrefix}-{testNumber}]";
+        var link = $"[{linkPrefix}-{testNumber}]:{localPath}#L{lineNumber + 1}";
 
         items.AppendLine(item);
         links.AppendLine(link);
       }
+
+      if (title == null)
+      {
+        throw new Exception($"[Description] not found in \"{fi.Name}\"");
+      }
+
+      chapters.AppendLine(
+        $"""
+        <details>
+        <summary>{title}</summary>
+
+        {items}
+        {links}
+        </details>
+        """);
     }
+
+    var list =
+      $"""
+      ### {header}
+
+      {chapters}
+      """;
+
+    return list;
   }
 }

@@ -1,3 +1,4 @@
+using System.ComponentModel;
 using System.IO.Compression;
 using System.Text;
 using DocumentFormat.OpenXml;
@@ -7,6 +8,7 @@ using Xunit;
 
 namespace Neomaster.Demos.Tests.Archives;
 
+[Description("Zip")]
 public class ArchivesZipUnitDemos()
 {
   private delegate void TestDelegate();
