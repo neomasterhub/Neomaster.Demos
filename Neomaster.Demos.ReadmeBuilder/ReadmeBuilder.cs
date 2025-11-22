@@ -35,8 +35,11 @@ internal class ReadmeBuilder
 
       var lineNumber = 0;
       var testNumber = 0;
-      foreach (var line in File.ReadLines(fi.FullName))
+      var lineEnumerator = File.ReadLines(fi.FullName).GetEnumerator();
+      while (lineEnumerator.MoveNext())
       {
+        var line = lineEnumerator.Current;
+
         lineNumber++;
 
         if (line.StartsWith("[Description"))
@@ -64,7 +67,17 @@ internal class ReadmeBuilder
         else
         {
           name = line.Substring(line.IndexOf('\"') + 1).TrimEnd("\")]").ToString();
-          localPath = fi.FullName.Substring(_localPathStartIndex).Replace('\\', '/') + $"#L{lineNumber}";
+          localPath = fi.FullName.Substring(_localPathStartIndex).Replace('\\', '/');
+
+          do
+          {
+            lineEnumerator.MoveNext();
+            line = lineEnumerator.Current;
+            lineNumber++;
+          }
+          while (!line.StartsWith("  public void") && !line.StartsWith("  public async"));
+
+          localPath += $"#L{lineNumber}";
         }
 
         var item = $"{testNumber}. [{name}][{linkPrefix}-{testNumber}]";
