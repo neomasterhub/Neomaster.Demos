@@ -94,7 +94,8 @@ internal class ReadmeBuilder
 
       var chapter =
         $"""
-        &nbsp;&nbsp;&nbsp;&nbsp;**{title}**
+        #### {title}
+
         {items}
         {links}
         """;
@@ -111,8 +112,6 @@ internal class ReadmeBuilder
 
       <summary><b>{headerEmoji} {header}</b></summary>
 
-      <div>&nbsp;</div>
-
       {chaptersString}
 
       </details>
@@ -127,7 +126,7 @@ internal class ReadmeBuilder
   {
     var text = string.Join(
       "\n\n",
-      _testLists.OrderBy(x => x.Key).Select(x => x.Value));
+      _testLists.Values);
 
     return text;
   }

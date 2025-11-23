@@ -3,9 +3,9 @@ using Neomaster.Demos.Shared;
 
 var readmeChapters = ReadmeBuilder.CreateBuilder()
   .CreateTestList("Archives", "Archives", "📦")
-  .CreateTestList("LinqExpr", "LINQ", "🔗")
-  .CreateTestList("Tasks", "Tasks", "📋")
   .CreateTestList("Threads", "Threads", "🔀")
+  .CreateTestList("Tasks", "Tasks", "📋")
+  .CreateTestList("LinqExpr", "LINQ", "🔗")
   .Build();
 
 var readmeTemplate = File.ReadAllText(Path.Combine(SolutionInfo.SolutionPath, "readme-template.md"));
