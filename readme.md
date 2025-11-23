@@ -26,10 +26,13 @@ Look. Try. Add.
 
 > **Note:** Tests containing `spin` or `yield` may fail depending on the CPU.
 
-### 📦 Archives
+<details>
 
-#### Zip
+<summary><b>📦 Archives</b></summary>
 
+<div>&nbsp;</div>
+
+&nbsp;&nbsp;&nbsp;&nbsp;**Zip**
 1. [Create 1 root file][Neomaster.Demos.Tests_Archives_ArchivesZipUnitDemos.cs-1]
 2. [Create N root files][Neomaster.Demos.Tests_Archives_ArchivesZipUnitDemos.cs-2]
 3. [Create N folder files][Neomaster.Demos.Tests_Archives_ArchivesZipUnitDemos.cs-3]
@@ -41,10 +44,15 @@ Look. Try. Add.
 [Neomaster.Demos.Tests_Archives_ArchivesZipUnitDemos.cs-4]:Neomaster.Demos.Tests/Archives/ArchivesZipUnitDemos.cs#L61
 
 
-### 🔗 LINQ
+</details>
 
-#### Expressions
+<details>
 
+<summary><b>🔗 LINQ</b></summary>
+
+<div>&nbsp;</div>
+
+&nbsp;&nbsp;&nbsp;&nbsp;**Expressions**
 1. [Tree structure: view][Neomaster.Demos.Tests_LinqExpr_LinqExprUnitDemos.cs-1]
 2. [Tree structure: create: left operand via `Expression.MakeMemberAccess`][Neomaster.Demos.Tests_LinqExpr_LinqExprUnitDemos.cs-2]
 3. [Tree structure: create: left operand via `Expression.Property`][Neomaster.Demos.Tests_LinqExpr_LinqExprUnitDemos.cs-3]
@@ -156,10 +164,15 @@ Look. Try. Add.
 [Neomaster.Demos.Tests_LinqExpr_LinqExprUnitDemos.cs-54]:Neomaster.Demos.Tests/LinqExpr/LinqExprUnitDemos.cs#L1329
 
 
-### 📋 Tasks
+</details>
 
-#### Basic
+<details>
 
+<summary><b>📋 Tasks</b></summary>
+
+<div>&nbsp;</div>
+
+&nbsp;&nbsp;&nbsp;&nbsp;**1. Fundamentals**
 1. [Create task][Neomaster.Demos.Tests_Tasks_TasksUnitDemos.cs-1]
 2. [Task is in pool thread][Neomaster.Demos.Tests_Tasks_TasksUnitDemos.cs-2]
 3. [Wait task][Neomaster.Demos.Tests_Tasks_TasksUnitDemos.cs-3]
@@ -287,8 +300,17 @@ Look. Try. Add.
 [Neomaster.Demos.Tests_Tasks_TasksUnitDemos.cs-62]:Neomaster.Demos.Tests/Tasks/TasksUnitDemos.cs#L1497
 
 
-#### Features
+&nbsp;&nbsp;&nbsp;&nbsp;**2. Synchronization**
+1. [`lock` within task][Neomaster.Demos.Tests_Tasks_TasksSyncUnitDemos.cs-1]
+2. [Task within `lock`][Neomaster.Demos.Tests_Tasks_TasksSyncUnitDemos.cs-2]
+3. [Lock via semaphore][Neomaster.Demos.Tests_Tasks_TasksSyncUnitDemos.cs-3]
 
+[Neomaster.Demos.Tests_Tasks_TasksSyncUnitDemos.cs-1]:Neomaster.Demos.Tests/Tasks/TasksSyncUnitDemos.cs#L10
+[Neomaster.Demos.Tests_Tasks_TasksSyncUnitDemos.cs-2]:Neomaster.Demos.Tests/Tasks/TasksSyncUnitDemos.cs#L55
+[Neomaster.Demos.Tests_Tasks_TasksSyncUnitDemos.cs-3]:Neomaster.Demos.Tests/Tasks/TasksSyncUnitDemos.cs#L65
+
+
+&nbsp;&nbsp;&nbsp;&nbsp;**Features**
 1. [Timer: Callback][Neomaster.Demos.Tests_Tasks_TasksFeaturesUnitDemos.cs-1]
 2. [Timer: AutoReset: false][Neomaster.Demos.Tests_Tasks_TasksFeaturesUnitDemos.cs-2]
 3. [Timer: Alarms][Neomaster.Demos.Tests_Tasks_TasksFeaturesUnitDemos.cs-3]
@@ -316,32 +338,15 @@ Look. Try. Add.
 [Neomaster.Demos.Tests_Tasks_TasksFeaturesUnitDemos.cs-12]:Neomaster.Demos.Tests/Tasks/TasksFeaturesUnitDemos.cs#L362
 
 
-#### Synchronization
+</details>
 
-1. [`lock` within task][Neomaster.Demos.Tests_Tasks_TasksSyncUnitDemos.cs-1]
-2. [Task within `lock`][Neomaster.Demos.Tests_Tasks_TasksSyncUnitDemos.cs-2]
-3. [Lock via semaphore][Neomaster.Demos.Tests_Tasks_TasksSyncUnitDemos.cs-3]
+<details>
 
-[Neomaster.Demos.Tests_Tasks_TasksSyncUnitDemos.cs-1]:Neomaster.Demos.Tests/Tasks/TasksSyncUnitDemos.cs#L10
-[Neomaster.Demos.Tests_Tasks_TasksSyncUnitDemos.cs-2]:Neomaster.Demos.Tests/Tasks/TasksSyncUnitDemos.cs#L55
-[Neomaster.Demos.Tests_Tasks_TasksSyncUnitDemos.cs-3]:Neomaster.Demos.Tests/Tasks/TasksSyncUnitDemos.cs#L65
+<summary><b>🔀 Threads</b></summary>
 
+<div>&nbsp;</div>
 
-### 🔀 Threads
-
-#### Atomic Operations
-
-1. [Volatile class][Neomaster.Demos.Tests_Threads_ThreadsAtomicOperationsUnitDemos.cs-1]
-2. [Volatile keyword][Neomaster.Demos.Tests_Threads_ThreadsAtomicOperationsUnitDemos.cs-2]
-3. [Interlocked Increment][Neomaster.Demos.Tests_Threads_ThreadsAtomicOperationsUnitDemos.cs-3]
-
-[Neomaster.Demos.Tests_Threads_ThreadsAtomicOperationsUnitDemos.cs-1]:Neomaster.Demos.Tests/Threads/ThreadsAtomicOperationsUnitDemos.cs#L12
-[Neomaster.Demos.Tests_Threads_ThreadsAtomicOperationsUnitDemos.cs-2]:Neomaster.Demos.Tests/Threads/ThreadsAtomicOperationsUnitDemos.cs#L47
-[Neomaster.Demos.Tests_Threads_ThreadsAtomicOperationsUnitDemos.cs-3]:Neomaster.Demos.Tests/Threads/ThreadsAtomicOperationsUnitDemos.cs#L81
-
-
-#### Basic
-
+&nbsp;&nbsp;&nbsp;&nbsp;**1. Fundamentals**
 1. [Create, Sleep, Join][Neomaster.Demos.Tests_Threads_ThreadsUnitDemos.cs-1]
 2. [Create with arg][Neomaster.Demos.Tests_Threads_ThreadsUnitDemos.cs-2]
 3. [Foreground][Neomaster.Demos.Tests_Threads_ThreadsUnitDemos.cs-3]
@@ -375,84 +380,7 @@ Look. Try. Add.
 [Neomaster.Demos.Tests_Threads_ThreadsUnitDemos.cs-15]:Neomaster.Demos.Tests/Threads/ThreadsUnitDemos.cs#L180
 
 
-#### Event Synchronization
-
-1. [EventWaitHandle.Set][Neomaster.Demos.Tests_Threads_ThreadsEventSyncUnitDemos.cs-1]
-2. [EventWaitHandle.Reset][Neomaster.Demos.Tests_Threads_ThreadsEventSyncUnitDemos.cs-2]
-3. [EventWaitHandle.Set with auto-reset][Neomaster.Demos.Tests_Threads_ThreadsEventSyncUnitDemos.cs-3]
-4. [AutoResetEvent.Set][Neomaster.Demos.Tests_Threads_ThreadsEventSyncUnitDemos.cs-4]
-5. [ManualResetEvent.Set][Neomaster.Demos.Tests_Threads_ThreadsEventSyncUnitDemos.cs-5]
-6. [ManualResetEventSlim.Set][Neomaster.Demos.Tests_Threads_ThreadsEventSyncUnitDemos.cs-6]
-7. [ManualResetEventSlim.Wait with timeout][Neomaster.Demos.Tests_Threads_ThreadsEventSyncUnitDemos.cs-7]
-8. [CountdownEvent.Wait as Join][Neomaster.Demos.Tests_Threads_ThreadsEventSyncUnitDemos.cs-8]
-9. [CountdownEvent.AddCount][Neomaster.Demos.Tests_Threads_ThreadsEventSyncUnitDemos.cs-9]
-10. [CountdownEvent.TryAddCount][Neomaster.Demos.Tests_Threads_ThreadsEventSyncUnitDemos.cs-10]
-11. [CountdownEvent.IsSet][Neomaster.Demos.Tests_Threads_ThreadsEventSyncUnitDemos.cs-11]
-12. [CountdownEvent.Reset][Neomaster.Demos.Tests_Threads_ThreadsEventSyncUnitDemos.cs-12]
-13. [CountdownEvent.Reset with arg][Neomaster.Demos.Tests_Threads_ThreadsEventSyncUnitDemos.cs-13]
-14. [Barrier: Phases][Neomaster.Demos.Tests_Threads_ThreadsEventSyncUnitDemos.cs-14]
-15. [CancellationToken: create token][Neomaster.Demos.Tests_Threads_ThreadsEventSyncUnitDemos.cs-15]
-16. [CancellationToken: cancellation request][Neomaster.Demos.Tests_Threads_ThreadsEventSyncUnitDemos.cs-16]
-17. [CancellationToken: cancellation callback sequence][Neomaster.Demos.Tests_Threads_ThreadsEventSyncUnitDemos.cs-17]
-18. [CancellationToken: cancellation callback sequence: before first exception][Neomaster.Demos.Tests_Threads_ThreadsEventSyncUnitDemos.cs-18]
-19. [CancellationToken: cancellation callback sequence: all, ignoring exceptions][Neomaster.Demos.Tests_Threads_ThreadsEventSyncUnitDemos.cs-19]
-20. [CancellationToken.ThrowIfCancellationRequested][Neomaster.Demos.Tests_Threads_ThreadsEventSyncUnitDemos.cs-20]
-21. [CancellationToken.None usage][Neomaster.Demos.Tests_Threads_ThreadsEventSyncUnitDemos.cs-21]
-22. [CancellationToken.None variants][Neomaster.Demos.Tests_Threads_ThreadsEventSyncUnitDemos.cs-22]
-23. [CancellationTokenSource.CreateLinkedTokenSource][Neomaster.Demos.Tests_Threads_ThreadsEventSyncUnitDemos.cs-23]
-
-[Neomaster.Demos.Tests_Threads_ThreadsEventSyncUnitDemos.cs-1]:Neomaster.Demos.Tests/Threads/ThreadsEventSyncUnitDemos.cs#L11
-[Neomaster.Demos.Tests_Threads_ThreadsEventSyncUnitDemos.cs-2]:Neomaster.Demos.Tests/Threads/ThreadsEventSyncUnitDemos.cs#L76
-[Neomaster.Demos.Tests_Threads_ThreadsEventSyncUnitDemos.cs-3]:Neomaster.Demos.Tests/Threads/ThreadsEventSyncUnitDemos.cs#L142
-[Neomaster.Demos.Tests_Threads_ThreadsEventSyncUnitDemos.cs-4]:Neomaster.Demos.Tests/Threads/ThreadsEventSyncUnitDemos.cs#L198
-[Neomaster.Demos.Tests_Threads_ThreadsEventSyncUnitDemos.cs-5]:Neomaster.Demos.Tests/Threads/ThreadsEventSyncUnitDemos.cs#L254
-[Neomaster.Demos.Tests_Threads_ThreadsEventSyncUnitDemos.cs-6]:Neomaster.Demos.Tests/Threads/ThreadsEventSyncUnitDemos.cs#L303
-[Neomaster.Demos.Tests_Threads_ThreadsEventSyncUnitDemos.cs-7]:Neomaster.Demos.Tests/Threads/ThreadsEventSyncUnitDemos.cs#L352
-[Neomaster.Demos.Tests_Threads_ThreadsEventSyncUnitDemos.cs-8]:Neomaster.Demos.Tests/Threads/ThreadsEventSyncUnitDemos.cs#L376
-[Neomaster.Demos.Tests_Threads_ThreadsEventSyncUnitDemos.cs-9]:Neomaster.Demos.Tests/Threads/ThreadsEventSyncUnitDemos.cs#L402
-[Neomaster.Demos.Tests_Threads_ThreadsEventSyncUnitDemos.cs-10]:Neomaster.Demos.Tests/Threads/ThreadsEventSyncUnitDemos.cs#L436
-[Neomaster.Demos.Tests_Threads_ThreadsEventSyncUnitDemos.cs-11]:Neomaster.Demos.Tests/Threads/ThreadsEventSyncUnitDemos.cs#L449
-[Neomaster.Demos.Tests_Threads_ThreadsEventSyncUnitDemos.cs-12]:Neomaster.Demos.Tests/Threads/ThreadsEventSyncUnitDemos.cs#L465
-[Neomaster.Demos.Tests_Threads_ThreadsEventSyncUnitDemos.cs-13]:Neomaster.Demos.Tests/Threads/ThreadsEventSyncUnitDemos.cs#L480
-[Neomaster.Demos.Tests_Threads_ThreadsEventSyncUnitDemos.cs-14]:Neomaster.Demos.Tests/Threads/ThreadsEventSyncUnitDemos.cs#L495
-[Neomaster.Demos.Tests_Threads_ThreadsEventSyncUnitDemos.cs-15]:Neomaster.Demos.Tests/Threads/ThreadsEventSyncUnitDemos.cs#L540
-[Neomaster.Demos.Tests_Threads_ThreadsEventSyncUnitDemos.cs-16]:Neomaster.Demos.Tests/Threads/ThreadsEventSyncUnitDemos.cs#L551
-[Neomaster.Demos.Tests_Threads_ThreadsEventSyncUnitDemos.cs-17]:Neomaster.Demos.Tests/Threads/ThreadsEventSyncUnitDemos.cs#L578
-[Neomaster.Demos.Tests_Threads_ThreadsEventSyncUnitDemos.cs-18]:Neomaster.Demos.Tests/Threads/ThreadsEventSyncUnitDemos.cs#L609
-[Neomaster.Demos.Tests_Threads_ThreadsEventSyncUnitDemos.cs-19]:Neomaster.Demos.Tests/Threads/ThreadsEventSyncUnitDemos.cs#L656
-[Neomaster.Demos.Tests_Threads_ThreadsEventSyncUnitDemos.cs-20]:Neomaster.Demos.Tests/Threads/ThreadsEventSyncUnitDemos.cs#L703
-[Neomaster.Demos.Tests_Threads_ThreadsEventSyncUnitDemos.cs-21]:Neomaster.Demos.Tests/Threads/ThreadsEventSyncUnitDemos.cs#L738
-[Neomaster.Demos.Tests_Threads_ThreadsEventSyncUnitDemos.cs-22]:Neomaster.Demos.Tests/Threads/ThreadsEventSyncUnitDemos.cs#L760
-[Neomaster.Demos.Tests_Threads_ThreadsEventSyncUnitDemos.cs-23]:Neomaster.Demos.Tests/Threads/ThreadsEventSyncUnitDemos.cs#L777
-
-
-#### Features
-
-1. [Synchronized method: instance][Neomaster.Demos.Tests_Threads_ThreadsFeaturesUnitDemos.cs-1]
-2. [Synchronized method: static][Neomaster.Demos.Tests_Threads_ThreadsFeaturesUnitDemos.cs-2]
-3. [Synchronized method: instance in different threads][Neomaster.Demos.Tests_Threads_ThreadsFeaturesUnitDemos.cs-3]
-4. [Synchronized method: static in different threads][Neomaster.Demos.Tests_Threads_ThreadsFeaturesUnitDemos.cs-4]
-5. [ThreadLocal&lt;T&gt;: counters][Neomaster.Demos.Tests_Threads_ThreadsFeaturesUnitDemos.cs-5]
-6. [Lazy&lt;T&gt;: lazy initialization][Neomaster.Demos.Tests_Threads_ThreadsFeaturesUnitDemos.cs-6]
-7. [Lazy&lt;T&gt;: single initialization][Neomaster.Demos.Tests_Threads_ThreadsFeaturesUnitDemos.cs-7]
-8. [Lazy&lt;T&gt;: multiple initialization][Neomaster.Demos.Tests_Threads_ThreadsFeaturesUnitDemos.cs-8]
-9. [Lazy&lt;T&gt;: unsafe initialization][Neomaster.Demos.Tests_Threads_ThreadsFeaturesUnitDemos.cs-9]
-10. [Note: disposable sync primitives][Neomaster.Demos.Tests_Threads_ThreadsFeaturesUnitDemos.cs-10]
-
-[Neomaster.Demos.Tests_Threads_ThreadsFeaturesUnitDemos.cs-1]:Neomaster.Demos.Tests/Threads/ThreadsFeaturesUnitDemos.cs#L12
-[Neomaster.Demos.Tests_Threads_ThreadsFeaturesUnitDemos.cs-2]:Neomaster.Demos.Tests/Threads/ThreadsFeaturesUnitDemos.cs#L28
-[Neomaster.Demos.Tests_Threads_ThreadsFeaturesUnitDemos.cs-3]:Neomaster.Demos.Tests/Threads/ThreadsFeaturesUnitDemos.cs#L43
-[Neomaster.Demos.Tests_Threads_ThreadsFeaturesUnitDemos.cs-4]:Neomaster.Demos.Tests/Threads/ThreadsFeaturesUnitDemos.cs#L88
-[Neomaster.Demos.Tests_Threads_ThreadsFeaturesUnitDemos.cs-5]:Neomaster.Demos.Tests/Threads/ThreadsFeaturesUnitDemos.cs#L131
-[Neomaster.Demos.Tests_Threads_ThreadsFeaturesUnitDemos.cs-6]:Neomaster.Demos.Tests/Threads/ThreadsFeaturesUnitDemos.cs#L153
-[Neomaster.Demos.Tests_Threads_ThreadsFeaturesUnitDemos.cs-7]:Neomaster.Demos.Tests/Threads/ThreadsFeaturesUnitDemos.cs#L165
-[Neomaster.Demos.Tests_Threads_ThreadsFeaturesUnitDemos.cs-8]:Neomaster.Demos.Tests/Threads/ThreadsFeaturesUnitDemos.cs#L199
-[Neomaster.Demos.Tests_Threads_ThreadsFeaturesUnitDemos.cs-9]:Neomaster.Demos.Tests/Threads/ThreadsFeaturesUnitDemos.cs#L242
-[Neomaster.Demos.Tests_Threads_ThreadsFeaturesUnitDemos.cs-10]:Neomaster.Demos.Tests/Threads/ThreadsFeaturesUnitDemos.cs#L278
-
-
-#### Synchronization
-
+&nbsp;&nbsp;&nbsp;&nbsp;**2. Synchronization**
 1. [`lock()`][Neomaster.Demos.Tests_Threads_ThreadsSyncUnitDemos.cs-1]
 2. [Monitor.Enter - Monitor.Exit][Neomaster.Demos.Tests_Threads_ThreadsSyncUnitDemos.cs-2]
 3. [Wait Queue][Neomaster.Demos.Tests_Threads_ThreadsSyncUnitDemos.cs-3]
@@ -508,8 +436,57 @@ Look. Try. Add.
 [Neomaster.Demos.Tests_Threads_ThreadsSyncUnitDemos.cs-26]:Neomaster.Demos.Tests/Threads/ThreadsSyncUnitDemos.cs#L1098
 
 
-#### Thread Pool
+&nbsp;&nbsp;&nbsp;&nbsp;**3. Event Synchronization**
+1. [EventWaitHandle.Set][Neomaster.Demos.Tests_Threads_ThreadsEventSyncUnitDemos.cs-1]
+2. [EventWaitHandle.Reset][Neomaster.Demos.Tests_Threads_ThreadsEventSyncUnitDemos.cs-2]
+3. [EventWaitHandle.Set with auto-reset][Neomaster.Demos.Tests_Threads_ThreadsEventSyncUnitDemos.cs-3]
+4. [AutoResetEvent.Set][Neomaster.Demos.Tests_Threads_ThreadsEventSyncUnitDemos.cs-4]
+5. [ManualResetEvent.Set][Neomaster.Demos.Tests_Threads_ThreadsEventSyncUnitDemos.cs-5]
+6. [ManualResetEventSlim.Set][Neomaster.Demos.Tests_Threads_ThreadsEventSyncUnitDemos.cs-6]
+7. [ManualResetEventSlim.Wait with timeout][Neomaster.Demos.Tests_Threads_ThreadsEventSyncUnitDemos.cs-7]
+8. [CountdownEvent.Wait as Join][Neomaster.Demos.Tests_Threads_ThreadsEventSyncUnitDemos.cs-8]
+9. [CountdownEvent.AddCount][Neomaster.Demos.Tests_Threads_ThreadsEventSyncUnitDemos.cs-9]
+10. [CountdownEvent.TryAddCount][Neomaster.Demos.Tests_Threads_ThreadsEventSyncUnitDemos.cs-10]
+11. [CountdownEvent.IsSet][Neomaster.Demos.Tests_Threads_ThreadsEventSyncUnitDemos.cs-11]
+12. [CountdownEvent.Reset][Neomaster.Demos.Tests_Threads_ThreadsEventSyncUnitDemos.cs-12]
+13. [CountdownEvent.Reset with arg][Neomaster.Demos.Tests_Threads_ThreadsEventSyncUnitDemos.cs-13]
+14. [Barrier: Phases][Neomaster.Demos.Tests_Threads_ThreadsEventSyncUnitDemos.cs-14]
+15. [CancellationToken: create token][Neomaster.Demos.Tests_Threads_ThreadsEventSyncUnitDemos.cs-15]
+16. [CancellationToken: cancellation request][Neomaster.Demos.Tests_Threads_ThreadsEventSyncUnitDemos.cs-16]
+17. [CancellationToken: cancellation callback sequence][Neomaster.Demos.Tests_Threads_ThreadsEventSyncUnitDemos.cs-17]
+18. [CancellationToken: cancellation callback sequence: before first exception][Neomaster.Demos.Tests_Threads_ThreadsEventSyncUnitDemos.cs-18]
+19. [CancellationToken: cancellation callback sequence: all, ignoring exceptions][Neomaster.Demos.Tests_Threads_ThreadsEventSyncUnitDemos.cs-19]
+20. [CancellationToken.ThrowIfCancellationRequested][Neomaster.Demos.Tests_Threads_ThreadsEventSyncUnitDemos.cs-20]
+21. [CancellationToken.None usage][Neomaster.Demos.Tests_Threads_ThreadsEventSyncUnitDemos.cs-21]
+22. [CancellationToken.None variants][Neomaster.Demos.Tests_Threads_ThreadsEventSyncUnitDemos.cs-22]
+23. [CancellationTokenSource.CreateLinkedTokenSource][Neomaster.Demos.Tests_Threads_ThreadsEventSyncUnitDemos.cs-23]
 
+[Neomaster.Demos.Tests_Threads_ThreadsEventSyncUnitDemos.cs-1]:Neomaster.Demos.Tests/Threads/ThreadsEventSyncUnitDemos.cs#L11
+[Neomaster.Demos.Tests_Threads_ThreadsEventSyncUnitDemos.cs-2]:Neomaster.Demos.Tests/Threads/ThreadsEventSyncUnitDemos.cs#L76
+[Neomaster.Demos.Tests_Threads_ThreadsEventSyncUnitDemos.cs-3]:Neomaster.Demos.Tests/Threads/ThreadsEventSyncUnitDemos.cs#L142
+[Neomaster.Demos.Tests_Threads_ThreadsEventSyncUnitDemos.cs-4]:Neomaster.Demos.Tests/Threads/ThreadsEventSyncUnitDemos.cs#L198
+[Neomaster.Demos.Tests_Threads_ThreadsEventSyncUnitDemos.cs-5]:Neomaster.Demos.Tests/Threads/ThreadsEventSyncUnitDemos.cs#L254
+[Neomaster.Demos.Tests_Threads_ThreadsEventSyncUnitDemos.cs-6]:Neomaster.Demos.Tests/Threads/ThreadsEventSyncUnitDemos.cs#L303
+[Neomaster.Demos.Tests_Threads_ThreadsEventSyncUnitDemos.cs-7]:Neomaster.Demos.Tests/Threads/ThreadsEventSyncUnitDemos.cs#L352
+[Neomaster.Demos.Tests_Threads_ThreadsEventSyncUnitDemos.cs-8]:Neomaster.Demos.Tests/Threads/ThreadsEventSyncUnitDemos.cs#L376
+[Neomaster.Demos.Tests_Threads_ThreadsEventSyncUnitDemos.cs-9]:Neomaster.Demos.Tests/Threads/ThreadsEventSyncUnitDemos.cs#L402
+[Neomaster.Demos.Tests_Threads_ThreadsEventSyncUnitDemos.cs-10]:Neomaster.Demos.Tests/Threads/ThreadsEventSyncUnitDemos.cs#L436
+[Neomaster.Demos.Tests_Threads_ThreadsEventSyncUnitDemos.cs-11]:Neomaster.Demos.Tests/Threads/ThreadsEventSyncUnitDemos.cs#L449
+[Neomaster.Demos.Tests_Threads_ThreadsEventSyncUnitDemos.cs-12]:Neomaster.Demos.Tests/Threads/ThreadsEventSyncUnitDemos.cs#L465
+[Neomaster.Demos.Tests_Threads_ThreadsEventSyncUnitDemos.cs-13]:Neomaster.Demos.Tests/Threads/ThreadsEventSyncUnitDemos.cs#L480
+[Neomaster.Demos.Tests_Threads_ThreadsEventSyncUnitDemos.cs-14]:Neomaster.Demos.Tests/Threads/ThreadsEventSyncUnitDemos.cs#L495
+[Neomaster.Demos.Tests_Threads_ThreadsEventSyncUnitDemos.cs-15]:Neomaster.Demos.Tests/Threads/ThreadsEventSyncUnitDemos.cs#L540
+[Neomaster.Demos.Tests_Threads_ThreadsEventSyncUnitDemos.cs-16]:Neomaster.Demos.Tests/Threads/ThreadsEventSyncUnitDemos.cs#L551
+[Neomaster.Demos.Tests_Threads_ThreadsEventSyncUnitDemos.cs-17]:Neomaster.Demos.Tests/Threads/ThreadsEventSyncUnitDemos.cs#L578
+[Neomaster.Demos.Tests_Threads_ThreadsEventSyncUnitDemos.cs-18]:Neomaster.Demos.Tests/Threads/ThreadsEventSyncUnitDemos.cs#L609
+[Neomaster.Demos.Tests_Threads_ThreadsEventSyncUnitDemos.cs-19]:Neomaster.Demos.Tests/Threads/ThreadsEventSyncUnitDemos.cs#L656
+[Neomaster.Demos.Tests_Threads_ThreadsEventSyncUnitDemos.cs-20]:Neomaster.Demos.Tests/Threads/ThreadsEventSyncUnitDemos.cs#L703
+[Neomaster.Demos.Tests_Threads_ThreadsEventSyncUnitDemos.cs-21]:Neomaster.Demos.Tests/Threads/ThreadsEventSyncUnitDemos.cs#L738
+[Neomaster.Demos.Tests_Threads_ThreadsEventSyncUnitDemos.cs-22]:Neomaster.Demos.Tests/Threads/ThreadsEventSyncUnitDemos.cs#L760
+[Neomaster.Demos.Tests_Threads_ThreadsEventSyncUnitDemos.cs-23]:Neomaster.Demos.Tests/Threads/ThreadsEventSyncUnitDemos.cs#L777
+
+
+&nbsp;&nbsp;&nbsp;&nbsp;**4. Thread Pool**
 1. [QueueUserWorkItem][Neomaster.Demos.Tests_Threads_ThreadsThreadPoolUnitDemos.cs-1]
 2. [QueueUserWorkItem with state][Neomaster.Demos.Tests_Threads_ThreadsThreadPoolUnitDemos.cs-2]
 3. [QueueUserWorkItem Join][Neomaster.Demos.Tests_Threads_ThreadsThreadPoolUnitDemos.cs-3]
@@ -522,3 +499,39 @@ Look. Try. Add.
 [Neomaster.Demos.Tests_Threads_ThreadsThreadPoolUnitDemos.cs-4]:Neomaster.Demos.Apps/Neomaster.Demos.Apps.Threads.SetPoolThreadAsForeground/Program.cs
 [Neomaster.Demos.Tests_Threads_ThreadsThreadPoolUnitDemos.cs-5]:Neomaster.Demos.Tests/Threads/ThreadsThreadPoolUnitDemos.cs#L68
 
+
+&nbsp;&nbsp;&nbsp;&nbsp;**Atomic Operations**
+1. [Volatile class][Neomaster.Demos.Tests_Threads_ThreadsAtomicOperationsUnitDemos.cs-1]
+2. [Volatile keyword][Neomaster.Demos.Tests_Threads_ThreadsAtomicOperationsUnitDemos.cs-2]
+3. [Interlocked Increment][Neomaster.Demos.Tests_Threads_ThreadsAtomicOperationsUnitDemos.cs-3]
+
+[Neomaster.Demos.Tests_Threads_ThreadsAtomicOperationsUnitDemos.cs-1]:Neomaster.Demos.Tests/Threads/ThreadsAtomicOperationsUnitDemos.cs#L12
+[Neomaster.Demos.Tests_Threads_ThreadsAtomicOperationsUnitDemos.cs-2]:Neomaster.Demos.Tests/Threads/ThreadsAtomicOperationsUnitDemos.cs#L47
+[Neomaster.Demos.Tests_Threads_ThreadsAtomicOperationsUnitDemos.cs-3]:Neomaster.Demos.Tests/Threads/ThreadsAtomicOperationsUnitDemos.cs#L81
+
+
+&nbsp;&nbsp;&nbsp;&nbsp;**Features**
+1. [Synchronized method: instance][Neomaster.Demos.Tests_Threads_ThreadsFeaturesUnitDemos.cs-1]
+2. [Synchronized method: static][Neomaster.Demos.Tests_Threads_ThreadsFeaturesUnitDemos.cs-2]
+3. [Synchronized method: instance in different threads][Neomaster.Demos.Tests_Threads_ThreadsFeaturesUnitDemos.cs-3]
+4. [Synchronized method: static in different threads][Neomaster.Demos.Tests_Threads_ThreadsFeaturesUnitDemos.cs-4]
+5. [ThreadLocal&lt;T&gt;: counters][Neomaster.Demos.Tests_Threads_ThreadsFeaturesUnitDemos.cs-5]
+6. [Lazy&lt;T&gt;: lazy initialization][Neomaster.Demos.Tests_Threads_ThreadsFeaturesUnitDemos.cs-6]
+7. [Lazy&lt;T&gt;: single initialization][Neomaster.Demos.Tests_Threads_ThreadsFeaturesUnitDemos.cs-7]
+8. [Lazy&lt;T&gt;: multiple initialization][Neomaster.Demos.Tests_Threads_ThreadsFeaturesUnitDemos.cs-8]
+9. [Lazy&lt;T&gt;: unsafe initialization][Neomaster.Demos.Tests_Threads_ThreadsFeaturesUnitDemos.cs-9]
+10. [Note: disposable sync primitives][Neomaster.Demos.Tests_Threads_ThreadsFeaturesUnitDemos.cs-10]
+
+[Neomaster.Demos.Tests_Threads_ThreadsFeaturesUnitDemos.cs-1]:Neomaster.Demos.Tests/Threads/ThreadsFeaturesUnitDemos.cs#L12
+[Neomaster.Demos.Tests_Threads_ThreadsFeaturesUnitDemos.cs-2]:Neomaster.Demos.Tests/Threads/ThreadsFeaturesUnitDemos.cs#L28
+[Neomaster.Demos.Tests_Threads_ThreadsFeaturesUnitDemos.cs-3]:Neomaster.Demos.Tests/Threads/ThreadsFeaturesUnitDemos.cs#L43
+[Neomaster.Demos.Tests_Threads_ThreadsFeaturesUnitDemos.cs-4]:Neomaster.Demos.Tests/Threads/ThreadsFeaturesUnitDemos.cs#L88
+[Neomaster.Demos.Tests_Threads_ThreadsFeaturesUnitDemos.cs-5]:Neomaster.Demos.Tests/Threads/ThreadsFeaturesUnitDemos.cs#L131
+[Neomaster.Demos.Tests_Threads_ThreadsFeaturesUnitDemos.cs-6]:Neomaster.Demos.Tests/Threads/ThreadsFeaturesUnitDemos.cs#L153
+[Neomaster.Demos.Tests_Threads_ThreadsFeaturesUnitDemos.cs-7]:Neomaster.Demos.Tests/Threads/ThreadsFeaturesUnitDemos.cs#L165
+[Neomaster.Demos.Tests_Threads_ThreadsFeaturesUnitDemos.cs-8]:Neomaster.Demos.Tests/Threads/ThreadsFeaturesUnitDemos.cs#L199
+[Neomaster.Demos.Tests_Threads_ThreadsFeaturesUnitDemos.cs-9]:Neomaster.Demos.Tests/Threads/ThreadsFeaturesUnitDemos.cs#L242
+[Neomaster.Demos.Tests_Threads_ThreadsFeaturesUnitDemos.cs-10]:Neomaster.Demos.Tests/Threads/ThreadsFeaturesUnitDemos.cs#L278
+
+
+</details>

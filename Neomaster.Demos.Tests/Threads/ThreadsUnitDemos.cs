@@ -4,7 +4,7 @@ using Xunit;
 
 namespace Neomaster.Demos.Tests.Threads;
 
-[Description("Basic")]
+[Description("1. Fundamentals")]
 public class ThreadsUnitDemos
 {
   private readonly StringWriter _stringWriter = new();

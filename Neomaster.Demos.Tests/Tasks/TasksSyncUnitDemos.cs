@@ -3,7 +3,7 @@ using Xunit;
 
 namespace Neomaster.Demos.Tests.Tasks;
 
-[Description("Synchronization")]
+[Description("2. Synchronization")]
 public class TasksSyncUnitDemos(ITestOutputHelper output)
 {
   [Fact(DisplayName = "`lock` within task")]

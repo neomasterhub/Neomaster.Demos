@@ -94,8 +94,7 @@ internal class ReadmeBuilder
 
       var chapter =
         $"""
-        #### {title}
-
+        &nbsp;&nbsp;&nbsp;&nbsp;**{title}**
         {items}
         {links}
         """;
@@ -108,9 +107,15 @@ internal class ReadmeBuilder
 
     var list =
       $"""
-      ### {headerEmoji} {header}
+      <details>
+
+      <summary><b>{headerEmoji} {header}</b></summary>
+
+      <div>&nbsp;</div>
 
       {chaptersString}
+
+      </details>
       """;
 
     _testLists.Add(header, list);

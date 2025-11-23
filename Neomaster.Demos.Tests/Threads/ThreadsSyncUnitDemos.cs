@@ -4,7 +4,7 @@ using Xunit;
 
 namespace Neomaster.Demos.Tests.Threads;
 
-[Description("Synchronization")]
+[Description("2. Synchronization")]
 public class ThreadsSyncUnitDemos
 {
   private static readonly Random _random = new();

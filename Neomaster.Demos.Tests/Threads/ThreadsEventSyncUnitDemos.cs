@@ -4,7 +4,7 @@ using Xunit;
 
 namespace Neomaster.Demos.Tests.Threads;
 
-[Description("Event Synchronization")]
+[Description("3. Event Synchronization")]
 public class ThreadsEventSyncUnitDemos
 {
   [Fact(DisplayName = "EventWaitHandle.Set")]
