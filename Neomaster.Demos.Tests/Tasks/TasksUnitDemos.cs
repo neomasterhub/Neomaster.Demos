@@ -4,7 +4,7 @@ using Xunit;
 
 namespace Neomaster.Demos.Tests.Tasks;
 
-[Description("Basic")]
+[Description("1. Fundamentals")]
 public class TasksUnitDemos(ITestOutputHelper output)
 {
   [Fact(DisplayName = "Create task")]
