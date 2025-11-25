@@ -5,7 +5,7 @@ using Xunit;
 namespace Neomaster.Demos.Tests.LinqExpr;
 
 [Description("Methods")]
-public class LinqMethods(ITestOutputHelper output)
+public class LinqMethodsUnitDemos(ITestOutputHelper output)
 {
   [Fact(DisplayName = "`Enumerable` and `Queryable` method names")]
   public void EnumerableAndQueryableMethodNames()
@@ -130,5 +130,12 @@ public class LinqMethods(ITestOutputHelper output)
     // UnionBy                  | UnionBy
     // Where                    | Where
     // Zip                      | Zip
+  }
+
+  [Fact(DisplayName = "`Aggregate()`")]
+  public void Aggregate()
+  {
+    var sum = Enumerable.Repeat(1, 100).Aggregate((sum, i) => sum + i);
+    Assert.Equal(100, sum);
   }
 }
