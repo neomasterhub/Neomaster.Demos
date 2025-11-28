@@ -217,4 +217,13 @@ public class LinqMethodsUnitDemos(ITestOutputHelper output)
         .Select(x => Enumerable.Empty<User>())
         .All(x => !x.Any()));
   }
+
+  [Fact(DisplayName = "Any with `All()`")]
+  public void AnyWithAll()
+  {
+    Assert.True(
+      Enumerable.Range(1, 2)
+        .Select(x => Enumerable.Repeat(x, 2))
+        .Any(x => x.All(y => y == 1)));
+  }
 }
