@@ -140,6 +140,17 @@ public class LinqMethodsUnitDemos(ITestOutputHelper output)
       Enumerable.Range(-1, 3));
   }
 
+  [Fact(DisplayName = "`Enumerable.Repeat()`")]
+  public void EnumerableRepeat()
+  {
+    var e = new User();
+    var expected = new User[] { e, e, e };
+
+    var actual = Enumerable.Repeat(e, 3);
+
+    Assert.Equal(expected, actual);
+  }
+
   [Fact(DisplayName = "`Aggregate()`")]
   public void Aggregate()
   {
