@@ -151,6 +151,12 @@ public class LinqMethodsUnitDemos(ITestOutputHelper output)
     Assert.Equal(expected, actual);
   }
 
+  [Fact(DisplayName = "`Enumerable.Empty()`")]
+  public void EnumerableEmpty()
+  {
+    Assert.Empty(Enumerable.Empty<User>());
+  }
+
   [Fact(DisplayName = "`Aggregate()`")]
   public void Aggregate()
   {
