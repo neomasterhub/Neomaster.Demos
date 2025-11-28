@@ -132,6 +132,14 @@ public class LinqMethodsUnitDemos(ITestOutputHelper output)
     // Zip                      | Zip
   }
 
+  [Fact(DisplayName = "`Enumerable.Range()`")]
+  public void EnumerableRange()
+  {
+    Assert.Equal(
+      [-1, 0, 1],
+      Enumerable.Range(-1, 3));
+  }
+
   [Fact(DisplayName = "`Aggregate()`")]
   public void Aggregate()
   {
