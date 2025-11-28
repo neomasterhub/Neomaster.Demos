@@ -237,4 +237,23 @@ public class LinqMethodsUnitDemos(ITestOutputHelper output)
     Assert.Equal([1, 2], x);
     Assert.Equal([1, 2, 3], y);
   }
+
+  [Fact(DisplayName = "`Average()`")]
+  public void Average()
+  {
+    Assert.Equal(
+      2,
+      new float?[] { 1, null, 3 }.Average());
+
+    Assert.Equal(
+      15.15m,
+      Enumerable.Range(1, 10)
+        .Select(x => new
+        {
+          Price = x < 3
+            ? (decimal?)(x * 10.10m)
+            : null,
+        })
+        .Average(x => x.Price));
+  }
 }
