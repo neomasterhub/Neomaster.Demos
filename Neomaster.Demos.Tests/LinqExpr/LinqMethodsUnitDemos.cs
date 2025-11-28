@@ -138,4 +138,23 @@ public class LinqMethodsUnitDemos(ITestOutputHelper output)
     var sum = Enumerable.Repeat(1, 100).Aggregate((sum, i) => sum + i);
     Assert.Equal(100, sum);
   }
+
+  [Fact(DisplayName = "`AggregateBy()`")]
+  public void AggregateBy()
+  {
+    var expected = new Dictionary<string, int>
+    {
+      ["odd"] = 1000 + 1 + 3,
+      ["even"] = 2000 + 2 + 4,
+    };
+
+    var actual = Enumerable.Range(1, 4)
+      .AggregateBy(
+        k => k % 2 == 0 ? "even" : "odd",
+        s => s == "odd" ? 1000 : 2000,
+        (a, v) => a + v)
+      .ToDictionary();
+
+    Assert.Equal(expected, actual);
+  }
 }
