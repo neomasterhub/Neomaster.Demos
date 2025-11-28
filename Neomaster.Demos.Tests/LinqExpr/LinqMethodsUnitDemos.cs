@@ -226,4 +226,15 @@ public class LinqMethodsUnitDemos(ITestOutputHelper output)
         .Select(x => Enumerable.Repeat(x, 2))
         .Any(x => x.All(y => y == 1)));
   }
+
+  [Fact(DisplayName = "`Append()`")]
+  public void Append()
+  {
+    var x = Enumerable.Range(1, 2);
+    x.Append(3);
+    var y = x.Append(3);
+
+    Assert.Equal([1, 2], x);
+    Assert.Equal([1, 2, 3], y);
+  }
 }
