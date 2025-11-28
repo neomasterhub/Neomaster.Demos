@@ -182,4 +182,13 @@ public class LinqMethodsUnitDemos(ITestOutputHelper output)
 
     Assert.Equal(expected, actual);
   }
+
+  [Fact(DisplayName = "`All()`")]
+  public void All()
+  {
+    var range = Enumerable.Range(1, 10);
+
+    Assert.True(range.All(x => x > 0));
+    Assert.False(range.All(x => x < 0));
+  }
 }
