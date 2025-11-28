@@ -203,4 +203,18 @@ public class LinqMethodsUnitDemos(ITestOutputHelper output)
     Assert.True(range.Any(x => x > 5));
     Assert.False(range.Any(x => x > 10));
   }
+
+  [Fact(DisplayName = "All with `Any()`")]
+  public void AllWithAny()
+  {
+    Assert.True(
+      Enumerable.Range(1, 2)
+        .Select(x => Enumerable.Repeat(x, 2))
+        .All(x => x.Any()));
+
+    Assert.True(
+      Enumerable.Range(1, 2)
+        .Select(x => Enumerable.Empty<User>())
+        .All(x => !x.Any()));
+  }
 }
