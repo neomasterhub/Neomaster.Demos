@@ -1,3 +1,4 @@
+using System.Collections;
 using System.ComponentModel;
 using System.Reflection;
 using Xunit;
@@ -255,5 +256,21 @@ public class LinqMethodsUnitDemos(ITestOutputHelper output)
             : null,
         })
         .Average(x => x.Price));
+  }
+
+  [Fact(DisplayName = "`Cast()`: numbers")]
+  public void Cast_Numbers()
+  {
+    var al = new ArrayList() { 1, 2, 3 };
+
+    Assert.Equal(
+      [1, 2, 3],
+      al.Cast<object>().ToArray());
+
+    Assert.Equal(
+      [1, 2, 3],
+      al.Cast<int?>().ToArray());
+
+    Assert.Throws<InvalidCastException>(() => al.Cast<float>().ToArray());
   }
 }
