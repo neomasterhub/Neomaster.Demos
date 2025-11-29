@@ -273,4 +273,38 @@ public class LinqMethodsUnitDemos(ITestOutputHelper output)
 
     Assert.Throws<InvalidCastException>(() => al.Cast<float>().ToArray());
   }
+
+  [Fact(DisplayName = "`Cast()`: classes")]
+  public void Cast_Classes()
+  {
+    // SystemUser : User
+
+    // SystemUser -> User
+    Assert.IsType<User[]>(
+      Enumerable.Range(1, 3)
+        .Select(_ => new SystemUser())
+        .Cast<User>()
+        .ToArray());
+
+    // User -> object
+    Assert.IsType<object[]>(
+      Enumerable.Range(1, 3)
+        .Select(_ => new User())
+        .Cast<object>()
+        .ToArray());
+
+    // User -> SystemUser
+    Assert.Throws<InvalidCastException>(() =>
+      Enumerable.Range(1, 3)
+        .Select(_ => new User())
+        .Cast<SystemUser>()
+        .ToArray());
+
+    // Anonymous type -> User
+    Assert.Throws<InvalidCastException>(() =>
+      Enumerable.Range(1, 3)
+        .Select(_ => new { Email = "1" })
+        .Cast<User>()
+        .ToArray());
+  }
 }
