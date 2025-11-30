@@ -307,4 +307,20 @@ public class LinqMethodsUnitDemos(ITestOutputHelper output)
         .Cast<User>()
         .ToArray());
   }
+
+  [Fact(DisplayName = "`Chunk()`")]
+  public void Chunk()
+  {
+    var expected = new List<int[]>
+    {
+      new int[] { 1, 2 },
+      new int[] { 3, 4 },
+    };
+
+    var actual = Enumerable.Range(1, 4)
+      .Chunk(2)
+      .ToList();
+
+    Assert.Equal(expected, actual);
+  }
 }
