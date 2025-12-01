@@ -337,4 +337,22 @@ public class LinqMethodsUnitDemos(ITestOutputHelper output)
       [u1, u2],
       new[] { u1 }.Concat([u2]));
   }
+
+  [Fact(DisplayName = "`Contains()`")]
+  public void Contains()
+  {
+    var colors = new[] { "red" };
+
+    Assert.True(colors.Contains("red"));
+    Assert.True(colors.Contains("RED", StringComparer.OrdinalIgnoreCase));
+    Assert.False(colors.Contains("RED"));
+
+    var u1 = new User();
+    var u2 = new User();
+    var u3 = new User();
+    var users = new[] { u1, u2 };
+
+    Assert.True(users.Contains(u1));
+    Assert.False(users.Contains(u3));
+  }
 }
