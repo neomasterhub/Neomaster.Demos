@@ -323,4 +323,18 @@ public class LinqMethodsUnitDemos(ITestOutputHelper output)
 
     Assert.Equal(expected, actual);
   }
+
+  [Fact(DisplayName = "`Concat()`")]
+  public void Concat()
+  {
+    Assert.Equal(
+      [1, 2, 3, 4],
+      Enumerable.Range(1, 2).Concat(Enumerable.Range(3, 2)));
+
+    var u1 = new User();
+    var u2 = new User();
+    Assert.Equal(
+      [u1, u2],
+      new[] { u1 }.Concat([u2]));
+  }
 }
