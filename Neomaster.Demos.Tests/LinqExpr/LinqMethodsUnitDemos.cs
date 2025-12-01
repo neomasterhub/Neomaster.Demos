@@ -363,4 +363,26 @@ public class LinqMethodsUnitDemos(ITestOutputHelper output)
       3,
       Enumerable.Range(1, 3).Count());
   }
+
+  [Fact(DisplayName = "`CountBy()`")]
+  public void CountBy()
+  {
+    var expected = new Dictionary<ConsoleColor, int>
+    {
+      { ConsoleColor.Red, 1 },
+      { ConsoleColor.Blue, 2 },
+    };
+
+    var actual = Enumerable.Range(1, 3)
+      .Select(x => new
+      {
+        Color = x % 2 == 0
+          ? ConsoleColor.Red
+          : ConsoleColor.Blue,
+      })
+      .CountBy(x => x.Color)
+      .ToDictionary();
+
+    Assert.Equal(expected, actual);
+  }
 }
