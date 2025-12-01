@@ -385,4 +385,16 @@ public class LinqMethodsUnitDemos(ITestOutputHelper output)
 
     Assert.Equal(expected, actual);
   }
+
+  [Fact(DisplayName = "`DefaultIfEmpty()`")]
+  public void DefaultIfEmpty()
+  {
+    Assert.Equal(
+      [ConsoleColor.Black],
+      Array.Empty<ConsoleColor>().DefaultIfEmpty());
+
+    Assert.Equal(
+      [ConsoleColor.Red],
+      Array.Empty<ConsoleColor>().DefaultIfEmpty(ConsoleColor.Red));
+  }
 }
