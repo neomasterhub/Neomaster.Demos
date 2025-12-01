@@ -355,4 +355,12 @@ public class LinqMethodsUnitDemos(ITestOutputHelper output)
     Assert.True(users.Contains(u1));
     Assert.False(users.Contains(u3));
   }
+
+  [Fact(DisplayName = "`Count()`")]
+  public void Count()
+  {
+    Assert.Equal(
+      3,
+      Enumerable.Range(1, 3).Count());
+  }
 }
