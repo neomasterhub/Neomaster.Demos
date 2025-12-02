@@ -458,4 +458,26 @@ public class LinqMethodsUnitDemos(ITestOutputHelper output)
       Assert.Equal(expected, actual);
     }
   }
+
+  [Fact(DisplayName = "`DistinctBy()`")]
+  public void DistinctBy()
+  {
+    var src = Enumerable.Range(1, 3)
+      .Select(n => new
+      {
+        Id = n,
+        Color = n % 2 != 0
+          ? ConsoleColor.Red
+          : ConsoleColor.Blue,
+      });
+    var expected = new object[]
+    {
+      new { Id = 1, Color = ConsoleColor.Red },
+      new { Id = 2, Color = ConsoleColor.Blue },
+    };
+
+    var actual = src.DistinctBy(x => x.Color).ToArray();
+
+    Assert.Equal(expected, actual);
+  }
 }
