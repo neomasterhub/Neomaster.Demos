@@ -397,4 +397,65 @@ public class LinqMethodsUnitDemos(ITestOutputHelper output)
       [ConsoleColor.Red],
       Array.Empty<ConsoleColor>().DefaultIfEmpty(ConsoleColor.Red));
   }
+
+  [Fact(DisplayName = "`Distinct()`")]
+  public void Distinct()
+  {
+    {
+      var src = Enumerable.Range(1, 3)
+        .Select(n =>
+          n % 2 != 0
+          ? ConsoleColor.Red
+          : ConsoleColor.Blue);
+      var expected = new ConsoleColor[]
+      {
+        ConsoleColor.Red,
+        ConsoleColor.Blue,
+      };
+
+      var actual = src.Distinct();
+
+      Assert.Equal(expected, actual);
+    }
+
+    {
+      var src = Enumerable.Range(1, 3)
+        .Select(n => new
+        {
+          Color = n % 2 != 0
+            ? ConsoleColor.Red
+            : ConsoleColor.Blue,
+        });
+      var expected = new ConsoleColor[]
+      {
+        ConsoleColor.Red,
+        ConsoleColor.Blue,
+      };
+
+      var actual = src.Distinct().Select(x => x.Color);
+
+      Assert.Equal(expected, actual);
+    }
+
+    {
+      var src = Enumerable.Range(1, 3)
+        .Select(n => new
+        {
+          Id = n,
+          Color = n % 2 != 0
+            ? ConsoleColor.Red
+            : ConsoleColor.Blue,
+        });
+      var expected = new ConsoleColor[]
+      {
+        ConsoleColor.Red,
+        ConsoleColor.Blue,
+        ConsoleColor.Red,
+      };
+
+      var actual = src.Distinct().Select(x => x.Color);
+
+      Assert.Equal(expected, actual);
+    }
+  }
 }
