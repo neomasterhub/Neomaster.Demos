@@ -480,4 +480,19 @@ public class LinqMethodsUnitDemos(ITestOutputHelper output)
 
     Assert.Equal(expected, actual);
   }
+
+  [Fact(DisplayName = "`ElementAt()`")]
+  public void ElementAt()
+  {
+    var users = Enumerable.Range(1, 3)
+      .Select(_ => new User())
+      .ToArray();
+
+    for (var i = 0; i < users.Length; i++)
+    {
+      Assert.Equal(users[i], users.ElementAt(i));
+    }
+
+    Assert.Throws<ArgumentOutOfRangeException>(() => users.ElementAt(100));
+  }
 }
