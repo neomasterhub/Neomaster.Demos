@@ -511,4 +511,19 @@ public class LinqMethodsUnitDemos(ITestOutputHelper output)
     Assert.Null(users.ElementAtOrDefault(-1));
     Assert.Equal(0, Enumerable.Range(1, 3).ElementAtOrDefault(-1));
   }
+
+  [Fact(DisplayName = "`Except()`")]
+  public void Except()
+  {
+    var s1 = new int[] { 1, 2, 3, 4 };
+    var s2 = new int[] { 3, 4, 5, 6 };
+    var expected1 = new int[] { 1, 2 };
+    var expected2 = new int[] { 5, 6 };
+
+    var actual1 = Enumerable.Except(s1, s2);
+    var actual2 = Enumerable.Except(s2, s1);
+
+    Assert.Equal(expected1, actual1);
+    Assert.Equal(expected2, actual2);
+  }
 }
