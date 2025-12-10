@@ -526,4 +526,30 @@ public class LinqMethodsUnitDemos(ITestOutputHelper output)
     Assert.Equal(expected1, actual1);
     Assert.Equal(expected2, actual2);
   }
+
+  [Fact(DisplayName = "`ExceptBy()`")]
+  public void ExceptBy()
+  {
+    var s1 = new Ball[]
+    {
+      new() { Color = ConsoleColor.Red },
+      new() { Color = ConsoleColor.Green },
+      new() { Color = ConsoleColor.Blue },
+    };
+    var s2 = new Ball[]
+    {
+      new() { Color = ConsoleColor.Green },
+      new() { Color = ConsoleColor.Blue },
+      new() { Color = ConsoleColor.Yellow },
+    };
+
+    var expected1 = new Ball[] { s1.First() };
+    var expected2 = new Ball[] { s2.Last() };
+
+    var actual1 = s1.ExceptBy(s2.Select(s => s.Color), k => k.Color);
+    var actual2 = s2.ExceptBy(s1.Select(s => s.Color), k => k.Color);
+
+    Assert.Equal(expected1, actual1);
+    Assert.Equal(expected2, actual2);
+  }
 }
