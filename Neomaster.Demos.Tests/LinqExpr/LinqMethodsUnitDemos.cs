@@ -493,6 +493,22 @@ public class LinqMethodsUnitDemos(ITestOutputHelper output)
       Assert.Equal(users[i], users.ElementAt(i));
     }
 
-    Assert.Throws<ArgumentOutOfRangeException>(() => users.ElementAt(100));
+    Assert.Throws<ArgumentOutOfRangeException>(() => users.ElementAt(-1));
+  }
+
+  [Fact(DisplayName = "`ElementAtOrDefault()`")]
+  public void ElementAtOrDefault()
+  {
+    var users = Enumerable.Range(1, 3)
+      .Select(_ => new User())
+      .ToArray();
+
+    for (var i = 0; i < users.Length; i++)
+    {
+      Assert.Equal(users[i], users.ElementAtOrDefault(i));
+    }
+
+    Assert.Null(users.ElementAtOrDefault(-1));
+    Assert.Equal(0, Enumerable.Range(1, 3).ElementAtOrDefault(-1));
   }
 }
