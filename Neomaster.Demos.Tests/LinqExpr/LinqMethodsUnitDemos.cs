@@ -582,4 +582,19 @@ public class LinqMethodsUnitDemos(ITestOutputHelper output)
     Assert.Equal(null, Enumerable.Empty<User>().FirstOrDefault(x => true));
     Assert.Equal(user, Enumerable.Empty<User>().FirstOrDefault(x => true, user));
   }
+
+  [Fact(DisplayName = "`Last()`")]
+  public void Last()
+  {
+    var r = new Ball { Color = ConsoleColor.Red };
+    var g = new Ball { Color = ConsoleColor.Green };
+    var b = new Ball { Color = ConsoleColor.Blue };
+    var balls = new[] { r, g, b };
+
+    Assert.Equal(b, balls.Last());
+    Assert.Equal(g, balls.Last(x => x.Color == ConsoleColor.Green));
+
+    Assert.Throws<InvalidOperationException>(() => Enumerable.Empty<Ball>().Last());
+    Assert.Throws<InvalidOperationException>(() => balls.Last(x => x.Color == ConsoleColor.Magenta));
+  }
 }
