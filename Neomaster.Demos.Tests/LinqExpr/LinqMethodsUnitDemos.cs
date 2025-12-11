@@ -552,4 +552,19 @@ public class LinqMethodsUnitDemos(ITestOutputHelper output)
     Assert.Equal(expected1, actual1);
     Assert.Equal(expected2, actual2);
   }
+
+  [Fact(DisplayName = "`First()`")]
+  public void First()
+  {
+    var r = new Ball { Color = ConsoleColor.Red };
+    var g = new Ball { Color = ConsoleColor.Green };
+    var b = new Ball { Color = ConsoleColor.Blue };
+    var balls = new[] { r, g, b };
+
+    Assert.Equal(r, balls.First());
+    Assert.Equal(b, balls.First(x => x.Color == ConsoleColor.Blue));
+
+    Assert.Throws<InvalidOperationException>(() => Enumerable.Empty<Ball>().First());
+    Assert.Throws<InvalidOperationException>(() => balls.First(x => x.Color == ConsoleColor.Magenta));
+  }
 }
