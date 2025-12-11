@@ -597,4 +597,19 @@ public class LinqMethodsUnitDemos(ITestOutputHelper output)
     Assert.Throws<InvalidOperationException>(() => Enumerable.Empty<Ball>().Last());
     Assert.Throws<InvalidOperationException>(() => balls.Last(x => x.Color == ConsoleColor.Magenta));
   }
+
+  [Fact(DisplayName = "`LastOrDefault()`")]
+  public void LastOrDefault()
+  {
+    Assert.Equal(0, Enumerable.Empty<int>().LastOrDefault());
+    Assert.Equal(1, Enumerable.Empty<int>().LastOrDefault(1));
+    Assert.Equal(0, Enumerable.Empty<int>().LastOrDefault(x => true));
+    Assert.Equal(1, Enumerable.Empty<int>().LastOrDefault(x => true, 1));
+
+    var user = new User();
+    Assert.Equal(null, Enumerable.Empty<User>().LastOrDefault());
+    Assert.Equal(user, Enumerable.Empty<User>().LastOrDefault(user));
+    Assert.Equal(null, Enumerable.Empty<User>().LastOrDefault(x => true));
+    Assert.Equal(user, Enumerable.Empty<User>().LastOrDefault(x => true, user));
+  }
 }
