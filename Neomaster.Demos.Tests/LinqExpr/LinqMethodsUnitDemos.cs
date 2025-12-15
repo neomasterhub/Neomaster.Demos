@@ -612,4 +612,27 @@ public class LinqMethodsUnitDemos(ITestOutputHelper output)
     Assert.Equal(null, Enumerable.Empty<User>().LastOrDefault(x => true));
     Assert.Equal(user, Enumerable.Empty<User>().LastOrDefault(x => true, user));
   }
+
+  [Fact(DisplayName = "`Max()`")]
+  public void Max()
+  {
+    var balls = new Ball[] // Ball : IComparable<Ball>
+    {
+      new() { Color = ConsoleColor.Red },
+      new() { Color = ConsoleColor.Green },
+      new() { Color = ConsoleColor.Blue },
+    };
+
+    Assert.Equal(
+      balls[0],
+      balls.Max());
+
+    Assert.Equal(
+      balls[0].Color,
+      balls.Max(b => b.Color));
+
+    Assert.Equal(
+      balls[0],
+      balls.Max(new BallStringComparer()));
+  }
 }
