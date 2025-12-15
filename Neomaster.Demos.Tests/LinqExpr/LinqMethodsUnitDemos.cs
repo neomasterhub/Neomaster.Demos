@@ -650,6 +650,28 @@ public class LinqMethodsUnitDemos(ITestOutputHelper output)
     Assert.Equal(u1, new User[] { u1 }.Max());
   }
 
+  [Fact(DisplayName = "`MaxBy()`")]
+  public void MaxBy()
+  {
+    var balls = new Ball[] // Ball : IComparable<Ball>
+    {
+      new() { Color = ConsoleColor.Red },
+      new() { Color = ConsoleColor.Green },
+      new() { Color = ConsoleColor.Blue },
+    };
+    var users = balls
+      .Select(b => new User { Ball = b })
+      .ToArray();
+
+    Assert.Equal(
+      users[0],
+      users.MaxBy(u => u.Ball));
+
+    Assert.Equal(
+      users[0],
+      users.MaxBy(u => u.Ball, new BallStringComparer()));
+  }
+
   [Fact(DisplayName = "`MaxBy(): exceptions`")]
   public void MaxByExceptions()
   {
