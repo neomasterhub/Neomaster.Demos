@@ -635,4 +635,18 @@ public class LinqMethodsUnitDemos(ITestOutputHelper output)
       balls[0],
       balls.Max(new BallStringComparer()));
   }
+
+  [Fact(DisplayName = "`Max(): exceptions`")]
+  public void MaxExceptions()
+  {
+    var ex1 = Assert.Throws<InvalidOperationException>(() => Enumerable.Empty<int>().Max());
+    Assert.Equal("Sequence contains no elements", ex1.Message);
+
+    var u1 = new User();
+    var u2 = new User();
+    var ex2 = Assert.Throws<ArgumentException>(() => new User[] { u1, u2 }.Max());
+    Assert.Equal("At least one object must implement IComparable.", ex2.Message);
+    Assert.Null(Enumerable.Empty<User>().Max());
+    Assert.Equal(u1, new User[] { u1 }.Max());
+  }
 }
