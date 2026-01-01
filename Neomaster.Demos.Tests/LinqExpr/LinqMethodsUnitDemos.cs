@@ -611,10 +611,51 @@ public class LinqMethodsUnitDemos(ITestOutputHelper output)
 
     foreach (var group in groups)
     {
-      output.WriteLine($"group key: {group.Key.Id}");
+      output.WriteLine($"group id: {group.Key.Id}");
       foreach (var groupItem in group)
       {
         output.WriteLine($"  item id: {groupItem.Id}");
+      }
+    }
+  }
+
+  [Fact(DisplayName = "`GroupBy()`: element selector")]
+  public void GroupBy_ElementSelector()
+  {
+    var deps = new List<Department>
+    {
+      new() { Id = 1 },
+      new() { Id = 2 },
+    };
+    var users = new List<User>
+    {
+      new() { Id = "guid-0001", Department = deps[0] },
+      new() { Id = "guid-0002", Department = deps[0] },
+      new() { Id = "guid-0003", Department = deps[1] },
+      new() { Id = "guid-0004", Department = deps[1] },
+    };
+
+    var groups = users.GroupBy(u => u.Department, u => u.Id);
+
+    Assert.Equal(2, groups.Count());
+    Assert.All(groups, (group, i) =>
+    {
+      Assert.Equal(deps[i], group.Key);
+      Assert.Equal(2, group.Count());
+
+      Assert.Equal(
+        users
+          .Where(u => u.Department == group.Key)
+          .Select(u => u.Id),
+        group);
+    });
+
+    foreach (var group in groups)
+    {
+      output.WriteLine($"group id: {group.Key.Id}");
+      foreach (var groupItem in group)
+      {
+        output.WriteLine($"  item: {groupItem}");
       }
     }
   }
