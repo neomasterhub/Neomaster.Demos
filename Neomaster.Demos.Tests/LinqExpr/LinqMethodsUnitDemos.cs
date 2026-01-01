@@ -660,6 +660,44 @@ public class LinqMethodsUnitDemos(ITestOutputHelper output)
     }
   }
 
+  [Fact(DisplayName = "`GroupBy()`: result selector")]
+  public void GroupBy_ResultSelector()
+  {
+    var deps = new List<Department>
+    {
+      new() { Id = 1 },
+      new() { Id = 2 },
+    };
+    var users = new List<User>
+    {
+      new() { Id = "guid-0001", Department = deps[0] },
+      new() { Id = "guid-0002", Department = deps[0] },
+      new() { Id = "guid-0003", Department = deps[1] },
+      new() { Id = "guid-0004", Department = deps[1] },
+      new() { Id = "guid-0005", Department = deps[1] },
+    };
+
+    var groups = users.GroupBy(u => u.Department, u => u.Id, (k, v) => new
+    {
+      DepId = k.Id,
+      UserCount = v.Count(),
+    });
+
+    Assert.Equal(2, groups.Count());
+    Assert.All(groups, (group, i) =>
+    {
+      Assert.Equal(deps[i].Id, group.DepId);
+      Assert.Equal(
+        users.Count(u => u.Department.Id == group.DepId),
+        group.UserCount);
+    });
+
+    foreach (var group in groups)
+    {
+      output.WriteLine($"Dep ID: {group.DepId}, User Count: {group.UserCount}");
+    }
+  }
+
   [Fact(DisplayName = "`Last()`")]
   public void Last()
   {
