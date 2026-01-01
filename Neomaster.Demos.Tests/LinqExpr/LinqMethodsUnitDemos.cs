@@ -583,6 +583,42 @@ public class LinqMethodsUnitDemos(ITestOutputHelper output)
     Assert.Equal(user, Enumerable.Empty<User>().FirstOrDefault(x => true, user));
   }
 
+  [Fact(DisplayName = "`GroupBy()`")]
+  public void GroupBy()
+  {
+    var deps = new List<Department>
+    {
+      new() { Id = 1 },
+      new() { Id = 2 },
+    };
+    var users = new List<User>
+    {
+      new() { Id = "guid-0001", Department = deps[0] },
+      new() { Id = "guid-0002", Department = deps[0] },
+      new() { Id = "guid-0003", Department = deps[1] },
+      new() { Id = "guid-0004", Department = deps[1] },
+    };
+
+    var groups = users.GroupBy(u => u.Department);
+
+    Assert.Equal(2, groups.Count());
+    Assert.All(groups, (group, i) =>
+    {
+      Assert.Equal(deps[i], group.Key);
+      Assert.Equal(2, group.Count());
+      Assert.Equal(users.Where(u => u.Department == group.Key), group);
+    });
+
+    foreach (var group in groups)
+    {
+      output.WriteLine($"group key: {group.Key.Id}");
+      foreach (var groupItem in group)
+      {
+        output.WriteLine($"  item id: {groupItem.Id}");
+      }
+    }
+  }
+
   [Fact(DisplayName = "`Last()`")]
   public void Last()
   {
