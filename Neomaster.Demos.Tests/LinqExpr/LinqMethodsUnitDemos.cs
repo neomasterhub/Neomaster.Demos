@@ -698,6 +698,61 @@ public class LinqMethodsUnitDemos(ITestOutputHelper output)
     }
   }
 
+  [Fact(DisplayName = "`GroupJoin()`")]
+  public void GroupJoin()
+  {
+    var deps = new List<Department>
+    {
+      new() { Id = 1 },
+      new() { Id = 2 },
+      new() { Id = 3 },
+    };
+    var users = new List<User>
+    {
+      new() { Id = "guid-0001", Department = deps[0] },
+      new() { Id = "guid-0002", Department = deps[0] },
+      new() { Id = "guid-0003", Department = deps[1] },
+      new() { Id = "guid-0004", Department = deps[1] },
+      new() { Id = "guid-0005", Department = deps[1] },
+    };
+    var expectedDepUserCount1 = new[]
+    {
+      new { DepId = 1, UserCount = 2 },
+      new { DepId = 2, UserCount = 3 },
+    };
+    var expectedDepUserCount2 = new[]
+    {
+      new { DepId = 1, UserCount = 2 },
+      new { DepId = 2, UserCount = 3 },
+      new { DepId = 3, UserCount = 0 },
+    };
+
+    var depUserCount1 = deps
+      .Join(users, d => d, u => u.Department, (d, u) => new { d, u }) // inner join
+      .GroupBy(x => x.d, x => x.u, (d, u) => new
+      {
+        DepId = d.Id,
+        UserCount = u.Count(),
+      })
+      .ToArray();
+
+    var depUserCount2 = deps
+      .GroupJoin(users, d => d, u => u.Department, (d, u) => new // left join
+      {
+        DepId = d.Id,
+        UserCount = u.Count(),
+      })
+      .ToArray();
+
+    Assert.Equal(expectedDepUserCount1, depUserCount1);
+    Assert.Equal(expectedDepUserCount2, depUserCount2);
+
+    foreach (var item in depUserCount2)
+    {
+      output.WriteLine($"DepId: {item.DepId}, User Count: {item.UserCount}");
+    }
+  }
+
   [Fact(DisplayName = "`Last()`")]
   public void Last()
   {
