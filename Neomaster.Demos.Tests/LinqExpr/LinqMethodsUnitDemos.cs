@@ -753,6 +753,24 @@ public class LinqMethodsUnitDemos(ITestOutputHelper output)
     }
   }
 
+  [Fact(DisplayName = "`Index()`")]
+  public void Index()
+  {
+    var users = Enumerable
+      .Repeat(1, 3)
+      .Select(_ => new User())
+      .ToArray();
+
+    var indexedUsers = users.Index().ToArray();
+
+    Assert.Equal(3, indexedUsers.Length);
+    Assert.All(indexedUsers, (pair, i) =>
+    {
+      Assert.Equal(i, pair.Index);
+      Assert.Equal(users[i], pair.Item);
+    });
+  }
+
   [Fact(DisplayName = "`Last()`")]
   public void Last()
   {
