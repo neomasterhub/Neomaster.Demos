@@ -771,6 +771,35 @@ public class LinqMethodsUnitDemos(ITestOutputHelper output)
     });
   }
 
+  [Fact(DisplayName = "`Intersect()`")]
+  public void Intersect()
+  {
+    var balls1 = new Ball[]
+    {
+      new() { Color = ConsoleColor.Red },
+      new() { Color = ConsoleColor.Green },
+    };
+    var balls2 = new Ball[]
+    {
+      new() { Color = ConsoleColor.Blue },
+      new() { Color = ConsoleColor.Green },
+    };
+
+    Assert.Equal(
+      new[] { 2 },
+      new[] { 1, 2 }.Intersect(new[] { 2, 3 }));
+
+    Assert.Empty(balls1.Intersect(balls2));
+
+    Assert.Equal(
+      [balls1[1]],
+      balls1.Intersect(balls2, new BallColorEqualityComparer()));
+
+    Assert.Equal(
+      [balls1[1]],
+      balls1.Intersect(balls2, new BallPayloadEqualityComparer()));
+  }
+
   [Fact(DisplayName = "`Last()`")]
   public void Last()
   {
