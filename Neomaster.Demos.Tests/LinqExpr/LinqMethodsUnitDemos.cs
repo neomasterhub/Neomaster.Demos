@@ -904,7 +904,7 @@ public class LinqMethodsUnitDemos(ITestOutputHelper output)
 
     Assert.Equal(
       balls[0],
-      balls.Max(new BallStringComparer()));
+      balls.Max(new BallColorStringComparer()));
   }
 
   [Fact(DisplayName = "`Max(): exceptions`")]
@@ -940,7 +940,7 @@ public class LinqMethodsUnitDemos(ITestOutputHelper output)
 
     Assert.Equal(
       users[0],
-      users.MaxBy(u => u.Ball, new BallStringComparer()));
+      users.MaxBy(u => u.Ball, new BallColorStringComparer()));
   }
 
   [Fact(DisplayName = "`MaxBy(): exceptions`")]
