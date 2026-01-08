@@ -800,6 +800,25 @@ public class LinqMethodsUnitDemos(ITestOutputHelper output)
       balls1.Intersect(balls2, new BallPayloadEqualityComparer()));
   }
 
+  [Fact(DisplayName = "`IntersectBy()`")]
+  public void IntersectBy()
+  {
+    var balls1 = new Ball[]
+    {
+      new() { Color = ConsoleColor.Red },
+      new() { Color = ConsoleColor.Green },
+    };
+    var balls2 = new Ball[]
+    {
+      new() { Color = ConsoleColor.Blue },
+      new() { Color = ConsoleColor.Green },
+    };
+
+    Assert.Equal(
+      [balls1[1]],
+      balls1.IntersectBy(balls2.Select(b => b.Color), b => b.Color));
+  }
+
   [Fact(DisplayName = "`Last()`")]
   public void Last()
   {
