@@ -819,6 +819,41 @@ public class LinqMethodsUnitDemos(ITestOutputHelper output)
       balls1.IntersectBy(balls2.Select(b => b.Color), b => b.Color));
   }
 
+  [Fact(DisplayName = "`Join()`")]
+  public void Join()
+  {
+    var deps = new List<Department>
+    {
+      new() { Id = 1 },
+      new() { Id = 2 },
+      new() { Id = 3 },
+    };
+    var users = new List<User>
+    {
+      new() { Id = "guid-0001", Department = deps[0] },
+      new() { Id = "guid-0002", Department = deps[0] },
+      new() { Id = "guid-0003", Department = deps[1] },
+      new() { Id = "guid-0004", Department = deps[1] },
+      new() { Id = "guid-0005", Department = deps[1] },
+    };
+
+    var depUserIdPairs = deps.Join(
+      users,
+      d => d,
+      u => u.Department,
+      (d, u) => $"{d.Id}.{u.Id}");
+
+    Assert.Equal(
+      [
+        "1.guid-0001",
+        "1.guid-0002",
+        "2.guid-0003",
+        "2.guid-0004",
+        "2.guid-0005",
+      ],
+      depUserIdPairs);
+  }
+
   [Fact(DisplayName = "`Last()`")]
   public void Last()
   {
