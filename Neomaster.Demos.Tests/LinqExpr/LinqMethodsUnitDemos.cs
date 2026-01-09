@@ -978,4 +978,27 @@ public class LinqMethodsUnitDemos(ITestOutputHelper output)
       ["3"],
       al.OfType<string>());
   }
+
+  [Fact(DisplayName = "`Order()`")]
+  public void Order()
+  {
+    Assert.Equal(
+      [1, 2, 3],
+      new[] { 3, 1, 2 }.Order());
+
+    var src = new Ball[] // Ball : IComparer<Ball>
+    {
+      new() { Color = ConsoleColor.Red }, // 12
+      new() { Color = ConsoleColor.Green }, // 10
+      new() { Color = ConsoleColor.Blue }, // 9
+    };
+    var expected = src.Reverse().ToArray();
+
+    Assert.Equal(
+      expected,
+      src.Order());
+    Assert.Equal(
+      expected,
+      src.Order(new BallColorStringComparer()));
+  }
 }
