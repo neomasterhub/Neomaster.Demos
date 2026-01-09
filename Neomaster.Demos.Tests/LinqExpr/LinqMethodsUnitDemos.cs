@@ -1001,4 +1001,33 @@ public class LinqMethodsUnitDemos(ITestOutputHelper output)
       expected,
       src.Order(new BallColorStringComparer()));
   }
+
+  [Fact(DisplayName = "`OrderBy()`")]
+  public void OrderBy()
+  {
+    var src = new Ball[]
+    {
+      new() { Color = ConsoleColor.Red },
+      new() { Color = ConsoleColor.Green },
+      new() { Color = ConsoleColor.Blue },
+      new() { Color = ConsoleColor.Red },
+      new() { Color = ConsoleColor.Green },
+      new() { Color = ConsoleColor.Blue },
+    };
+    var expected = new Ball[]
+    {
+      new() { Color = ConsoleColor.Blue },
+      new() { Color = ConsoleColor.Blue },
+      new() { Color = ConsoleColor.Green },
+      new() { Color = ConsoleColor.Green },
+      new() { Color = ConsoleColor.Red },
+      new() { Color = ConsoleColor.Red },
+    };
+
+    var actual = src.OrderBy(b => b.Color);
+
+    Assert.Equal(
+      expected.Select(b => b.Color),
+      actual.Select(b => b.Color));
+  }
 }
