@@ -1093,4 +1093,12 @@ public class LinqMethodsUnitDemos(ITestOutputHelper output)
     Assert.Equal([1, 2], x);
     Assert.Equal([0, 1, 2], y);
   }
+
+  [Fact(DisplayName = "`Reverse()`")]
+  public void Reverse()
+  {
+    Assert.Equal(
+      [3, 2, 1],
+      new[] { 1, 2, 3 }.Reverse());
+  }
 }
