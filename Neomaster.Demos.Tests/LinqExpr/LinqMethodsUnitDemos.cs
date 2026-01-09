@@ -1030,4 +1030,27 @@ public class LinqMethodsUnitDemos(ITestOutputHelper output)
       expected.Select(b => b.Color),
       actual.Select(b => b.Color));
   }
+
+  [Fact(DisplayName = "`OrderDescending()`")]
+  public void OrderDescending()
+  {
+    Assert.Equal(
+      [3, 2, 1],
+      new[] { 2, 1, 3 }.OrderDescending());
+
+    var src = new Ball[] // Ball : IComparer<Ball>
+    {
+      new() { Color = ConsoleColor.Blue }, // 9
+      new() { Color = ConsoleColor.Green }, // 10
+      new() { Color = ConsoleColor.Red }, // 12
+    };
+    var expected = src.Reverse().ToArray();
+
+    Assert.Equal(
+      expected,
+      src.OrderDescending());
+    Assert.Equal(
+      expected,
+      src.OrderDescending(new BallColorStringComparer()));
+  }
 }
