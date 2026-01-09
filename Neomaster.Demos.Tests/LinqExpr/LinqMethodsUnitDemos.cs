@@ -1101,4 +1101,12 @@ public class LinqMethodsUnitDemos(ITestOutputHelper output)
       [3, 2, 1],
       new[] { 1, 2, 3 }.Reverse());
   }
+
+  [Fact(DisplayName = "`Select()`: indexing")]
+  public void SelectIndexing()
+  {
+    Assert.Equal(
+      [0, 1, 2],
+      Enumerable.Repeat(new Ball(), 3).Select((b, i) => i));
+  }
 }
