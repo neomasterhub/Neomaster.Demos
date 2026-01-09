@@ -956,4 +956,26 @@ public class LinqMethodsUnitDemos(ITestOutputHelper output)
     Assert.Null(Enumerable.Empty<User>().Max());
     Assert.Equal(u1, new User[] { u1 }.Max());
   }
+
+  [Fact(DisplayName = "`OfType()`")]
+  public void OfType()
+  {
+    var al = new ArrayList() { 1, 2f, "3" };
+
+    Assert.Equal(
+      [1, 2f, "3"],
+      al.OfType<object>());
+
+    Assert.Equal(
+      [1],
+      al.OfType<int?>());
+
+    Assert.Equal(
+      [2f],
+      al.OfType<float>());
+
+    Assert.Equal(
+      ["3"],
+      al.OfType<string>());
+  }
 }
