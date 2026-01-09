@@ -1082,4 +1082,15 @@ public class LinqMethodsUnitDemos(ITestOutputHelper output)
       expected.Select(b => b.Color),
       actual.Select(b => b.Color));
   }
+
+  [Fact(DisplayName = "`Prepend()`")]
+  public void Prepend()
+  {
+    var x = Enumerable.Range(1, 2);
+    x.Prepend(0);
+    var y = x.Prepend(0);
+
+    Assert.Equal([1, 2], x);
+    Assert.Equal([0, 1, 2], y);
+  }
 }
