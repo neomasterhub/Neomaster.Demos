@@ -1109,4 +1109,26 @@ public class LinqMethodsUnitDemos(ITestOutputHelper output)
       [0, 1, 2],
       Enumerable.Repeat(new Ball(), 3).Select((b, i) => i));
   }
+
+  [Fact(DisplayName = "`SelectMany()`")]
+  public void SelectMany()
+  {
+    var col1 = Enumerable.Range(1, 2);
+    var col2 = Enumerable.Range(3, 3);
+    var cols = new[]
+    {
+      new { Col = col1 },
+      new { Col = col2 },
+    };
+
+    Assert.Equal(
+      [1, 2, 3, 4, 5],
+      cols.SelectMany(x => x.Col));
+
+    Assert.Equal(
+      [2001, 2002, 3003, 3004, 3005],
+      cols.SelectMany(
+        x => x.Col,
+        (x, xCol) => xCol + (x.Col.Count() * 1000)));
+  }
 }
