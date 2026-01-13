@@ -1200,4 +1200,12 @@ public class LinqMethodsUnitDemos(ITestOutputHelper output)
     Assert.Equal(3, new[] { 1, 2 }.Sum());
     Assert.Equal(30, new[] { 1, 2 }.Sum(x => x * 10));
   }
+
+  [Fact(DisplayName = "`Take()`")]
+  public void Take()
+  {
+    Assert.Equal(
+      [1, 2],
+      Enumerable.Range(1, 4).Take(2));
+  }
 }
