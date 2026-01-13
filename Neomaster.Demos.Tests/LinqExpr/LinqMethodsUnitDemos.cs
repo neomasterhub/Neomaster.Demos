@@ -1131,4 +1131,27 @@ public class LinqMethodsUnitDemos(ITestOutputHelper output)
         x => x.Col,
         (x, xCol) => xCol + (x.Col.Count() * 1000)));
   }
+
+  [Fact(DisplayName = "`SequenceEqual()`")]
+  public void SequenceEqual()
+  {
+    var arr1 = Enumerable.Range(1, 3).ToArray();
+    var arr2 = Enumerable.Range(1, 3).ToArray();
+    Assert.True(arr1.SequenceEqual(arr2));
+
+    var balls1 = new Ball[]
+    {
+      new() { Color = ConsoleColor.Red },
+      new() { Color = ConsoleColor.Green },
+      new() { Color = ConsoleColor.Blue },
+    };
+    var balls2 = new Ball[]
+    {
+      new() { Color = ConsoleColor.Red },
+      new() { Color = ConsoleColor.Green },
+      new() { Color = ConsoleColor.Blue },
+    };
+    Assert.False(balls1.SequenceEqual(balls2));
+    Assert.True(balls1.SequenceEqual(balls2, new BallColorEqualityComparer()));
+  }
 }
