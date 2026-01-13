@@ -1193,4 +1193,11 @@ public class LinqMethodsUnitDemos(ITestOutputHelper output)
       [2, 1],
       new[] { 1, 2, 1 }.SkipWhile(x => x < 2));
   }
+
+  [Fact(DisplayName = "`Sum()`")]
+  public void Sum()
+  {
+    Assert.Equal(3, new[] { 1, 2 }.Sum());
+    Assert.Equal(30, new[] { 1, 2 }.Sum(x => x * 10));
+  }
 }
