@@ -1177,4 +1177,12 @@ public class LinqMethodsUnitDemos(ITestOutputHelper output)
       [3, 4],
       Enumerable.Range(1, 4).Skip(2));
   }
+
+  [Fact(DisplayName = "`SkipLast()`")]
+  public void SkipLast()
+  {
+    Assert.Equal(
+      [1, 2],
+      Enumerable.Range(1, 4).SkipLast(2));
+  }
 }
