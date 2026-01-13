@@ -1185,4 +1185,12 @@ public class LinqMethodsUnitDemos(ITestOutputHelper output)
       [1, 2],
       Enumerable.Range(1, 4).SkipLast(2));
   }
+
+  [Fact(DisplayName = "`SkipWhile()`")]
+  public void SkipWhile()
+  {
+    Assert.Equal(
+      [2, 1],
+      new[] { 1, 2, 1 }.SkipWhile(x => x < 2));
+  }
 }
