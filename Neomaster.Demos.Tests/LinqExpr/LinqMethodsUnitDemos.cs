@@ -1216,4 +1216,12 @@ public class LinqMethodsUnitDemos(ITestOutputHelper output)
       [3, 4],
       Enumerable.Range(1, 4).TakeLast(2));
   }
+
+  [Fact(DisplayName = "`TakeWhile()`")]
+  public void TakeWhile()
+  {
+    Assert.Equal(
+      [1],
+      new[] { 1, 2, 1 }.TakeWhile(x => x < 2));
+  }
 }
