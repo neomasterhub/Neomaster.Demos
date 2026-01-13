@@ -1224,4 +1224,25 @@ public class LinqMethodsUnitDemos(ITestOutputHelper output)
       [1],
       new[] { 1, 2, 1 }.TakeWhile(x => x < 2));
   }
+
+  [Fact(DisplayName = "`ThenBy()`")]
+  public void ThenBy()
+  {
+    Assert.Equal(
+      new[]
+      {
+        new { A = 1, B = 1 },
+        new { A = 1, B = 2 },
+        new { A = 2, B = 1 },
+        new { A = 2, B = 2 },
+      },
+      new[]
+      {
+        new { A = 2, B = 2 },
+        new { A = 2, B = 1 },
+        new { A = 1, B = 2 },
+        new { A = 1, B = 1 },
+      }
+      .OrderBy(x => x.A).ThenBy(x => x.B));
+  }
 }
