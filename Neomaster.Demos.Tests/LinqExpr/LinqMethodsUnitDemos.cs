@@ -1154,4 +1154,11 @@ public class LinqMethodsUnitDemos(ITestOutputHelper output)
     Assert.False(balls1.SequenceEqual(balls2));
     Assert.True(balls1.SequenceEqual(balls2, new BallColorEqualityComparer()));
   }
+
+  [Fact(DisplayName = "`Single()`")]
+  public void Single()
+  {
+    Assert.Equal(1, new[] { 1 }.Single());
+    Assert.Throws<InvalidOperationException>(() => Array.Empty<int>().Single());
+  }
 }
