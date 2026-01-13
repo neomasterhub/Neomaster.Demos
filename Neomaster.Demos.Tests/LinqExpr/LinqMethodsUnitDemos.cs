@@ -1161,4 +1161,12 @@ public class LinqMethodsUnitDemos(ITestOutputHelper output)
     Assert.Equal(1, new[] { 1 }.Single());
     Assert.Throws<InvalidOperationException>(() => Array.Empty<int>().Single());
   }
+
+  [Fact(DisplayName = "`SingleOrDefault()`")]
+  public void SingleOrDefault()
+  {
+    var b = new Ball();
+    Assert.Equal(0, Array.Empty<int>().SingleOrDefault());
+    Assert.Equal(b, Array.Empty<Ball>().SingleOrDefault(b));
+  }
 }
