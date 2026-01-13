@@ -1169,4 +1169,12 @@ public class LinqMethodsUnitDemos(ITestOutputHelper output)
     Assert.Equal(0, Array.Empty<int>().SingleOrDefault());
     Assert.Equal(b, Array.Empty<Ball>().SingleOrDefault(b));
   }
+
+  [Fact(DisplayName = "`Skip()`")]
+  public void Skip()
+  {
+    Assert.Equal(
+      [3, 4],
+      Enumerable.Range(1, 4).Skip(2));
+  }
 }
