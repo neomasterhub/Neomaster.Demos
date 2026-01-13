@@ -1208,4 +1208,12 @@ public class LinqMethodsUnitDemos(ITestOutputHelper output)
       [1, 2],
       Enumerable.Range(1, 4).Take(2));
   }
+
+  [Fact(DisplayName = "`TakeLast()`")]
+  public void TakeLast()
+  {
+    Assert.Equal(
+      [3, 4],
+      Enumerable.Range(1, 4).TakeLast(2));
+  }
 }
