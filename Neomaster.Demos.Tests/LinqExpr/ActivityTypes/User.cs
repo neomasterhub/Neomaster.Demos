@@ -17,4 +17,5 @@ public class User
   public Department Department { get; set; }
   public Department DepartmentNull { get; set; }
   public Department DepartmentDefault { get; set; } = new();
+  public Ball Ball { get; set; }
 }
