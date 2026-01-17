@@ -1317,6 +1317,40 @@ public class LinqMethodsUnitDemos(ITestOutputHelper output)
     Assert.Equal([100, 100, 100], lp3Item);
   }
 
+  [Fact(DisplayName = "`Union()`")]
+  public void Union()
+  {
+    var balls1 = new Ball[]
+    {
+      new() { Color = ConsoleColor.Red },
+      new() { Color = ConsoleColor.Green },
+    };
+    var balls2 = new Ball[]
+    {
+      new() { Color = ConsoleColor.Green },
+      new() { Color = ConsoleColor.Blue },
+    };
+
+    var union1 = balls1.Union(balls2).ToArray();
+    var union2 = balls1.Union(balls2, new BallColorEqualityComparer()).ToArray();
+
+    Assert.Equal(
+      [
+        new() { Color = ConsoleColor.Red },
+        new() { Color = ConsoleColor.Green },
+        new() { Color = ConsoleColor.Green },
+        new() { Color = ConsoleColor.Blue },
+      ],
+      union1);
+    Assert.Equal(
+      [
+        new() { Color = ConsoleColor.Red },
+        new() { Color = ConsoleColor.Green },
+        new() { Color = ConsoleColor.Blue },
+      ],
+      union2);
+  }
+
   [Fact(DisplayName = "`Zip()`")]
   public void Zip()
   {
