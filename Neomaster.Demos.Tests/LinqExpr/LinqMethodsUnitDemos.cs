@@ -1266,4 +1266,28 @@ public class LinqMethodsUnitDemos(ITestOutputHelper output)
       }
       .OrderBy(x => x.A).ThenByDescending(x => x.B));
   }
+
+  [Fact(DisplayName = "`ToDictionary()`")]
+  public void ToDictionary()
+  {
+    Assert.Equal(
+      new Dictionary<int, int>
+      {
+        { 10, 1 },
+        { 20, 2 },
+        { 30, 3 },
+      },
+      Enumerable.Range(1, 3).ToDictionary(k => k * 10));
+
+    Assert.Equal(
+      new Dictionary<int, int>
+      {
+        { 10, 100 },
+        { 20, 200 },
+        { 30, 300 },
+      },
+      Enumerable.Range(1, 3).ToDictionary(k => k * 10, v => v * 100));
+
+    Assert.Throws<ArgumentException>(() => Enumerable.Repeat(1, 2).ToDictionary(k => k));
+  }
 }
