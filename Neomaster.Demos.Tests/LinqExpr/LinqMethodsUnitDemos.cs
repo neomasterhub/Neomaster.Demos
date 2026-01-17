@@ -1316,4 +1316,36 @@ public class LinqMethodsUnitDemos(ITestOutputHelper output)
     Assert.Equal(10, lp3Item.Key);
     Assert.Equal([100, 100, 100], lp3Item);
   }
+
+  [Fact(DisplayName = "`Zip()`")]
+  public void Zip()
+  {
+    var balls = new Ball[]
+    {
+      new() { Color = ConsoleColor.Red },
+      new() { Color = ConsoleColor.Green },
+      new() { Color = ConsoleColor.Blue },
+    };
+    var users = new User[]
+    {
+      new() { Id = "1" },
+      new() { Id = "2" },
+    };
+
+    var zip1 = users.Zip(balls);
+    var zip2 = users.Zip(balls, (u, b) => $"{u.Id}-{b.Color}");
+
+    Assert.Equal(
+      [
+        new() { First = users[0], Second = balls[0] },
+        new() { First = users[1], Second = balls[1] },
+      ],
+      zip1);
+    Assert.Equal(
+      [
+        "1-Red",
+        "2-Green",
+      ],
+      zip2);
+  }
 }
