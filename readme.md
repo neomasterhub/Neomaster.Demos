@@ -537,4 +537,147 @@ Look. Try. Add.
 [Neomaster.Demos.Tests_LinqExpr_LinqExprUnitDemos.cs-54]:Neomaster.Demos.Tests/LinqExpr/LinqExprUnitDemos.cs#L1329
 
 
+#### Methods
+
+1. [`Enumerable` and `Queryable` method names][Neomaster.Demos.Tests_LinqExpr_LinqMethodsUnitDemos.cs-1]
+2. [`Enumerable.Range()`][Neomaster.Demos.Tests_LinqExpr_LinqMethodsUnitDemos.cs-2]
+3. [`Enumerable.Repeat()`][Neomaster.Demos.Tests_LinqExpr_LinqMethodsUnitDemos.cs-3]
+4. [`Enumerable.Empty()`][Neomaster.Demos.Tests_LinqExpr_LinqMethodsUnitDemos.cs-4]
+5. [`Aggregate()`][Neomaster.Demos.Tests_LinqExpr_LinqMethodsUnitDemos.cs-5]
+6. [`AggregateBy()`][Neomaster.Demos.Tests_LinqExpr_LinqMethodsUnitDemos.cs-6]
+7. [`All()`][Neomaster.Demos.Tests_LinqExpr_LinqMethodsUnitDemos.cs-7]
+8. [`Any()`][Neomaster.Demos.Tests_LinqExpr_LinqMethodsUnitDemos.cs-8]
+9. [All with `Any()`][Neomaster.Demos.Tests_LinqExpr_LinqMethodsUnitDemos.cs-9]
+10. [Any with `All()`][Neomaster.Demos.Tests_LinqExpr_LinqMethodsUnitDemos.cs-10]
+11. [`Append()`][Neomaster.Demos.Tests_LinqExpr_LinqMethodsUnitDemos.cs-11]
+12. [`Average()`][Neomaster.Demos.Tests_LinqExpr_LinqMethodsUnitDemos.cs-12]
+13. [`Cast()`: numbers][Neomaster.Demos.Tests_LinqExpr_LinqMethodsUnitDemos.cs-13]
+14. [`Cast()`: classes][Neomaster.Demos.Tests_LinqExpr_LinqMethodsUnitDemos.cs-14]
+15. [`Chunk()`][Neomaster.Demos.Tests_LinqExpr_LinqMethodsUnitDemos.cs-15]
+16. [`Concat()`][Neomaster.Demos.Tests_LinqExpr_LinqMethodsUnitDemos.cs-16]
+17. [`Contains()`][Neomaster.Demos.Tests_LinqExpr_LinqMethodsUnitDemos.cs-17]
+18. [`Count()`][Neomaster.Demos.Tests_LinqExpr_LinqMethodsUnitDemos.cs-18]
+19. [`CountBy()`][Neomaster.Demos.Tests_LinqExpr_LinqMethodsUnitDemos.cs-19]
+20. [`DefaultIfEmpty()`][Neomaster.Demos.Tests_LinqExpr_LinqMethodsUnitDemos.cs-20]
+21. [`Distinct()`][Neomaster.Demos.Tests_LinqExpr_LinqMethodsUnitDemos.cs-21]
+22. [`DistinctBy()`][Neomaster.Demos.Tests_LinqExpr_LinqMethodsUnitDemos.cs-22]
+23. [`ElementAt()`][Neomaster.Demos.Tests_LinqExpr_LinqMethodsUnitDemos.cs-23]
+24. [`ElementAtOrDefault()`][Neomaster.Demos.Tests_LinqExpr_LinqMethodsUnitDemos.cs-24]
+25. [`Except()`][Neomaster.Demos.Tests_LinqExpr_LinqMethodsUnitDemos.cs-25]
+26. [`ExceptBy()`][Neomaster.Demos.Tests_LinqExpr_LinqMethodsUnitDemos.cs-26]
+27. [`First()`][Neomaster.Demos.Tests_LinqExpr_LinqMethodsUnitDemos.cs-27]
+28. [`FirstOrDefault()`][Neomaster.Demos.Tests_LinqExpr_LinqMethodsUnitDemos.cs-28]
+29. [`GroupBy()`][Neomaster.Demos.Tests_LinqExpr_LinqMethodsUnitDemos.cs-29]
+30. [`GroupBy()`: element selector][Neomaster.Demos.Tests_LinqExpr_LinqMethodsUnitDemos.cs-30]
+31. [`GroupBy()`: result selector][Neomaster.Demos.Tests_LinqExpr_LinqMethodsUnitDemos.cs-31]
+32. [`GroupJoin()`][Neomaster.Demos.Tests_LinqExpr_LinqMethodsUnitDemos.cs-32]
+33. [`Index()`][Neomaster.Demos.Tests_LinqExpr_LinqMethodsUnitDemos.cs-33]
+34. [`Intersect()`][Neomaster.Demos.Tests_LinqExpr_LinqMethodsUnitDemos.cs-34]
+35. [`IntersectBy()`][Neomaster.Demos.Tests_LinqExpr_LinqMethodsUnitDemos.cs-35]
+36. [`Join()`][Neomaster.Demos.Tests_LinqExpr_LinqMethodsUnitDemos.cs-36]
+37. [`Last()`][Neomaster.Demos.Tests_LinqExpr_LinqMethodsUnitDemos.cs-37]
+38. [`LastOrDefault()`][Neomaster.Demos.Tests_LinqExpr_LinqMethodsUnitDemos.cs-38]
+39. [`Max()`][Neomaster.Demos.Tests_LinqExpr_LinqMethodsUnitDemos.cs-39]
+40. [`Max(): exceptions`][Neomaster.Demos.Tests_LinqExpr_LinqMethodsUnitDemos.cs-40]
+41. [`MaxBy()`][Neomaster.Demos.Tests_LinqExpr_LinqMethodsUnitDemos.cs-41]
+42. [`MaxBy(): exceptions`][Neomaster.Demos.Tests_LinqExpr_LinqMethodsUnitDemos.cs-42]
+43. [`OfType()`][Neomaster.Demos.Tests_LinqExpr_LinqMethodsUnitDemos.cs-43]
+44. [`Order()`][Neomaster.Demos.Tests_LinqExpr_LinqMethodsUnitDemos.cs-44]
+45. [`OrderBy()`][Neomaster.Demos.Tests_LinqExpr_LinqMethodsUnitDemos.cs-45]
+46. [`OrderDescending()`][Neomaster.Demos.Tests_LinqExpr_LinqMethodsUnitDemos.cs-46]
+47. [`OrderByDescending()`][Neomaster.Demos.Tests_LinqExpr_LinqMethodsUnitDemos.cs-47]
+48. [`Prepend()`][Neomaster.Demos.Tests_LinqExpr_LinqMethodsUnitDemos.cs-48]
+49. [`Reverse()`][Neomaster.Demos.Tests_LinqExpr_LinqMethodsUnitDemos.cs-49]
+50. [`Select()`: indexing][Neomaster.Demos.Tests_LinqExpr_LinqMethodsUnitDemos.cs-50]
+51. [`SelectMany()`][Neomaster.Demos.Tests_LinqExpr_LinqMethodsUnitDemos.cs-51]
+52. [`SequenceEqual()`][Neomaster.Demos.Tests_LinqExpr_LinqMethodsUnitDemos.cs-52]
+53. [`Single()`][Neomaster.Demos.Tests_LinqExpr_LinqMethodsUnitDemos.cs-53]
+54. [`SingleOrDefault()`][Neomaster.Demos.Tests_LinqExpr_LinqMethodsUnitDemos.cs-54]
+55. [`Skip()`][Neomaster.Demos.Tests_LinqExpr_LinqMethodsUnitDemos.cs-55]
+56. [`SkipLast()`][Neomaster.Demos.Tests_LinqExpr_LinqMethodsUnitDemos.cs-56]
+57. [`SkipWhile()`][Neomaster.Demos.Tests_LinqExpr_LinqMethodsUnitDemos.cs-57]
+58. [`Sum()`][Neomaster.Demos.Tests_LinqExpr_LinqMethodsUnitDemos.cs-58]
+59. [`Take()`][Neomaster.Demos.Tests_LinqExpr_LinqMethodsUnitDemos.cs-59]
+60. [`TakeLast()`][Neomaster.Demos.Tests_LinqExpr_LinqMethodsUnitDemos.cs-60]
+61. [`TakeWhile()`][Neomaster.Demos.Tests_LinqExpr_LinqMethodsUnitDemos.cs-61]
+62. [`ThenBy()`][Neomaster.Demos.Tests_LinqExpr_LinqMethodsUnitDemos.cs-62]
+63. [`ThenByDescending()`][Neomaster.Demos.Tests_LinqExpr_LinqMethodsUnitDemos.cs-63]
+64. [`ToDictionary()`][Neomaster.Demos.Tests_LinqExpr_LinqMethodsUnitDemos.cs-64]
+65. [`ToLookup()`][Neomaster.Demos.Tests_LinqExpr_LinqMethodsUnitDemos.cs-65]
+66. [`TryGetNonEnumeratedCount()`][Neomaster.Demos.Tests_LinqExpr_LinqMethodsUnitDemos.cs-66]
+67. [`Union()`][Neomaster.Demos.Tests_LinqExpr_LinqMethodsUnitDemos.cs-67]
+68. [`UnionBy()`][Neomaster.Demos.Tests_LinqExpr_LinqMethodsUnitDemos.cs-68]
+69. [`Zip()`][Neomaster.Demos.Tests_LinqExpr_LinqMethodsUnitDemos.cs-69]
+
+[Neomaster.Demos.Tests_LinqExpr_LinqMethodsUnitDemos.cs-1]:Neomaster.Demos.Tests/LinqExpr/LinqMethodsUnitDemos.cs#L12
+[Neomaster.Demos.Tests_LinqExpr_LinqMethodsUnitDemos.cs-2]:Neomaster.Demos.Tests/LinqExpr/LinqMethodsUnitDemos.cs#L137
+[Neomaster.Demos.Tests_LinqExpr_LinqMethodsUnitDemos.cs-3]:Neomaster.Demos.Tests/LinqExpr/LinqMethodsUnitDemos.cs#L145
+[Neomaster.Demos.Tests_LinqExpr_LinqMethodsUnitDemos.cs-4]:Neomaster.Demos.Tests/LinqExpr/LinqMethodsUnitDemos.cs#L156
+[Neomaster.Demos.Tests_LinqExpr_LinqMethodsUnitDemos.cs-5]:Neomaster.Demos.Tests/LinqExpr/LinqMethodsUnitDemos.cs#L162
+[Neomaster.Demos.Tests_LinqExpr_LinqMethodsUnitDemos.cs-6]:Neomaster.Demos.Tests/LinqExpr/LinqMethodsUnitDemos.cs#L169
+[Neomaster.Demos.Tests_LinqExpr_LinqMethodsUnitDemos.cs-7]:Neomaster.Demos.Tests/LinqExpr/LinqMethodsUnitDemos.cs#L188
+[Neomaster.Demos.Tests_LinqExpr_LinqMethodsUnitDemos.cs-8]:Neomaster.Demos.Tests/LinqExpr/LinqMethodsUnitDemos.cs#L197
+[Neomaster.Demos.Tests_LinqExpr_LinqMethodsUnitDemos.cs-9]:Neomaster.Demos.Tests/LinqExpr/LinqMethodsUnitDemos.cs#L209
+[Neomaster.Demos.Tests_LinqExpr_LinqMethodsUnitDemos.cs-10]:Neomaster.Demos.Tests/LinqExpr/LinqMethodsUnitDemos.cs#L223
+[Neomaster.Demos.Tests_LinqExpr_LinqMethodsUnitDemos.cs-11]:Neomaster.Demos.Tests/LinqExpr/LinqMethodsUnitDemos.cs#L232
+[Neomaster.Demos.Tests_LinqExpr_LinqMethodsUnitDemos.cs-12]:Neomaster.Demos.Tests/LinqExpr/LinqMethodsUnitDemos.cs#L243
+[Neomaster.Demos.Tests_LinqExpr_LinqMethodsUnitDemos.cs-13]:Neomaster.Demos.Tests/LinqExpr/LinqMethodsUnitDemos.cs#L262
+[Neomaster.Demos.Tests_LinqExpr_LinqMethodsUnitDemos.cs-14]:Neomaster.Demos.Tests/LinqExpr/LinqMethodsUnitDemos.cs#L278
+[Neomaster.Demos.Tests_LinqExpr_LinqMethodsUnitDemos.cs-15]:Neomaster.Demos.Tests/LinqExpr/LinqMethodsUnitDemos.cs#L312
+[Neomaster.Demos.Tests_LinqExpr_LinqMethodsUnitDemos.cs-16]:Neomaster.Demos.Tests/LinqExpr/LinqMethodsUnitDemos.cs#L328
+[Neomaster.Demos.Tests_LinqExpr_LinqMethodsUnitDemos.cs-17]:Neomaster.Demos.Tests/LinqExpr/LinqMethodsUnitDemos.cs#L342
+[Neomaster.Demos.Tests_LinqExpr_LinqMethodsUnitDemos.cs-18]:Neomaster.Demos.Tests/LinqExpr/LinqMethodsUnitDemos.cs#L360
+[Neomaster.Demos.Tests_LinqExpr_LinqMethodsUnitDemos.cs-19]:Neomaster.Demos.Tests/LinqExpr/LinqMethodsUnitDemos.cs#L368
+[Neomaster.Demos.Tests_LinqExpr_LinqMethodsUnitDemos.cs-20]:Neomaster.Demos.Tests/LinqExpr/LinqMethodsUnitDemos.cs#L390
+[Neomaster.Demos.Tests_LinqExpr_LinqMethodsUnitDemos.cs-21]:Neomaster.Demos.Tests/LinqExpr/LinqMethodsUnitDemos.cs#L402
+[Neomaster.Demos.Tests_LinqExpr_LinqMethodsUnitDemos.cs-22]:Neomaster.Demos.Tests/LinqExpr/LinqMethodsUnitDemos.cs#L463
+[Neomaster.Demos.Tests_LinqExpr_LinqMethodsUnitDemos.cs-23]:Neomaster.Demos.Tests/LinqExpr/LinqMethodsUnitDemos.cs#L485
+[Neomaster.Demos.Tests_LinqExpr_LinqMethodsUnitDemos.cs-24]:Neomaster.Demos.Tests/LinqExpr/LinqMethodsUnitDemos.cs#L500
+[Neomaster.Demos.Tests_LinqExpr_LinqMethodsUnitDemos.cs-25]:Neomaster.Demos.Tests/LinqExpr/LinqMethodsUnitDemos.cs#L516
+[Neomaster.Demos.Tests_LinqExpr_LinqMethodsUnitDemos.cs-26]:Neomaster.Demos.Tests/LinqExpr/LinqMethodsUnitDemos.cs#L531
+[Neomaster.Demos.Tests_LinqExpr_LinqMethodsUnitDemos.cs-27]:Neomaster.Demos.Tests/LinqExpr/LinqMethodsUnitDemos.cs#L557
+[Neomaster.Demos.Tests_LinqExpr_LinqMethodsUnitDemos.cs-28]:Neomaster.Demos.Tests/LinqExpr/LinqMethodsUnitDemos.cs#L572
+[Neomaster.Demos.Tests_LinqExpr_LinqMethodsUnitDemos.cs-29]:Neomaster.Demos.Tests/LinqExpr/LinqMethodsUnitDemos.cs#L587
+[Neomaster.Demos.Tests_LinqExpr_LinqMethodsUnitDemos.cs-30]:Neomaster.Demos.Tests/LinqExpr/LinqMethodsUnitDemos.cs#L623
+[Neomaster.Demos.Tests_LinqExpr_LinqMethodsUnitDemos.cs-31]:Neomaster.Demos.Tests/LinqExpr/LinqMethodsUnitDemos.cs#L664
+[Neomaster.Demos.Tests_LinqExpr_LinqMethodsUnitDemos.cs-32]:Neomaster.Demos.Tests/LinqExpr/LinqMethodsUnitDemos.cs#L702
+[Neomaster.Demos.Tests_LinqExpr_LinqMethodsUnitDemos.cs-33]:Neomaster.Demos.Tests/LinqExpr/LinqMethodsUnitDemos.cs#L757
+[Neomaster.Demos.Tests_LinqExpr_LinqMethodsUnitDemos.cs-34]:Neomaster.Demos.Tests/LinqExpr/LinqMethodsUnitDemos.cs#L775
+[Neomaster.Demos.Tests_LinqExpr_LinqMethodsUnitDemos.cs-35]:Neomaster.Demos.Tests/LinqExpr/LinqMethodsUnitDemos.cs#L804
+[Neomaster.Demos.Tests_LinqExpr_LinqMethodsUnitDemos.cs-36]:Neomaster.Demos.Tests/LinqExpr/LinqMethodsUnitDemos.cs#L823
+[Neomaster.Demos.Tests_LinqExpr_LinqMethodsUnitDemos.cs-37]:Neomaster.Demos.Tests/LinqExpr/LinqMethodsUnitDemos.cs#L858
+[Neomaster.Demos.Tests_LinqExpr_LinqMethodsUnitDemos.cs-38]:Neomaster.Demos.Tests/LinqExpr/LinqMethodsUnitDemos.cs#L873
+[Neomaster.Demos.Tests_LinqExpr_LinqMethodsUnitDemos.cs-39]:Neomaster.Demos.Tests/LinqExpr/LinqMethodsUnitDemos.cs#L888
+[Neomaster.Demos.Tests_LinqExpr_LinqMethodsUnitDemos.cs-40]:Neomaster.Demos.Tests/LinqExpr/LinqMethodsUnitDemos.cs#L911
+[Neomaster.Demos.Tests_LinqExpr_LinqMethodsUnitDemos.cs-41]:Neomaster.Demos.Tests/LinqExpr/LinqMethodsUnitDemos.cs#L925
+[Neomaster.Demos.Tests_LinqExpr_LinqMethodsUnitDemos.cs-42]:Neomaster.Demos.Tests/LinqExpr/LinqMethodsUnitDemos.cs#L947
+[Neomaster.Demos.Tests_LinqExpr_LinqMethodsUnitDemos.cs-43]:Neomaster.Demos.Tests/LinqExpr/LinqMethodsUnitDemos.cs#L961
+[Neomaster.Demos.Tests_LinqExpr_LinqMethodsUnitDemos.cs-44]:Neomaster.Demos.Tests/LinqExpr/LinqMethodsUnitDemos.cs#L983
+[Neomaster.Demos.Tests_LinqExpr_LinqMethodsUnitDemos.cs-45]:Neomaster.Demos.Tests/LinqExpr/LinqMethodsUnitDemos.cs#L1006
+[Neomaster.Demos.Tests_LinqExpr_LinqMethodsUnitDemos.cs-46]:Neomaster.Demos.Tests/LinqExpr/LinqMethodsUnitDemos.cs#L1035
+[Neomaster.Demos.Tests_LinqExpr_LinqMethodsUnitDemos.cs-47]:Neomaster.Demos.Tests/LinqExpr/LinqMethodsUnitDemos.cs#L1058
+[Neomaster.Demos.Tests_LinqExpr_LinqMethodsUnitDemos.cs-48]:Neomaster.Demos.Tests/LinqExpr/LinqMethodsUnitDemos.cs#L1087
+[Neomaster.Demos.Tests_LinqExpr_LinqMethodsUnitDemos.cs-49]:Neomaster.Demos.Tests/LinqExpr/LinqMethodsUnitDemos.cs#L1098
+[Neomaster.Demos.Tests_LinqExpr_LinqMethodsUnitDemos.cs-50]:Neomaster.Demos.Tests/LinqExpr/LinqMethodsUnitDemos.cs#L1106
+[Neomaster.Demos.Tests_LinqExpr_LinqMethodsUnitDemos.cs-51]:Neomaster.Demos.Tests/LinqExpr/LinqMethodsUnitDemos.cs#L1114
+[Neomaster.Demos.Tests_LinqExpr_LinqMethodsUnitDemos.cs-52]:Neomaster.Demos.Tests/LinqExpr/LinqMethodsUnitDemos.cs#L1136
+[Neomaster.Demos.Tests_LinqExpr_LinqMethodsUnitDemos.cs-53]:Neomaster.Demos.Tests/LinqExpr/LinqMethodsUnitDemos.cs#L1159
+[Neomaster.Demos.Tests_LinqExpr_LinqMethodsUnitDemos.cs-54]:Neomaster.Demos.Tests/LinqExpr/LinqMethodsUnitDemos.cs#L1166
+[Neomaster.Demos.Tests_LinqExpr_LinqMethodsUnitDemos.cs-55]:Neomaster.Demos.Tests/LinqExpr/LinqMethodsUnitDemos.cs#L1174
+[Neomaster.Demos.Tests_LinqExpr_LinqMethodsUnitDemos.cs-56]:Neomaster.Demos.Tests/LinqExpr/LinqMethodsUnitDemos.cs#L1182
+[Neomaster.Demos.Tests_LinqExpr_LinqMethodsUnitDemos.cs-57]:Neomaster.Demos.Tests/LinqExpr/LinqMethodsUnitDemos.cs#L1190
+[Neomaster.Demos.Tests_LinqExpr_LinqMethodsUnitDemos.cs-58]:Neomaster.Demos.Tests/LinqExpr/LinqMethodsUnitDemos.cs#L1198
+[Neomaster.Demos.Tests_LinqExpr_LinqMethodsUnitDemos.cs-59]:Neomaster.Demos.Tests/LinqExpr/LinqMethodsUnitDemos.cs#L1205
+[Neomaster.Demos.Tests_LinqExpr_LinqMethodsUnitDemos.cs-60]:Neomaster.Demos.Tests/LinqExpr/LinqMethodsUnitDemos.cs#L1213
+[Neomaster.Demos.Tests_LinqExpr_LinqMethodsUnitDemos.cs-61]:Neomaster.Demos.Tests/LinqExpr/LinqMethodsUnitDemos.cs#L1221
+[Neomaster.Demos.Tests_LinqExpr_LinqMethodsUnitDemos.cs-62]:Neomaster.Demos.Tests/LinqExpr/LinqMethodsUnitDemos.cs#L1229
+[Neomaster.Demos.Tests_LinqExpr_LinqMethodsUnitDemos.cs-63]:Neomaster.Demos.Tests/LinqExpr/LinqMethodsUnitDemos.cs#L1250
+[Neomaster.Demos.Tests_LinqExpr_LinqMethodsUnitDemos.cs-64]:Neomaster.Demos.Tests/LinqExpr/LinqMethodsUnitDemos.cs#L1271
+[Neomaster.Demos.Tests_LinqExpr_LinqMethodsUnitDemos.cs-65]:Neomaster.Demos.Tests/LinqExpr/LinqMethodsUnitDemos.cs#L1295
+[Neomaster.Demos.Tests_LinqExpr_LinqMethodsUnitDemos.cs-66]:Neomaster.Demos.Tests/LinqExpr/LinqMethodsUnitDemos.cs#L1321
+[Neomaster.Demos.Tests_LinqExpr_LinqMethodsUnitDemos.cs-67]:Neomaster.Demos.Tests/LinqExpr/LinqMethodsUnitDemos.cs#L1338
+[Neomaster.Demos.Tests_LinqExpr_LinqMethodsUnitDemos.cs-68]:Neomaster.Demos.Tests/LinqExpr/LinqMethodsUnitDemos.cs#L1372
+[Neomaster.Demos.Tests_LinqExpr_LinqMethodsUnitDemos.cs-69]:Neomaster.Demos.Tests/LinqExpr/LinqMethodsUnitDemos.cs#L1406
+
+
 </details>
