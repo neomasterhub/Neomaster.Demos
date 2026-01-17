@@ -1351,6 +1351,40 @@ public class LinqMethodsUnitDemos(ITestOutputHelper output)
       union2);
   }
 
+  [Fact(DisplayName = "`UnionBy()`")]
+  public void UnionBy()
+  {
+    var dep1 = new Department();
+    var dep2 = new Department();
+    var dep3 = new Department();
+    var users1 = new User[]
+    {
+      new() { Id = "1", Department = dep1 },
+      new() { Id = ".", Department = dep1 },
+      new() { Id = "2", Department = dep2 },
+      new() { Id = ".", Department = dep2 },
+    };
+    var users2 = new User[]
+    {
+      new() { Id = ".", Department = dep1 },
+      new() { Id = ".", Department = dep1 },
+      new() { Id = ".", Department = dep2 },
+      new() { Id = ".", Department = dep2 },
+      new() { Id = "3", Department = dep3 },
+      new() { Id = ".", Department = dep3 },
+    };
+
+    var union = users1.UnionBy(users2, u => u.Department);
+
+    Assert.Equal(
+      [
+        "1",
+        "2",
+        "3",
+      ],
+      union.Select(u => u.Id));
+  }
+
   [Fact(DisplayName = "`Zip()`")]
   public void Zip()
   {
