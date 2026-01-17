@@ -1290,4 +1290,30 @@ public class LinqMethodsUnitDemos(ITestOutputHelper output)
 
     Assert.Throws<ArgumentException>(() => Enumerable.Repeat(1, 2).ToDictionary(k => k));
   }
+
+  [Fact(DisplayName = "`ToLookup()`")]
+  public void ToLookup()
+  {
+    var lp1 = Enumerable.Range(1, 3).ToLookup(k => k * 10);
+    var lp2 = Enumerable.Range(1, 3).ToLookup(k => k * 10, v => v * 100);
+    var lp3 = Enumerable.Repeat(1, 3).ToLookup(k => k * 10, v => v * 100);
+
+    Assert.All(lp1, (a, i) =>
+    {
+      Assert.True(a is IGrouping<int, int>);
+      Assert.Equal((i + 1) * 10, a.Key);
+      Assert.Equal([i + 1], a);
+    });
+
+    Assert.All(lp2, (a, i) =>
+    {
+      Assert.Equal((i + 1) * 10, a.Key);
+      Assert.Equal([(i + 1) * 100], a);
+    });
+
+    Assert.Single(lp3);
+    var lp3Item = lp3.Single();
+    Assert.Equal(10, lp3Item.Key);
+    Assert.Equal([100, 100, 100], lp3Item);
+  }
 }
