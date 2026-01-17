@@ -1317,6 +1317,23 @@ public class LinqMethodsUnitDemos(ITestOutputHelper output)
     Assert.Equal([100, 100, 100], lp3Item);
   }
 
+  [Fact(DisplayName = "`TryGetNonEnumeratedCount()`")]
+  public void TryGetNonEnumeratedCount()
+  {
+    var col = new[] { 1 };
+
+    static IEnumerable<int> Stream()
+    {
+      yield return 1;
+    }
+
+    Assert.True(col.TryGetNonEnumeratedCount(out var count1));
+    Assert.Equal(1, count1);
+
+    Assert.False(Stream().TryGetNonEnumeratedCount(out var count2));
+    Assert.Equal(0, count2);
+  }
+
   [Fact(DisplayName = "`Union()`")]
   public void Union()
   {
