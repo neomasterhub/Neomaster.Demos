@@ -44,3 +44,21 @@ void Fundamentals::StdEndl_AsFunc()
   // Line 1
   // Line 2
 }
+
+/// <summary>
+/// Inserts a null character ('\0') into the output stream.
+/// </summary>
+void Fundamentals::StdEnds()
+{
+  std::ostringstream sout;
+  sout << "1" << std::ends << "2";
+
+  for (char c : sout.str())
+  {
+    std::cout << int(c) << '\n';
+  }
+
+  // 49
+  // 0
+  // 50
+}

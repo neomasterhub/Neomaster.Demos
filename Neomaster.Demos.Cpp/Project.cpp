@@ -3,5 +3,5 @@
 
 int main()
 {
-  Fundamentals::StdEndl_AsFunc();
+  Fundamentals::StdEnds();
 }
