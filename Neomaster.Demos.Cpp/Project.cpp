@@ -1,7 +1,7 @@
 #include <windows.h>
-#include <iostream>
+#include "Fundamentals.h"
 
 int main()
 {
-    std::cout << "Hello World!\n";
+  Fundamentals::HelloWorld();
 }
