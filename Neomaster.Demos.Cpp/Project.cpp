@@ -3,5 +3,5 @@
 
 int main()
 {
-  Fundamentals::HelloWorld();
+  Fundamentals::StdEndl_AsFunc();
 }
