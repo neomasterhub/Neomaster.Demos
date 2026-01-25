@@ -26,7 +26,12 @@ public:
   static void StdEnds();
 
   /// <summary>
-  /// cin.get() waits and reads the first character from the standard input.
+  /// Waits and reads the first character from the standard input.
   /// </summary>
   static void CinGet();
+
+  /// <summary>
+  /// Waits and reads the typed line without '\n' from the standard input.
+  /// </summary>
+  static void StdGetLine();
 };
