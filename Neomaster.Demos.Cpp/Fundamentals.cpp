@@ -2,18 +2,11 @@
 #include <iostream>
 #include <sstream>
 
-/// <summary>
-/// Prints "Hello World! 123" to the standard output.
-/// </summary>
 void Fundamentals::HelloWorld()
 {
   std::cout << "Hello " << "World! " << 123;
 }
 
-/// <summary>
-/// Inserts a newline and flushes the output buffer.
-/// Used as an argument to the output stream operator.
-/// </summary>
 void Fundamentals::StdEndl_AsArg()
 {
   std::cout << "Line 1" << std::endl;
@@ -31,10 +24,6 @@ void Fundamentals::StdEndl_AsArg()
   //
 }
 
-/// <summary>
-/// Inserts a newline and flushes the output buffer.
-/// Used as a function taking the output stream as an argument.
-/// </summary>
 void Fundamentals::StdEndl_AsFunc()
 {
   std::cout << "Line 1";
@@ -45,9 +34,6 @@ void Fundamentals::StdEndl_AsFunc()
   // Line 2
 }
 
-/// <summary>
-/// Inserts a null character ('\0') into the output stream.
-/// </summary>
 void Fundamentals::StdEnds()
 {
   std::ostringstream sout;
@@ -61,4 +47,18 @@ void Fundamentals::StdEnds()
   // 49
   // 0
   // 50
+}
+
+void Fundamentals::CinGet()
+{
+  std::cout << "Press 'q', 'w', 'e', 'Enter'.\n";
+
+  std::cout << (char)std::cin.get(); // q
+  std::cout << (char)std::cin.get(); // w
+  std::cout << (char)std::cin.get(); // e
+  std::cout << std::cin.get(); // 10
+
+  // qwe
+  // (Enter) sends the typed line to the input buffer.
+  // qwe10
 }

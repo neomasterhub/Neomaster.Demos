@@ -3,5 +3,5 @@
 
 int main()
 {
-  Fundamentals::StdEnds();
+  Fundamentals::CinGet();
 }
