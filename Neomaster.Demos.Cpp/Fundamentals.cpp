@@ -70,8 +70,8 @@ void Fundamentals::StdGetLine()
 
   std::getline(std::cin, line);
   std::cout << line.length() << '\n';
-  std::cout << line << std::endl;
+  std::cout << line << '.';
 
   // 3
-  // qwe
+  // qwe.
 }
