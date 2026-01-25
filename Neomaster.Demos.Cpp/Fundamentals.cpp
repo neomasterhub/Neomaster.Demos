@@ -62,3 +62,16 @@ void Fundamentals::CinGet()
   // (Enter) sends the typed line to the input buffer.
   // qwe10
 }
+
+void Fundamentals::StdGetLine()
+{
+  std::string line;
+  std::cout << "Press 'q', 'w', 'e', 'Enter'.\n";
+
+  std::getline(std::cin, line);
+  std::cout << line.length() << '\n';
+  std::cout << line << std::endl;
+
+  // 3
+  // qwe
+}
