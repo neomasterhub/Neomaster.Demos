@@ -62,3 +62,20 @@ void Fundamentals::StdEnds()
   // 0
   // 50
 }
+
+/// <summary>
+/// cin.get() waits and reads the first character from the standard input.
+/// </summary>
+void Fundamentals::CinGet()
+{
+  std::cout << "Press 'q', 'w', 'e', 'Enter'.\n";
+
+  std::cout << (char)std::cin.get(); // q
+  std::cout << (char)std::cin.get(); // w
+  std::cout << (char)std::cin.get(); // e
+  std::cout << std::cin.get(); // 10
+
+  // qwe
+  // (Enter) sends the typed line to the input buffer.
+  // qwe10
+}
