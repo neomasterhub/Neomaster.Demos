@@ -4,10 +4,16 @@
 class Menu
 {
 private:
+
   int _curY;
   int _curYMin;
   int _curYMax;
+
   std::vector<MenuItem> _items;
+
+  void ShowCommands();
+
 public:
+
   Menu();
 };
