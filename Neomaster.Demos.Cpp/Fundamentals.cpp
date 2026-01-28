@@ -76,7 +76,7 @@ void Fundamentals::StdGetLine()
   // qwe.
 }
 
-void Fundamentals::CinToVar()
+void Fundamentals::CinNextWordToVar()
 {
   std::string word1;
   std::string word2;
@@ -87,4 +87,7 @@ void Fundamentals::CinToVar()
 
   std::cout << word1 << "\n";
   std::cout << word2 << "\n";
+
+  // ab
+  // cd
 }

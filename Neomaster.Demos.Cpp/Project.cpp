@@ -3,5 +3,5 @@
 
 int main()
 {
-  Fundamentals::CinToVar();
+  Fundamentals::CinNextWordToVar();
 }

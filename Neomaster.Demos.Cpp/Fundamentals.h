@@ -38,5 +38,5 @@ public:
   /// <summary>
   /// Waits and writes the next sequence of printable characters into a variable.
   /// </summary>
-  static void CinToVar();
+  static void CinNextWordToVar();
 };
