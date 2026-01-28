@@ -1,12 +1,11 @@
 #include "Menu.h"
+#include "Fundamentals.h"
 
 Menu::Menu()
 {
   _items =
   {
-    MenuItem("1"),
-    MenuItem("2"),
-    MenuItem("3"),
+    MenuItem("1. Hello, World", []() { Fundamentals::HelloWorld(); }),
   };
 
   _curYMin = 8;
