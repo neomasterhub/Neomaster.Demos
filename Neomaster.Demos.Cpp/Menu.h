@@ -1,8 +1,10 @@
 #pragma once
 #include "MenuItem.h"
 #include <vector>
-static class Menu
+class Menu
 {
 private:
-  static std::vector<MenuItem> _items;
+  std::vector<MenuItem> _items;
+public:
+  Menu();
 };
