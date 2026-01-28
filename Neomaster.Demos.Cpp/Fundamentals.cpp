@@ -75,3 +75,16 @@ void Fundamentals::StdGetLine()
   // 3
   // qwe.
 }
+
+void Fundamentals::CinToVar()
+{
+  std::string word1;
+  std::string word2;
+  std::cout << "Print \" ab  cd \"\n";
+
+  std::cin >> word1;
+  std::cin >> word2;
+
+  std::cout << word1 << "\n";
+  std::cout << word2 << "\n";
+}

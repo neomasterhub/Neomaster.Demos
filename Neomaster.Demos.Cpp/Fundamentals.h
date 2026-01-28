@@ -34,4 +34,9 @@ public:
   /// Waits and reads the typed line without '\n' from the standard input.
   /// </summary>
   static void StdGetLine();
+
+  /// <summary>
+  /// Waits and writes the next sequence of printable characters into a variable.
+  /// </summary>
+  static void CinToVar();
 };
