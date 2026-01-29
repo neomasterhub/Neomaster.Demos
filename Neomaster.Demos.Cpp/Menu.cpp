@@ -7,8 +7,8 @@ Menu::Menu()
   _items =
   {
     MenuItem("1. Hello, World", []() { Fundamentals::HelloWorld(); }),
-    MenuItem("2. ", []() { }),
-    MenuItem("3. ", []() { }),
+    MenuItem("2. ", []() {}),
+    MenuItem("3. ", []() {}),
   };
 
   _selectedY = -1;
@@ -66,22 +66,22 @@ void Menu::ShowCommands()
 
   for (size_t i = 0; i < _itemCount; i++)
   {
-    if (i == _selectedY)
-    {
-      std::cout << "*";
-    }
-    else
-    {
-      std::cout << " ";
-    }
-
     if (i == _curY)
     {
-      std::cout << "[" << _items[i].Text << "]\n";
+      std::cout << "👉 ";
     }
     else
     {
-      std::cout << " " << _items[i].Text << "\n";
+      std::cout << "   ";
     }
+
+    std::cout << _items[i].Text;
+
+    if (i == _selectedY)
+    {
+      std::cout << " 👀";
+    }
+
+    std::cout << "\n";
   }
 }
