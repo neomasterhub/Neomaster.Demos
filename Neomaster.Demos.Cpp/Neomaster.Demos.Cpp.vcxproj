@@ -130,7 +130,6 @@
   <ItemGroup>
     <ClCompile Include="Fundamentals.cpp" />
     <ClCompile Include="Menu.cpp" />
-    <ClCompile Include="MenuItem.cpp" />
     <ClCompile Include="Project.cpp" />
   </ItemGroup>
   <ItemGroup>
