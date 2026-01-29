@@ -135,6 +135,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Fundamentals.h" />
+    <ClInclude Include="Helpers.h" />
     <ClInclude Include="Menu.h" />
     <ClInclude Include="MenuItem.h" />
   </ItemGroup>
