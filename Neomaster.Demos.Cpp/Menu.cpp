@@ -11,8 +11,9 @@ Menu::Menu()
     MenuItem("3. ", []() { }),
   };
 
-  _curYMin = 8;
-  _curYMax = _curYMin + _items.size() - 1;
+  _itemCount = _items.size();
+  _curYMin = 0;
+  _curYMax = _curYMin + _itemCount - 1;
   _curY = _curYMin;
 }
 
@@ -58,5 +59,9 @@ void Menu::ShowCommands()
   // Clear screen
   std::cout << "\033[2J\033[H";
 
-  std::cout << _curY;
+  std::string selectedMarker;
+  for (size_t i = 0; i < _itemCount; i++)
+  {
+    std::cout << _items[i].Text << "\n";
+  }
 }
