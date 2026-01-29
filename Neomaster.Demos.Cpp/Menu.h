@@ -9,6 +9,7 @@ private:
   int _curYMin;
   int _curYMax;
   int _itemCount;
+  int _selectedY;
 
   std::vector<MenuItem> _items;
 

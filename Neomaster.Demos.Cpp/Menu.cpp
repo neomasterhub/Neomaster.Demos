@@ -47,6 +47,10 @@ void Menu::Show()
         _curY = _curYMin;
       }
       break;
+
+    case 13:
+      _selectedY = _curY;
+      break;
     }
 
     ShowCommands();
