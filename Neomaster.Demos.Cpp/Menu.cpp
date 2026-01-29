@@ -7,6 +7,8 @@ Menu::Menu()
   _items =
   {
     MenuItem("1. Hello, World", []() { Fundamentals::HelloWorld(); }),
+    MenuItem("2. ", []() { }),
+    MenuItem("3. ", []() { }),
   };
 
   _curYMin = 8;
@@ -23,6 +25,27 @@ void Menu::Show()
   {
     switch (key)
     {
+    case 72:
+      if (_curY > _curYMin)
+      {
+        _curY--;
+      }
+      else
+      {
+        _curY = _curYMax;
+      }
+      break;
+
+    case 80:
+      if (_curY < _curYMax)
+      {
+        _curY++;
+      }
+      else
+      {
+        _curY = _curYMin;
+      }
+      break;
     }
 
     ShowCommands();
