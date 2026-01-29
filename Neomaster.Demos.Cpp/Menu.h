@@ -16,4 +16,5 @@ private:
 public:
 
   Menu();
+  void Show();
 };

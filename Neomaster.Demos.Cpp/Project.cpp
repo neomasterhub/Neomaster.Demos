@@ -1,7 +1,7 @@
-#include <windows.h>
-#include "Fundamentals.h"
+#include "Menu.h"
 
-int main()
+void main()
 {
-  Fundamentals::CinNextWordToVar();
+  Menu menu = Menu();
+  menu.Show();
 }
