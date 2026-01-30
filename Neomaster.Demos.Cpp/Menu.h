@@ -10,6 +10,7 @@ private:
   int _curYMax;
   int _itemCount;
   int _selectedY;
+  bool _runDemo;
 
   std::vector<MenuItem> _items;
 

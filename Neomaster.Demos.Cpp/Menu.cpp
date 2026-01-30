@@ -1,6 +1,7 @@
 #include "Menu.h"
 #include "Fundamentals.h"
 #include "Helpers.h"
+#include <functional>
 
 Menu::Menu()
 {
@@ -11,6 +12,7 @@ Menu::Menu()
     MenuItem("3. ", []() {}),
   };
 
+  _runDemo = false;
   _selectedY = -1;
   _itemCount = _items.size();
   _curYMin = 0;
@@ -51,6 +53,7 @@ void Menu::Show()
 
     case 13:
       _selectedY = _curY;
+      _runDemo = true;
       break;
     }
 
@@ -63,6 +66,8 @@ void Menu::ShowCommands()
 {
   // Clear screen
   std::cout << "\033[2J\033[H";
+
+  int demoIndex = -1;
 
   for (size_t i = 0; i < _itemCount; i++)
   {
@@ -80,8 +85,17 @@ void Menu::ShowCommands()
     if (i == _selectedY)
     {
       std::cout << " 👀";
+      demoIndex = i;
     }
 
     std::cout << "\n";
+  }
+
+  std::cout << "\n";
+
+  if (_runDemo && demoIndex >= _curYMin)
+  {
+    //_runDemo = false;
+    _items[demoIndex].Action();
   }
 }
