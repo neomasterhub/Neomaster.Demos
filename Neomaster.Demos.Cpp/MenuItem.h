@@ -5,11 +5,11 @@ class MenuItem
 {
 public:
   std::string Text;
-  std::function<void()> Action;
+  std::function<std::string()> Action;
 
   MenuItem(
     std::string text,
-    std::function<void()> action)
+    std::function<std::string()> action)
   {
     Text = text;
     Action = action;
