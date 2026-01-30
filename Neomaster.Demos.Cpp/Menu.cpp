@@ -1,17 +1,10 @@
 #include "Menu.h"
-#include "Fundamentals.h"
 #include "Helpers.h"
 #include <functional>
 
-Menu::Menu()
+Menu::Menu(std::vector<MenuItem> items)
 {
-  _items =
-  {
-    MenuItem("1. Hello, World", []() { return Fundamentals::HelloWorld(); }),
-    MenuItem("2. ", []() { return "1"; }),
-    MenuItem("3. ", []() { return "2"; }),
-  };
-
+  _items = items;
   _runDemo = false;
   _selectedY = -1;
   _itemCount = _items.size();
@@ -80,7 +73,7 @@ void Menu::ShowCommands()
       std::cout << "   ";
     }
 
-    std::cout << _items[i].Text;
+    std::cout << i + 1 << ". " << _items[i].Text;
 
     if (i == _selectedY)
     {

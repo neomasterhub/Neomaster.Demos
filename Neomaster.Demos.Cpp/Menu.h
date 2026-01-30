@@ -18,6 +18,6 @@ private:
 
 public:
 
-  Menu();
+  Menu(std::vector<MenuItem> items);
   void Show();
 };
