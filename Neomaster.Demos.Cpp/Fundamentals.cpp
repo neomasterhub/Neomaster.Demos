@@ -2,12 +2,14 @@
 #include <iostream>
 #include <sstream>
 
-void Fundamentals::HelloWorld()
+std::string Fundamentals::HelloWorld()
 {
   std::cout << "Hello " << "World! " << 123;
+
+  return "";
 }
 
-void Fundamentals::StdEndl_AsArg()
+std::string Fundamentals::StdEndl_AsArg()
 {
   std::cout << "Line 1" << std::endl;
   std::cout << "Line 2" << std::endl;
@@ -22,9 +24,11 @@ void Fundamentals::StdEndl_AsArg()
   // Line 3
   // Line 4
   //
+
+  return "";
 }
 
-void Fundamentals::StdEndl_AsFunc()
+std::string Fundamentals::StdEndl_AsFunc()
 {
   std::cout << "Line 1";
   std::endl(std::cout);
@@ -32,9 +36,11 @@ void Fundamentals::StdEndl_AsFunc()
 
   // Line 1
   // Line 2
+
+  return "";
 }
 
-void Fundamentals::StdEnds()
+std::string Fundamentals::StdEnds()
 {
   std::ostringstream sout;
   sout << "1" << std::ends << "2";
@@ -47,9 +53,11 @@ void Fundamentals::StdEnds()
   // 49
   // 0
   // 50
+
+  return "";
 }
 
-void Fundamentals::CinGet()
+std::string Fundamentals::CinGet()
 {
   std::cout << "Press 'q', 'w', 'e', 'Enter'.\n";
 
@@ -61,9 +69,11 @@ void Fundamentals::CinGet()
   // qwe
   // (Enter) sends the typed line to the input buffer.
   // qwe10
+
+  return "";
 }
 
-void Fundamentals::StdGetLine()
+std::string Fundamentals::StdGetLine()
 {
   std::string line;
   std::cout << "Press 'q', 'w', 'e', 'Enter'.\n";
@@ -74,9 +84,11 @@ void Fundamentals::StdGetLine()
 
   // 3
   // qwe.
+
+  return "";
 }
 
-void Fundamentals::CinNextWordToVar()
+std::string Fundamentals::CinNextWordToVar()
 {
   std::string word1;
   std::string word2;
@@ -90,4 +102,6 @@ void Fundamentals::CinNextWordToVar()
 
   // ab
   // cd
+
+  return "";
 }

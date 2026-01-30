@@ -11,7 +11,7 @@ private:
   int _itemCount;
   int _selectedY;
   bool _runDemo;
-
+  std::string _demoResult;
   std::vector<MenuItem> _items;
 
   void ShowCommands();

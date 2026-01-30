@@ -7,9 +7,9 @@ Menu::Menu()
 {
   _items =
   {
-    MenuItem("1. Hello, World", []() { Fundamentals::HelloWorld(); }),
-    MenuItem("2. ", []() {}),
-    MenuItem("3. ", []() {}),
+    MenuItem("1. Hello, World", []() { return Fundamentals::HelloWorld(); }),
+    MenuItem("2. ", []() { return "1"; }),
+    MenuItem("3. ", []() { return "2"; }),
   };
 
   _runDemo = false;
@@ -84,8 +84,12 @@ void Menu::ShowCommands()
 
     if (i == _selectedY)
     {
-      std::cout << " 👀";
       demoIndex = i;
+
+      if (_runDemo || !_demoResult.empty())
+      {
+        std::cout << " 👀";
+      }
     }
 
     std::cout << "\n";
@@ -93,9 +97,11 @@ void Menu::ShowCommands()
 
   std::cout << "\n";
 
-  if (_runDemo && demoIndex >= _curYMin)
+  if (_runDemo)
   {
-    //_runDemo = false;
-    _items[demoIndex].Action();
+    _runDemo = false;
+    _demoResult = _items[demoIndex].Action();
   }
+
+  std::cout << _demoResult << std::endl;
 }
