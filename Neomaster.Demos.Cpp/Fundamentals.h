@@ -42,4 +42,6 @@ public:
   static std::string CinNextWordToVar();
 
   static std::string StringConstructors();
+
+  static std::string StringItemAccessors();
 };

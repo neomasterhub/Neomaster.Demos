@@ -16,6 +16,7 @@ void main()
       MenuItem("std::getline", []() { return Fundamentals::StdGetLine(); }),
       MenuItem("std::cin >>", []() { return Fundamentals::CinNextWordToVar(); }),
       MenuItem("string constructors", []() { return Fundamentals::StringConstructors(); }),
+      MenuItem("string item accessors: [], at()", []() { return Fundamentals::StringItemAccessors(); }),
     });
   menu.Show();
 }
