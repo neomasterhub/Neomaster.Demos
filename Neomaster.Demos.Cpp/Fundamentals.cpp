@@ -105,3 +105,27 @@ std::string Fundamentals::CinNextWordToVar()
 
   return "";
 }
+
+std::string Fundamentals::StringConstructors()
+{
+  std::string s1;
+  std::string s2 = std::string();
+  std::string s3 = std::string("Hello, World!!!");
+  std::string s4 = std::string(s3);
+  std::string s5 = std::string(s3, 7);
+  std::string s6 = std::string(s3, 7, 5);
+  std::string s7 = std::string(2, 'A');
+  std::string s8 = std::string(2, 97);
+
+  std::cout << "s1: \"" << s1 << "\"\n"; // ""
+  std::cout << "s2: \"" << s2 << "\"\n"; // ""
+  std::cout << "s3: \"" << s3 << "\"\n"; // "Hello, World!!!"
+  s3 = "";
+  std::cout << "s4: \"" << s4 << "\"\n"; // "Hello, World!!!"
+  std::cout << "s5: \"" << s5 << "\"\n"; // "World!!!"
+  std::cout << "s6: \"" << s6 << "\"\n"; // "World"
+  std::cout << "s7: \"" << s7 << "\"\n"; // "AA"
+  std::cout << "s8: \"" << s8 << "\"\n"; // "aa"
+
+  return "";
+}
