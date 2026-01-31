@@ -129,3 +129,28 @@ std::string Fundamentals::StringConstructors()
 
   return "";
 }
+
+std::string Fundamentals::StringItemAccessors()
+{
+  std::string s = "Hello, World!!!";
+
+  s[5] = ';';
+
+  std::cout << "s[0]: \"" << s[0] << "\"\n";         // "H"
+  std::cout << "s[5]: \"" << s[5] << "\"\n";         // ";"
+  std::cout << "s.at(12): \"" << s.at(12) << "\"\n"; // "!"
+
+  // Undefined behavior
+  // s[-1]
+
+  try
+  {
+    s.at(-1);
+  }
+  catch (const std::out_of_range& ex)
+  {
+    std::cout << "s.at(-1): " << ex.what(); // invalid string position
+  }
+
+  return "";
+}
