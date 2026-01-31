@@ -40,4 +40,6 @@ public:
   /// Waits and writes the next sequence of printable characters into a variable.
   /// </summary>
   static std::string CinNextWordToVar();
+
+  static std::string StringConstructors();
 };
