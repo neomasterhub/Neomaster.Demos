@@ -2,8 +2,9 @@
 #include "Helpers.h"
 #include <functional>
 
-Menu::Menu(std::vector<MenuItem> items)
+Menu::Menu(std::string header, std::vector<MenuItem> items)
 {
+  _header = header;
   _items = items;
   _runDemo = false;
   _selectedY = -1;
@@ -62,6 +63,8 @@ void Menu::Show()
 void Menu::ShowCommands()
 {
   system("cls");
+
+  std::cout << _header << "\n";
 
   int demoIndex = -1;
 

@@ -7,6 +7,7 @@ void main()
   SetConsoleOutputCP(CP_UTF8);
 
   Menu menu = Menu(
+    "Fundamentals",
     {
       MenuItem("Hello, World; std:cout <<", []() { return Fundamentals::HelloWorld(); }),
       MenuItem("std::endl as arg", []() { return Fundamentals::StdEndl_AsArg(); }),
