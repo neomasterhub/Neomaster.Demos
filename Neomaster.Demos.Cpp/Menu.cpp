@@ -48,6 +48,10 @@ void Menu::Show()
       _selectedY = _curY;
       _runDemo = true;
       break;
+
+    case 32:
+      system("cls");
+      break;
     }
 
     ShowCommands();
@@ -57,8 +61,7 @@ void Menu::Show()
 
 void Menu::ShowCommands()
 {
-  // Clear screen
-  std::cout << "\033[2J\033[H";
+  system("cls");
 
   int demoIndex = -1;
 
