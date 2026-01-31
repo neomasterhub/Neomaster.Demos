@@ -11,6 +11,7 @@ private:
   int _itemCount;
   int _selectedY;
   bool _runDemo;
+  std::string _header;
   std::string _demoResult;
   std::vector<MenuItem> _items;
 
@@ -18,6 +19,6 @@ private:
 
 public:
 
-  Menu(std::vector<MenuItem> items);
+  Menu(std::string header, std::vector<MenuItem> items);
   void Show();
 };
