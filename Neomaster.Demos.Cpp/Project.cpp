@@ -18,6 +18,7 @@ void main()
       MenuItem("std::cin >>", []() { return Fundamentals::CinNextWordToVar(); }),
       MenuItem("string constructors", []() { return Fundamentals::StringConstructors(); }),
       MenuItem("string item accessors: [], at()", []() { return Fundamentals::StringItemAccessors(); }),
+      MenuItem("#pragma once", []() { return Fundamentals::PragmaOnce(); }),
     });
   menu.Show();
 }

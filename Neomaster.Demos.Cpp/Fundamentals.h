@@ -44,4 +44,6 @@ public:
   static std::string StringConstructors();
 
   static std::string StringItemAccessors();
+
+  static std::string PragmaOnce();
 };
