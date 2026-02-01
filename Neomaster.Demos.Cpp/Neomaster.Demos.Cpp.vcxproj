@@ -133,6 +133,8 @@
     <ClCompile Include="Project.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Ball.h" />
+    <ClInclude Include="Box.h" />
     <ClInclude Include="Fundamentals.h" />
     <ClInclude Include="Helpers.h" />
     <ClInclude Include="Menu.h" />

@@ -1,4 +1,6 @@
 #include "Fundamentals.h"
+#include "Ball.h"
+#include "Box.h"
 #include <iostream>
 #include <sstream>
 
@@ -151,6 +153,18 @@ std::string Fundamentals::StringItemAccessors()
   {
     std::cout << "s.at(-1): " << ex.what(); // invalid string position
   }
+
+  return "";
+}
+
+std::string Fundamentals::PragmaOnce()
+{
+  Box box;
+
+  std::cout << "Ball.h without '#pragma once':\n\n";
+  std::cout << "#include \"Ball.h\"\n";
+  std::cout << "#include \"Box.h\"\n";
+  std::cout << "Box box; -> 'Ball': 'class' type redefinition\n";
 
   return "";
 }
