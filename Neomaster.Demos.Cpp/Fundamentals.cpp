@@ -168,3 +168,10 @@ std::string Fundamentals::PragmaOnce()
 
   return "";
 }
+
+std::string Fundamentals::GetTypeName()
+{
+  std::cout << typeid(1).name();
+
+  return "";
+}
