@@ -168,3 +168,12 @@ std::string Fundamentals::PragmaOnce()
 
   return "";
 }
+
+std::string Fundamentals::GetTypeName()
+{
+  std::cout << "1 - " << typeid(1).name() << '\n';
+  std::cout << "'c' - " << typeid('c').name() << '\n';
+  std::cout << "\"str\" - " << typeid("str").name() << '\n';
+
+  return "";
+}

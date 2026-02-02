@@ -46,4 +46,6 @@ public:
   static std::string StringItemAccessors();
 
   static std::string PragmaOnce();
+
+  static std::string GetTypeName();
 };

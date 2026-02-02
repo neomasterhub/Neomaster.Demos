@@ -19,6 +19,7 @@ void main()
       MenuItem("string constructors", []() { return Fundamentals::StringConstructors(); }),
       MenuItem("string item accessors: [], at()", []() { return Fundamentals::StringItemAccessors(); }),
       MenuItem("#pragma once", []() { return Fundamentals::PragmaOnce(); }),
+      MenuItem("Get type name", []() { return Fundamentals::GetTypeName(); }),
     });
   menu.Show();
 }
