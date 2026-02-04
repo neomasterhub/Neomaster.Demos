@@ -20,6 +20,9 @@ void main()
       MenuItem("string item accessors: [], at()", []() { return Fundamentals::StringItemAccessors(); }),
       MenuItem("#pragma once", []() { return Fundamentals::PragmaOnce(); }),
       MenuItem("Get type name", []() { return Fundamentals::GetTypeName(); }),
+      MenuItem("Pointer", []() { return Fundamentals::Pointer(); }),
+      MenuItem("Pointer arg", []() { return Fundamentals::PointerArg(); }),
+      MenuItem("nullptr", []() { return Fundamentals::Nullptr(); }),
     });
   menu.Show();
 }

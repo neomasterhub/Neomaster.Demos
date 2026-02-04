@@ -177,3 +177,67 @@ std::string Fundamentals::GetTypeName()
 
   return "";
 }
+
+std::string Fundamentals::Pointer()
+{
+  int x = 1;
+  int* xPtr = &x;
+  int xPtrVal = *xPtr;
+
+  std::cout << "xPtr   : " << xPtr << "\n";
+  std::cout << "xPtrVal: " << xPtrVal << "\n";
+
+  std::cout << "types:\n";
+
+  std::cout << "xPtr   : \"" << typeid(xPtr).name() << "\"\n";
+  std::cout << "xPtrVal: \"" << typeid(xPtrVal).name() << "\"\n";
+
+  // xPtr   : 0000004AA6BBD554
+  // xPtrVal: 1
+  // types:
+  // xPtr   : "int * __ptr64"
+  // xPtrVal: "int"
+
+  // __ptr64 is an MSVC-specific annotation indicating a 64-bit pointer
+
+  return "";
+}
+
+static void Add10V(int x)
+{
+  x += 10;
+}
+
+static void Add10P(int* xPtr)
+{
+  *xPtr += 10;
+}
+
+std::string Fundamentals::PointerArg()
+{
+  int x = 1;
+
+  Add10V(x);
+  std::cout << "x after Add10V(x): " << x << "\n"; // 1
+  Add10P(&x);
+  std::cout << "x after Add10P(&x): " << x << "\n"; // 11
+
+  return "";
+}
+
+std::string Fundamentals::Nullptr()
+{
+  int* x = nullptr;
+
+  std::cout << "x: " << x << "\n\n";
+
+  // *x = 1;
+
+  std::cout
+    << "*x = 1;\n ->"
+    << "Unhandled exception thrown:\n"
+    << "write access violation.\n"
+    << "x was nullptr.\n";
+
+  return "";
+}
