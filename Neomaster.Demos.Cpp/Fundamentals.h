@@ -48,4 +48,6 @@ public:
   static std::string PragmaOnce();
 
   static std::string GetTypeName();
+
+  static std::string Pointer();
 };

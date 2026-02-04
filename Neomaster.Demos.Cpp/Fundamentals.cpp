@@ -177,3 +177,28 @@ std::string Fundamentals::GetTypeName()
 
   return "";
 }
+
+std::string Fundamentals::Pointer()
+{
+  int x = 1;
+  int* xPtr = &x;
+  int xPtrVal = *xPtr;
+
+  std::cout << "xPtr   : " << xPtr << "\n";
+  std::cout << "xPtrVal: " << xPtrVal << "\n";
+
+  std::cout << "types:\n";
+
+  std::cout << "xPtr   : \"" << typeid(xPtr).name() << "\"\n";
+  std::cout << "xPtrVal: \"" << typeid(xPtrVal).name() << "\"\n";
+
+  // xPtr   : 0000004AA6BBD554
+  // xPtrVal: 1
+  // types:
+  // xPtr   : "int * __ptr64"
+  // xPtrVal: "int"
+
+  // __ptr64 is an MSVC-specific annotation indicating a 64-bit pointer
+
+  return "";
+}
