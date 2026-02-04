@@ -50,4 +50,6 @@ public:
   static std::string GetTypeName();
 
   static std::string Pointer();
+
+  static std::string PointerArg();
 };

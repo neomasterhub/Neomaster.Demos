@@ -202,3 +202,25 @@ std::string Fundamentals::Pointer()
 
   return "";
 }
+
+static void Add10V(int x)
+{
+  x += 10;
+}
+
+static void Add10P(int* xPtr)
+{
+  *xPtr += 10;
+}
+
+std::string Fundamentals::PointerArg()
+{
+  int x = 1;
+
+  Add10V(x);
+  std::cout << "x after Add10V(x): " << x << "\n"; // 1
+  Add10P(&x);
+  std::cout << "x after Add10P(&x): " << x << "\n"; // 11
+
+  return "";
+}

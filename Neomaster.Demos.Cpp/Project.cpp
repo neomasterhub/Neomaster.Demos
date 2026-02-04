@@ -21,6 +21,7 @@ void main()
       MenuItem("#pragma once", []() { return Fundamentals::PragmaOnce(); }),
       MenuItem("Get type name", []() { return Fundamentals::GetTypeName(); }),
       MenuItem("Pointer", []() { return Fundamentals::Pointer(); }),
+      MenuItem("Pointer arg", []() { return Fundamentals::PointerArg(); }),
     });
   menu.Show();
 }
