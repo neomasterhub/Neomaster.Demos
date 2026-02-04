@@ -224,3 +224,20 @@ std::string Fundamentals::PointerArg()
 
   return "";
 }
+
+std::string Fundamentals::Nullptr()
+{
+  int* x = nullptr;
+
+  std::cout << "x: " << x << "\n\n";
+
+  // *x = 1;
+
+  std::cout
+    << "*x = 1;\n ->"
+    << "Unhandled exception thrown:\n"
+    << "write access violation.\n"
+    << "x was nullptr.\n";
+
+  return "";
+}

@@ -52,4 +52,6 @@ public:
   static std::string Pointer();
 
   static std::string PointerArg();
+
+  static std::string Nullptr();
 };

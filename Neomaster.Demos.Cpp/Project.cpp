@@ -22,6 +22,7 @@ void main()
       MenuItem("Get type name", []() { return Fundamentals::GetTypeName(); }),
       MenuItem("Pointer", []() { return Fundamentals::Pointer(); }),
       MenuItem("Pointer arg", []() { return Fundamentals::PointerArg(); }),
+      MenuItem("nullptr", []() { return Fundamentals::Nullptr(); }),
     });
   menu.Show();
 }
