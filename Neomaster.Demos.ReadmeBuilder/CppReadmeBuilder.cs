@@ -63,7 +63,7 @@ internal class CppReadmeBuilder
 
         testNumber++;
         var item = $"{testNumber}. [{testName}][{linkPrefix}-{testNumber}]";
-        var link = $"[{linkPrefix}-{testNumber}]:{localPath}#{sourceFileTestIndex}";
+        var link = $"[{linkPrefix}-{testNumber}]:{localPath}#L{sourceFileTestIndex + 1}";
 
         items.AppendLine(item);
         links.AppendLine(link);
