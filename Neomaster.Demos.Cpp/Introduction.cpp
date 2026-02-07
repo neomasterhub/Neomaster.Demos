@@ -1,17 +1,17 @@
-#include "Fundamentals.h"
+#include "Introduction.h"
 #include "Ball.h"
 #include "Box.h"
 #include <iostream>
 #include <sstream>
 
-std::string Fundamentals::HelloWorld()
+std::string Introduction::HelloWorld()
 {
   std::cout << "Hello " << "World! " << 123;
 
   return "";
 }
 
-std::string Fundamentals::StdEndl_AsArg()
+std::string Introduction::StdEndl_AsArg()
 {
   std::cout << "Line 1" << std::endl;
   std::cout << "Line 2" << std::endl;
@@ -30,7 +30,7 @@ std::string Fundamentals::StdEndl_AsArg()
   return "";
 }
 
-std::string Fundamentals::StdEndl_AsFunc()
+std::string Introduction::StdEndl_AsFunc()
 {
   std::cout << "Line 1";
   std::endl(std::cout);
@@ -42,7 +42,7 @@ std::string Fundamentals::StdEndl_AsFunc()
   return "";
 }
 
-std::string Fundamentals::StdEnds()
+std::string Introduction::StdEnds()
 {
   std::ostringstream sout;
   sout << "1" << std::ends << "2";
@@ -59,7 +59,7 @@ std::string Fundamentals::StdEnds()
   return "";
 }
 
-std::string Fundamentals::CinGet()
+std::string Introduction::CinGet()
 {
   std::cout << "Press 'q', 'w', 'e', 'Enter'.\n";
 
@@ -75,7 +75,7 @@ std::string Fundamentals::CinGet()
   return "";
 }
 
-std::string Fundamentals::StdGetLine()
+std::string Introduction::StdGetLine()
 {
   std::string line;
   std::cout << "Press 'q', 'w', 'e', 'Enter'.\n";
@@ -90,7 +90,7 @@ std::string Fundamentals::StdGetLine()
   return "";
 }
 
-std::string Fundamentals::CinNextWordToVar()
+std::string Introduction::CinNextWordToVar()
 {
   std::string word1;
   std::string word2;
@@ -108,7 +108,7 @@ std::string Fundamentals::CinNextWordToVar()
   return "";
 }
 
-std::string Fundamentals::StringConstructors()
+std::string Introduction::StringConstructors()
 {
   std::string s1;
   std::string s2 = std::string();
@@ -132,7 +132,7 @@ std::string Fundamentals::StringConstructors()
   return "";
 }
 
-std::string Fundamentals::StringItemAccessors()
+std::string Introduction::StringItemAccessors()
 {
   std::string s = "Hello, World!!!";
 
@@ -157,7 +157,7 @@ std::string Fundamentals::StringItemAccessors()
   return "";
 }
 
-std::string Fundamentals::PragmaOnce()
+std::string Introduction::PragmaOnce()
 {
   Box box;
 
@@ -169,7 +169,7 @@ std::string Fundamentals::PragmaOnce()
   return "";
 }
 
-std::string Fundamentals::GetTypeName()
+std::string Introduction::GetTypeName()
 {
   std::cout << "1 - " << typeid(1).name() << '\n';
   std::cout << "'c' - " << typeid('c').name() << '\n';
@@ -178,7 +178,7 @@ std::string Fundamentals::GetTypeName()
   return "";
 }
 
-std::string Fundamentals::Pointer()
+std::string Introduction::Pointer()
 {
   int x = 1;
   int* xPtr = &x;
@@ -213,7 +213,7 @@ static void Add10P(int* xPtr)
   *xPtr += 10;
 }
 
-std::string Fundamentals::PointerArg()
+std::string Introduction::PointerArg()
 {
   int x = 1;
 
@@ -225,7 +225,7 @@ std::string Fundamentals::PointerArg()
   return "";
 }
 
-std::string Fundamentals::Nullptr()
+std::string Introduction::Nullptr()
 {
   int* x = nullptr;
 
