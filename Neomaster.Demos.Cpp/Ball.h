@@ -3,5 +3,7 @@
 #define BALL_H
 class Ball
 {
+public:
+  std::string Color;
 };
 #endif

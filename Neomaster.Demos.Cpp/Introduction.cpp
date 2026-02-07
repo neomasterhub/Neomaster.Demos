@@ -241,3 +241,23 @@ std::string Introduction::Nullptr()
 
   return "";
 }
+
+std::string Introduction::OpArrow()
+{
+  Ball ball = Ball();
+  ball.Color = "R";
+
+  Ball* ballPtr = &ball;
+  (*ballPtr).Color += "G";
+  ballPtr->Color += "B";
+
+  std::cout << "ball.Color:       " << ball.Color << "\n";
+  std::cout << "(*ballPtr).Color: " << (*ballPtr).Color << "\n";
+  std::cout << "ballPtr->Color:   " << ballPtr->Color << "\n";
+
+  // ball.Color:       RGB
+  // (*ballPtr).Color: RGB
+  // ballPtr->Color:   RGB
+
+  return "";
+}

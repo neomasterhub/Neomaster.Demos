@@ -82,4 +82,9 @@ public:
   /// DN: `nullptr`
   /// </summary>
   static std::string Nullptr();
+
+  /// <summary>
+  /// DN: Operator `->`
+  /// </summary>
+  static std::string OpArrow();
 };
