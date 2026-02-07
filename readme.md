@@ -704,6 +704,7 @@ Look. Try. Add.
 12. [Pointer][Neomaster.Demos.Cpp_Introduction.cpp-12]
 13. [Pointer arg][Neomaster.Demos.Cpp_Introduction.cpp-13]
 14. [`nullptr`][Neomaster.Demos.Cpp_Introduction.cpp-14]
+15. [Operator `->`][Neomaster.Demos.Cpp_Introduction.cpp-15]
 
 [Neomaster.Demos.Cpp_Introduction.cpp-1]:Neomaster.Demos.Cpp/Introduction.cpp#L7
 [Neomaster.Demos.Cpp_Introduction.cpp-2]:Neomaster.Demos.Cpp/Introduction.cpp#L14
@@ -719,6 +720,7 @@ Look. Try. Add.
 [Neomaster.Demos.Cpp_Introduction.cpp-12]:Neomaster.Demos.Cpp/Introduction.cpp#L181
 [Neomaster.Demos.Cpp_Introduction.cpp-13]:Neomaster.Demos.Cpp/Introduction.cpp#L216
 [Neomaster.Demos.Cpp_Introduction.cpp-14]:Neomaster.Demos.Cpp/Introduction.cpp#L228
+[Neomaster.Demos.Cpp_Introduction.cpp-15]:Neomaster.Demos.Cpp/Introduction.cpp#L245
 
 
 </details>

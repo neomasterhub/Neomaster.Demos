@@ -23,6 +23,7 @@ void main()
       MenuItem("Pointer", []() { return Introduction::Pointer(); }),
       MenuItem("Pointer arg", []() { return Introduction::PointerArg(); }),
       MenuItem("nullptr", []() { return Introduction::Nullptr(); }),
+      MenuItem("Operator ->", []() { return Introduction::OpArrow(); }),
     });
   menu.Show();
 }
