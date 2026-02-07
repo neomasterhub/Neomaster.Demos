@@ -10,7 +10,7 @@ Look. Try. Add.
 
 ## About
 
-👋 Welcome! **This is the personal repository of a Full-Stack developer (.NET, C++, Angular)**, where I collect everything I’ve learned or discovered in real projects.
+👋 Welcome! **This is the personal repository of a Full-Stack developer (.NET + Angular)**, where I collect everything I’ve learned or discovered in real projects.
 
 🔬 I don’t just read theory – I want to see **how it works in practice**! Here you’ll find hands-on examples of basic tools and practical solutions to complex problems you can try yourself.
 
@@ -681,3 +681,19 @@ Look. Try. Add.
 
 
 </details>
+
+## C++
+
+<details>
+  
+<summary><b>🧱 Fundamentals</b></summary>
+
+<br>
+
+1. [Hello World! 123][Neomaster.Demos.Cpp_Fundamentals.cpp-1]
+
+[Neomaster.Demos.Cpp_Fundamentals.cpp-1]:Neomaster.Demos.Cpp/Fundamentals.cpp#6
+
+
+</details>
+
