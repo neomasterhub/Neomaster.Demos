@@ -13,25 +13,28 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="Header Files\PragmaOnce">
+    <Filter Include="Header Files\Fundamentals">
+      <UniqueIdentifier>{949be085-8710-4cfa-a821-d26fcfe879b1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Fundamentals\PragmaOnce">
       <UniqueIdentifier>{f6549e40-ec59-4ebc-83d4-873f6c123f5d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Fundamentals">
+      <UniqueIdentifier>{a75020dc-0084-4d06-8cd1-ed83d82da556}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Project.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Fundamentals.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Menu.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Introduction.cpp">
+      <Filter>Source Files\Fundamentals</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Fundamentals.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="MenuItem.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -42,10 +45,13 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Ball.h">
-      <Filter>Header Files\PragmaOnce</Filter>
+      <Filter>Header Files\Fundamentals\PragmaOnce</Filter>
     </ClInclude>
     <ClInclude Include="Box.h">
-      <Filter>Header Files\PragmaOnce</Filter>
+      <Filter>Header Files\Fundamentals\PragmaOnce</Filter>
+    </ClInclude>
+    <ClInclude Include="Introduction.h">
+      <Filter>Header Files\Fundamentals</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

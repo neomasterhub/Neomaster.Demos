@@ -1,5 +1,5 @@
 #include "Menu.h"
-#include "Fundamentals.h"
+#include "Introduction.h"
 #include <windows.h>
 
 void main()
@@ -7,22 +7,22 @@ void main()
   SetConsoleOutputCP(CP_UTF8);
 
   Menu menu = Menu(
-    "Fundamentals",
+    "Introduction",
     {
-      MenuItem("Hello, World; std:cout <<", []() { return Fundamentals::HelloWorld(); }),
-      MenuItem("std::endl as arg", []() { return Fundamentals::StdEndl_AsArg(); }),
-      MenuItem("std::endl as function", []() { return Fundamentals::StdEndl_AsFunc(); }),
-      MenuItem("std::ends", []() { return Fundamentals::StdEnds(); }),
-      MenuItem("std::cin.get", []() { return Fundamentals::CinGet(); }),
-      MenuItem("std::getline", []() { return Fundamentals::StdGetLine(); }),
-      MenuItem("std::cin >>", []() { return Fundamentals::CinNextWordToVar(); }),
-      MenuItem("string constructors", []() { return Fundamentals::StringConstructors(); }),
-      MenuItem("string item accessors: [], at()", []() { return Fundamentals::StringItemAccessors(); }),
-      MenuItem("#pragma once", []() { return Fundamentals::PragmaOnce(); }),
-      MenuItem("Get type name", []() { return Fundamentals::GetTypeName(); }),
-      MenuItem("Pointer", []() { return Fundamentals::Pointer(); }),
-      MenuItem("Pointer arg", []() { return Fundamentals::PointerArg(); }),
-      MenuItem("nullptr", []() { return Fundamentals::Nullptr(); }),
+      MenuItem("Hello, World; std:cout <<", []() { return Introduction::HelloWorld(); }),
+      MenuItem("std::endl as arg", []() { return Introduction::StdEndl_AsArg(); }),
+      MenuItem("std::endl as function", []() { return Introduction::StdEndl_AsFunc(); }),
+      MenuItem("std::ends", []() { return Introduction::StdEnds(); }),
+      MenuItem("std::cin.get", []() { return Introduction::CinGet(); }),
+      MenuItem("std::getline", []() { return Introduction::StdGetLine(); }),
+      MenuItem("std::cin >>", []() { return Introduction::CinNextWordToVar(); }),
+      MenuItem("string constructors", []() { return Introduction::StringConstructors(); }),
+      MenuItem("string item accessors: [], at()", []() { return Introduction::StringItemAccessors(); }),
+      MenuItem("#pragma once", []() { return Introduction::PragmaOnce(); }),
+      MenuItem("Get type name", []() { return Introduction::GetTypeName(); }),
+      MenuItem("Pointer", []() { return Introduction::Pointer(); }),
+      MenuItem("Pointer arg", []() { return Introduction::PointerArg(); }),
+      MenuItem("nullptr", []() { return Introduction::Nullptr(); }),
     });
   menu.Show();
 }

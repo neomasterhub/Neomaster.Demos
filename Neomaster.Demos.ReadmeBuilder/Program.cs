@@ -9,7 +9,7 @@ var readmeChaptersDotnet = ReadmeBuilder.CreateBuilder()
   .Build();
 
 var readmeChaptersCpp = new CppReadmeBuilder()
-  .CreateTestList("🧱 Fundamentals", "Fundamentals.h")
+  .CreateTestList("🧱 Fundamentals", "Introduction", "Introduction.h")
   .Build();
 
 var readmeTemplate = File.ReadAllText(Path.Combine(SolutionInfo.SolutionPath, "readme-template.md"));

@@ -8,9 +8,10 @@ internal class CppReadmeBuilder
   private static readonly string _cppProjectName = "Neomaster.Demos.Cpp";
   private static readonly int _localPathStartIndex = SolutionInfo.SolutionPath.Length + 1;
 
-  private readonly Dictionary<string, (string items, string links)> _chapters = [];
+  private readonly List<KeyValuePair<string, (string title, string items, string links)>> _categoryChapters = [];
 
   public CppReadmeBuilder CreateTestList(
+    string category,
     string title,
     string headerFileName,
     string sourceFileName = null)
@@ -72,20 +73,20 @@ internal class CppReadmeBuilder
       }
     }
 
-    _chapters.Add(title, (items.ToString(), links.ToString()));
+    _categoryChapters.Add(new(category, (title, items.ToString(), links.ToString())));
 
     return this;
   }
 
   public string Build()
   {
-    return string.Join("\n\n", _chapters.Select(c =>
+    return string.Join("\n\n", _categoryChapters.Select(c =>
       $"""
       <details>
         
       <summary><b>{c.Key}</b></summary>
 
-      <br>
+      #### {c.Value.title}
 
       {c.Value.items}
       {c.Value.links}
