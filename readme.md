@@ -692,7 +692,7 @@ Look. Try. Add.
 
 1. [Hello World! 123][Neomaster.Demos.Cpp_Fundamentals.cpp-1]
 
-[Neomaster.Demos.Cpp_Fundamentals.cpp-1]:Neomaster.Demos.Cpp/Fundamentals.cpp#6
+[Neomaster.Demos.Cpp_Fundamentals.cpp-1]:Neomaster.Demos.Cpp/Fundamentals.cpp#7
 
 
 </details>
