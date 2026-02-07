@@ -28,8 +28,10 @@ public class SolutionTests(ITestOutputHelper output)
         MethodLineIndexes = v,
       });
 
-    var unitDemoFileInfos = new DirectoryInfo(SolutionInfo.SolutionPath)
+    var di = new DirectoryInfo(SolutionInfo.SolutionPath);
+    var unitDemoFileInfos = di
       .EnumerateFiles("*UnitDemos.cs", SearchOption.AllDirectories)
+      .Concat(di.EnumerateFiles("*.cpp", SearchOption.AllDirectories))
       .Where(fi => testFileLineIndexes.Any(l => l.FileName == fi.Name));
 
     var foundDemos = new List<string>();
@@ -48,7 +50,18 @@ public class SolutionTests(ITestOutputHelper output)
 
         output.WriteLine($"         Found: {udLine}");
 
-        Assert.Matches(@"public (void|async Task)", udLine);
+        switch (udFi.Extension)
+        {
+          case ".cs":
+            Assert.Matches(@"public (void|async Task)", udLine);
+            break;
+
+          case ".cpp":
+            Assert.Matches(@"\w+::\w+\(\)", udLine);
+            break;
+
+          default: throw new IndexOutOfRangeException();
+        }
 
         var foundDemo = $"{udFi.Name}#{i}:{udLine}";
         Assert.DoesNotContain(foundDemo, foundDemos);
