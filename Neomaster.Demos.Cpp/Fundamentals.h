@@ -5,6 +5,7 @@ class Fundamentals
 public:
 
   /// <summary>
+  /// DN: Hello World! 123
   /// Prints "Hello World! 123" to the standard output.
   /// </summary>
   static std::string HelloWorld();

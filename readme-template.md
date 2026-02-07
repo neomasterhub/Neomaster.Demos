@@ -10,7 +10,7 @@ Look. Try. Add.
 
 ## About
 
-👋 Welcome! **This is the personal repository of a Full-Stack developer (.NET + Angular)**, where I collect everything I’ve learned or discovered in real projects.
+👋 Welcome! **This is the personal repository of a Full-Stack developer (.NET, C++, Angular)**, where I collect everything I’ve learned or discovered in real projects.
 
 🔬 I don’t just read theory – I want to see **how it works in practice**! Here you’ll find hands-on examples of basic tools and practical solutions to complex problems you can try yourself.
 
@@ -26,4 +26,9 @@ Look. Try. Add.
 
 > **Note:** Tests containing `spin` or `yield` may fail depending on the CPU.
 
-{chapters}
+{chapters .net}
+
+## C++
+
+{chapters c++}
+
