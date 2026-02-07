@@ -26,4 +26,9 @@ Look. Try. Add.
 
 > **Note:** Tests containing `spin` or `yield` may fail depending on the CPU.
 
-{chapters}
+{chapters .net}
+
+## C++
+
+{chapters c++}
+
