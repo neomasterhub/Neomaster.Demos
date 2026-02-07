@@ -76,4 +76,21 @@ internal class CppReadmeBuilder
 
     return this;
   }
+
+  public string Build()
+  {
+    return string.Join("\n\n", _chapters.Select(c =>
+      $"""
+      <details>
+        
+      <summary><b>{c.Key}</b></summary>
+
+      <br>
+
+      {c.Value.items}
+      {c.Value.links}
+
+      </details>
+      """));
+  }
 }
